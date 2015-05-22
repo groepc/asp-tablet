@@ -6,7 +6,7 @@ namespace Plathe.Models
 {
     public class Show
     {
-        public int ID { get; set; }
+        public int ShowID { get; set; }
         public string Subtitle { get; set; }
         public string StartingTime { get; set; }
         public int ThreeDimensional { get; set; }

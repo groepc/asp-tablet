@@ -6,19 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.DAL;
 using Plathe.Models;
 
 namespace Plathe.Controllers
 {
     public class MoviesController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
+        private CinemaContext db = new CinemaContext();
 
         // GET: Movies
         public ActionResult Index()
         {
             return View(db.Movies.ToList());
-
         }
 
         // GET: Movies/Details/5
@@ -47,7 +47,7 @@ namespace Plathe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Language,Duration,MinimumAge,Description,ThreeDimensions,Image,RatingViolence,RatingFear,RatingSex,RatingDiscrimination,RatingDrugs,RatingLanguage")] Movie movie)
+        public ActionResult Create([Bind(Include = "ID,Title,Language,Duration,MinimumAge,Description,ThreeDimensional,Image,RatingViolence,RatingFear,RatingSex,RatingDiscrimination,RatingDrugs,RatingLanguage")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Plathe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Language,Duration,MinimumAge,Description,ThreeDimensions,Image,RatingViolence,RatingFear,RatingSex,RatingDiscrimination,RatingDrugs,RatingLanguage")] Movie movie)
+        public ActionResult Edit([Bind(Include = "ID,Title,Language,Duration,MinimumAge,Description,ThreeDimensional,Image,RatingViolence,RatingFear,RatingSex,RatingDiscrimination,RatingDrugs,RatingLanguage")] Movie movie)
         {
             if (ModelState.IsValid)
             {

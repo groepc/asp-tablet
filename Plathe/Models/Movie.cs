@@ -20,9 +20,4 @@ namespace Plathe.Models
         public Boolean RatingDrugs { get; set; }
         public Boolean RatingLanguage { get; set; }
     }
-
-    public class MovieDBContext : DbContext
-    {
-        public DbSet<Movie> Movies { get; set; }
-    }
 }
