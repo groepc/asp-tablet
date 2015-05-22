@@ -7,11 +7,11 @@ namespace Plathe.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
-        public DateTime Language { get; set; }
-        public string Duration { get; set; }
+        public string Language { get; set; }
+        public int Duration { get; set; }
         public int MinimumAge { get; set; }
         public string Description { get; set; }
-        public Boolean ThreeDimensions { get; set; }
+        public Boolean ThreeDimensional { get; set; }
         public string Image { get; set; }
         public Boolean RatingViolence { get; set; }
         public Boolean RatingFear { get; set; }
