@@ -13,5 +13,18 @@ namespace Plathe.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckCode()
+        {
+            if (Request.Form["code"] != null && !string.IsNullOrWhiteSpace(Request.Form["code"]))
+            {
+
+                HttpContext.Response.Redirect("/Tickets/Printing");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
