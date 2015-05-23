@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace Plathe.Controllers
 {
-    public class HomeController : Controller
+    public class CodeController : Controller
     {
+        // GET: Code
         public ActionResult Index()
         {
             return View();
