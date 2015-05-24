@@ -1,11 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace Plathe.Models
 {
     public class Movie
     {
-        public int ID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int MovieID { get; set; }
         public string Title { get; set; }
         public string Language { get; set; }
         public int Duration { get; set; }
