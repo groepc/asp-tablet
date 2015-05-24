@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Plathe.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.Models;
 
 namespace Plathe.Controllers
 {
     public class CodeController : Controller
     {
+
+        private CinemaContext db = new CinemaContext();
+
         // GET: Code
         public ActionResult Index()
         {
@@ -18,7 +23,9 @@ namespace Plathe.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckCode()
         {
-            if (Request.Form["code"] != null && !string.IsNullOrWhiteSpace(Request.Form["code"]))
+            var uniqueCode = db.Reservations.Where(Reservation => Reservation.UniqueCode == Request.Form["code"]).Select(Reservation => Reservation.UniqueCode);
+            string checkUniqueCode = "12345";
+            if (!string.IsNullOrWhiteSpace(checkUniqueCode))
             {
 
                 HttpContext.Response.Redirect("/Tickets/Printing");
