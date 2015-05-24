@@ -23,11 +23,14 @@ namespace Plathe.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckCode()
         {
-            var uniqueCode = db.Reservations.Where(Reservation => Reservation.UniqueCode == Request.Form["code"]).Select(Reservation => Reservation.UniqueCode);
-            string checkUniqueCode = "12345";
-            if (!string.IsNullOrWhiteSpace(checkUniqueCode))
-            {
+            string ReservationCode = Request.Form["code"];
+            var ReservationID = db.Reservations
+                .Where(Reservation => Reservation.UniqueCode == ReservationCode)
+                .Select(Reservation => Reservation.ReservationID)
+                .FirstOrDefault();
 
+            if (ReservationID != 0)
+            {
                 HttpContext.Response.Redirect("/Tickets/Printing");
             }
 
