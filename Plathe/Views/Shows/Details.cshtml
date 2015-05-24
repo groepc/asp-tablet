@@ -1,0 +1,50 @@
+﻿@model Plathe.Models.Show
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Show</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartingTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThreeDimensional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThreeDimensional)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ShowID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

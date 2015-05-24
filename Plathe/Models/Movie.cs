@@ -6,7 +6,6 @@ namespace Plathe.Models
 {
     public class Movie
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MovieID { get; set; }
         public string Title { get; set; }
         public string Language { get; set; }

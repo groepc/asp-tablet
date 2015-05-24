@@ -164,6 +164,7 @@
     <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
     <Compile Include="DAL\CinemaInitializer.cs" />
@@ -240,6 +241,11 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Code\Index.cshtml" />
     <Content Include="Views\Tickets\Printing.cshtml" />
+    <Content Include="Views\Shows\Create.cshtml" />
+    <Content Include="Views\Shows\Delete.cshtml" />
+    <Content Include="Views\Shows\Details.cshtml" />
+    <Content Include="Views\Shows\Edit.cshtml" />
+    <Content Include="Views\Shows\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
