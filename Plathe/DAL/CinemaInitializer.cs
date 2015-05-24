@@ -156,14 +156,14 @@ namespace Plathe.DAL
                 new Reservation {
                     ReservationID = 1,
                     UniqueCode = "1234",
-                    CreateOn = new DateTime(2000,1,1),
-                    PriceTotal = 10.00M
+                    CreateOn = new DateTime(2015,01,01, 10,1,59),
+                    PriceTotal = (decimal) 15.00
                 },
                 new Reservation {
-                   ReservationID = 2,
+                    ReservationID = 2,
                     UniqueCode = "ABC123",
-                    CreateOn = new DateTime(2000,1,1),
-                    PriceTotal = 10.00M
+                    CreateOn = new DateTime(2000,1,1, 23,4,23),
+                    PriceTotal = (decimal) 10.00
                 }
             };
 
