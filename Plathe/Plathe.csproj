@@ -174,7 +174,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Show.cs" />
-    <Compile Include="Models\CodeModels.cs" />
+    <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

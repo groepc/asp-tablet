@@ -19,6 +19,8 @@ namespace Plathe.DAL
         public DbSet<Show> Shows { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
 
+        public DbSet<Reservation> Reservations { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
