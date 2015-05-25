@@ -41,16 +41,9 @@ textarea {
     min-height: 240px;
 }
 
-/*Creates a container on the Alle Films page
-  Author = Mieke */
-container {
-    width: 500px;
-    height: 400px;
-    display: table;
-}
-
-container .imagecontainer {
+/*Author = Mieke*/ 
+ 
+.viewallmovies {
+    min-height: 400px;
     text-align: center;
-    vertical-align: middle;
-    display: table-cell;
 }

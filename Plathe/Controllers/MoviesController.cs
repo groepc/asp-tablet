@@ -131,5 +131,11 @@ namespace Plathe.Controllers
             return View(db.Movies.ToList());
         }
 
+        public ActionResult ViewAMovie(int? MovieID)
+        {
+            Movie movie = db.Movies.Find(MovieID);
+            return View();
+        }
+
     }
 }

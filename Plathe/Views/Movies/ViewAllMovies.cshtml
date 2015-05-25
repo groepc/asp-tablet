@@ -1,18 +1,22 @@
 ﻿@* Author: Mieke *@
+@model IEnumerable<Plathe.Models.Movie>
 
 @{
     ViewBag.Title = "ViewAllMovies";
 }
 
 <h2>Alle films</h2>
+<br/>
 
-@foreach (var p in Model)
+@foreach (var item in Model)
 {
-    <div id="container" class="pull-left">
-        <div class="image-container">
-            <img src='@p.Image'/>
-            <br/>
-            <h1>@p.Title</h1>
+    <div class="col-md-4 viewallmovies">
+        <div>
+            <a href="/movies/ViewAMovie/@Html.DisplayFor(modelItem => item.MovieID)">
+                <img src='@item.Image'/>
+                <br/>
+                <h1>@item.Title</h1>
+            </a>
         </div>
     </div>
 }

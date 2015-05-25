@@ -258,6 +258,7 @@
     <Content Include="Views\Shows\Edit.cshtml" />
     <Content Include="Views\Shows\Index.cshtml" />
     <Content Include="Views\Movies\ViewAllMovies.cshtml" />
+    <Content Include="Views\Movies\ViewAMovie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Reservation\" />
