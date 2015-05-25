@@ -8,6 +8,7 @@ namespace Plathe.DAL
 {
     public class CinemaInitializer : System.Data.Entity.DropCreateDatabaseAlways<CinemaContext>
     {
+
         protected override void Seed(CinemaContext context)
         {
             var movies = new List<Movie>
@@ -196,6 +197,33 @@ namespace Plathe.DAL
             };
 
             reservations.ForEach(s => context.Reservations.Add(s));
+            context.SaveChanges();
+
+            var tickets = new List<Ticket>
+            {
+                new Ticket {
+                    TicketID = 1,
+                    ShowID = shows.Single( i => i.ShowID == 1).ShowID,
+                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    Price = (decimal) 8.50,
+                    PopcornTime = false,
+                    SeatNumber="20",
+                    UniqueCode = "AWdfet43$#%#^%",
+                     Options = "options",
+                },
+                new Ticket {
+                    TicketID = 2,
+                    ShowID = shows.Single( i => i.ShowID == 1).ShowID,
+                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    Price = (decimal) 8.50,
+                    PopcornTime = false,
+                    SeatNumber="21",
+                    UniqueCode = "AW23425@##@$",
+                    Options = "options",
+                }
+            };
+
+            tickets.ForEach(s => context.Tickets.Add(s));
             context.SaveChanges();
         }
     }

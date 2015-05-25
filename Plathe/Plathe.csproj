@@ -164,7 +164,6 @@
     <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
-    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
