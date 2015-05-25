@@ -40,3 +40,17 @@ textarea {
     margin-bottom: 20px;
     min-height: 240px;
 }
+
+.m-5 {
+    margin: 5px;
+}
+
+.mw-250 {
+    max-width: 250px;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

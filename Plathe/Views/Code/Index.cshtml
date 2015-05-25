@@ -2,12 +2,14 @@
     ViewBag.Title = "Code invoeren";
 }
 
-
 <div class="text-center">
-
     <img src="http://www.placehold.it/250" alt="unieke code">
+    @if (ViewBag.NoResults != null)
+    {
+        <div class="alert alert-danger m-5 mw-250 center-block">@ViewBag.NoResults</div>
+    }
     <p>Voer hieronder uw code in</p>
-    <form method="post" action="/code/CheckCode">
+    <form method="post" action="/code/">
         @Html.AntiForgeryToken()
         <input type="text" name="code" value="" />
         <br />

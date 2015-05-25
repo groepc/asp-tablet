@@ -14,6 +14,7 @@ namespace Plathe.Controllers
         private CinemaContext db = new CinemaContext();
 
         // GET: Code
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -21,9 +22,9 @@ namespace Plathe.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CheckCode()
+        public ActionResult Index(string code)
         {
-            string ReservationCode = Request.Form["code"];
+            string ReservationCode = code;
             var ReservationID = db.Reservations
                 .Where(Reservation => Reservation.UniqueCode == ReservationCode)
                 .Select(Reservation => Reservation.ReservationID)
@@ -31,10 +32,14 @@ namespace Plathe.Controllers
 
             if (ReservationID != 0)
             {
-                HttpContext.Response.Redirect("/Tickets/Printing");
+                return RedirectToAction("Printing", "Tickets", new { id = ReservationID });
+             
             }
-
-            return RedirectToAction("Index");
+            else
+            {
+                ViewData["NoResults"] = "De code die u heeft ingevoerd is onjuist, probeer opnieuw.";
+                return View();
+            }
         }
     }
 }
