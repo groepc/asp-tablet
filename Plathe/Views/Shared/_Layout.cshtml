@@ -14,14 +14,14 @@
                 @Html.ActionLink("Plathe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        
-
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>
