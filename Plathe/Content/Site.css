@@ -57,4 +57,5 @@ container .imagecontainer {
 
 .viewallmovies {
     min-height: 400px;
+    text-align: center;
 }
