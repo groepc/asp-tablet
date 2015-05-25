@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
@@ -9,8 +10,15 @@ namespace Plathe.Models
     {
         public int ShowID { get; set; }
         public int MovieID { get; set; }
+        
+        [Display(Name = "Ondertiteling (bv. EN, NL)")]
         public string Subtitle { get; set; }
-        public string StartingTime { get; set; }
+        
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Start datum")]
+        public DateTime StartingTime { get; set; }
+        
+        [Display(Name = "3D")]
         public Boolean ThreeDimensional { get; set; }
 
         // holds the ID of the movie that will be played
