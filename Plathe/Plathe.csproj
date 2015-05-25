@@ -184,6 +184,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\angst.svg" />
+    <Content Include="Content\img\discriminatie.svg" />
+    <Content Include="Content\img\drugs.svg" />
+    <Content Include="Content\img\geweld.svg" />
+    <Content Include="Content\img\groftaalgebruik.svg" />
+    <Content Include="Content\img\leeftijd-12.svg" />
+    <Content Include="Content\img\leeftijd-16.svg" />
+    <Content Include="Content\img\leeftijd-6.svg" />
+    <Content Include="Content\img\leeftijd-al.svg" />
+    <Content Include="Content\img\seks.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

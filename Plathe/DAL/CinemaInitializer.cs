@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Plathe.DAL
 {
-    public class CinemaInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<CinemaContext>
+    public class CinemaInitializer : System.Data.Entity.DropCreateDatabaseAlways<CinemaContext>
     {
         protected override void Seed(CinemaContext context)
         {
@@ -46,11 +46,11 @@ namespace Plathe.DAL
                 },
                 new Movie {
                     MovieID = 3,
-                    Title = "Vin Diesel, Paul Walker en Dwayne Johnson zijn opnieuw samen te zien in de hoofdrollen van Fast & Furious 7",
+                    Title = "Fast and Furious 7",
                     Language = "EN",
                     Duration = 137,
                     MinimumAge = 12,
-                    Description = "Wat als één van je maten met jouw tekst een hit scoort en je daarna niet meer kent? In de hilarische komedie De Masters overkomt het Aziz (Mimoun Oaissa).",
+                    Description = "Vin Diesel, Paul Walker en Dwayne Johnson zijn opnieuw samen te zien in de hoofdrollen van Fast & Furious 7",
                     ThreeDimensional = false,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/fast_amp_furious_7_02037619_ps_3_s-high.jpg",
                     RatingViolence = true,
@@ -135,14 +135,42 @@ namespace Plathe.DAL
                     ShowID = 1,
                     MovieID = 1,
                     Subtitle = "EN",
-                    StartingTime = new DateTime(2015,05,29, 20,0,0),
+                    StartingTime = DateTime.Today.AddHours(19),
                     ThreeDimensional = true
                 },
                 new Show {
                     ShowID = 2,
                     MovieID = 2,
                     Subtitle = "EN",
-                    StartingTime = new DateTime(2015,05,30, 21,0,0),
+                    StartingTime = DateTime.Today.AddHours(20),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    ShowID = 3,
+                    MovieID = 3,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
+                    ThreeDimensional = true
+                },
+                new Show {
+                    ShowID = 4,
+                    MovieID = 4,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(19),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    ShowID = 5,
+                    MovieID = 5,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(20),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    ShowID = 6,
+                    MovieID = 6,
+                    Subtitle = "FR",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 }
             };

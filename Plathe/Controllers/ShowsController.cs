@@ -18,7 +18,13 @@ namespace Plathe.Controllers
         // GET: Shows
         public ActionResult Index()
         {
-            var shows = db.Shows.Include(s => s.Movie);
+            DateTime today = DateTime.Today;
+
+            var shows = db.Shows
+                .Include(s => s.Movie)
+                //.Where(s => s.StartingTime.Date >= today)
+                .OrderBy(s => s.StartingTime);
+
             return View(shows.ToList());
         }
 

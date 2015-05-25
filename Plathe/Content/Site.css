@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -14,6 +15,30 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.show-thumbnail {
+
+    margin-right: 10px;
+}
+
+.show-content {
+
+}
+
+.show-content h4 {
+    color: #222;
+    font-weight: bold;
+    margin: 10px 0 10px;
+}
+
+.kijkwijzer {
+    margin: 0 0 10px;
+}
+
+.show {
+    margin-bottom: 20px;
+    min-height: 240px;
 }
 
 /*Creates a container on the Alle Films page
