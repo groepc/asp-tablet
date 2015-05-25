@@ -10,5 +10,7 @@
     <form method="post" action="/code/CheckCode">
         @Html.AntiForgeryToken()
         <input type="text" name="code" value="" />
+        <br />
+        <button type="submit" class="btn btn-sm btn-primary">Print Ticket(s)</button>
     </form>
 </div>

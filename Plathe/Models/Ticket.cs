@@ -17,5 +17,6 @@ namespace Plathe.Models
 
 
         public virtual Show Show { get; set; }
+        public virtual Reservation Reseveration { get; set; }
     }
 }

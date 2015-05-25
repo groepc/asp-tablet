@@ -23,9 +23,11 @@ namespace Plathe.Models
 
         // holds the ID of the movie that will be played
         public virtual Movie Movie { get; set; }
-       
+        
+        
+        
         // holds all the tickets for this show
-        public virtual ICollection<Ticket> Tickets { get; set; }
+         public virtual ICollection<Ticket> Tickets { get; set; }
 
         
     }

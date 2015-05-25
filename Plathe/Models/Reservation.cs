@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace Plathe.Models
@@ -13,5 +15,6 @@ namespace Plathe.Models
 
         public DateTime CreateOn { get; set; }
 
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }
