@@ -164,6 +164,7 @@
     <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
@@ -175,7 +176,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\Show.cs" />
-    <Compile Include="Models\ReservationModels.cs" />
+    <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -247,7 +248,9 @@
     <Content Include="Views\Shows\Edit.cshtml" />
     <Content Include="Views\Shows\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Reservation\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

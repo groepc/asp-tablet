@@ -149,6 +149,26 @@ namespace Plathe.DAL
 
             shows.ForEach(s => context.Shows.Add(s));
             context.SaveChanges();
+
+
+            var reservations = new List<Reservation>
+            {
+                new Reservation {
+                    ReservationID = 1,
+                    UniqueCode = "1234",
+                    CreateOn = new DateTime(2015,01,01, 10,1,59),
+                    PriceTotal = (decimal) 15.00
+                },
+                new Reservation {
+                    ReservationID = 2,
+                    UniqueCode = "ABC123",
+                    CreateOn = new DateTime(2000,1,1, 23,4,23),
+                    PriceTotal = (decimal) 10.00
+                }
+            };
+
+            reservations.ForEach(s => context.Reservations.Add(s));
+            context.SaveChanges();
         }
     }
 }
