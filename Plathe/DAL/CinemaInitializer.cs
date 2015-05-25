@@ -135,14 +135,14 @@ namespace Plathe.DAL
                     ShowID = 1,
                     MovieID = 1,
                     Subtitle = "EN",
-                    StartingTime = "20:00",
+                    StartingTime = new DateTime(2015,05,29, 20,0,0),
                     ThreeDimensional = true
                 },
                 new Show {
                     ShowID = 2,
                     MovieID = 2,
                     Subtitle = "EN",
-                    StartingTime = "19:00",
+                    StartingTime = new DateTime(2015,05,30, 21,0,0),
                     ThreeDimensional = false
                 }
             };
