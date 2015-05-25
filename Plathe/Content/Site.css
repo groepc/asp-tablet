@@ -54,3 +54,7 @@ container .imagecontainer {
     vertical-align: middle;
     display: table-cell;
 }
+
+.viewallmovies {
+    min-height: 400px;
+}
