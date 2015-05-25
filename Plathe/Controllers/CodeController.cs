@@ -21,6 +21,7 @@ namespace Plathe.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult CheckCode()
         {
             string ReservationCode = Request.Form["code"];

@@ -124,5 +124,12 @@ namespace Plathe.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //Author: Mieke
+        public ActionResult ViewAllMovies()
+        {
+            return View(db.Movies.ToList());
+        }
+
     }
 }

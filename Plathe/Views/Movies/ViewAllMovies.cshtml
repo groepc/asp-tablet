@@ -1,0 +1,20 @@
+﻿@* Author: Mieke *@
+
+@{
+    ViewBag.Title = "ViewAllMovies";
+}
+
+<h2>Alle films</h2>
+
+@foreach (var p in Model)
+{
+    <div id="container" class="pull-left">
+        <div class="image-container">
+            <img src='@p.Image'/>
+            <br/>
+            <h1>@p.Title</h1>
+        </div>
+    </div>
+}
+
+
