@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChooseForMeController.cs" />
     <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -258,6 +259,7 @@
     <Content Include="Views\Shows\Index.cshtml" />
     <Content Include="Views\Movies\ViewAllMovies.cshtml" />
     <Content Include="Views\Movies\ViewAMovie.cshtml" />
+    <Content Include="Views\ChooseForMe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Reservation\" />
