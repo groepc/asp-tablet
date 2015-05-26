@@ -1,50 +1,58 @@
 ﻿@model Plathe.Models.Show
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Voorstelling";
 }
 
-<h2>Details</h2>
+<h2>Voorstelling: @Html.DisplayFor(model => model.Movie.Title)</h2>
 
-<div>
-    <h4>Show</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </dt>
+<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Movie.Title)
-        </dd>
+<div class="row">
+    
+    <div class="col-sm-4">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>3D</td>
+                    @if (Model.Movie.ThreeDimensional)
+                    {
+                        <td>Ja</td>
+                    }
+                    else
+                    {
+                        <td>Nee</td>
+                    }
+                </tr>
+                <tr>
+                    <td>Rolstoel</td>
+                    <td>Onbekend</td>
+                </tr>
+                <tr>
+                    <td>Tijd</td>
+                    <td>@Html.DisplayFor(model => model.StartingTime)</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Subtitle)
-        </dt>
+        <p>
+            @Html.ActionLink("Terug naar overzicht", "Index")
+        </p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Subtitle)
-        </dd>
+    <div class="col-sm-8">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartingTime)
-        </dt>
+            <div class="form-horizontal">
+                <h4>Reserveren</h4>
+                <hr />
+                
+            </div>
+        }
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartingTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThreeDimensional)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThreeDimensional)
-        </dd>
-
-    </dl>
+    
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ShowID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

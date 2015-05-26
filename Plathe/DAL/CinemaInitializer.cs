@@ -136,42 +136,42 @@ namespace Plathe.DAL
                     ShowID = 1,
                     MovieID = 1,
                     Subtitle = "EN",
-                    StartingTime = DateTime.Today.AddHours(19),
+                    StartingTime = DateTime.Today.AddHours(18).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
                     ShowID = 2,
                     MovieID = 2,
                     Subtitle = "EN",
-                    StartingTime = DateTime.Today.AddHours(20),
+                    StartingTime = DateTime.Today.AddHours(19),
                     ThreeDimensional = false
                 },
                 new Show {
                     ShowID = 3,
                     MovieID = 3,
                     Subtitle = "EN",
-                    StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
+                    StartingTime = DateTime.Today.AddHours(19).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
                     ShowID = 4,
                     MovieID = 4,
                     Subtitle = "EN",
-                    StartingTime = DateTime.Today.AddDays(1).AddHours(19),
+                    StartingTime = DateTime.Today.AddHours(20),
                     ThreeDimensional = false
                 },
                 new Show {
                     ShowID = 5,
                     MovieID = 5,
                     Subtitle = "NL",
-                    StartingTime = DateTime.Today.AddDays(1).AddHours(20),
+                    StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 },
                 new Show {
                     ShowID = 6,
                     MovieID = 6,
                     Subtitle = "FR",
-                    StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
+                    StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 }
             };
@@ -209,7 +209,7 @@ namespace Plathe.DAL
                     PopcornTime = false,
                     SeatNumber="20",
                     UniqueCode = "AWdfet43$#%#^%",
-                     Options = "options",
+                    Options = "options",
                 },
                 new Ticket {
                     TicketID = 2,

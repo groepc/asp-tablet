@@ -29,8 +29,37 @@ namespace Plathe.Controllers
         }
 
         // GET: Shows/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
+            // TODO: onderstaande naar een aparte POST-methode verplaatsen
+
+            // TODO: HTTP Post data ophalen
+
+            // TODO: Reservation Object aanmaken en opslaan in DB
+            Reservation reservation = new Reservation {
+                UniqueCode = "OiuCNe",
+                PriceTotal = 12.00M,
+                CreateOn = DateTime.Now,
+            };
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
+            // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+            Ticket ticket = new Ticket
+            {
+
+                ShowID = 3,
+                ReservationID = reservation.ReservationID,
+                UniqueCode = "abcd",
+                SeatNumber = "1",
+                Price = 1.00M
+            };
+            db.Tickets.Add(ticket);
+            db.SaveChanges();
+
+            // TODO: Gebruiker doorsturen naar print tickets
+
+            // Originele detail controller, hieronder
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,19 +72,12 @@ namespace Plathe.Controllers
             return View(show);
         }
 
-        // GET: Shows/Create
-        public ActionResult Create()
-        {
-            ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title");
-            return View();
-        }
-
-        // POST: Shows/Create
+        // POST: Shows/Reservate
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShowID,MovieID,Subtitle,StartingTime,ThreeDimensional")] Show show)
+        public ActionResult Reservate([Bind(Include = "ShowID,MovieID,Subtitle,StartingTime,ThreeDimensional")] Show show)
         {
             if (ModelState.IsValid)
             {
