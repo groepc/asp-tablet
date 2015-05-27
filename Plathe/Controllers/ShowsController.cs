@@ -29,35 +29,8 @@ namespace Plathe.Controllers
         }
 
         // GET: Shows/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            // TODO: onderstaande naar een aparte POST-methode verplaatsen
-
-            // TODO: HTTP Post data ophalen
-
-            // TODO: Reservation Object aanmaken en opslaan in DB
-            Reservation reservation = new Reservation {
-                UniqueCode = "OiuCNe",
-                PriceTotal = 12.00M,
-                CreateOn = DateTime.Now,
-            };
-            db.Reservations.Add(reservation);
-            db.SaveChanges();
-
-            // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
-            Ticket ticket = new Ticket
-            {
-
-                ShowID = 3,
-                ReservationID = reservation.ReservationID,
-                UniqueCode = "abcd",
-                SeatNumber = "1",
-                Price = 1.00M
-            };
-            db.Tickets.Add(ticket);
-            db.SaveChanges();
-
-            // TODO: Gebruiker doorsturen naar print tickets
 
             // Originele detail controller, hieronder
             if (id == null)
@@ -77,17 +50,49 @@ namespace Plathe.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reservate([Bind(Include = "ShowID,MovieID,Subtitle,StartingTime,ThreeDimensional")] Show show)
+        public ActionResult Reservate(int id, int? adults, int? adultsplus, int? childs, int? popcorn)
         {
-            if (ModelState.IsValid)
-            {
-                db.Shows.Add(show);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", show.MovieID);
-            return View(show);
+            if (adults != null || adultsplus != null || childs != null || popcorn != null) {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            Reservation reservation = new Reservation
+            {
+                UniqueCode = result,
+                PriceTotal = 12.00M,
+                CreateOn = DateTime.Now,
+            };
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
+            while (adults > 0)
+            {
+                // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                Ticket ticket = new Ticket
+                {
+
+                    ShowID = 3,
+                    ReservationID = reservation.ReservationID,
+                    UniqueCode = new string(
+                    Enumerable.Repeat(chars, 8)
+                              .Select(s => s[random.Next(s.Length)])
+                              .ToArray()),
+                    SeatNumber = "1",
+                    Price = 1.00M
+                };
+                db.Tickets.Add(ticket);
+                db.SaveChanges();
+                adults = adults - 1;
+            }
+                return RedirectToAction("Index", "Payment", new { id = id });
+            } else {
+                return RedirectToAction("Details", "Shows", new { id = id });
+            }
+            
         }
 
         // GET: Shows/Edit/5

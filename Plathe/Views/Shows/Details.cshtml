@@ -9,8 +9,10 @@
 <hr />
 
 <div class="row">
-    
+
     <div class="col-sm-4">
+        <img src="@Html.DisplayFor(model => model.Movie.Image)" alt="@Html.DisplayFor(model => model.Movie.Title)" class="img-responsive m-5">
+        
         <table class="table table-bordered">
             <tbody>
                 <tr>
@@ -29,8 +31,12 @@
                     <td>Onbekend</td>
                 </tr>
                 <tr>
-                    <td>Tijd</td>
+                    <td>Begintijd</td>
                     <td>@Html.DisplayFor(model => model.StartingTime)</td>
+                </tr>
+                <tr>
+                    <td>Duur</td>
+                    <td>@Html.DisplayFor(model => model.Movie.Duration) minuten</td>
                 </tr>
             </tbody>
         </table>
@@ -41,18 +47,51 @@
     </div>
 
     <div class="col-sm-8">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
+            
             <div class="form-horizontal">
                 <h4>Reserveren</h4>
                 <hr />
-                
+                <form method="post" action="/Shows/Reservate/">
+                    @Html.AntiForgeryToken()
+                    <table class="table text-right">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Volwassen
+                                </td>
+                                <td>
+                                    <input type="number" name="adults" min="0" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    65 plus
+                                </td>
+                                <td>
+                                    <input type="number" name="adultsplus" min="0" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Kinderen
+                                </td>
+                                <td>
+                                    <input type="number" name="childs" min="0" class="form-control" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Popcorn arragement (inclusief ticket)
+                                </td>
+                                <td>
+                                    <input type="number" name="popcorn" min="0" class="form-control" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" name="submit" class="btn btn-primary pull-right">Ga naar betalen</button>
+                    <input type="hidden" name="id" value="@Html.DisplayFor(model => model.ShowID)">
+                </form>
             </div>
-        }
     </div>
-
-    
 </div>
-
