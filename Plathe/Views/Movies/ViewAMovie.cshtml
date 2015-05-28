@@ -17,6 +17,32 @@
                 <td>
                 <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)" class="img-responsiv>
                 </td>
+                <td>
+                    @if (Model.RatingDiscrimination == true)
+                    {
+                        <img src="~/Content/img/discriminatie.svg" width="35" />
+                    }
+                    @if (Model.RatingDrugs == true)
+                    {
+                        <img src="~/Content/img/drugs.svg" width="35" />
+                    }
+                    @if (Model.RatingFear == true)
+                    {
+                        <img src="~/Content/img/angst.svg" width="35" />
+                    }
+                    @if (Model.RatingLanguage == true)
+                    {
+                        <img src="~/Content/img/groftaalgebruik.svg" width="35" />
+                    }
+                    @if (Model.RatingSex == true)
+                    {
+                        <img src="~/Content/img/seks.svg" width="35" />
+                    }
+                    @if (Model.RatingViolence == true)
+                    {
+                        <img src="~/Content/img/geweld.svg" width="35" />
+                    }
+                </td>
             </tr>
         </tbody>
     </table>
