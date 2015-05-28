@@ -175,16 +175,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Plathe.Domain\Plathe.Domain.vbproj">
-      <Project>{300be1bb-1a03-4201-b6a7-b67fca3f9d01}</Project>
-      <Name>Plathe.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Plathe.WebUI\Plathe.WebUI.vbproj">
-      <Project>{2149090c-06bf-4d2b-ab71-4832367e8ec4}</Project>
-      <Name>Plathe.WebUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
