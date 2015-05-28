@@ -9,52 +9,42 @@
 <h2>@Html.DisplayFor(model => model.Title)</h2>
 
 <hr/>
-
-<div class="row">
-    <table class="table table-bordered">
-        <tbody>
-            <tr>
-                <td>
-                <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)" class="img-responsiv>
-                </td>
-                <td>
-                    @if (Model.RatingDiscrimination == true)
-                    {
-                        <img src="~/Content/img/discriminatie.svg" width="35" />
-                    }
-                    @if (Model.RatingDrugs == true)
-                    {
-                        <img src="~/Content/img/drugs.svg" width="35" />
-                    }
-                    @if (Model.RatingFear == true)
-                    {
-                        <img src="~/Content/img/angst.svg" width="35" />
-                    }
-                    @if (Model.RatingLanguage == true)
-                    {
-                        <img src="~/Content/img/groftaalgebruik.svg" width="35" />
-                    }
-                    @if (Model.RatingSex == true)
-                    {
-                        <img src="~/Content/img/seks.svg" width="35" />
-                    }
-                    @if (Model.RatingViolence == true)
-                    {
-                        <img src="~/Content/img/geweld.svg" width="35" />
-                    }
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="row">
-    <table class="table table-bordered">
-            <tbody>
-            <tr>
-                <td>@Html.DisplayFor(model => model.Description)</td>
-            </tr>
-            </tbody>
-        </table>
+<div class="block" style=" background-color: #fff; border: 1px solid #b5b5b5; border-radius: 5px; padding: 10px;">
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)" class="img-responsive">
+        </div>
+        <div class="col-sm-10">
+            <div style="margin-bottom: 10px">
+                @if (Model.RatingDiscrimination == true)
+                {
+                    <img src="~/Content/img/discriminatie.svg" width="35" />
+                }
+                @if (Model.RatingDrugs == true)
+                {
+                    <img src="~/Content/img/drugs.svg" width="35" />
+                }
+                @if (Model.RatingFear == true)
+                {
+                    <img src="~/Content/img/angst.svg" width="35" />
+                }
+                @if (Model.RatingLanguage == true)
+                {
+                    <img src="~/Content/img/groftaalgebruik.svg" width="35" />
+                }
+                @if (Model.RatingSex == true)
+                {
+                    <img src="~/Content/img/seks.svg" width="35" />
+                }
+                @if (Model.RatingViolence == true)
+                {
+                    <img src="~/Content/img/geweld.svg" width="35" />
+                }
+            </div>
+            <div>
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
 
     </div>
+</div>
