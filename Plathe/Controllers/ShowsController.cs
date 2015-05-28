@@ -53,46 +53,129 @@ namespace Plathe.Controllers
         public ActionResult Reservate(int id, int? adults, int? adultsplus, int? childs, int? popcorn)
         {
 
-            if (adults != null || adultsplus != null || childs != null || popcorn != null) {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var random = new Random();
-            var result = new string(
-                Enumerable.Repeat(chars, 8)
-                          .Select(s => s[random.Next(s.Length)])
-                          .ToArray());
-            Reservation reservation = new Reservation
+            if (adults != null || adultsplus != null || childs != null || popcorn != null)
             {
-                UniqueCode = result,
-                PriceTotal = 12.00M,
-                CreateOn = DateTime.Now,
-            };
-            db.Reservations.Add(reservation);
-            db.SaveChanges();
 
-            while (adults > 0)
-            {
-                // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
-                Ticket ticket = new Ticket
+                var shows = db.Shows.Find(id);
+
+                var ticketPrice = (decimal)0.00;
+                if (shows.Movie.Duration > 120)
                 {
+                    ticketPrice = (decimal)9.50;
+                }
+                else
+                {
+                    ticketPrice = (decimal)8.50;
+                }
 
-                    ShowID = 3,
-                    ReservationID = reservation.ReservationID,
-                    UniqueCode = new string(
+                if (shows.Movie.ThreeDimensional == true)
+                {
+                    var ticketprice = ticketPrice + (decimal)2.50;
+                }
+
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                var random = new Random();
+                var result = new string(
                     Enumerable.Repeat(chars, 8)
                               .Select(s => s[random.Next(s.Length)])
-                              .ToArray()),
-                    SeatNumber = "1",
-                    Price = 1.00M
+                              .ToArray());
+                Reservation reservation = new Reservation
+                {
+                    UniqueCode = result,
+                    PriceTotal = 12.00M,
+                    CreateOn = DateTime.Now,
                 };
-                db.Tickets.Add(ticket);
+                db.Reservations.Add(reservation);
                 db.SaveChanges();
-                adults = adults - 1;
+
+                while (adults > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        SeatNumber = "1",
+                        Price = ticketPrice
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    adults = adults - 1;
+                }
+
+                while (adultsplus > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        SeatNumber = "1",
+                        Price = (ticketPrice - (decimal) 1.50),
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    adultsplus = adultsplus - 1;
+                }
+
+                while (childs > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        SeatNumber = "1",
+                        Price = 8.00M
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    childs = childs - 1;
+                }
+
+                while (popcorn > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        SeatNumber = "1",
+                        Price = (ticketPrice + (decimal) 5.00)
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    popcorn = popcorn - 1;
+                }
+
+
+                return RedirectToAction("Index", "Payment", new { id = reservation.ReservationID });
             }
-            return RedirectToAction("Index", "Payment", new { id = reservation.ReservationID });
-            } else {
+            else
+            {
                 return RedirectToAction("Details", "Shows", new { id = id });
             }
-            
+
         }
 
         // GET: Shows/Edit/5
