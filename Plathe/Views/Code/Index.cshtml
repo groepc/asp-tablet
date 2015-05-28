@@ -3,7 +3,7 @@
 }
 
 <div class="text-center">
-    <img src="http://www.placehold.it/250" alt="unieke code">
+    <i class="glyphicon glyphicon-print" style="font-size: 120px; color: #222; margin-bottom: 20px;"></i>
     @if (ViewBag.NoResults != null)
     {
         <div class="alert alert-danger m-5 mw-250 center-block">@ViewBag.NoResults</div>
@@ -12,6 +12,7 @@
     <form method="post" action="/code/">
         @Html.AntiForgeryToken()
         <input type="text" name="code" value="" />
+        <br />
         <br />
         <button type="submit" class="btn btn-sm btn-primary">Print Ticket(s)</button>
     </form>

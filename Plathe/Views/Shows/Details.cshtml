@@ -11,39 +11,41 @@
 <div class="row">
 
     <div class="col-sm-4">
-        <img src="@Html.DisplayFor(model => model.Movie.Image)" alt="@Html.DisplayFor(model => model.Movie.Title)" class="img-responsive m-5">
-        
-        <table class="table table-bordered">
-            <tbody>
-                <tr>
-                    <td>3D</td>
-                    @if (Model.Movie.ThreeDimensional)
-                    {
-                        <td>Ja</td>
-                    }
-                    else
-                    {
-                        <td>Nee</td>
-                    }
-                </tr>
-                <tr>
-                    <td>Rolstoel</td>
-                    <td>Onbekend</td>
-                </tr>
-                <tr>
-                    <td>Begintijd</td>
-                    <td>@Html.DisplayFor(model => model.StartingTime)</td>
-                </tr>
-                <tr>
-                    <td>Duur</td>
-                    <td>@Html.DisplayFor(model => model.Movie.Duration) minuten</td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="background: #fff; border-radius: 5px; border: 1px solid #B5B5B5;">
+            <img src="@Html.DisplayFor(model => model.Movie.Image)" alt="@Html.DisplayFor(model => model.Movie.Title)" class="img-responsive m-5" style="margin: 10px auto;">
 
-        <p>
-            @Html.ActionLink("Terug naar overzicht", "Index")
-        </p>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>3D</td>
+                        @if (Model.Movie.ThreeDimensional)
+                        {
+                            <td>Ja</td>
+                        }
+                        else
+                        {
+                            <td>Nee</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Rolstoel</td>
+                        <td>Onbekend</td>
+                    </tr>
+                    <tr>
+                        <td>Begintijd</td>
+                        <td>@Html.DisplayFor(model => model.StartingTime)</td>
+                    </tr>
+                    <tr>
+                        <td>Duur</td>
+                        <td>@Html.DisplayFor(model => model.Movie.Duration) minuten</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin-left: 10px;">
+                @Html.ActionLink("Terug naar overzicht", "Index")
+            </p>
+        </div>
     </div>
 
     <div class="col-sm-8">

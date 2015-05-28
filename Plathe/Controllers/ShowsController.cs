@@ -22,7 +22,7 @@ namespace Plathe.Controllers
 
             var shows = db.Shows
                 .Include(s => s.Movie)
-                //.Where(s => s.StartingTime.Date >= today)
+                //.Where(s => s.StartingTime.Day >= today.Day)
                 .OrderBy(s => s.StartingTime);
 
             return View(shows.ToList());

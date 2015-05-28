@@ -10,70 +10,72 @@
 <div class="row">
     @foreach (var item in Model) {
         <div class="col-sm-6 show">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="show-thumbnail">
-                        <a href="/Shows/Details/@Html.DisplayFor(modelItem => item.ShowID)">
-                            <img src="@Html.DisplayFor(modelItem => item.Movie.Image)" alt="@Html.DisplayFor(modelItem => item.Movie.Title)" class="img-responsive">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="show-content">
-                        <h4>
+            <div class="show-wrapper">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="show-thumbnail">
                             <a href="/Shows/Details/@Html.DisplayFor(modelItem => item.ShowID)">
-                                @Html.DisplayFor(modelItem => item.Movie.Title)
+                                <img src="@Html.DisplayFor(modelItem => item.Movie.Image)" alt="@Html.DisplayFor(modelItem => item.Movie.Title)" class="img-responsive">
                             </a>
-                        </h4>
-                        <div class="kijkwijzer">
-                            @if (item.Movie.RatingDiscrimination)
-                            {
-                                <img src="~/Content/img/discriminatie.svg" width="35" />
-                            }
-                            @if (item.Movie.RatingDrugs)
-                            {
-                                <img src="~/Content/img/drugs.svg" width="35" />
-                            }
-                            @if (item.Movie.RatingFear)
-                            {
-                                <img src="~/Content/img/angst.svg" width="35" />
-                            }
-                            @if (item.Movie.RatingLanguage)
-                            {
-                                <img src="~/Content/img/groftaalgebruik.svg" width="35" />
-                            }
-                            @if (item.Movie.RatingSex)
-                            {
-                                <img src="~/Content/img/seks.svg" width="35" />
-                            }
-                            @if (item.Movie.RatingViolence)
-                            {
-                                <img src="~/Content/img/geweld.svg" width="35" />
-                            }
                         </div>
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td>3D</td>
-                                    @if (item.ThreeDimensional)
-                                    {
-                                        <td>Ja</td>
-                                    }
-                                    else
-                                    {
-                                        <td>Nee</td>
-                                    }
-                                </tr>
-                                <tr>
-                                    <td>Rolstoel</td>
-                                    <td>Onbekend</td>
-                                </tr>
-                                <tr>
-                                    <td>Tijd</td>
-                                    <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="show-content">
+                            <h4>
+                                <a href="/Shows/Details/@Html.DisplayFor(modelItem => item.ShowID)">
+                                    @Html.DisplayFor(modelItem => item.Movie.Title)
+                                </a>
+                            </h4>
+                            <div class="kijkwijzer">
+                                @if (item.Movie.RatingDiscrimination)
+                                {
+                                    <img src="~/Content/img/discriminatie.svg" width="35" />
+                                }
+                                @if (item.Movie.RatingDrugs)
+                                {
+                                    <img src="~/Content/img/drugs.svg" width="35" />
+                                }
+                                @if (item.Movie.RatingFear)
+                                {
+                                    <img src="~/Content/img/angst.svg" width="35" />
+                                }
+                                @if (item.Movie.RatingLanguage)
+                                {
+                                    <img src="~/Content/img/groftaalgebruik.svg" width="35" />
+                                }
+                                @if (item.Movie.RatingSex)
+                                {
+                                    <img src="~/Content/img/seks.svg" width="35" />
+                                }
+                                @if (item.Movie.RatingViolence)
+                                {
+                                    <img src="~/Content/img/geweld.svg" width="35" />
+                                }
+                            </div>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>3D</td>
+                                        @if (item.ThreeDimensional)
+                                        {
+                                            <td>Ja</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nee</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Rolstoel</td>
+                                        <td>Onbekend</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tijd</td>
+                                        <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

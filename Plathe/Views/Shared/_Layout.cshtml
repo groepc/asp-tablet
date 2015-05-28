@@ -9,12 +9,11 @@
 
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="container">
-                @Html.ActionLink("Plathe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        </div>
+   
+    <div class="container header">
+            @Html.ActionLink("Plathe", "Index", "Home", new { area = "" }, new { @class = "logo" })
     </div>
-
+   
     <div class="container body-content">
         @RenderBody()
     </div>
