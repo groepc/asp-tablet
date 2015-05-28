@@ -1,5 +1,4 @@
-﻿@using Plathe.Models
-@model IEnumerable<Plathe.Models.Movie>
+﻿@model Plathe.Models.Movie
 
 @*Author = Mieke*@
 
@@ -7,4 +6,29 @@
     ViewBag.Title = "ViewAMovie";
 }
 
-<h2>"View A Movie"</h2>
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+
+<hr/>
+
+<div class="row">
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>
+                <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)" class="img-responsiv>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
