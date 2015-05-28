@@ -11,6 +11,7 @@ namespace Plathe.Controllers
         // GET: Payment
         public ActionResult Index(int? id)
         {
+            ViewBag.idReservation = id;
             return View();
         }
     }

@@ -7,3 +7,14 @@
 
     <p>Volg de aanwijzigen op de pinautomaat</p>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            window.setInterval(function () {
+                window.location.replace("/Tickets/Printing/@ViewBag.idReservation");
+            }, 5000);
+        });
+    </script>
+}

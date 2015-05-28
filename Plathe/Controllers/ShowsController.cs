@@ -88,7 +88,7 @@ namespace Plathe.Controllers
                 db.SaveChanges();
                 adults = adults - 1;
             }
-                return RedirectToAction("Index", "Payment", new { id = id });
+            return RedirectToAction("Index", "Payment", new { id = reservation.ReservationID });
             } else {
                 return RedirectToAction("Details", "Shows", new { id = id });
             }
