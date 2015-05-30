@@ -22,5 +22,10 @@ namespace Plathe.Domain.Entities
         public Boolean RatingDiscrimination { get; set; }
         public Boolean RatingDrugs { get; set; }
         public Boolean RatingLanguage { get; set; }
+        public string Director { get; set; }
+        public string MainCharacters { get; set; }
+        public string linkToImdb { get; set; }
+        public string linkToWebsite { get; set; }
+        public DateTime playsUntill { get; set; }
     }
 }
