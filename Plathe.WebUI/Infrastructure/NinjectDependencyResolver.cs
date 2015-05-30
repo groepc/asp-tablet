@@ -28,7 +28,7 @@ namespace Plathe.WebUI.Infrastructure
         {
             Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
             mock.Setup(m => m.Movies).Returns(new List<Movie> {
-new Movie {
+                new Movie {
                     MovieID = 1,
                     Title = "Avengers: Age of Ultron",
                     Language = "EN",
@@ -140,7 +140,7 @@ new Movie {
                     RatingDrugs = false,
                     RatingLanguage = false
                 }
-});
+            });
             kernel.Bind<IMovieRepository>().ToConstant(mock.Object);
         }
     }
