@@ -221,6 +221,14 @@ namespace Plathe.Domain.Concrete
                     Subtitle = "FR",
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
+                },
+                new Show {
+                    ShowID = 7,
+                    MovieID = 1,
+                    RoomID = 1,
+                    Subtitle = "FR",
+                    StartingTime = DateTime.Now.AddMonths(2),
+                    ThreeDimensional = false
                 }
             };
 
