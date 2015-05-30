@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Plathe.Domain.Entities.Show>
+
+@{
+    ViewBag.Title = "Voorstellingen";
+}
+
+<h2>Voorstellingen</h2>
+
+
+<table class="table">
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.Title) (@Html.DisplayFor(modelItem => item.Movie.Language))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room.RoomName)
+        </td>
+        <td>
+            Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
+        </td>
+        <td>
+            Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
+        </td>
+        <td>
+            3D: @(item.ThreeDimensional ? "Ja" : "Nee")
+        </td>
+        <td>
+            @Html.ActionLink("Reserveren", "Details", new { id=item.ShowID })
+        </td>
+    </tr>
+}
+
+</table>

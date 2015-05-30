@@ -126,8 +126,50 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = false
                 }
             };
-
+            
             movies.ForEach(s => context.Movies.Add(s));
+            context.SaveChanges();
+
+            var rooms = new List<Room>
+            {
+                new Room {
+                    RoomID = 1,
+                    RoomName = "Zaal 1",
+                    WheelchairAccess = true,
+                    ThreeDimensional = true
+                },
+                new Room {
+                    RoomID = 2,
+                    RoomName = "Zaal 2",
+                    WheelchairAccess = true,
+                    ThreeDimensional = true
+                },
+                new Room {
+                    RoomID = 3,
+                    RoomName = "Zaal 3",
+                    WheelchairAccess = true,
+                    ThreeDimensional = false
+                },
+                new Room {
+                    RoomID = 4,
+                    RoomName = "Zaal 4",
+                    WheelchairAccess = true,
+                    ThreeDimensional = false
+                },
+                new Room {
+                    RoomID = 5,
+                    RoomName = "Zaal 5",
+                    WheelchairAccess = false,
+                    ThreeDimensional = false
+                },
+                new Room {
+                    RoomID = 6,
+                    RoomName = "Zaal 6",
+                    WheelchairAccess = false,
+                    ThreeDimensional = false
+                }
+            };
+            rooms.ForEach(s => context.Rooms.Add(s));
             context.SaveChanges();
 
             var shows = new List<Show>
@@ -135,6 +177,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 1,
                     MovieID = 1,
+                    RoomID = 1,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(18).AddMinutes(30),
                     ThreeDimensional = true
@@ -142,6 +185,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 2,
                     MovieID = 2,
+                    RoomID = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(19),
                     ThreeDimensional = false
@@ -149,6 +193,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 3,
                     MovieID = 3,
+                    RoomID = 3,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(19).AddMinutes(30),
                     ThreeDimensional = true
@@ -156,6 +201,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 4,
                     MovieID = 4,
+                    RoomID = 4,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(20),
                     ThreeDimensional = false
@@ -163,6 +209,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 5,
                     MovieID = 5,
+                    RoomID = 5,
                     Subtitle = "NL",
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
@@ -170,6 +217,7 @@ namespace Plathe.Domain.Concrete
                 new Show {
                     ShowID = 6,
                     MovieID = 6,
+                    RoomID = 6,
                     Subtitle = "FR",
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
