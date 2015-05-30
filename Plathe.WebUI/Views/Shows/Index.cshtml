@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Plathe.Domain.Entities.Show>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subtitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartingTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThreeDimensional)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subtitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartingTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThreeDimensional)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ShowID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ShowID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ShowID })
+        </td>
+    </tr>
+}
+
+</table>

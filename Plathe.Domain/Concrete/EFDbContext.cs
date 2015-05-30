@@ -20,6 +20,8 @@ namespace Plathe.Domain.Concrete
         public DbSet<Show> Shows { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
