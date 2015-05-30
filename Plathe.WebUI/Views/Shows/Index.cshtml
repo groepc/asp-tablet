@@ -1,49 +1,34 @@
 ﻿@model IEnumerable<Plathe.Domain.Entities.Show>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Voorstellingen";
 }
 
-<h2>Index</h2>
+<h2>Voorstellingen</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subtitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartingTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThreeDimensional)
-        </th>
-        <th></th>
-    </tr>
+
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Movie.Title)
+            @Html.DisplayFor(modelItem => item.Movie.Title) (@Html.DisplayFor(modelItem => item.Movie.Language))
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Subtitle)
+            @Html.DisplayFor(modelItem => item.Room.RoomName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StartingTime)
+            Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ThreeDimensional)
+            Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShowID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShowID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ShowID })
+            3D: @(item.ThreeDimensional ? "Ja" : "Nee")
+        </td>
+        <td>
+            @Html.ActionLink("Reserveren", "Details", new { id=item.ShowID })
         </td>
     </tr>
 }

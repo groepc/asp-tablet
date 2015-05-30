@@ -18,7 +18,17 @@ namespace Plathe.WebUI.Controllers
         // GET: Shows
         public ActionResult Index()
         {
-            var shows = db.Shows.Include(s => s.Movie);
+            DateTime tomorrow = DateTime.Today.AddDays(1);
+
+            int daysUntilThursday = ((int)DayOfWeek.Thursday - (int)tomorrow.DayOfWeek + 7) % 7;
+            DateTime nextThursday = tomorrow.AddDays(daysUntilThursday);
+            //return All().Where(o => EntityFunctions.CreateDateTime(o.expiry_date.Year, o.expiry_date.Month, o.expiry_date.Day, 17, 30, 0) >= DateTime.Now)
+
+            //TODO: query shows t/m de eerstvolgende donderdag!
+
+            var shows = db.Shows
+                .Include(s => s.Movie);
+
             return View(shows.ToList());
         }
 

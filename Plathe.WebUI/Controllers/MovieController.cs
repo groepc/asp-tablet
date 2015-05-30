@@ -17,7 +17,7 @@ namespace Plathe.WebUI.Controllers
             this.repository = movieRepository;
         }
 
-        public ViewResult List()
+        public ViewResult Index()
         {
             return View(repository.Movies);
         }
