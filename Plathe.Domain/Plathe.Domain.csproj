@@ -70,6 +70,9 @@
   <ItemGroup>
     <Compile Include="Abstract\IMovieRepository.cs" />
     <Compile Include="Entities\Movie.cs" />
+    <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Entities\Show.cs" />
+    <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
