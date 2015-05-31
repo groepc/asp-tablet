@@ -58,6 +58,18 @@ span.seat {
     border-radius: 0;
     font-size: 19px;
     padding: 0;
+    position: relative;
+}
+
+span.seat:after {
+    content: '';
+    width: 6px;
+    height: 7px;
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    top: 2px;
+    left: 7px;
 }
 
 span.seat i {
@@ -80,7 +92,11 @@ span.seat.not-reserved:hover i {
     color: #4cff00 !important;
 }
 
-input[type=checkbox].seat {
+.seat-label {
+    cursor: pointer;
+}
+
+input[type=checkbox].seat-input {
     display: none;
 }
 

@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
+    
+    //class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
+
+    class EFDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {

@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-sm-9">
-        <h3>Kies een stoel</h3>
+        <h3>Stap 2: Kies uw stoel</h3>
         <div class="screen">
             <hr />
             Scherm
@@ -37,18 +37,25 @@
                 <tbody>
                     @foreach (var row in Model.Room.Rows)
                     {
-                        <tr>
+                        <tr data-row-id="@row.RowID">
                             @foreach (var seat in row.Seats)
                             {
                                 <td>
-                                    <label for="seat-@(seat.SeatID)">
-                                        <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-@(seat.SeatID)" class="seat">
-                                        <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")"
-                                              data-row-id="@(row.RowID)"
-                                              data-seat-id="@(seat.SeatID)">
+                                    @if (seat.Reserved)
+                                    {
+                                        <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")">
                                             <i class="glyphicon glyphicon-stop"></i>
                                         </span>
-                                    </label>
+                                    }
+                                    else
+                                    {
+                                        <label for="seat-@(seat.SeatID)" class="seat-label" data-row-id="@(row.RowID)" data-seat-id="@(seat.SeatID)">
+                                            <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-@(seat.SeatID)" class="seat-input">
+                                            <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")">
+                                                <i class="glyphicon glyphicon-stop"></i>
+                                            </span>
+                                        </label>
+                                    }
                                 </td>
                             }
                         </tr>
@@ -66,7 +73,7 @@
                 </tr>
             </table>
         </form>
-    </div>   
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
@@ -74,10 +81,14 @@
     </div>
 </div>
 
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('table').on('click', 'button', function () {
-            alert('clicked');
+    jQuery(document).ready(function ($) {
+        var totalSeats = @(ViewBag.TotalAmount);
+
+        $('table').on('click', 'label', function () {
+            console.log('row ID', $(this).data('row-id'), 'seat ID', $(this).data('seat-id'));
+            //console.log($(this), totalSeats);
         });
     });
 </script>
