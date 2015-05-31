@@ -27,7 +27,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = false,
                     RatingDiscrimination = false,
                     RatingDrugs = false,
-                    RatingLanguage = false
+                    RatingLanguage = false,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 },
                 new Movie {
                     MovieID = 2,
@@ -43,7 +48,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = true,
                     RatingDiscrimination = true,
                     RatingDrugs = false,
-                    RatingLanguage = true
+                    RatingLanguage = true,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)                    
                 },
                 new Movie {
                     MovieID = 3,
@@ -59,7 +69,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = false,
                     RatingDiscrimination = false,
                     RatingDrugs = false,
-                    RatingLanguage = true
+                    RatingLanguage = true,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 },
                 new Movie {
                     MovieID = 4,
@@ -75,7 +90,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = true,
                     RatingDiscrimination = true,
                     RatingDrugs = false,
-                    RatingLanguage = true
+                    RatingLanguage = true,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 },
                 new Movie {
                     MovieID = 5,
@@ -91,7 +111,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = false,
                     RatingDiscrimination = false,
                     RatingDrugs = false,
-                    RatingLanguage = false
+                    RatingLanguage = false,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 },
                 new Movie {
                     MovieID = 6,
@@ -107,7 +132,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = false,
                     RatingDiscrimination = false,
                     RatingDrugs = false,
-                    RatingLanguage = false
+                    RatingLanguage = false,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 },
                 new Movie {
                     MovieID = 7,
@@ -123,7 +153,12 @@ namespace Plathe.Domain.Concrete
                     RatingSex = false,
                     RatingDiscrimination = false,
                     RatingDrugs = false,
-                    RatingLanguage = false
+                    RatingLanguage = false,
+                    Director = "1",
+                    MainCharacters = "2",
+                    linkToImdb = "3",
+                    linkToWebsite = "4",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59)
                 }
             };
             
