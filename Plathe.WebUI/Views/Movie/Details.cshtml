@@ -8,21 +8,27 @@
     ViewBag.Title = "Film";
 }
 
-<div class="col-sm-2">
+<div container>
+    <div class="col-sm-2">
 
-    <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" class="active"><a href="#">Alle films</a></li>
-        <li role="presentation"><a href="#">Genre</a></li>
-        <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
-    </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Alle films</a></li>
+            <li role="presentation"><a href="#">Genre</a></li>
+            <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
+        </ul>
 
-</div>
+    </div>
 
-<div col-sm-8>
-<h2>@Html.DisplayFor(model => model.Title)</h2>
-</div>
+    <div class="col-sm-8">
+        <h2>@Html.DisplayFor(model => model.Title)</h2>
+        <p>Duur: @Html.DisplayFor(model => model.Duration) minuten</p>
+        <p>Regisseur: @Html.DisplayFor(model => model.Director)</p>
+        <p>Acteurs: @Html.DisplayFor(model => model.MainCharacters)</p>
+        <p>@Html.DisplayFor(model => model.Description)</p>
+    </div>
 
-<div class="col-sm-2">
-    <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)" class="img-responsive">
+    <div class="col-sm-2">
+        <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)">
+    </div>
 </div>
 

@@ -19,7 +19,7 @@ namespace Plathe.Domain.Concrete
                     Language = "EN",
                     Duration = 141,
                     MinimumAge = 12,
-                    Description = "Wanneer een vredesprogramma van Tony Stark verschrikkelijk verkeerd gaat moet het team van superhelden de strijd aangaan met de kwade en alles vernietigende Ultron.",
+                    Description = "Wanneer een vredesprogramma van Tony Stark verschrikkelijk verkeerd gaat moet het team van superhelden de strijd aangaan met de kwade en alles vernietigende Ultron. Marvel Studios presenteert Avengers: Age of Ultron, het epische vervolg op de grootste superheldenfilm aller tijden. Als Tony Stark probeert om een slapend vredesinitiatief nieuw leven in te blazen, gaat het goed mis en de machtigste helden van de aarde, waaronder Iron Man, Captain America, Thor, The Incredible Hulk, Black Widow en Hawkeye worden tot het uiterste op de proef gesteld als het lot van de aarde in hun handen ligt. Als de kwaadaardige Ultron verschijnt, is het aan The Avengers om zijn verschrikkelijke plannen te stoppen en al snel zorgen ongemakkelijke bondgenootschappen en onverwachte acties voor een uniek episch en wereldwijd avontuur.",
                     ThreeDimensional = true,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/Avengersageofultron670x945.jpg",
                     RatingViolence = true,
@@ -28,11 +28,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = false,
                     RatingDrugs = false,
                     RatingLanguage = false,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "Joss Whedon",
+                    MainCharacters = "Robert Downey Jr; Chris Evans; Mark Ruffalo; Scarlett Johansson",
+                    linkToImdb = "http://www.imdb.com/title/tt2395427/?ref_=nv_sr_1",
+                    linkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Actie, Avontuur, Fantasy"
                 },
                 new Movie {
                     MovieID = 2,
@@ -40,7 +41,7 @@ namespace Plathe.Domain.Concrete
                     Language = "NL",
                     Duration = 96,
                     MinimumAge = 12,
-                    Description = "Wat als één van je maten met jouw tekst een hit scoort en je daarna niet meer kent? In de hilarische komedie De Masters overkomt het Aziz (Mimoun Oaissa).",
+                    Description = "Wat als één van je maten met jouw tekst een hit scoort en je daarna niet meer kent? In de hilarische komedie De Masters overkomt het Aziz (Mimoun Oaissa). Zijn rapcrew De Masters weet nooit door te breken en jaren later hebben Aziz en zijn maat Marco (Ruben van der Meer) een slecht betaald baantje in een fabriek. Marco gokt liever in het casino dan op een comeback, maar Aziz is nog altijd van plan om een hit te scoren. Als zelfs zijn zoontje niet meer in hem gelooft en zijn ex hem de voogdij dreigt te ontnemen, is het alles of niets. De Masters moeten terugkomen! Het valt niet mee om de mannen enthousiast te krijgen; Lloyd (Willie Wartaal) is een paranoïde pizzabezorger en de brave Donny (Guido Pollemans) zit zwaar onder de plak bij zijn dominante vrouw. Maar Aziz krijgt ze zo ver om nog één keer met hem het podium op te gaan. Voor een hit gaan ze ver. Heel ver.",
                     ThreeDimensional = false,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/demastersp1v2.jpg",
                     RatingViolence = false,
@@ -49,11 +50,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = true,
                     RatingDrugs = false,
                     RatingLanguage = true,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)                    
+                    Director = "Ruud Schuurman",
+                    MainCharacters = "Mimoun Oaissa; Ruben van der Meer, Willie Wartaal",
+                    linkToImdb = "http://www.imdb.com/title/tt4015478/",
+                    linkToWebsite = "http://www.demastersdefilm.nl/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Comedy, Nederlands"
                 },
                 new Movie {
                     MovieID = 3,
@@ -61,7 +63,7 @@ namespace Plathe.Domain.Concrete
                     Language = "EN",
                     Duration = 137,
                     MinimumAge = 12,
-                    Description = "Vin Diesel, Paul Walker en Dwayne Johnson zijn opnieuw samen te zien in de hoofdrollen van Fast & Furious 7",
+                    Description = "Vin Diesel, Paul Walker en Dwayne Johnson zijn opnieuw samen te zien in de hoofdrollen van Fast & Furious 7. James Wan regisseert dit nieuwe deel uit de succesvolle filmreeks waarin ook Michelle Rodriguez, Jordana Brewster, Tyrese Gibson, Chris ´Ludacris´ Bridges, Elsa Patakay en Lucas Black terugkeren. De cast wordt versterkt door internationale sterren Jason Statham, Djimon Hounsou, Tony Jaa, Ronda Rousey en Kurt Russell. Neal H. Moritz, Vin Diesel en Michael Fottrel keren terug als producenten van deze film geschreven door Chris Morgan.",
                     ThreeDimensional = false,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/fast_amp_furious_7_02037619_ps_3_s-high.jpg",
                     RatingViolence = true,
@@ -70,11 +72,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = false,
                     RatingDrugs = false,
                     RatingLanguage = true,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "James Wan",
+                    MainCharacters = "Vin Diesel; Paul Walker; Dwayne Johnson; Jason Statham; Michelle Rodriguez",
+                    linkToImdb = "http://www.imdb.com/title/tt2820852/?ref_=nv_sr_1",
+                    linkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Actie"
                 },
                 new Movie {
                     MovieID = 4,
@@ -82,7 +85,7 @@ namespace Plathe.Domain.Concrete
                     Language = "EN",
                     Duration = 100,
                     MinimumAge = 12,
-                    Description = "Als de steenrijke hedgefondsmanager James King (Will Ferrell) wegens fraude wordt veroordeeld tot een lange gevangenisstraf in San Quentin, krijgt hij van de rechter dertig dagen de tijd om zijn zaakjes te regelen.",
+                    Description = "Als de steenrijke hedgefondsmanager James King (Will Ferrell) wegens fraude wordt veroordeeld tot een lange gevangenisstraf in San Quentin, krijgt hij van de rechter dertig dagen de tijd om zijn zaakjes te regelen. Wanhopig wendt hij zich tot Darnell Lewis (Kevin Hart) om hem voor te bereiden op het leven achter de tralies. Maar James blijkt een vergissing gemaakt te hebben, Darnell is namelijk de hardwerkende eigenaar van een eigen bedrijfje, die nog nooit een bekeuring heeft gehad, laat staan een gevangenisstraf. Samen doen de twee mannen alles om James te harden voor het gevangenisleven en ontdekken al doende dat ze van heel veel dingen een verkeerd beeld hebben, ook van elkaar.",
                     ThreeDimensional = false,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/gethardposter1.jpg",
                     RatingViolence = false,
@@ -91,11 +94,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = true,
                     RatingDrugs = false,
                     RatingLanguage = true,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "Etan Cohen",
+                    MainCharacters = "Will Ferrell; Kevin Hart",
+                    linkToImdb = "http://www.imdb.com/title/tt2561572/?ref_=nv_sr_1",
+                    linkToWebsite = "http://gethardmovie.com/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Comedy"
                 },
                 new Movie {
                     MovieID = 5,
@@ -103,7 +107,7 @@ namespace Plathe.Domain.Concrete
                     Language = "EN",
                     Duration = 120,
                     MinimumAge = 16,
-                    Description = "Regisseur George Miller, bedenker van het postapocalyptische genre en meesterbrein achter de legendarische Mad Max-cyclus, komt met “Mad Max: Fury Road”.",
+                    Description = "Regisseur George Miller, bedenker van het postapocalyptische genre en meesterbrein achter de legendarische Mad Max-cyclus, komt met “Mad Max: Fury Road” Dit verhaal neemt ons mee terug naar de wereld van de Road Warrior, Max Rockatansky. Achtervolgd door zijn turbulente verleden, is Mad Max ervan overtuigd dat hij alleen kan overleven als hij in zijn eentje opereert. Toch komt hij in contact met een groep die in een oorlogsvoertuig, bestuurd door de imperator Furiosa, door het ‘Wasteland’ trekt. De groep is op de vlucht voor de tiran Immortan Joe, van wie iets onvervangbaars is gestolen. De woedende krijgsheer stuurt al zijn bendes achter de rebellen aan, wat uitmondt in een meedogenloze, bloedstollende Road War.",
                     ThreeDimensional = true,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/madmaxfuryroadp4.jpg",
                     RatingViolence = true,
@@ -112,11 +116,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = false,
                     RatingDrugs = false,
                     RatingLanguage = false,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "George Miller",
+                    MainCharacters = "Tom Hardy; Nicholas Hoult; Charlize Theron",
+                    linkToImdb = "http://www.imdb.com/title/tt1392190/?ref_=nv_sr_1",
+                    linkToWebsite = "http://www.madmaxmovie.com/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Actie, Thriller"
                 },
                 new Movie {
                     MovieID = 6,
@@ -124,7 +129,7 @@ namespace Plathe.Domain.Concrete
                     Language = "NL",
                     Duration = 85,
                     MinimumAge = 0,
-                    Description = "Shaun het Schaap maakte zijn eerste optreden in de Oscarwinnende korte Wallace & Gromit-film A Close Shave (1995). Shaun is 's werelds bekendste schaap en weet televisiekijkers in al meer dan 170 landen te vermaken.",
+                    Description = "Shaun het Schaap maakte zijn eerste optreden in de Oscarwinnende korte Wallace & Gromit-film A Close Shave (1995). Shaun is 's werelds bekendste schaap en weet televisiekijkers in al meer dan 170 landen te vermaken. Shauns kattenkwaad zorgt er dit keer voor dat de boer wordt weggevoerd van de boerderij. Shaun en Bitzer moeten samen met de kudde de grote stad trotseren om hem te redden. Het begin van een episch avontuur voor het grote scherm.",
                     ThreeDimensional = false,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/shaunhetschaapnlp2.jpg",
                     RatingViolence = false,
@@ -133,11 +138,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = false,
                     RatingDrugs = false,
                     RatingLanguage = false,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "Richard Starzak; Mark Burton",
+                    MainCharacters = " Justin Fletcher; John Sparkes; Omid Djalili",
+                    linkToImdb = "http://www.imdb.com/title/tt2872750/?ref_=nv_sr_1",
+                    linkToWebsite = "http://shaunthesheep.com/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Animatie, Kinderfilm"
                 },
                 new Movie {
                     MovieID = 7,
@@ -145,7 +151,7 @@ namespace Plathe.Domain.Concrete
                     Language = "NL",
                     Duration = 137,
                     MinimumAge = 12,
-                    Description = "De Moefs veroveren onze planeet. Het vindingrijke meisje Tip weet echter uit hun handen te blijven en ontmoet Oh, een verbannen Moef. Samen proberen ze de aarde te redden.",
+                    Description = "De Moefs veroveren onze planeet. Het vindingrijke meisje Tip weet echter uit hun handen te blijven en ontmoet Oh, een verbannen Moef. Samen proberen ze de aarde te redden. Als de aarde wordt veroverd door de Moefs, een buitenaards ras dat op zoek is naar een nieuwe thuisplaneet, worden eerst alle mensen naar een andere locatie gebracht. Maar terwijl de Moefs de planeet reorganiseren, slaagt het vindingrijke meisje Tip erin om uit handen van de Moefs te blijven en krijgt ze gezelschap van Oh, een verbannen Moef. Tijdens hun bijzondere avontuur beseffen de twee vluchtelingen dat er meer op het spel staat dan alleen de verhoudingen in het universum. ",
                     ThreeDimensional = true,
                     Image = "https://media.pathe.nl/nocropthumb/180x254/gfx_content/posters/homenlposter2.jpg",
                     RatingViolence = false,
@@ -154,11 +160,12 @@ namespace Plathe.Domain.Concrete
                     RatingDiscrimination = false,
                     RatingDrugs = false,
                     RatingLanguage = false,
-                    Director = "1",
-                    MainCharacters = "2",
-                    linkToImdb = "3",
-                    linkToWebsite = "4",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59)
+                    Director = "Tim Johnson",
+                    MainCharacters = " Jim Parsons; Rihanna; Steve Martin",
+                    linkToImdb = "http://www.imdb.com/title/tt2224026/?ref_=nv_sr_1",
+                    linkToWebsite = "http://www.dreamworks.com/home/",
+                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    Genre = "Animatie, Kinderfilm"
                 }
             };
             

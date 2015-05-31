@@ -27,5 +27,6 @@ namespace Plathe.Domain.Entities
         public string linkToImdb { get; set; }
         public string linkToWebsite { get; set; }
         public DateTime playsUntill { get; set; }
+        public string Genre { get; set; }
     }
 }
