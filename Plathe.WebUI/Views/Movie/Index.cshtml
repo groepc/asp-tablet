@@ -9,26 +9,25 @@
     ViewBag.Title = "Films";
 }
 
-<div class="col-sm-2">
-
-    <ul class="nav nav-pills nav-stacked">
-        <li role="presentation" class="active"><a href="#">Alle films</a></li>
-        <li role="presentation"><a href="#">Genre</a></li>
-        <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
-    </ul>
-
-</div>
-
-
-@foreach (var p in Model)
-{
-
+<div class="row movie-overview">
     <div class="col-sm-2">
-
-        <a href="/Movie/Details/@Html.DisplayFor(modelItem => p.MovieID)">
-        <img src='@p.Image' />
-        <h3>@p.Title</h3>
-        </a>
-            
-    </div> 
-}
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#">Alle films</a></li>
+            <li role="presentation"><a href="#">Genre</a></li>
+            <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-8">
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-sm-3 item">
+                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => p.MovieID)">
+                        <img src='@p.Image' />
+                        <h3>@p.Title</h3>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
