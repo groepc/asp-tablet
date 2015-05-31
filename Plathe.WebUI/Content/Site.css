@@ -18,7 +18,11 @@ textarea {
 }
 
 .navbar-header {
-    height: 75px;
+
+}
+
+.translated-ltr .navbar-fixed-top {
+    top: 39px;
 }
 
 .movie-overview .item {
@@ -82,3 +86,4 @@ button.seat.not-reserved:hover i {
 .table-legend .reserved { background: #fc0d1b; }
 .table-legend .selection { background: #4cff00; }
 
+#google_translate_element { float: right;}
