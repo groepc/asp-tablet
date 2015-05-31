@@ -1,4 +1,6 @@
-﻿@using Plathe.Domain.Entities
+﻿@* Author: Mieke*@
+
+@using Plathe.Domain.Entities
 @model IEnumerable<Movie>
 
 @{
@@ -11,11 +13,20 @@
 
 <div class="row movie-overview">
     <div class="col-sm-2">
+
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a href="#">Alle films</a></li>
-            <li role="presentation"><a href="#">Genre</a></li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    Genre<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>Actie</li>
+                    <li>Animatie</li>
+                </ul>
             <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
         </ul>
+
     </div>
     <div class="col-sm-8">
         <div class="row">
