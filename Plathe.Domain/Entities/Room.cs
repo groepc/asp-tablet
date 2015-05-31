@@ -12,5 +12,6 @@ namespace Plathe.Domain.Entities
         public string RoomName { get; set; }
         public Boolean WheelchairAccess { get; set; }
         public Boolean ThreeDimensional { get; set; }
+        public virtual ICollection<Seat> Seats { get; set; }
     }
 }

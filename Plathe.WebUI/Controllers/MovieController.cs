@@ -33,7 +33,9 @@ namespace Plathe.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
+            //Movie movie = db.Movies.Find(id);
+            Movie movie = repository.Movies.First(s => s.MovieID == id);
+
             if (movie == null)
             {
                 return HttpNotFound();

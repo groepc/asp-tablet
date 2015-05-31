@@ -161,7 +161,6 @@ namespace Plathe.Domain.Concrete
                     playsUntill = new DateTime(2015,10,01, 10,1,59)
                 }
             };
-            
             movies.ForEach(s => context.Movies.Add(s));
             context.SaveChanges();
 
@@ -205,6 +204,25 @@ namespace Plathe.Domain.Concrete
                 }
             };
             rooms.ForEach(s => context.Rooms.Add(s));
+            context.SaveChanges();
+
+            // add seats to first room
+            var seats = new List<Seat>();
+            for (int rowId = 1; rowId <= 6; rowId++)
+            {
+                for (int seatId = 1; seatId <= 18; seatId++)
+                {
+                    seats.Add(new Seat()
+                    {
+                        SeatID = seatId,
+                        RoomID = 1,
+                        Row = rowId,
+                        WheelChairSeat = false,
+                        PrioritySeat = false
+                    });
+                }
+            }
+            seats.ForEach(s => context.Seats.Add(s));
             context.SaveChanges();
 
             var shows = new List<Show>
@@ -266,10 +284,8 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = false
                 }
             };
-
             shows.ForEach(s => context.Shows.Add(s));
             context.SaveChanges();
-
 
             var reservations = new List<Reservation>
             {
@@ -286,7 +302,6 @@ namespace Plathe.Domain.Concrete
                     PriceTotal = (decimal) 10.00
                 }
             };
-
             reservations.ForEach(s => context.Reservations.Add(s));
             context.SaveChanges();
 
@@ -296,9 +311,9 @@ namespace Plathe.Domain.Concrete
                     TicketID = 1,
                     ShowID = shows.Single( i => i.ShowID == 1).ShowID,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    SeatID = 1,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    SeatNumber="20",
                     UniqueCode = "AWdfet43$#%#^%",
                     Options = "options",
                 },
@@ -306,9 +321,9 @@ namespace Plathe.Domain.Concrete
                     TicketID = 2,
                     ShowID = shows.Single( i => i.ShowID == 1).ShowID,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    SeatID = 1,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    SeatNumber="21",
                     UniqueCode = "AW23425@##@$",
                     Options = "options",
                 }

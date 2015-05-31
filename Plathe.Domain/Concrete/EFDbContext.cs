@@ -21,11 +21,11 @@ namespace Plathe.Domain.Concrete
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Room> Rooms { get; set; }
-
+        public DbSet<Seat> Seats { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();     
         }
     }
 }
