@@ -52,7 +52,7 @@ textarea {
     border-top: 0 !important;
 }
 
-button.seat {
+span.seat {
     background: #fff;
     border: 0;
     border-radius: 0;
@@ -60,23 +60,31 @@ button.seat {
     padding: 0;
 }
 
-button.seat i {
+span.seat i {
     color: #c49b27;
 }
 
-button.seat.priority-seat i {
+span.seat.priority-seat i {
     color: #f4c131;
 }
 
-button.seat.reserved {
+span.seat.reserved {
     cursor: default;
 }
 
-button.seat.reserved i {
+span.seat.reserved i {
     color: #fc0d1b;
 }
 
-button.seat.not-reserved:hover i {
+span.seat.not-reserved:hover i {
+    color: #4cff00 !important;
+}
+
+input[type=checkbox].seat {
+    display: none;
+}
+
+input:checked + span i {
     color: #4cff00 !important;
 }
 

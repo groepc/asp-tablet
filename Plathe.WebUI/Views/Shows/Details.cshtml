@@ -1,12 +1,12 @@
 ﻿@model Plathe.Domain.Entities.Show
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Voorstelling " + Model.Movie.Title;
 }
 
 <div class="row">
     <div class="col-sm-12">
-        <h2>@Html.DisplayFor(model => model.Movie.Title)</h2>
+        <h2>Voorstelling @Html.DisplayFor(model => model.Movie.Title)</h2>
     </div>
 </div>
 
@@ -32,36 +32,40 @@
             <hr />
             Scherm
         </div>
-        <table class="table table-seats">
-            <tbody>
-            @foreach (var row in Model.Room.Rows)
-            {
-                <tr>
-                    @foreach(var seat in row.Seats)
+        <form action="/" method="post">
+            <table class="table table-seats">
+                <tbody>
+                    @foreach (var row in Model.Room.Rows)
                     {
-                        <td>
-                            <button 
-                                class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")"
-                                data-row-id="@(row.RowID)"
-                                data-seat-id="@(seat.SeatID)">
-                                    <i class="glyphicon glyphicon-stop"></i>
-                            </button>
-                        </td>
+                        <tr>
+                            @foreach (var seat in row.Seats)
+                            {
+                                <td>
+                                    <label for="seat-@(seat.SeatID)">
+                                        <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-@(seat.SeatID)" class="seat">
+                                        <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")"
+                                              data-row-id="@(row.RowID)"
+                                              data-seat-id="@(seat.SeatID)">
+                                            <i class="glyphicon glyphicon-stop"></i>
+                                        </span>
+                                    </label>
+                                </td>
+                            }
+                        </tr>
                     }
+                </tbody>
+            </table>
+            <hr />
+            <table class="table table-bordered table-legend">
+                <tr>
+                    <td>Legenda:</td>
+                    <td class="premium">Premium stoelen</td>
+                    <td class="normal">Normale stoelen</td>
+                    <td class="reserved">Bezet</td>
+                    <td class="selection">Uw selectie</td>
                 </tr>
-            }
-            </tbody>
-        </table>
-        <hr />
-        <table class="table table-bordered table-legend">
-            <tr>
-                <td>Legenda:</td>
-                <td class="premium">Premium stoelen</td>
-                <td class="normal">Normale stoelen</td>
-                <td class="reserved">Bezet</td>
-                <td class="selection">Uw selectie</td>
-            </tr>
-        </table>
+            </table>
+        </form>
     </div>   
 </div>
 <div class="row">
