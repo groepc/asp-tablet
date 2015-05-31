@@ -8,12 +8,19 @@
     ViewBag.Title = "Film";
 }
 
-<div container>
+<div class="container">
     <div class="col-sm-2">
 
         <ul class="nav nav-pills nav-stacked">
             <li role="presentation" class="active"><a href="#">Alle films</a></li>
-            <li role="presentation"><a href="#">Genre</a></li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    Genre<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>Actie</li>
+                    <li>Animatie</li>
+                </ul>
             <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
         </ul>
 
@@ -25,10 +32,46 @@
         <p>Regisseur: @Html.DisplayFor(model => model.Director)</p>
         <p>Acteurs: @Html.DisplayFor(model => model.MainCharacters)</p>
         <p>@Html.DisplayFor(model => model.Description)</p>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToWebsite)">Officiële website</a></button>
+            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToImdb)">IMDB</a></button>
+        </div>
     </div>
 
     <div class="col-sm-2">
         <img src="@Html.DisplayFor(model => model.Image)" alt="@Html.DisplayFor(model => model.Title)">
+        <p> </p>
+        <div style="margin-bottom: 10px">
+            @if (Model.RatingDiscrimination == true)
+            {
+                <img src="~/Content/img/discriminatie.svg" width="35" />
+            }
+            @if (Model.RatingDrugs == true)
+            {
+                <img src="~/Content/img/drugs.svg" width="35" />
+            }
+            @if (Model.RatingFear == true)
+            {
+                <img src="~/Content/img/angst.svg" width="35" />
+            }
+            @if (Model.RatingLanguage == true)
+            {
+                <img src="~/Content/img/groftaalgebruik.svg" width="35" />
+            }
+            @if (Model.RatingSex == true)
+            {
+                <img src="~/Content/img/seks.svg" width="35" />
+            }
+            @if (Model.RatingViolence == true)
+            {
+                <img src="~/Content/img/geweld.svg" width="35" />
+            }
+        </div>
+        <p> </p>
+        <p>3D: @Html.DisplayFor(model => model.ThreeDimensional)</p>
+        <p>Taal: @Html.DisplayFor(model => model.Language)</p>
+        <p>Genre: @Html.DisplayFor(model => model.Genre)</p>
     </div>
 </div>
 
