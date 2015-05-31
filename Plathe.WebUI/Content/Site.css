@@ -25,3 +25,60 @@ textarea {
     min-height: 350px;
 }
 
+.screen {
+    width: 80%;
+    margin: 30px auto 20px;
+    text-align: center;
+    color: #eee;
+    font-size: 34px;
+}
+
+.screen hr {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.table-seats {
+
+}
+
+.table-seats > tbody > tr > td {
+    text-align: center;
+    padding: 0;
+    border-top: 0 !important;
+}
+
+button.seat {
+    background: #fff;
+    border: 0;
+    border-radius: 0;
+    font-size: 19px;
+    padding: 0;
+}
+
+button.seat i {
+    color: #c49b27;
+}
+
+button.seat.priority-seat i {
+    color: #f4c131;
+}
+
+button.seat.reserved {
+    cursor: default;
+}
+
+button.seat.reserved i {
+    color: #fc0d1b;
+}
+
+button.seat.not-reserved:hover i {
+    color: #4cff00 !important;
+}
+
+.table-legend { table-layout: fixed; }
+.table-legend .normal { background: #c49b27; }
+.table-legend .premium { background: #f4c131; }
+.table-legend .reserved { background: #fc0d1b; }
+.table-legend .selection { background: #4cff00; }
+

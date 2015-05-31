@@ -11,6 +11,9 @@ namespace Plathe.Domain.Concrete
     {
         protected override void Seed(EFDbContext context)
         {
+            /**
+             * Add shows
+             */
             var movies = new List<Movie>
             {
                 new Movie {
@@ -178,6 +181,10 @@ namespace Plathe.Domain.Concrete
             movies.ForEach(s => context.Movies.Add(s));
             context.SaveChanges();
 
+            /**
+             * Add rooms
+             */
+
             var rooms = new List<Room>
             {
                 new Room {
@@ -220,25 +227,86 @@ namespace Plathe.Domain.Concrete
             rooms.ForEach(s => context.Rooms.Add(s));
             context.SaveChanges();
 
-            // add seats to first room
+            /**
+             * Add rows and seats for room 1 t/m 3 
+             */
+            var rows = new List<Row>();
             var seats = new List<Seat>();
-            for (int rowId = 1; rowId <= 6; rowId++)
+
+            for (int roomId = 1; roomId <= 3; roomId++)
             {
-                for (int seatId = 1; seatId <= 18; seatId++)
+                for (int rowId = 1; rowId <= 8; rowId++)
                 {
+                    rows.Add(new Row()
+                    {
+                        RowID = rowId,
+                        RoomID = roomId
+                    });
+                }
+            }
+            rows.ForEach(s => context.Rows.Add(s));
+            context.SaveChanges();
+
+            var rowCount = context.Rows.Count();
+
+            for (int rowId = 1; rowId <= rowCount; rowId++)
+            {
+                for (int seatId = 1; seatId <= 16; seatId++)
+                {
+                    Boolean priority = false;
+                    if (seatId > 4 && seatId < 13)
+                    {
+                        priority = true;
+                    }
+
                     seats.Add(new Seat()
                     {
                         SeatID = seatId,
-                        RoomID = 1,
-                        Row = rowId,
+                        RowID = rowId,
                         WheelChairSeat = false,
-                        PrioritySeat = false
+                        PrioritySeat = priority
                     });
                 }
             }
             seats.ForEach(s => context.Seats.Add(s));
             context.SaveChanges();
 
+            /**
+             * Add rows and seats for room 4
+             */
+
+            rowCount = context.Rows.Count() + 1;
+
+            rows.Clear();
+            seats.Clear();
+
+            for (int rowId = 1; rowId <= rowCount; rowId++)
+            {
+                rows.Add(new Row()
+                {
+                    RowID = rowId,
+                    RoomID = 4
+                });
+            }
+            rows.ForEach(s => context.Rows.Add(s));
+            context.SaveChanges();
+
+            foreach (var row in rows)
+            {
+                seats.Add(new Seat()
+                {
+                    RowID = row.RowID,
+                    WheelChairSeat = false,
+                    PrioritySeat = false
+                });
+            }
+            seats.ForEach(s => context.Seats.Add(s));
+            context.SaveChanges();
+
+
+            /**
+             * Add shows
+             */
             var shows = new List<Show>
             {
                 new Show {
@@ -301,6 +369,10 @@ namespace Plathe.Domain.Concrete
             shows.ForEach(s => context.Shows.Add(s));
             context.SaveChanges();
 
+
+            /**
+             * Add reservations
+             */
             var reservations = new List<Reservation>
             {
                 new Reservation {
@@ -319,23 +391,52 @@ namespace Plathe.Domain.Concrete
             reservations.ForEach(s => context.Reservations.Add(s));
             context.SaveChanges();
 
+
+            /**
+             * Add tickets
+             */
             var tickets = new List<Ticket>
             {
                 new Ticket {
-                    TicketID = 1,
-                    ShowID = shows.Single( i => i.ShowID == 1).ShowID,
+                    ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 1,
+                    SeatID = 109,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
                     UniqueCode = "AWdfet43$#%#^%",
                     Options = "options",
                 },
                 new Ticket {
-                    TicketID = 2,
-                    ShowID = shows.Single( i => i.ShowID == 1).ShowID,
+                    ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 1,
+                    SeatID = 133,
+                    Price = (decimal) 8.50,
+                    PopcornTime = false,
+                    UniqueCode = "AW23425@##@$",
+                    Options = "options",
+                },
+                new Ticket {
+                    ShowID = 1,
+                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    SeatID = 151,
+                    Price = (decimal) 8.50,
+                    PopcornTime = false,
+                    UniqueCode = "AW23425@##@$",
+                    Options = "options",
+                },
+                new Ticket {
+                    ShowID = 1,
+                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    SeatID = 175,
+                    Price = (decimal) 8.50,
+                    PopcornTime = false,
+                    UniqueCode = "AW23425@##@$",
+                    Options = "options",
+                },
+                new Ticket {
+                    ShowID = 1,
+                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
+                    SeatID = 199,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
                     UniqueCode = "AW23425@##@$",

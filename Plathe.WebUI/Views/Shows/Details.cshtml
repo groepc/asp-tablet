@@ -4,47 +4,76 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Show</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Movie.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Subtitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Subtitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartingTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartingTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThreeDimensional)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThreeDimensional)
-        </dd>
-
-    </dl>
+<div class="row">
+    <div class="col-sm-12">
+        <h2>@Html.DisplayFor(model => model.Movie.Title)</h2>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ShowID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <div class="col-sm-3">
+        <h3>Informatie</h3>
+        <dl>
+            <dt><img src="@Html.DisplayFor(model => model.Movie.Image)" /></dt>
+            <dt>@Html.DisplayNameFor(model => model.Movie.Title)</dt>
+            <dd>@Html.DisplayFor(model => model.Movie.Title)</dd>
+            <dt>@Html.DisplayNameFor(model => model.Subtitle)</dt>
+            <dd>@Html.DisplayFor(model => model.Subtitle)</dd>
+            <dt>@Html.DisplayNameFor(model => model.StartingTime)</dt>
+            <dd>@Html.DisplayFor(model => model.StartingTime)</dd>
+            <dt>@Html.DisplayNameFor(model => model.ThreeDimensional)</dt>
+            <dd>@Html.DisplayFor(model => model.ThreeDimensional)</dd>
+        </dl>
+    </div>
+
+    <div class="col-sm-9">
+        <h3>Kies een stoel</h3>
+        <div class="screen">
+            <hr />
+            Scherm
+        </div>
+        <table class="table table-seats">
+            <tbody>
+            @foreach (var row in Model.Room.Rows)
+            {
+                <tr>
+                    @foreach(var seat in row.Seats)
+                    {
+                        <td>
+                            <button 
+                                class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")"
+                                data-row-id="@(row.RowID)"
+                                data-seat-id="@(seat.SeatID)">
+                                    <i class="glyphicon glyphicon-stop"></i>
+                            </button>
+                        </td>
+                    }
+                </tr>
+            }
+            </tbody>
+        </table>
+        <hr />
+        <table class="table table-bordered table-legend">
+            <tr>
+                <td>Legenda:</td>
+                <td class="premium">Premium stoelen</td>
+                <td class="normal">Normale stoelen</td>
+                <td class="reserved">Bezet</td>
+                <td class="selection">Uw selectie</td>
+            </tr>
+        </table>
+    </div>   
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <p>@Html.ActionLink("Terug naar voorstellingen", "Index")</p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('table').on('click', 'button', function () {
+            alert('clicked');
+        });
+    });
+</script>

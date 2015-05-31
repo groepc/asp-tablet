@@ -84,13 +84,16 @@
     <Compile Include="Concrete\EFDbInitializer.cs" />
     <Compile Include="Concrete\EFMovieRepository.cs" />
     <Compile Include="Concrete\EFReservationRepository.cs" />
+    <Compile Include="Concrete\EFRowRepository.cs" />
     <Compile Include="Concrete\EFSeatRepository.cs" />
     <Compile Include="Concrete\EFShowRepository.cs" />
     <Compile Include="Concrete\EFTicketRepository.cs" />
     <Compile Include="Concrete\EFRoomRepository.cs" />
+    <Compile Include="Abstract\IRowRepository.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Room.cs" />
+    <Compile Include="Entities\Row.cs" />
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Show.cs" />
     <Compile Include="Entities\Ticket.cs" />

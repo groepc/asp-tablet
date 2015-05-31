@@ -37,11 +37,30 @@ namespace Plathe.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
+            // get current show
             Show show = db.Shows.Find(id);
+
             if (show == null)
             {
                 return HttpNotFound();
             }
+
+            // get tickets for show
+            var tickets = db.Tickets.Where(s => s.ShowID == show.ShowID);
+
+            foreach (var row in show.Room.Rows)
+            {
+                foreach(var seat in row.Seats)
+                {
+                    bool isReserved = tickets.Any(t => t.SeatID == seat.SeatID);
+                    if (isReserved) 
+                    {
+                        seat.Reserved = true;
+                    }
+                }
+            }
+
             return View(show);
         }
     }
