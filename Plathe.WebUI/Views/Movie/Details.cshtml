@@ -1,4 +1,6 @@
-﻿@model Plathe.Domain.Entities.Movie
+﻿@* Author: Mieke*@
+
+@model Plathe.Domain.Entities.Movie
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,6 +37,7 @@
 
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToWebsite)">Officiële website</a></button>
+            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToTrailer)">Trailer</a></button>
             <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToImdb)">IMDB</a></button>
         </div>
     </div>

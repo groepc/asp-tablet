@@ -25,6 +25,7 @@ namespace Plathe.Domain.Entities
         public string Director { get; set; }
         public string MainCharacters { get; set; }
         public string linkToImdb { get; set; }
+        public string linkToTrailer { get; set; }
         public string linkToWebsite { get; set; }
         public DateTime playsUntill { get; set; }
         public string Genre { get; set; }

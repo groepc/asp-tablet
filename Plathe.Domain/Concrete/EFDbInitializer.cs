@@ -31,6 +31,7 @@ namespace Plathe.Domain.Concrete
                     Director = "Joss Whedon",
                     MainCharacters = "Robert Downey Jr; Chris Evans; Mark Ruffalo; Scarlett Johansson",
                     linkToImdb = "http://www.imdb.com/title/tt2395427/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=rD8lWtcgeyg",
                     linkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Actie, Avontuur, Fantasy"
@@ -53,6 +54,7 @@ namespace Plathe.Domain.Concrete
                     Director = "Ruud Schuurman",
                     MainCharacters = "Mimoun Oaissa; Ruben van der Meer, Willie Wartaal",
                     linkToImdb = "http://www.imdb.com/title/tt4015478/",
+                    linkToTrailer = "https://www.youtube.com/watch?v=sxWH0SYcWrs",
                     linkToWebsite = "http://www.demastersdefilm.nl/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Comedy, Nederlands"
@@ -75,6 +77,7 @@ namespace Plathe.Domain.Concrete
                     Director = "James Wan",
                     MainCharacters = "Vin Diesel; Paul Walker; Dwayne Johnson; Jason Statham; Michelle Rodriguez",
                     linkToImdb = "http://www.imdb.com/title/tt2820852/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=Skpu5HaVkOc",
                     linkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Actie"
@@ -97,6 +100,7 @@ namespace Plathe.Domain.Concrete
                     Director = "Etan Cohen",
                     MainCharacters = "Will Ferrell; Kevin Hart",
                     linkToImdb = "http://www.imdb.com/title/tt2561572/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=lEqrpuU9fYI",
                     linkToWebsite = "http://gethardmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Comedy"
@@ -119,6 +123,7 @@ namespace Plathe.Domain.Concrete
                     Director = "George Miller",
                     MainCharacters = "Tom Hardy; Nicholas Hoult; Charlize Theron",
                     linkToImdb = "http://www.imdb.com/title/tt1392190/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=hEJnMQG9ev8",
                     linkToWebsite = "http://www.madmaxmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Actie, Thriller"
@@ -141,6 +146,7 @@ namespace Plathe.Domain.Concrete
                     Director = "Richard Starzak; Mark Burton",
                     MainCharacters = " Justin Fletcher; John Sparkes; Omid Djalili",
                     linkToImdb = "http://www.imdb.com/title/tt2872750/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=tQvwiOWpj7o",
                     linkToWebsite = "http://shaunthesheep.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Animatie, Kinderfilm"
@@ -163,6 +169,7 @@ namespace Plathe.Domain.Concrete
                     Director = "Tim Johnson",
                     MainCharacters = " Jim Parsons; Rihanna; Steve Martin",
                     linkToImdb = "http://www.imdb.com/title/tt2224026/?ref_=nv_sr_1",
+                    linkToTrailer = "https://www.youtube.com/watch?v=W6Bd3TWpeig",
                     linkToWebsite = "http://www.dreamworks.com/home/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
                     Genre = "Animatie, Kinderfilm"
