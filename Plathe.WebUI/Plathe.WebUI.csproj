@@ -158,6 +158,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Shows\SeatSelection.cshtml" />
+    <Content Include="Views\Shows\Complete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

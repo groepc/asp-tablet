@@ -53,43 +53,42 @@ textarea {
 }
 
 span.seat {
-    background: #fff;
+    background: #c49b27;
     border: 0;
     border-radius: 0;
     font-size: 19px;
     padding: 0;
     position: relative;
+    width: 16px;
+    height: 15px;
+    display: block;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 span.seat:after {
     content: '';
     width: 6px;
-    height: 7px;
+    height: 8px;
     display: block;
     background-color: #fff;
     position: absolute;
-    top: 2px;
-    left: 7px;
+    top: 0px;
+    left: 5px;
 }
 
-span.seat i {
-    color: #c49b27;
-}
-
-span.seat.priority-seat i {
-    color: #f4c131;
+span.seat.priority-seat {
+    background: #f4c131;
 }
 
 span.seat.reserved {
     cursor: default;
+    background: #fc0d1b;
+    margin: 0 auto;
 }
 
-span.seat.reserved i {
-    color: #fc0d1b;
-}
-
-span.seat.not-reserved:hover i {
-    color: #4cff00 !important;
+span.seat.not-reserved:hover {
+    background: #4cff00 !important;
 }
 
 .seat-label {
@@ -100,8 +99,8 @@ input[type=checkbox].seat-input {
     display: none;
 }
 
-input:checked + span i {
-    color: #4cff00 !important;
+input:checked + span {
+    background: #4cff00 !important;
 }
 
 .table-legend { table-layout: fixed; }

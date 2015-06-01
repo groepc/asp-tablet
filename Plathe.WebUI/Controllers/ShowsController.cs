@@ -25,6 +25,7 @@ namespace Plathe.WebUI.Controllers
             DateTime nextThursday = tomorrow.AddDays(daysUntilThursday);
 
             var shows = db.Shows
+                .Where(s => s.StartingTime >= DateTime.Today)
                 .Where(s => s.StartingTime <= nextThursday )
                 .Include(s => s.Movie);
 
@@ -82,6 +83,18 @@ namespace Plathe.WebUI.Controllers
             }
 
             return View(show);
+        }
+
+        [HttpPost]
+        public ActionResult Complete()
+        {
+
+            NameValueCollection data = Request.Form;
+            
+
+            
+
+            return View();
         }
     }
 }

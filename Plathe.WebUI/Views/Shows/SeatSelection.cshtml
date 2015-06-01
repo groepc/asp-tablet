@@ -32,7 +32,7 @@
             <hr />
             Scherm
         </div>
-        <form action="/" method="post">
+        <form action="/shows/complete" method="post">
             <table class="table table-seats">
                 <tbody>
                     @foreach (var row in Model.Room.Rows)
@@ -43,8 +43,8 @@
                                 <td>
                                     @if (seat.Reserved)
                                     {
-                                        <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")">
-                                            <i class="glyphicon glyphicon-stop"></i>
+                                        <span class="seat reserved">
+                                            &nbsp;
                                         </span>
                                     }
                                     else
@@ -52,7 +52,7 @@
                                         <label for="seat-@(seat.SeatID)" class="seat-label" data-row-id="@(row.RowID)" data-seat-id="@(seat.SeatID)">
                                             <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-@(seat.SeatID)" class="seat-input">
                                             <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")">
-                                                <i class="glyphicon glyphicon-stop"></i>
+                                                &nbsp;
                                             </span>
                                         </label>
                                     }
@@ -62,16 +62,31 @@
                     }
                 </tbody>
             </table>
+            
             <hr />
+
+            <div class="row">
+                <div class="col-sm-12 clearfix">
+                    <button type="submit" class="btn btn-lg btn-success pull-right" id="payButton" disabled>Naar afrekenen <i class="glyphicon glyphicon-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <hr />
+
             <table class="table table-bordered table-legend">
                 <tr>
-                    <td>Legenda:</td>
-                    <td class="premium">Premium stoelen</td>
+                    <td>
+                        Legenda:
+                    </td>
+                </tr>
+                <tr>
+                    <td class="premium">Normale stoelen (beste zicht!)</td>
                     <td class="normal">Normale stoelen</td>
                     <td class="reserved">Bezet</td>
                     <td class="selection">Uw selectie</td>
                 </tr>
             </table>
+            
         </form>
     </div>
 </div>
@@ -84,11 +99,48 @@
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     jQuery(document).ready(function ($) {
-        var totalSeats = @(ViewBag.TotalAmount);
+        var totalSeats = @(ViewBag.TotalAmount)
 
         $('table').on('click', 'label', function () {
-            console.log('row ID', $(this).data('row-id'), 'seat ID', $(this).data('seat-id'));
-            //console.log($(this), totalSeats);
+
+            // get selected seat + row
+            var rowId = $(this).data('row-id');
+            var seatId = $(this).data('seat-id');
+
+            // remove all checked checkboxes, because we want a new selection
+            $('table').find('input').not('#seat-' + seatId).prop('checked', false);
+
+            // select next seats
+            var nextSeats = $(this).parent().nextAll().slice(0, totalSeats - 1);
+
+            var success = true;
+
+            if (nextSeats.length != totalSeats - 1) {
+                success = false;
+            }
+
+            // check if reserved seat is in the way
+            $(nextSeats).each(function () {
+                if ($(this).find('span').hasClass('reserved')) {
+                    success = false;
+                }
+            });
+            
+            if(success === true) {
+                $(nextSeats).each(function () {
+                    // select seats
+                    $(this).find('input').prop('checked', true);
+
+                    // show submit button
+                    $('#payButton').prop('disabled', false);
+                });
+            } else {
+                alert('Selectie niet mogelijk.');
+                $('table').find('input').prop('checked', false);
+            }
+
+            
+
         });
     });
 </script>
