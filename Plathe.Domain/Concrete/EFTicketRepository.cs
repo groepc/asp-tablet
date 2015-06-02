@@ -16,5 +16,6 @@ namespace Plathe.Domain.Concrete
         {
             get { return context.Tickets; }
         }
+
     }
 }

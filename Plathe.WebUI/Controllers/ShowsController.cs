@@ -26,7 +26,7 @@ namespace Plathe.WebUI.Controllers
 
             var shows = db.Shows
                 .Where(s => s.StartingTime >= DateTime.Today)
-                .Where(s => s.StartingTime <= nextThursday )
+                .Where(s => s.StartingTime <= nextThursday)
                 .Include(s => s.Movie);
 
             return View(shows.ToList());
@@ -39,7 +39,7 @@ namespace Plathe.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             // get current show
             Show show = db.Shows.Find(id);
 
@@ -49,6 +49,27 @@ namespace Plathe.WebUI.Controllers
             }
 
             return View(show);
+        }
+
+
+        // POST: Shows/Reservate
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reservate(int showId, int? adults, int? adultsplus, int? childs, int? popcorn)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (adults != null || adultsplus != null || childs != null || popcorn != null)
+                {
+                    //Reservation.SaveReservationWithTickets(showId, adults, adultsplus, childs, popcorn);
+                    return RedirectToAction("Reservate", "Shows", new { showId = showId });
+                }
+                return RedirectToAction("Reservate", "Shows", new { showId = showId });
+            }
+            return RedirectToAction("Reservate", "Shows", new { showId = showId });
         }
 
         [HttpPost]
@@ -90,9 +111,9 @@ namespace Plathe.WebUI.Controllers
         {
 
             NameValueCollection data = Request.Form;
-            
 
-            
+
+
 
             return View();
         }
