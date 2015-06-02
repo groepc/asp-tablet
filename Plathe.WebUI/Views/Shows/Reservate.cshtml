@@ -29,7 +29,8 @@
     <div class="col-sm-9">
         <h3>Stap 1: Kies het aantal tickets</h3>
    
-        <form action="/shows/Reservate" name="ticket-selection" method="post">
+        <form action="/shows/SeatSelection" name="ticket-selection" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group row">
                 <div class="col-sm-8">
                     Aantal volwassenen

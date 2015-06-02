@@ -65,11 +65,11 @@ namespace Plathe.WebUI.Controllers
                 if (adults != null || adultsplus != null || childs != null || popcorn != null)
                 {
                     //Reservation.SaveReservationWithTickets(showId, adults, adultsplus, childs, popcorn);
-                    return RedirectToAction("Reservate", "Shows", new { showId = showId });
+                    return RedirectToAction("Reservate", "SeatSelection", new { showId });
                 }
-                return RedirectToAction("Reservate", "Shows", new { showId = showId });
+                return RedirectToAction("Reservate", "Shows", new {showId });
             }
-            return RedirectToAction("Reservate", "Shows", new { showId = showId });
+            return RedirectToAction("Reservate", "Shows", new { showId });
         }
 
         [HttpPost]
