@@ -52,38 +52,160 @@ namespace Plathe.WebUI.Controllers
         }
 
 
-        // POST: Shows/Reservate
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Reservate(int showId, int? adults, int? adultsplus, int? childs, int? popcorn)
-        {
-
-            if (ModelState.IsValid)
-            {
-                if (adults != null || adultsplus != null || childs != null || popcorn != null)
-                {
-                    //Reservation.SaveReservationWithTickets(showId, adults, adultsplus, childs, popcorn);
-                    return RedirectToAction("Reservate", "SeatSelection", new { showId });
-                }
-                return RedirectToAction("Reservate", "Shows", new {showId });
-            }
-            return RedirectToAction("Reservate", "Shows", new { showId });
-        }
-
         [HttpPost]
         public ActionResult SeatSelection()
         {
 
             NameValueCollection data = Request.Form;
+            int TotalAmount = 0;
+
             var ShowId = Convert.ToInt32(data["showId"]);
-            var AmountAdults = Convert.ToInt32(data["amountAdults"]);
-            var AmountChildren = Convert.ToInt32(data["amountChildren"]);
-            var TotalAmount = AmountChildren + AmountAdults;
 
             ViewBag.ShowId = ShowId;
+
+            var shows = db.Shows.Find(ShowId);
+
+            var ticketPrice = (decimal)0.00;
+            if (shows.Movie.Duration > 120)
+            {
+                ticketPrice = (decimal)9.50;
+            }
+            else
+            {
+                ticketPrice = (decimal)8.50;
+            }
+
+            if (shows.Movie.ThreeDimensional == true)
+            {
+                var ticketprice = ticketPrice + (decimal)2.50;
+            }
+
+
+            //Todo, verplaats dit!
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            Reservation reservation = new Reservation
+            {
+                UniqueCode = result,
+                CreateOn = DateTime.Now,
+            };
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
+
+            if (!String.IsNullOrWhiteSpace(data["amountAdults"]))
+            {
+                int adults =  Convert.ToInt32(data["amountAdults"]);
+                TotalAmount += adults;
+
+                while (adults > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        Price = ticketPrice,
+                        SeatID = 0
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    adults = adults - 1;
+                }
+
+            }
+
+            if (!String.IsNullOrWhiteSpace(data["amountChildren"]))
+            {
+                int children = Convert.ToInt32(data["amountChildren"]);
+                TotalAmount += children;
+
+                while (children > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        Price = (ticketPrice - (decimal)1.50),
+                        SeatID = 0
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    children = children - 1;
+                }
+            }
+
+            if (!String.IsNullOrWhiteSpace(data["amountAdultsPlus"]))
+            {
+                int adultsPlus = Convert.ToInt32(data["amountAdults"]);
+                TotalAmount += adultsPlus;
+
+                while (adultsPlus > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        Price = (ticketPrice - (decimal)1.50),
+                        SeatID = 0
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    adultsPlus = adultsPlus - 1;
+                }
+            }
+
+            if (!String.IsNullOrWhiteSpace(data["amountPopcorn"]))
+            {
+                int popcorn = Convert.ToInt32(data["amountAdults"]);
+                TotalAmount += popcorn;
+
+                while (popcorn > 0)
+                {
+                    // TODO: X-aantal Ticket objecten aanmaken, met het zojuist opgeslagen ReservationID
+                    Ticket ticket = new Ticket
+                    {
+
+                        ShowID = 3,
+                        ReservationID = reservation.ReservationID,
+                        UniqueCode = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray()),
+                        Price = (ticketPrice + (decimal)5.00),
+                        SeatID = 0
+                    };
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                    popcorn = popcorn - 1;
+                }
+            }
+
             ViewBag.TotalAmount = TotalAmount;
+
+
+            ViewBag.reservationId = reservation.ReservationID;
 
             // get current show
             Show show = db.Shows.Find(ShowId);

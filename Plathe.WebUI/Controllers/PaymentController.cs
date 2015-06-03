@@ -1,6 +1,7 @@
 ﻿using Plathe.Domain.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,8 @@ namespace Plathe.Controllers
 
         public ActionResult Ideal(int? id)
         {
+            NameValueCollection data = Request.Form;
+            ViewBag.bank = data["idealBank"];
             ViewBag.idReservation = id;
             return View(db.Reservations.Find(id));
         }
