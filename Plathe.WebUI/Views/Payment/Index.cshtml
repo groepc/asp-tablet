@@ -1,43 +1,31 @@
 ﻿@model Plathe.Domain.Entities.Reservation
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Uw bestelling";
 }
 
 
 <div>
     <h4>Uw bestelling</h4>
 
-
-    Film:
-    <table class="table">
+    Tickets
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <td></td>
-                <td>Aantal</td>
-                <td>Totaal prijs</td>
+                <td>Ticket code</td>
+                <td>Ticket prijs</td>
+                <td>Stoel</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Aantal volwassen:</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Aantal 65+:</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Aantal Kinderen:</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Aantal popcorn:</td>
-                <td></td>
-                <td></td>
-            </tr>
+            @foreach(var ticket in @Model.Tickets)
+            {
+                <tr>
+                    <td>@(ticket.UniqueCode)</td>
+                    <td>@(ticket.Price)</td>
+                    <td>@(ticket.Seat.SeatID)</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
