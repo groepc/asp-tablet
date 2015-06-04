@@ -38,6 +38,8 @@ namespace Plathe.Domain.Entities
         public string UniqueCode { get; set; }
         public Decimal PriceTotal { get; set; }
         public DateTime CreateOn { get; set; }
+        public Boolean Payed { get; set; }
+        public DateTime PayedOn { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

@@ -32,7 +32,7 @@
             <hr />
             Scherm
         </div>
-        <form action="/payment/index/@ViewBag.reservationId" method="post">
+        <form action="/shows/payment" method="post">
             <table class="table table-seats">
                 <tbody>
                     @foreach (var row in Model.Room.Rows)
@@ -50,7 +50,7 @@
                                     else
                                     {
                                         <label for="seat-@(seat.SeatID)" class="seat-label" data-row-id="@(row.RowID)" data-seat-id="@(seat.SeatID)">
-                                            <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-@(seat.SeatID)" class="seat-input">
+                                            <input type="checkbox" id="seat-@(seat.SeatID)" name="seat-selected" value="@(seat.SeatID)" class="seat-input">
                                             <span class="seat @(seat.PrioritySeat ? "priority-seat" : "") @(seat.Reserved ? "reserved" : "not-reserved")">
                                                 &nbsp;
                                             </span>
@@ -67,6 +67,12 @@
 
             <div class="row">
                 <div class="col-sm-12 clearfix">
+                    <input type="hidden" name="ShowId" value="@(ViewBag.ShowId)" />
+                    <input type="hidden" name="AmountAdults" value="@(ViewBag.AmountAdults)" />
+                    <input type="hidden" name="AmountAdultsPlus" value="@(ViewBag.AmountAdultsPlus)" />
+                    <input type="hidden" name="AmountChildren" value="@(ViewBag.AmountChildren)" />
+                    <input type="hidden" name="AmountPopcorn" value="@(ViewBag.AmountPopcorn)" />
+                    <input type="hidden" name="AmountTotal" value="@(ViewBag.TotalAmount)" />
                     <button type="submit" class="btn btn-lg btn-success pull-right" id="payButton" disabled>Naar afrekenen <i class="glyphicon glyphicon-arrow-right"></i></button>
                 </div>
             </div>

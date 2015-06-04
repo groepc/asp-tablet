@@ -160,7 +160,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Shows\SeatSelection.cshtml" />
-    <Content Include="Views\Shows\Complete.cshtml" />
+    <Content Include="Views\Shows\Payment.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Ideal.cshtml" />
     <Content Include="Views\Payment\Success.cshtml" />

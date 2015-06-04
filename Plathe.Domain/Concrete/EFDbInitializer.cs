@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Plathe.Domain.Concrete
 {
     
-    //class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
+    class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
 
-    class EFDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
+    //class EFDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {
@@ -381,14 +381,18 @@ namespace Plathe.Domain.Concrete
                 new Reservation {
                     ReservationID = 1,
                     UniqueCode = "1234",
-                    CreateOn = new DateTime(2015,01,01, 10,1,59),
-                    PriceTotal = (decimal) 15.00
+                    CreateOn = DateTime.Today.AddHours(20).AddMinutes(00),
+                    PriceTotal = (decimal) 15.00,
+                    Payed = true,
+                    PayedOn = DateTime.Now
                 },
                 new Reservation {
                     ReservationID = 2,
                     UniqueCode = "ABC123",
-                    CreateOn = new DateTime(2000,1,1, 23,4,23),
-                    PriceTotal = (decimal) 10.00
+                    CreateOn = DateTime.Today.AddHours(20).AddMinutes(10),
+                    PriceTotal = (decimal) 10.00,
+                    Payed = true,
+                    PayedOn = DateTime.Now
                 }
             };
             reservations.ForEach(s => context.Reservations.Add(s));
