@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 using System.Collections.Specialized;
+using Plathe.WebUI.Models;
 
 namespace Plathe.WebUI.Controllers
 {
@@ -56,6 +57,11 @@ namespace Plathe.WebUI.Controllers
                 ViewBag.Message = "Er moet minimaal 1 kaartjes besteld worden";
             }
 
+            var ViewModel = new TicketSelectionViewModel
+            {
+
+            };
+
             return View(show);
         }
 
@@ -98,6 +104,8 @@ namespace Plathe.WebUI.Controllers
                     }
                 }
             }
+
+            
 
             // data for view
             ViewBag.ShowId = ShowId;
