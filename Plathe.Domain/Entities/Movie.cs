@@ -9,6 +9,7 @@ namespace Plathe.Domain.Entities
     public class Movie
     {
         public int MovieID { get; set; }
+        public int GenreID { get; set; }
         public string Title { get; set; }
         public string Language { get; set; }
         public int Duration { get; set; }
@@ -28,6 +29,6 @@ namespace Plathe.Domain.Entities
         public string linkToTrailer { get; set; }
         public string linkToWebsite { get; set; }
         public DateTime playsUntill { get; set; }
-        public string Genre { get; set; }
+        public virtual Genre genre { get; set; }
     }
 }

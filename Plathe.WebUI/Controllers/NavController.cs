@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plathe.Domain.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,21 @@ namespace Plathe.WebUI.Controllers
 {
     public class NavController : Controller
     {
-        //
-        // GET: /Nav/
-        public string Menu()
+        private IGenreRepository repository;
+
+        public NavController(IGenreRepository repo)
         {
-            return "Hello from Navcontroller";
+            repository = repo;
         }
-	}
+
+        public PartialViewResult Menu()
+        {
+            IEnumerable<string> genres = repository.Genres
+                                .Select(x => x.Name)
+                                .Distinct()
+                                .OrderBy(x => x);
+
+            return PartialView(genres);
+        }
+    }
 }
