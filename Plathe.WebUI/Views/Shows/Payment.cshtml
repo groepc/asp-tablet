@@ -1,1 +1,49 @@
-﻿
+﻿@model Plathe.Domain.Entities.Reservation
+
+@{
+    ViewBag.Title = "Uw bestelling";
+}
+
+<div>
+    <h4>Uw bestelling</h4>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Film</td>
+                <td>Ticket code</td>
+                <td>Ticket prijs</td>
+                <td>Stoel</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in @Model.Tickets)
+            {
+                <tr>
+                    <td>@(ticket.Show.Movie.Title)</td>
+                    <td>@(ticket.UniqueCode)</td>
+                    <td>@(ticket.Price)</td>
+                    <td>@(ticket.SeatID)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<form method="post" action="/Payment/Ideal/@ViewBag.ReservationId/">
+    Uw bank: <select name="idealBank" class="form-control">
+        <option value="exclude">Kies een bank</option>
+        <option value="ABN AMRO">ABN AMRO</option>
+        <option value="ASN Bank">ASN Bank</option>
+        <option value="ING">ING</option>
+        <option value="Knab">Knab</option>
+        <option value="Rabobank">Rabobank</option>
+        <option value="RegioBank">RegioBank</option>
+        <option value="SNS Bank">SNS Bank</option>
+        <option value="Triodos Bank">Triodos Bank</option>
+        <option value="Van Lanschot">Van Lanschot</option>
+    </select>
+    Uw E-mail <input class="form-control" type="email" name="email" />
+    <br />
+    <button class="btn btn-success">Ga naar Ideal betaling</button>
+</form>

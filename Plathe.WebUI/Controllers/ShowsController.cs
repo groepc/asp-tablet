@@ -48,6 +48,14 @@ namespace Plathe.WebUI.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.Error = false;
+
+            if (Request.QueryString["error"] == "1")
+            {
+                ViewBag.Error = true;
+                ViewBag.Message = "Er moet minimaal 1 kaartjes besteld worden";
+            }
+
             return View(show);
         }
 
@@ -65,7 +73,12 @@ namespace Plathe.WebUI.Controllers
             int AmountChildren = Convert.ToInt32(data["amountChildren"]);
             int AmountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
 
-            TotalAmount = AmountAdults + AmountAdultsPlus + AmountChildren + AmountPopcorn;       
+            TotalAmount = AmountAdults + AmountAdultsPlus + AmountChildren + AmountPopcorn;
+
+            if(TotalAmount <= 0)
+            {
+                Response.Redirect("/shows/reservate/" + ShowId + "?error=1");
+            }
 
             // get current show
             Show show = db.Shows.Find(ShowId);
@@ -156,6 +169,7 @@ namespace Plathe.WebUI.Controllers
 
             // get reservation ID
             var resId = reservation.ReservationID;
+            var totalPrice = (decimal)0.00;
 
             // create ticket list
             var tickets = new List<Ticket>();
@@ -203,18 +217,26 @@ namespace Plathe.WebUI.Controllers
                     ShowID = show.ShowID,
                     ReservationID = resId,
                     SeatID = thisSeat,
-                    UniqueCode = "ABCD",
+                    UniqueCode = new string(
+                                Enumerable.Repeat(chars, 4)
+                                .Select(s => s[random.Next(s.Length)])
+                                .ToArray()),
                     Price = seatTicketPrice,
                     Options = "options",
                     PopcornTime = false
                 });
+
+                totalPrice = totalPrice + seatTicketPrice;
             }
             tickets.ForEach(s => db.Tickets.Add(s));
             db.SaveChanges();
 
+            reservation.PriceTotal = totalPrice;
+            db.Entry(reservation).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
             // send variables to view
             ViewBag.ReservationId = resId;
-
             return View(reservation);
         }
     }
