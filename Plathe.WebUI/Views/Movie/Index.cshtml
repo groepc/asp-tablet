@@ -20,16 +20,17 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
                     Genre<span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="search">
-                    <li>Actie</li>
+                <div id="Categories" class="dropdown-menu" role="search">
+                    @Html.Action("Menu", "Nav")
+                </div>
+                @*<@*li>Actie</li>
                     <li>Animatie</li>
                     <li>Avontuur</li>
                     <li>Comedy</li>
                     <li>Fantasy</li>
                     <li>Kinderfilm</li>
                     <li>Nederlands</li>
-                    <li>Thriller</li>
-                </ul>
+                    <li>Thriller</li>*@
             <li role="presentation"><a href="#">Kijkwijzerindicator</a></li>
         </ul>
 
