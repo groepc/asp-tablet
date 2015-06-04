@@ -21,10 +21,10 @@ namespace Plathe.WebUI.Controllers
             this.repository = movieRepository;
         }
 
-        public ViewResult Index()
-        {
-            return View(repository.Movies);
-        }
+        //public ViewResult Index()
+        //{
+        //    return View(repository.Movies);
+        //}
 
         // GET: Movie/Details/5
         public ActionResult Details(int? id)
@@ -42,5 +42,29 @@ namespace Plathe.WebUI.Controllers
             }
             return View(movie);
         }
+
+        public ActionResult Index(string Genre, string SearchString)
+        {
+            var GenreLst = new List<string>();
+
+            var GenreQry = from d in db.Movies
+                           orderby Genre
+                           select Genre;
+
+            var movies = from m in db.Movies
+                            select m;
+
+            GenreLst.AddRange(GenreQry.Distinct());
+            ViewBag.movieGenre = new SelectList(GenreLst);
+
+            if (!string.IsNullOrEmpty(Genre))
+            {
+                movies = movies.Where(x => x.Genre == Genre);
+            }
+
+            return View(repository.Movies);
+
+        }
+
     }
 }

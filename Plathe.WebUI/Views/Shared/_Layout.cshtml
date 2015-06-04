@@ -24,9 +24,14 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Zoek...">
-                    </div>
-                    <button type="submit" class="btn btn-default">Zoeken</button>
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                @Html.TextBox("SearchString")
+                                <input type="submit" class="btn btn-default" value="Zoeken" />
+                            </p>
+                        }
+                  </div>
                 </form>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
