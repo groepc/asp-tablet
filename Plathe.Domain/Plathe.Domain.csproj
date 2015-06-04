@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IGenreRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
     <Compile Include="Abstract\IReservationRepository.cs" />
     <Compile Include="Abstract\IRoomRepository.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Abstract\ITicketRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFDbInitializer.cs" />
+    <Compile Include="Concrete\EFGenreRepository.cs" />
     <Compile Include="Concrete\EFMovieRepository.cs" />
     <Compile Include="Concrete\EFReservationRepository.cs" />
     <Compile Include="Concrete\EFRowRepository.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Concrete\EFTicketRepository.cs" />
     <Compile Include="Concrete\EFRoomRepository.cs" />
     <Compile Include="Abstract\IRowRepository.cs" />
+    <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Room.cs" />

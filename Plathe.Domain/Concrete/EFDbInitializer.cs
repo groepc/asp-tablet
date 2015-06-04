@@ -7,13 +7,52 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    
+
     class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
 
     //class EFDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
     {
         protected override void Seed(EFDbContext context)
         {
+
+            var genres = new List<Genre>
+            {
+                new Genre {
+                    GenreID = 1,
+                    Name = "Actie"
+                },
+               new Genre {
+                    GenreID = 2,
+                    Name = "Animatie"
+                },
+                new Genre {
+                    GenreID = 3,
+                    Name = "Avontuur"
+                },
+                new Genre {
+                    GenreID = 4,
+                    Name = "Comedy"
+                },
+                new Genre {
+                    GenreID = 5,
+                    Name = "Fantasy",
+                },
+                new Genre {
+                    GenreID = 6,
+                    Name = "Kinderfilm",
+                },
+                new Genre {
+                    GenreID = 7,
+                    Name = "Nederlands",
+                },
+                new Genre {
+                    GenreID = 8,
+                    Name = "Thriller",
+                }
+            };
+            genres.ForEach(s => context.Genres.Add(s));
+            context.SaveChanges();
+
             /**
              * Add shows
              */
@@ -40,7 +79,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=rD8lWtcgeyg",
                     linkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Actie, Avontuur, Fantasy"
+                    GenreID = 1
                 },
                 new Movie {
                     MovieID = 2,
@@ -63,7 +102,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=sxWH0SYcWrs",
                     linkToWebsite = "http://www.demastersdefilm.nl/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Comedy, Nederlands"
+                    GenreID = 7
                 },
                 new Movie {
                     MovieID = 3,
@@ -86,7 +125,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=Skpu5HaVkOc",
                     linkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Actie"
+                    GenreID = 1
                 },
                 new Movie {
                     MovieID = 4,
@@ -109,7 +148,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=lEqrpuU9fYI",
                     linkToWebsite = "http://gethardmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Comedy"
+                    GenreID = 4
                 },
                 new Movie {
                     MovieID = 5,
@@ -132,7 +171,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=hEJnMQG9ev8",
                     linkToWebsite = "http://www.madmaxmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Actie, Thriller"
+                    GenreID = 8
                 },
                 new Movie {
                     MovieID = 6,
@@ -155,7 +194,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=tQvwiOWpj7o",
                     linkToWebsite = "http://shaunthesheep.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Animatie, Kinderfilm"
+                    GenreID = 6
                 },
                 new Movie {
                     MovieID = 7,
@@ -178,7 +217,7 @@ namespace Plathe.Domain.Concrete
                     linkToTrailer = "https://www.youtube.com/watch?v=W6Bd3TWpeig",
                     linkToWebsite = "http://www.dreamworks.com/home/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    Genre = "Animatie, Kinderfilm"
+                    GenreID = 6
                 }
             };
             movies.ForEach(s => context.Movies.Add(s));
@@ -453,6 +492,8 @@ namespace Plathe.Domain.Concrete
 
             tickets.ForEach(s => context.Tickets.Add(s));
             context.SaveChanges();
+
+
         }
     }
 }

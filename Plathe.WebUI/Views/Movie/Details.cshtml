@@ -42,9 +42,9 @@
         <p>@Html.DisplayFor(model => model.Description)</p>
 
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToWebsite)">Officiële website</a></button>
-            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToTrailer)">Trailer</a></button>
-            <button type="button" class="btn btn-default"><a href="@Html.DisplayFor(modelItem => Model.linkToImdb)">IMDB</a></button>
+            <a href="@Html.DisplayFor(modelItem => Model.linkToWebsite)" target="blank" class="btn btn-default" role="button">Officiële website</a>
+            <a href="@Html.DisplayFor(modelItem => Model.linkToTrailer)" target="blank" class="btn btn-default" role="button">Trailer</a>
+            <a href="@Html.DisplayFor(modelItem => Model.linkToImdb)" target="blank" class="btn btn-default" role="button">IMDB</a>
         </div>
     </div>
 
