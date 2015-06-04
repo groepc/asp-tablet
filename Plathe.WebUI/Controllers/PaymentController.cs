@@ -28,9 +28,22 @@ namespace Plathe.Controllers
             return View(db.Reservations.Find(id));
         }
 
-        public ActionResult Success(int? id)
+        public ActionResult Success(int id)
         {
-            return View(db.Reservations.Find(id));
+            var reservation = db.Reservations.Find(id);
+
+            if (reservation == null)
+            {
+                return HttpNotFound();
+            }
+
+            reservation.Payed = true;
+            reservation.PayedOn = DateTime.Now;
+
+            db.Entry(reservation).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return View(reservation);
         }
     }
 }
