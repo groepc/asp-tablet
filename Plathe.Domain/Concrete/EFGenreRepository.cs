@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    class EFGenreRepository : IGenreRepository
+    public class EFGenreRepository : IGenreRepository
     {
         private EFDbContext context = new EFDbContext();
 

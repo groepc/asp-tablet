@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//Author: Mieke
+
 namespace Plathe.WebUI.Controllers
 {
     public class NavController : Controller
