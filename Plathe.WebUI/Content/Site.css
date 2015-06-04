@@ -18,7 +18,6 @@ textarea {
 }
 
 .navbar-header {
-
 }
 
 .translated-ltr .navbar-fixed-top {
@@ -37,20 +36,19 @@ textarea {
     font-size: 34px;
 }
 
-.screen hr {
-    margin: 10px 0 0;
-    padding: 0;
-}
+    .screen hr {
+        margin: 10px 0 0;
+        padding: 0;
+    }
 
 .table-seats {
-
 }
 
-.table-seats > tbody > tr > td {
-    text-align: center;
-    padding: 0;
-    border-top: 0 !important;
-}
+    .table-seats > tbody > tr > td {
+        text-align: center;
+        padding: 0;
+        border-top: 0 !important;
+    }
 
 span.seat {
     background: #c49b27;
@@ -66,30 +64,30 @@ span.seat {
     border-bottom-right-radius: 5px;
 }
 
-span.seat:after {
-    content: '';
-    width: 6px;
-    height: 8px;
-    display: block;
-    background-color: #fff;
-    position: absolute;
-    top: 0px;
-    left: 5px;
-}
+    span.seat:after {
+        content: '';
+        width: 6px;
+        height: 8px;
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        top: 0px;
+        left: 5px;
+    }
 
-span.seat.priority-seat {
-    background: #f4c131;
-}
+    span.seat.priority-seat {
+        background: #f4c131;
+    }
 
-span.seat.reserved {
-    cursor: default;
-    background: #fc0d1b;
-    margin: 0 auto;
-}
+    span.seat.reserved {
+        cursor: default;
+        background: #fc0d1b;
+        margin: 0 auto;
+    }
 
-span.seat.not-reserved:hover {
-    background: #4cff00 !important;
-}
+    span.seat.not-reserved:hover {
+        background: #4cff00 !important;
+    }
 
 .seat-label {
     cursor: pointer;
@@ -103,10 +101,41 @@ input:checked + span {
     background: #4cff00 !important;
 }
 
-.table-legend { table-layout: fixed; }
-.table-legend .normal { background: #c49b27; }
-.table-legend .premium { background: #f4c131; }
-.table-legend .reserved { background: #fc0d1b; }
-.table-legend .selection { background: #4cff00; }
+.table-legend {
+    table-layout: fixed;
+}
 
-#google_translate_element { float: right;}
+    .table-legend .normal {
+        background: #c49b27;
+    }
+
+    .table-legend .premium {
+        background: #f4c131;
+    }
+
+    .table-legend .reserved {
+        background: #fc0d1b;
+    }
+
+    .table-legend .selection {
+        background: #4cff00;
+    }
+
+#google_translate_element {
+    float: right;
+}
+
+.google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+}
+
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
