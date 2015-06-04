@@ -164,6 +164,7 @@
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Ideal.cshtml" />
     <Content Include="Views\Payment\Success.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,7 +176,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\App_LocalResources\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Nav\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

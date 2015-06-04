@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//Author: Mieke
+
 namespace Plathe.Domain.Entities
 {
     public class Genre
