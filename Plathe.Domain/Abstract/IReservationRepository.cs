@@ -10,5 +10,6 @@ namespace Plathe.Domain.Abstract
     public interface IReservationRepository
     {
         IEnumerable<Reservation> Reservations { get; }
+
     }
 }

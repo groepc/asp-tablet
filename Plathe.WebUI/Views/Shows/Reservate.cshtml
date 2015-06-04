@@ -30,6 +30,7 @@
         <h3>Stap 1: Kies het aantal tickets</h3>
    
         <form action="/shows/SeatSelection" name="ticket-selection" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group row">
                 <div class="col-sm-8">
                     Aantal volwassenen
@@ -47,10 +48,40 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-8">
+                    Aantal 65+
+                </div>
+                <div class="col-sm-2">
+                    <select name="amountAdultsPlus" class="form-control">
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-8">
                     Aantal kinderen
                 </div>
                 <div class="col-sm-2">
                     <select name="amountChildren" class="form-control">
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-8">
+                    Aantal Popcorn tickets
+                </div>
+                <div class="col-sm-2">
+                    <select name="amountPopcorn" class="form-control">
                         <option value="0" selected>0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

@@ -1,0 +1,61 @@
+﻿@model Plathe.Domain.Entities.Reservation
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div>
+    <h4>Uw bestelling</h4>
+
+
+    Film:
+    <table class="table">
+        <thead>
+            <tr>
+                <td></td>
+                <td>Aantal</td>
+                <td>Totaal prijs</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aantal volwassen:</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Aantal 65+:</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Aantal Kinderen:</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Aantal popcorn:</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<form method="post" action="/Payment/Ideal/@ViewBag.idReservation/">
+    Uw bank: <select name="idealBank" class="form-control">
+        <option value="exclude">Kies een bank</option>
+        <option value="ABN AMRO">ABN AMRO</option>
+        <option value="ASN Bank">ASN Bank</option>
+        <option value="ING">ING</option>
+        <option value="Knab">Knab</option>
+        <option value="Rabobank">Rabobank</option>
+        <option value="RegioBank">RegioBank</option>
+        <option value="SNS Bank">SNS Bank</option>
+        <option value="Triodos Bank">Triodos Bank</option>
+        <option value="Van Lanschot">Van Lanschot</option>
+    </select>
+    Uw E-mail <input class="form-control" type="email" name="email"/>
+    <br />
+    <button class="btn btn-success">Ga naar Ideal betaling</button>
+</form>

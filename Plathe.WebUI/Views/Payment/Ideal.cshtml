@@ -1,0 +1,58 @@
+﻿@model Plathe.Domain.Entities.Reservation
+@{
+    ViewBag.Title = "Ideal";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Welkom bij @ViewBag.bank iDEAL </h3>
+    </div>
+    <div class="panel-body">
+        U staat op het punt om een betaling via iDEAL uit te voeren. Vul de onderstaande gegevens in om uw bestelling af te ronden.
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Bestelling: </h3>
+    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Leverancier</td>
+                <td>Plathe</td>
+            </tr>
+            <tr>
+                <td>Kenmerk</td>
+                <td>@Html.DisplayFor(model => model.UniqueCode)</td>
+            </tr>
+            <tr>
+                <td>Datum</td>
+                <td>@DateTime.Now.ToLongDateString()</td>
+            </tr>
+            <tr>
+                <td>Omschrijving</td>
+                <td>@Html.DisplayFor(model => model.Tickets.First().Show.Movie.Title)</td>
+            </tr>
+            <tr>
+                <td>Bedrag</td>
+                <td>@Html.DisplayFor(model => model.PriceTotal)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<form method="post" action="/payment/success/@ViewBag.idReservation">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Invoeren IBAN en pasnummer </h3>
+        </div>
+        <div class="panel-body">
+            IBAN: <input class="form-control" type="text" /><br />
+            Pasnummer: <input class="form-control" type="text" />
+        </div>
+    </div>
+    <a class="btn btn-danger" href="/Payment/index/@ViewBag.idReservation">Annuleer</a>
+    <input type="hidden" name="id" value="@ViewBag.idReservation" />
+    <button class="btn btn-success">Verzenden</button>
+</form>
