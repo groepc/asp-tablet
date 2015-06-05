@@ -10,10 +10,14 @@ namespace Plathe.WebUI.Models
 {
     public class TicketSelectionViewModel
     {
-        public int ShowId { get; set; } 
-        public Movie Movie { get; set; }
-        public Boolean Error { get; set; }
-        public String ErrorMessage { get; set; }
+
+        public Show Show { get; set; }
+
+        public int ShowId { get; set; }
+        public int AmountAdults { get; set; }
+        public int AmountAdultsPlus { get; set; }
+        public int AmountChildren { get; set; }
+        public int AmountPopcorn { get; set; }
 
     }
 }

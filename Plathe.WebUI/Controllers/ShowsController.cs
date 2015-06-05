@@ -57,17 +57,17 @@ namespace Plathe.WebUI.Controllers
                 ViewBag.Message = "Er moet minimaal 1 kaartjes besteld worden";
             }
 
-            var ViewModel = new TicketSelectionViewModel
+            var viewModel = new TicketSelectionViewModel
             {
-
+                Show = show
             };
 
-            return View(show);
+            return View(viewModel);
         }
 
 
         [HttpPost]
-        public ActionResult SeatSelection()
+        public ActionResult SeatSelection(TicketSelectionViewModel model)
         {
 
             NameValueCollection data = Request.Form;
