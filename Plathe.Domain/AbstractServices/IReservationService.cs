@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plathe.Domain.Abstract
+namespace Plathe.Domain.AbstractServices
 {
-    public interface IMovieRepository
+    public interface IReservationService
     {
-       IEnumerable<Movie> Movies { get; }
+        Reservation createReservation();
     }
 }

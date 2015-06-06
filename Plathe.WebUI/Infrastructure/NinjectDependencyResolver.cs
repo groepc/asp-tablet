@@ -6,6 +6,8 @@ using Plathe.Domain.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Services;
 
 namespace Plathe.WebUI.Infrastructure
 {
@@ -27,8 +29,18 @@ namespace Plathe.WebUI.Infrastructure
         }
         private void AddBindings()
         {
-            kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
+            // repositories
             kernel.Bind<IGenreRepository>().To<EFGenreRepository>();
+            kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
+            kernel.Bind<IReservationRepository>().To<EFReservationRepository>();
+            kernel.Bind<IRoomRepository>().To<EFRoomRepository>();
+            kernel.Bind<IRowRepository>().To<EFRowRepository>();
+            kernel.Bind<ISeatRepository>().To<EFSeatRepository>();
+            kernel.Bind<IShowRepository>().To<EFShowRepository>();
+            kernel.Bind<ITicketRepository>().To<EFTicketRepository>();
+
+            // services
+            kernel.Bind<IReservationService>().To<ReservationService>();
         }
     }
 }
