@@ -1,0 +1,120 @@
+﻿@using Plathe.Domain.Entities
+@model IEnumerable<Show>
+@{
+    ViewBag.Title = "Bioscoop agenda";
+}
+<div class="row moviesOverview">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 show">
+            <div class="block">
+                <a href="/Shows/TicketSelection/@item.ShowID">
+                    <div class="col-sm-4">
+                        <div class="show-thumbnail">
+
+                            <img src="@item.Movie.Image" alt="@item.Movie.Title" height="250">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="show-content">
+                            <h3>
+                                @item.Movie.Title
+                            </h3>
+                            <div class="kijkwijzer">
+                                @if (@item.Movie.RatingDiscrimination == true)
+                                {
+                                    <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
+                                }
+                                @if (@item.Movie.RatingDrugs == true)
+                                {
+                                    <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
+                                }
+                                @if (@item.Movie.RatingFear == true)
+                                {
+                                    <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
+                                }
+                                @if (@item.Movie.RatingLanguage == true)
+                                {
+                                    <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
+                                }
+                                @if (@item.Movie.RatingSex == true)
+                                {
+                                    <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
+                                }
+                                @if (@item.Movie.RatingViolence == true)
+                                {
+                                    <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
+                                }
+                                @if (@item.Movie.ThreeDimensional == true)
+                                {
+                                    <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" title="3D" alt="3D" />
+                                }
+                                @if (@item.Movie.MinimumAge == 0)
+                                {
+                                    <img src="~/Content/img/leeftijd-al.svg" width="35" title="alle leedtijden" alt="Alle leedtijden" />
+                                }
+                                @if (@item.Movie.MinimumAge == 6)
+                                {
+                                    <img src="~/Content/img/leeftijd-6.svg" width="35" title="6 jaar" alt="6 jaar" />
+                                }
+                                @if (@item.Movie.MinimumAge == 12)
+                                {
+                                    <img src="~/Content/img/leeftijd-12.svg" width="35" title="12 jaar" alt="12 jaar" />
+                                }
+                                @if (@item.Movie.MinimumAge == 16)
+                                {
+                                    <img src="~/Content/img/leeftijd-16.svg" width="35" title="16 jaar" alt="16 jaar" />
+                                }
+                            </div>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>3D</td>
+                                        @if (item.ThreeDimensional)
+                                        {
+                                            <td>Ja</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nee</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td>Rolstoel</td>
+                                        <td>Onbekend</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tijd</td>
+                                        <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie.Title) (@Html.DisplayFor(modelItem => item.Movie.Language))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomName)
+                </td>
+                <td>
+                    Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
+                </td>
+                <td>
+                    Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
+                </td>
+                <td>
+                    3D: @(item.ThreeDimensional ? "Ja" : "Nee")
+                </td>
+                <td>
+                     @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
+                </td>
+            </tr>*@
+    }
+</div>

@@ -1,0 +1,147 @@
+﻿body {
+    background: #efefef;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.header {
+    text-align: center;
+    font-size: 40px;
+}
+
+    .header a {
+        font-size: 40px;
+        color: #222;
+    }
+
+.block a:hover {
+    text-decoration: none;
+}
+
+.block,
+.block.detail:hover {
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff;
+    padding: 10px 0 10px 0;
+    color: #333333;
+    margin: 20px 0 20px 0;
+    overflow: hidden;
+}
+.block a {
+    display: block;
+    color: #222;
+}
+.block:hover,
+.block:hover a {
+    background-color: #ccc;
+    color: #428BCA;
+}
+.block a:hover {
+    color: #428BCA;
+}
+
+.block.detail.info {
+    padding: 10px;
+    text-align: left;
+}
+.block.detail.info h2 {
+    margin-top: 0;
+}
+.show .block {
+    margin-bottom: 0;
+}
+.show .block h3 {
+    margin-top: 0px;
+}
+.home.block {
+    margin: 20px 70px;
+}
+
+.show-wrapper {
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #222;
+}
+.detail .extra {
+    padding: 10px;
+}
+
+.home.block i {
+    font-size: 150px;
+}
+
+.show-thumbnail {
+    margin-right: 10px;
+}
+
+.show-content {
+}
+
+    .show-content h4 {
+        color: #222;
+        font-weight: bold;
+        margin: 10px 0 10px;
+    }
+
+.kijkwijzer {
+    margin: 0 0 10px;
+}
+
+.show {
+    margin-bottom: 20px;
+    min-height: 240px;
+}
+
+container {
+    width: 500px;
+    height: 400px;
+    display: table;
+}
+
+    container .imagecontainer {
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+.m-5 {
+    margin: 5px;
+}
+
+.mw-250 {
+    max-width: 250px;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.moviesOverview .movieInfo {
+    background: #fff;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+    .moviesOverview .movieInfo h2 {
+        font-size: 18px;
+        color: #222;
+    }

@@ -1,0 +1,20 @@
+﻿@model Plathe.TabletUI.Models.MovieViewModel
+
+@{
+    ViewBag.Title = "Alle films";
+}
+<div class="row moviesOverview">
+    @foreach (var m in Model.Movie)
+    {
+        <div class="col-md-4 movie ">
+            <div class="block">
+                <a href="/Movie/Details/@m.MovieID">
+                    <img src='@m.Image' height="250" />
+                    <div class="caption">
+                        <h3>@m.Title</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+</div>

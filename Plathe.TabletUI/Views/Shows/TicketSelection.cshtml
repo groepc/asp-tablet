@@ -1,0 +1,143 @@
+﻿@model Plathe.TabletUI.Models.TicketSelectionViewModel
+
+@{
+    ViewBag.Title = "Tickets selecteren";
+}
+<div class="row">
+
+    <div class="col-sm-6">
+        <div class="block detail info">
+            <div class="col-sm-5">
+                <div class="show-thumbnail">
+                    <img src="@Html.DisplayFor(model => model.Show.Movie.Image)" alt="@Html.DisplayFor(model => model.Show.Movie.Title)" style="margin: 10px auto;">
+                    <div class="extra">
+                        @if (@Model.Show.Movie.RatingDiscrimination == true)
+                        {
+                            <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
+                        }
+                        @if (@Model.Show.Movie.RatingDrugs == true)
+                        {
+                            <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
+                        }
+                        @if (@Model.Show.Movie.RatingFear == true)
+                        {
+                            <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
+                        }
+                        @if (@Model.Show.Movie.RatingLanguage == true)
+                        {
+                            <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
+                        }
+                        @if (@Model.Show.Movie.RatingSex == true)
+                        {
+                            <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
+                        }
+                        @if (@Model.Show.Movie.RatingViolence == true)
+                        {
+                            <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
+                        }
+                        @if (@Model.Show.Movie.ThreeDimensional == true)
+                        {
+                            <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
+                        }
+                        @if (@Model.Show.Movie.MinimumAge == 0)
+                        {
+                            <img src="~/Content/img/leeftijd-al.svg" width="35" title="alle leedtijden" alt="Alle leedtijden" />
+                        }
+                        @if (@Model.Show.Movie.MinimumAge == 6)
+                        {
+                            <img src="~/Content/img/leeftijd-6.svg" width="35" title="6 jaar" alt="6 jaar" />
+                        }
+                        @if (@Model.Show.Movie.MinimumAge == 12)
+                        {
+                            <img src="~/Content/img/leeftijd-12.svg" width="35" title="12 jaar" alt="12 jaar" />
+                        }
+                        @if (@Model.Show.Movie.MinimumAge == 16)
+                        {
+                            <img src="~/Content/img/leeftijd-16.svg" width="35" title="16 jaar" alt="16 jaar" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="show-content">
+                    <h2>@Model.Show.Movie.Title</h2>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Rolstoel</th>
+                                @if (Model.Show.Room.WheelchairAccess)
+                                {
+                                    <td>Ja</td>
+                                }
+                                else
+                                {
+                                    <td>Nee</td>
+                                }
+                            </tr>
+                            <tr>
+                                <th>Begintijd</th>
+                                <td>@Html.DisplayFor(model => model.Show.StartingTime)</td>
+                            </tr>
+                            <tr>
+                                <th>Duur</th>
+                                <td>@Html.DisplayFor(model => model.Show.Movie.Duration) minuten</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-left: 10px;">
+                        @Html.ActionLink("Terug naar overzicht", "List")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6">
+        <div class="block detail info">
+            <h2>Reserveren</h2>
+            <form method="post" action="/Shows/Reservate/">
+                @Html.AntiForgeryToken()
+                <table class="table text-right">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Volwassen
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.AmountAdults, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                65 plus
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.AmountAdultsPlus, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Kinderen
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.AmountChildren, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Popcorn arragement (inclusief ticket)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(m => m.AmountPopcorn, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                @Html.HiddenFor(m => m.ShowId);
+                <button type="submit" name="submit" class="btn btn-primary pull-right" style="margin-top: 15px;">Ga naar betalen</button>
+            </form>
+        </div>
+    </div>
+</div>
