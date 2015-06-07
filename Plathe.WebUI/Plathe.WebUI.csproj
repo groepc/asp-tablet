@@ -179,7 +179,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\App_LocalResources\" />
-    <Folder Include="Views\Genre\" />
+    <Folder Include="Views\MovieListViewModel\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
