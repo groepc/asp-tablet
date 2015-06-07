@@ -3,16 +3,16 @@
 @Html.ActionLink("Alle films", "List", "Genre", null,
     new { @class = "btn btn-CodeBlockType btn-default btn-lg" })
 
+
 @foreach (var link in Model)
 {
-    @Html.RouteLink(link, new object
-    {
-        //name = "Name",
-        //action = "List",
-        //category = link
-                
-    }, new
-    {
-        @class = "btn btn-block btn-default btn-lg"
-    })
+    @Html.RouteLink(link, new
+{
+    controller = "movie",
+    action = "index",
+    gerne = link,
+}, new
+{
+    @class = "btn btn-block btn-default btn-lg"
+})
 }
