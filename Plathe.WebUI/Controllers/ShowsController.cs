@@ -115,7 +115,7 @@ namespace Plathe.WebUI.Controllers
 
 
             var ShowId = viewModel.ShowId;
-            
+
 
             // get current show
             Show show = db.Shows.Find(ShowId);
@@ -136,7 +136,7 @@ namespace Plathe.WebUI.Controllers
                 }
             }
 
-            
+
 
             // data for view
             // ViewBag.ShowId = ShowId;

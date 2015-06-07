@@ -41,7 +41,6 @@ namespace Plathe.WebUI.Infrastructure
 
             // services
             kernel.Bind<IReservationService>().To<ReservationService>();
-            kernel.Bind<IGenreRepository>().To<EFGenreRepository>();
             
         }
     }

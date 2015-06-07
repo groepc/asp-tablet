@@ -11,7 +11,7 @@ namespace Plathe.WebUI.Models
     public class SeatSelectionViewModel
     {
         public Show Show { get; set; }
-
+      
         public TicketSelectionViewModel TicketSelectionViewModel { get; set; }
 
     }

@@ -13,7 +13,7 @@ namespace Plathe.WebUI.Models
     {
 
         public Show Show { get; set; }
-
+        
         [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }
         
