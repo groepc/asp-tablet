@@ -8,10 +8,9 @@
 {
     @Html.RouteLink(link, new
     {
-        //name = "Name",
-        //action = "List",
-        //category = link
-                
+          controller = "movie",
+          action = "index",
+          genre = link            
     }, new
     {
         @class = "btn btn-block btn-default btn-lg"
