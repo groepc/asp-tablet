@@ -29,6 +29,7 @@ namespace Plathe.WebUI.Infrastructure
         {
             kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
             kernel.Bind<IGenreRepository>().To<EFGenreRepository>();
+            
         }
     }
 }
