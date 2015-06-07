@@ -32,7 +32,7 @@
             <hr />
             Scherm
         </div>
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Payment", "Shows"))
         { 
             @Html.AntiForgeryToken()
             <table class="table table-seats">

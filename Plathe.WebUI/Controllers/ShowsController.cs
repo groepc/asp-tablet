@@ -76,6 +76,7 @@ namespace Plathe.WebUI.Controllers
 
                 // create reservation
                 Reservation reservation = reservationService.createReservation();
+                
 
                 // create viewModel for seatSelection
                 TempData["reservation"] = reservation;
@@ -109,18 +110,6 @@ namespace Plathe.WebUI.Controllers
             };
 
             // get seat selection view
-            return View(viewModel);
-        }
-        
-        [HttpPost]
-        public ActionResult SeatSelection(SeatSelectionViewModel viewModel)
-        {
-
-            if (ModelState.IsValid)
-            {
-                // TODO: go to payment
-            }          
-
             return View(viewModel);
         }
 
