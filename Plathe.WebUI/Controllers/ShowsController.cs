@@ -118,7 +118,7 @@ namespace Plathe.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
-
+                // TODO: go to payment
             }          
 
             return View(viewModel);
