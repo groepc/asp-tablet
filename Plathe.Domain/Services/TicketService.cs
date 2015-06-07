@@ -1,4 +1,5 @@
-﻿using Plathe.Domain.Entities;
+﻿using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Services
 {
-    public class TicketService
+    public class TicketService : ITicketService
     {
-        public Ticket createTicket()
+        public TicketService()
         {
-            Ticket ticket = new Ticket
-            {
 
-            };
-
-            return ticket;
         }
+
+
     }
 }

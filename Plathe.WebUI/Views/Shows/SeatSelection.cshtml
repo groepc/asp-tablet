@@ -1,12 +1,12 @@
-﻿@model Plathe.Domain.Entities.Show
+﻿@model Plathe.WebUI.Models.SeatSelectionViewModel
 
 @{
-    ViewBag.Title = "Voorstelling " + Model.Movie.Title;
+    ViewBag.Title = "Voorstelling " + Model.TicketSelectionViewModel.Show.Movie.Title;
 }
 
 <div class="row">
     <div class="col-sm-12">
-        <h2>Voorstelling @Html.DisplayFor(model => model.Movie.Title)</h2>
+        <h2>Voorstelling @Html.DisplayFor(model => Model.TicketSelectionViewModel.Show.Movie.Title)</h2>
     </div>
 </div>
 
@@ -14,15 +14,15 @@
     <div class="col-sm-3">
         <h3>Informatie</h3>
         <dl>
-            <dt><img src="@Html.DisplayFor(model => model.Movie.Image)" /></dt>
-            <dt>@Html.DisplayNameFor(model => model.Movie.Title)</dt>
-            <dd>@Html.DisplayFor(model => model.Movie.Title)</dd>
-            <dt>@Html.DisplayNameFor(model => model.Subtitle)</dt>
-            <dd>@Html.DisplayFor(model => model.Subtitle)</dd>
-            <dt>@Html.DisplayNameFor(model => model.StartingTime)</dt>
-            <dd>@Html.DisplayFor(model => model.StartingTime)</dd>
-            <dt>@Html.DisplayNameFor(model => model.ThreeDimensional)</dt>
-            <dd>@Html.DisplayFor(model => model.ThreeDimensional)</dd>
+            <dt><img src="@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.Movie.Image)" /></dt>
+            <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.Movie.Title)</dt>
+            <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.Movie.Title)</dd>
+            <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.Subtitle)</dt>
+            <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.Subtitle)</dd>
+            <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.StartingTime)</dt>
+            <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.StartingTime)</dd>
+            <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.ThreeDimensional)</dt>
+            <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.ThreeDimensional)</dd>
         </dl>
     </div>
 
@@ -32,10 +32,12 @@
             <hr />
             Scherm
         </div>
-        <form action="/shows/payment" method="post">
+        @using (Html.BeginForm())
+        { 
+            @Html.AntiForgeryToken()
             <table class="table table-seats">
                 <tbody>
-                    @foreach (var row in Model.Room.Rows)
+                    @foreach (var row in Model.Rows)
                     {
                         <tr data-row-id="@row.RowID">
                             @foreach (var seat in row.Seats)
@@ -62,17 +64,17 @@
                     }
                 </tbody>
             </table>
-            
+
             <hr />
 
             <div class="row">
                 <div class="col-sm-12 clearfix">
-                    <input type="hidden" name="ShowId" value="@(ViewBag.ShowId)" />
-                    <input type="hidden" name="AmountAdults" value="@(ViewBag.AmountAdults)" />
-                    <input type="hidden" name="AmountAdultsPlus" value="@(ViewBag.AmountAdultsPlus)" />
-                    <input type="hidden" name="AmountChildren" value="@(ViewBag.AmountChildren)" />
-                    <input type="hidden" name="AmountPopcorn" value="@(ViewBag.AmountPopcorn)" />
-                    <input type="hidden" name="AmountTotal" value="@(ViewBag.TotalAmount)" />
+                    <input type="hidden" name="ShowId" value="@(Model.TicketSelectionViewModel.Show.ShowID)" />
+                    <input type="hidden" name="AmountAdults" value="@(Model.TicketSelectionViewModel.AmountAdults)" />
+                    <input type="hidden" name="AmountAdultsPlus" value="@(Model.TicketSelectionViewModel.AmountAdultsPlus)" />
+                    <input type="hidden" name="AmountChildren" value="@(Model.TicketSelectionViewModel.AmountChildren)" />
+                    <input type="hidden" name="AmountPopcorn" value="@(Model.TicketSelectionViewModel.AmountPopcorn)" />
+                    <input type="hidden" name="AmountTotal" value="@(Model.TicketSelectionViewModel.TotalAmount)" />
                     <button type="submit" class="btn btn-lg btn-success pull-right" id="payButton" disabled>Naar afrekenen <i class="glyphicon glyphicon-arrow-right"></i></button>
                 </div>
             </div>
@@ -92,8 +94,7 @@
                     <td class="selection">Uw selectie</td>
                 </tr>
             </table>
-            
-        </form>
+        }
     </div>
 </div>
 <div class="row">
@@ -105,7 +106,7 @@
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script>
     jQuery(document).ready(function ($) {
-        var totalSeats = @(ViewBag.TotalAmount)
+        var totalSeats = @(Model.TicketSelectionViewModel.TotalAmount)
 
         $('table').on('click', 'label', function () {
 
@@ -131,7 +132,13 @@
                     success = false;
                 }
             });
-            
+
+            // check if there is one free seat before our selection (this is not allowed)
+            // TODO
+
+            // check if theree is one free seat after our selection (this is not allowed)
+            // TODO
+
             if(success === true) {
                 $(nextSeats).each(function () {
                     // select seats
@@ -144,9 +151,6 @@
                 alert('Selectie niet mogelijk.');
                 $('table').find('input').prop('checked', false);
             }
-
-            
-
         });
     });
 </script>

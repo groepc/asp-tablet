@@ -1,4 +1,5 @@
-﻿using Plathe.Domain.Entities;
+﻿using Plathe.Domain.Abstract;
+using Plathe.Domain.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,8 +12,20 @@ namespace Plathe.WebUI.Models
 {
     public class TicketSelectionViewModel
     {
+        private IShowRepository repository;
 
-        public Show Show { get; set; }
+        public TicketSelectionViewModel()
+        {
+            this.repository = DependencyResolver.Current.GetService<IShowRepository>();
+        }
+
+        public Show Show { 
+            get 
+            {
+
+                return repository.Shows.Where(model => model.ShowID == this.ShowId).First();
+            }
+        }
 
         [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }

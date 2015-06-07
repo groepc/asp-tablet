@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractServices\IReservationService.cs" />
+    <Compile Include="AbstractServices\ITicketService.cs" />
     <Compile Include="Abstract\IGenreRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
     <Compile Include="Abstract\IReservationRepository.cs" />

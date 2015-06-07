@@ -61,7 +61,6 @@ namespace Plathe.WebUI.Controllers
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
-                Show = show,
                 ShowId = show.ShowID
             };
 
@@ -87,8 +86,6 @@ namespace Plathe.WebUI.Controllers
             else
             {
                 // modelstate invalid, return ticket selection view
-                viewModel.Show = db.Shows.Find(viewModel.ShowId);
-
                 return View(viewModel);
             }
         }
@@ -96,57 +93,35 @@ namespace Plathe.WebUI.Controllers
         public ActionResult SeatSelection()
         {
 
+            if (TempData["ticketSelectionViewModel"] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             TicketSelectionViewModel ticketSelectionViewModel = (TicketSelectionViewModel) TempData["ticketSelectionViewModel"];
-            var reservation = TempData["reservation"];
+            Reservation reservation = (Reservation) TempData["reservation"];
 
             SeatSelectionViewModel viewModel = new SeatSelectionViewModel
             {
-                TicketSelectionViewModel = ticketSelectionViewModel
+                Show = ticketSelectionViewModel.Show,
+                TicketSelectionViewModel = ticketSelectionViewModel,
+                Reservation = reservation
             };
 
             // get seat selection view
-            return View();
+            return View(viewModel);
         }
         
         [HttpPost]
         public ActionResult SeatSelection(SeatSelectionViewModel viewModel)
         {
 
-
-            var ShowId = viewModel.ShowId;
-            
-
-            // get current show
-            Show show = db.Shows.Find(ShowId);
-
-            // get tickets for show
-            var tickets = db.Tickets.Where(s => s.ShowID == show.ShowID);
-
-            // set reservation status of each seat
-            foreach (var row in show.Room.Rows)
+            if (ModelState.IsValid)
             {
-                foreach (var seat in row.Seats)
-                {
-                    bool isReserved = tickets.Any(t => t.SeatID == seat.SeatID);
-                    if (isReserved)
-                    {
-                        seat.Reserved = true;
-                    }
-                }
-            }
 
-            
+            }          
 
-            // data for view
-            // ViewBag.ShowId = ShowId;
-            // ViewBag.AmountAdults = AmountAdults;
-            // ViewBag.AmountAdultsPlus = AmountAdultsPlus;
-            // ViewBag.AmountChildren = AmountChildren;
-            // ViewBag.AmountPopcorn = AmountPopcorn;
-            // ViewBag.TotalAmount = TotalAmount;
-
-            return View(show);
+            return View(viewModel);
         }
 
         [HttpPost]
