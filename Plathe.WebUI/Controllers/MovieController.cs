@@ -1,6 +1,7 @@
 ﻿using Plathe.Domain.Abstract;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
+using Plathe.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Plathe.WebUI.Controllers
         private EFDbContext db = new EFDbContext();
 
         // GET: Movie
-        public MovieController (IMovieRepository movieRepository)
+        public MovieController(IMovieRepository movieRepository)
         {
             this.repository = movieRepository;
         }
@@ -66,5 +67,6 @@ namespace Plathe.WebUI.Controllers
 
         //}
 
+       
     }
 }

@@ -15,7 +15,7 @@ namespace Plathe.WebUI.Models
         private EFDbContext db = new EFDbContext();
 
         public Show Show { get; set; }
-
+      
         public TicketSelectionViewModel TicketSelectionViewModel { get; set; }
 
         public Reservation Reservation { get; set; }
