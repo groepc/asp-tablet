@@ -3,13 +3,14 @@
 @Html.ActionLink("Alle films", "List", "Genre", null,
     new { @class = "nav nav-pills nav-stacked" })
 
+
 @foreach (var link in Model)
 {
-    @Html.RouteLink(link, new object
+    @Html.RouteLink(link, new
     {
-        name = "GenreID",
-        action = "List",
-        category = link
+        //name = "Name",
+        //action = "List",
+        //category = link
                 
     }, new
     {
