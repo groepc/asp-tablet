@@ -1,13 +1,9 @@
 ﻿using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
-using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomExtensions;
+using System.Reflection;
 
 namespace Plathe.Domain.Services
 {
@@ -15,7 +11,6 @@ namespace Plathe.Domain.Services
     {
 
         private IReservationRepository repository;
-        private EFDbContext db = new EFDbContext();
 
         public ReservationService(IReservationRepository reservationRepository)
         {
@@ -43,10 +38,9 @@ namespace Plathe.Domain.Services
 
             // save reservation to DB
             // this will automatically add reservationId to the object
-            db.Reservations.Add(reservation);
-            db.SaveChanges();
 
-            return reservation;
+            return this.repository.saveReservation(reservation);
+
         }
     }
 }

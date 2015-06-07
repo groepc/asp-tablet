@@ -14,7 +14,6 @@ namespace Plathe.WebUI.Controllers
     public class MovieController : Controller
     {
         private IMovieRepository repository;
-        private EFDbContext db = new EFDbContext();
 
         // GET: Movie
         public MovieController(IMovieRepository movieRepository)
@@ -67,6 +66,5 @@ namespace Plathe.WebUI.Controllers
 
         //}
 
-       
-    }
+        }
 }

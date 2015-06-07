@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plathe.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,12 @@ namespace Plathe.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: null,
+                url: "Page{page}",
+                defaults: new { controller = "GenreID", action = "List" }
+                );
 
             routes.MapRoute(
                 name: "Default",
