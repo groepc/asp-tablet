@@ -29,13 +29,21 @@
     <div class="col-sm-9">
         <h3>Stap 1: Kies het aantal tickets</h3>
            
-        @if (@ViewBag.Error)
-        {
-            <div class="alert alert-danger" role="alert">@(ViewBag.Message)</div>
-        }
 
-        <form action="/shows/SeatSelection" name="ticket-selection" method="post">
+        @using (Html.BeginForm())
+        {
+            <!--<form action="/shows/SeatSelection" name="ticket-selection" method="post">-->
             @Html.AntiForgeryToken()
+            
+            
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    Validation Errors: @Html.ValidationSummary(true)
+                </div>
+            </div>
+            
+            <hr />
+            
             <div class="form-group row">
                 <div class="col-sm-8">
                     Aantal volwassenen
@@ -75,12 +83,13 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-12 clearfix">
-                    @Html.HiddenFor(m=>m.ShowId)
+                    @Html.HiddenFor(m => m.ShowId);
 
                     <button type="submit" class="btn btn-lg btn-success pull-right">Naar stoelselectie <i class="glyphicon glyphicon-arrow-right"></i></button>
                 </div>
             </div>
-        </form>
+            <!--</form> -->
+        }
     </div>   
 </div>
 <div class="row">

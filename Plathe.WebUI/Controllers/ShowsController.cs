@@ -10,12 +10,22 @@ using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 using System.Collections.Specialized;
 using Plathe.WebUI.Models;
+using Plathe.Domain.Abstract;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.WebUI.Controllers
 {
     public class ShowsController : Controller
     {
         private EFDbContext db = new EFDbContext();
+        private IReservationService reservationService;
+
+        public ShowsController(IReservationService reservationService)
+        {
+
+            this.reservationService = reservationService;
+
+        }
 
         // GET: Shows
         public ActionResult Index()
@@ -33,8 +43,8 @@ namespace Plathe.WebUI.Controllers
             return View(shows.ToList());
         }
 
-        // GET: Shows/Reservate/5
-        public ActionResult Reservate(int? id)
+        // GET: Shows/TicketSelection/5
+        public ActionResult TicketSelection(int? id)
         {
             if (id == null)
             {
@@ -44,47 +54,68 @@ namespace Plathe.WebUI.Controllers
             // get current show
             Show show = db.Shows.Find(id);
 
-            if (show == null)
+            if (show == null) 
             {
                 return HttpNotFound();
-            }
+            };
 
-            ViewBag.Error = false;
-
-            if (Request.QueryString["error"] == "1")
+            TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
-                ViewBag.Error = true;
-                ViewBag.Message = "Er moet minimaal 1 kaartjes besteld worden";
-            }
-
-            var viewModel = new TicketSelectionViewModel
-            {
-                Show = show
+                Show = show,
+                ShowId = show.ShowID
             };
 
             return View(viewModel);
         }
 
-
         [HttpPost]
-        public ActionResult SeatSelection(TicketSelectionViewModel model)
+        public ActionResult TicketSelection(TicketSelectionViewModel viewModel)
+        {            
+
+            if (ModelState.IsValid)
+            {
+
+                // create reservation
+                Reservation reservation = reservationService.createReservation();
+
+                // create viewModel for seatSelection
+                TempData["reservation"] = reservation;
+                TempData["ticketSelectionViewModel"] = viewModel;
+
+                return RedirectToAction("SeatSelection");
+            }
+            else
+            {
+                // modelstate invalid, return ticket selection view
+                viewModel.Show = db.Shows.Find(viewModel.ShowId);
+
+                return View(viewModel);
+            }
+        }
+
+        public ActionResult SeatSelection()
         {
 
-            NameValueCollection data = Request.Form;
-            int TotalAmount = 0;
 
-            var ShowId = Convert.ToInt32(data["showId"]);
-            int AmountAdults = Convert.ToInt32(data["amountAdults"]);
-            int AmountAdultsPlus = Convert.ToInt32(data["amountAdultsPlus"]);
-            int AmountChildren = Convert.ToInt32(data["amountChildren"]);
-            int AmountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
+            TicketSelectionViewModel ticketSelectionViewModel = (TicketSelectionViewModel) TempData["ticketSelectionViewModel"];
+            var reservation = TempData["reservation"];
 
-            TotalAmount = AmountAdults + AmountAdultsPlus + AmountChildren + AmountPopcorn;
-
-            if(TotalAmount <= 0)
+            SeatSelectionViewModel viewModel = new SeatSelectionViewModel
             {
-                Response.Redirect("/shows/reservate/" + ShowId + "?error=1");
-            }
+                TicketSelectionViewModel = ticketSelectionViewModel
+            };
+
+            // get seat selection view
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult SeatSelection(SeatSelectionViewModel viewModel)
+        {
+
+
+            var ShowId = viewModel.ShowId;
+            
 
             // get current show
             Show show = db.Shows.Find(ShowId);
@@ -108,12 +139,12 @@ namespace Plathe.WebUI.Controllers
             
 
             // data for view
-            ViewBag.ShowId = ShowId;
-            ViewBag.AmountAdults = AmountAdults;
-            ViewBag.AmountAdultsPlus = AmountAdultsPlus;
-            ViewBag.AmountChildren = AmountChildren;
-            ViewBag.AmountPopcorn = AmountPopcorn;
-            ViewBag.TotalAmount = TotalAmount;
+            // ViewBag.ShowId = ShowId;
+            // ViewBag.AmountAdults = AmountAdults;
+            // ViewBag.AmountAdultsPlus = AmountAdultsPlus;
+            // ViewBag.AmountChildren = AmountChildren;
+            // ViewBag.AmountPopcorn = AmountPopcorn;
+            // ViewBag.TotalAmount = TotalAmount;
 
             return View(show);
         }
