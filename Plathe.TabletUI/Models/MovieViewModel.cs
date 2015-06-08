@@ -19,12 +19,6 @@ namespace Plathe.TabletUI.Models
             this.repository = DependencyResolver.Current.GetService<IMovieRepository>();
         }
 
-        public Movie Movie
-        {
-            get
-            {
-                return repository.Movies.Where(model => model.MovieID == this.MovieId).First(); ;
-            }
-        }
+       
     }
 }
