@@ -5,8 +5,10 @@ using System.Web.Mvc;
 using Moq;
 using Ninject;
 using Plathe.Domain.Abstract;
+using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
+using Plathe.Domain.Services;
 
 namespace Plathe.TabletUI.Infrastructure
 {
@@ -29,8 +31,12 @@ namespace Plathe.TabletUI.Infrastructure
         }
         private void AddBindings()
         {
+            // repositorys
             kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
             kernel.Bind<IShowRepository>().To<EFShowRepository>();
+
+            // services
+            kernel.Bind<IMovieService>().To<MovieService>();
         }
     }
 }

@@ -17,14 +17,19 @@ namespace Plathe.TabletUI.Controllers
 {
     public class MovieController : Controller
     {
-        private EFDbContext db = new EFDbContext();
+        //private EFDbContext db = new EFDbContext();
+        private IMovieService movieService;
 
- 
+
+        public MovieController(IMovieService movieService)
+        {
+            this.movieService = movieService;
+        }
 
         // GET: Shows
         public ViewResult List()
         {
-            MovieViewModel model = new MovieViewModel();
+            MovieViewModel model = new MovieViewModel { };
             return View(model);
         }
         /*
