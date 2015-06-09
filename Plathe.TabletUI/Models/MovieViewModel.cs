@@ -7,18 +7,23 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.TabletUI.Models
 {
     public class MovieViewModel
     {
-        private IMovieRepository repository;
+        public IMovieService service;
 
         public MovieViewModel()
         {
-            this.repository = DependencyResolver.Current.GetService<IMovieRepository>();
+            this.service = DependencyResolver.Current.GetService<IMovieService>();
         }
 
-       
+        public IEnumerable<Movie> Movies
+        {
+            get { return service.getAllMovies(); }
+        }
+
     }
 }

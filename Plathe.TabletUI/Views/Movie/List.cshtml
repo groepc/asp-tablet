@@ -4,14 +4,14 @@
     ViewBag.Title = "Alle films";
 }
 <div class="row moviesOverview">
-    @foreach (var m in Model.Movie)
+    @foreach (var item in Model.Movies)
     {
         <div class="col-md-4 movie ">
             <div class="block">
-                <a href="/Movie/Details/@m.MovieID">
-                    <img src='@m.Image' height="250" />
+                <a href="/Movie/Details/@item.MovieID">
+                    <img src='@item.Image' height="250" />
                     <div class="caption">
-                        <h3>@m.Title</h3>
+                        <h3>@item.Title</h3>
                     </div>
                 </a>
             </div>
