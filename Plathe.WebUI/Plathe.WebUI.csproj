@@ -132,7 +132,6 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\NavController.cs" />
@@ -145,6 +144,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\SeatSelectionViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\ShowViewModel.cs" />
     <Compile Include="Models\TicketSelectionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -179,8 +179,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\App_LocalResources\" />
-    <Folder Include="Views\MovieListViewModel\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Plathe.Domain\Plathe.Domain.csproj">
@@ -203,7 +201,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1235</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1059/</IISUrl>
+          <IISUrl>http://localhost:2059/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

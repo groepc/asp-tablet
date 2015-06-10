@@ -4,63 +4,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Plathe</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Plathé", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+    <div id="wrapper">
+        <header>
+            <div class="container">
+                @Html.ActionLink("Plathé", "Index", "Home", new { area = "" }, new { @id = "logo" })
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/movie/">Films <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/shows/">Voorstellingen</a></li>
-                    <li><a href="/home/contact">Over Plathe</a></li>
-                </ul>
-                <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        @using (Html.BeginForm())
-                        {
-                            <p>
-                                @Html.TextBox("SearchString")
-                                <input type="submit" class="btn btn-default" value="Zoeken" />
-                            </p>
-                        }
-                  </div>
+                <nav>
+                    <a href="/movie/">Films <span class="sr-only">(current)</span></a>
+                    <a href="/shows/">Voorstellingen</a>
+                    <a href="/home/contact">Over Plathe</a>
+                </nav>
+
+                <form class="right" role="search">
+                    @using (Html.BeginForm())
+                    {
+                        <p>
+                            @Html.TextBox("SearchString")
+                            <input type="submit" class="button" value="Zoeken" />
+                        </p>
+                    }
                 </form>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </div>
+            </div><!-- /.container-fluid -->
+        </header>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+        </div>
 
-    <div class="container body-content" id="footer">
         <footer>
-            <div class="col-sm-6">
-                <p>&copy; @DateTime.Now.Year - Plathé Bioscopen</p>
-            </div>
-            
-            <div class="col-sm-6">
-                <div id="google_translate_element">
-                    <script type="text/javascript">
-                        function googleTranslateElementInit() {
-                            new google.translate.TranslateElement({ pageLanguage: 'nl', includedLanguages: 'nl,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-                        }
-                    </script>
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <div class="container">
+                <div class="col-sm-6">
+                    <p>&copy; @DateTime.Now.Year - Plathé Bioscopen</p>
+                </div>
+
+                <div class="col-sm-6">
+                    <div id="google_translate_element">
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'nl', includedLanguages: 'nl,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
                 </div>
             </div>
         </footer>
-    </div>
-
+    </div> <!-- wrapper -->
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

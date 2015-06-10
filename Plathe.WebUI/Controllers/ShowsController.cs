@@ -19,30 +19,25 @@ namespace Plathe.WebUI.Controllers
     {
         private EFDbContext db = new EFDbContext();
         private IReservationService reservationService;
-        private ITicketService ticketService;
+        private IShowService showService;
 
-        public ShowsController(IReservationService reservationService, ITicketService ticketService)
+        public ShowsController(IReservationService reservationService, IShowService showService)
         {
 
             this.reservationService = reservationService;
-            this.ticketService = ticketService;
+            this.showService = showService;
 
         }
 
         // GET: Shows
         public ActionResult Index()
         {
-            DateTime tomorrow = DateTime.Today.AddDays(1);
+            ShowViewModel viewModel = new ShowViewModel
+            {
+                Shows = showService.getShowsThisWeek()
+            };
 
-            int daysUntilThursday = ((int)DayOfWeek.Thursday - (int)tomorrow.DayOfWeek + 7) % 7;
-            DateTime nextThursday = tomorrow.AddDays(daysUntilThursday);
-
-            var shows = db.Shows
-                .Where(s => s.StartingTime >= DateTime.Today)
-                .Where(s => s.StartingTime <= nextThursday)
-                .Include(s => s.Movie);
-
-            return View(shows.ToList());
+            return View(viewModel);
         }
 
         // GET: Shows/TicketSelection/5
@@ -54,9 +49,9 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current show
-            Show show = db.Shows.Find(id);
+            Show show = showService.getShowById((int) id);
 
-            if (show == null)
+            if (show == null) 
             {
                 return HttpNotFound();
             };
@@ -71,14 +66,14 @@ namespace Plathe.WebUI.Controllers
 
         [HttpPost]
         public ActionResult TicketSelection(TicketSelectionViewModel viewModel)
-        {
+        {            
 
             if (ModelState.IsValid)
             {
 
                 // create reservation
                 Reservation reservation = reservationService.createReservation();
-
+                
 
                 // create viewModel for seatSelection
                 TempData["reservation"] = reservation;
@@ -101,8 +96,8 @@ namespace Plathe.WebUI.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            TicketSelectionViewModel ticketSelectionViewModel = (TicketSelectionViewModel)TempData["ticketSelectionViewModel"];
-            Reservation reservation = (Reservation)TempData["reservation"];
+            TicketSelectionViewModel ticketSelectionViewModel = (TicketSelectionViewModel) TempData["ticketSelectionViewModel"];
+            Reservation reservation = (Reservation) TempData["reservation"];
 
             SeatSelectionViewModel viewModel = new SeatSelectionViewModel
             {
@@ -121,28 +116,127 @@ namespace Plathe.WebUI.Controllers
 
             NameValueCollection data = Request.Form;
 
-            Reservation reservation = this.reservationService.getReservationById(Convert.ToInt32(data["ReservationID"]));
-
+            // get total seat numbers
+            var TotalSeats = Convert.ToInt32(data["AmountTotal"]);
             var ShowId = Convert.ToInt32(data["ShowId"]);
             Show show = db.Shows.Find(ShowId);
 
             int AmountAdults = Convert.ToInt32(data["amountAdults"]);
             int AmountAdultsPlus = Convert.ToInt32(data["amountAdultsPlus"]);
             int AmountChildren = Convert.ToInt32(data["amountChildren"]);
-            int AmountStudents = Convert.ToInt32(data["amountStudents"]);
             int AmountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
-
-            var reservationID = reservation.ReservationID;
 
 
             // get seat ID's
             string seatsString = data["seat-selected"];
-            var ChosenSeat = seatsString.Split(',').Select(x => int.Parse(x)).ToList();
+            var ChosenSeat = seatsString.Split(',').Select(x => int.Parse(x));
+            var ChosenSeatList = ChosenSeat.ToList();
 
-            this.ticketService.createTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn);
+            // set base ticket price
+            var ticketPrice = (decimal)8.50;
+
+            // increas price if longer then 120 minutes
+            if (show.Movie.Duration >= 120)
+            {
+                ticketPrice = ticketPrice + (decimal)1.50;
+            }
+
+            // increase price if movie is 3D
+            if (show.Movie.ThreeDimensional == true)
+            {
+                ticketPrice = ticketPrice + (decimal)2.50;
+            }
+
+            // create reservation
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, 8)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            Reservation reservation = new Reservation
+            {
+                UniqueCode = result,
+                CreateOn = DateTime.Now,
+                PriceTotal = (decimal)10.00,
+                Payed = false,
+                PayedOn = DateTime.Now
+            };
+
+            // save reservation to DB
+            db.Reservations.Add(reservation);
+            db.SaveChanges();
+
+            // get reservation ID
+            var resId = reservation.ReservationID;
+            var totalPrice = (decimal)0.00;
+
+            // create ticket list
+            var tickets = new List<Ticket>();
+
+            // create tickets
+            for (int i = 0; i < TotalSeats; i++)
+            {
+
+                var seatTicketPrice = ticketPrice;
+
+                // give this ticket a seat
+                var thisSeat = ChosenSeatList[i];
+
+                // determine what type of ticket this is
+                if (AmountAdultsPlus > 0)
+                {
+
+                    var dayOfWeek = (int)(show.StartingTime.DayOfWeek + 6) % 7;
+
+                    // only change ticket price between monday and thursday
+                    if( dayOfWeek >= 0 && dayOfWeek <= 3 ) {
+                        seatTicketPrice = seatTicketPrice - (decimal)1.50;
+                    }
+
+                    AmountAdultsPlus--;
+                } 
+                else if (AmountChildren > 0 )
+                {
+                    // only for shows before 18
+                    if (show.StartingTime.Hour <= 18)
+                    {
+                        seatTicketPrice = seatTicketPrice - (decimal)1.50;
+                    }
+                    
+                    AmountChildren--;
+                }
+                else if (AmountPopcorn > 0)
+                {
+                    seatTicketPrice = seatTicketPrice - (decimal)1.50;   
+                    AmountPopcorn--;
+                }
+
+                tickets.Add(new Ticket
+                {
+                    ShowID = show.ShowID,
+                    ReservationID = resId,
+                    SeatID = thisSeat,
+                    UniqueCode = new string(
+                                Enumerable.Repeat(chars, 4)
+                                .Select(s => s[random.Next(s.Length)])
+                                .ToArray()),
+                    Price = seatTicketPrice,
+                    Options = "options",
+                    PopcornTime = false
+                });
+
+                totalPrice = totalPrice + seatTicketPrice;
+            }
+            tickets.ForEach(s => db.Tickets.Add(s));
+            db.SaveChanges();
+
+            reservation.PriceTotal = totalPrice;
+            db.Entry(reservation).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
 
             // send variables to view
-            ViewBag.ReservationId = reservationID;
+            ViewBag.ReservationId = resId;
             return View(reservation);
         }
     }
