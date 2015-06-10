@@ -28,22 +28,22 @@
 
     <div class="col-sm-9">
         <h3>Stap 1: Kies het aantal tickets</h3>
-           
+
 
         @using (Html.BeginForm())
         {
             <!--<form action="/shows/SeatSelection" name="ticket-selection" method="post">-->
             @Html.AntiForgeryToken()
-            
-            
+
+
             <div class="form-group row">
                 <div class="col-sm-12">
                     Validation Errors: @Html.ValidationSummary(true)
                 </div>
             </div>
-            
+
             <hr />
-            
+
             <div class="form-group row">
                 <div class="col-sm-8">
                     Aantal volwassenen
@@ -70,6 +70,14 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-8">
+                    Aantal kinderen
+                </div>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(m => m.AmountStudents, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-8">
                     Aantal Popcorn tickets
                 </div>
                 <div class="col-sm-2">
@@ -90,7 +98,7 @@
             </div>
             <!--</form> -->
         }
-    </div>   
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12">

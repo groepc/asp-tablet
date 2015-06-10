@@ -10,6 +10,8 @@ namespace Plathe.Domain.Abstract
     public interface ITicketRepository
     {
         IEnumerable<Ticket> Tickets { get; }
+
+        Ticket saveTicket(Ticket reservation);
     }
 
 
