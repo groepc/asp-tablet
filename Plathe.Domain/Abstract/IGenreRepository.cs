@@ -12,5 +12,6 @@ namespace Plathe.Domain.Abstract
     public interface IGenreRepository
     {
         IEnumerable<Genre> Genres { get; }
+        int getGenreIdByName(string name);
     }
 }

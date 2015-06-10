@@ -34,7 +34,6 @@ namespace Plathe.Domain.Extensions
                 default:
                     return price;
             }
-            return price;
         }
 
         private decimal getDefaultMoviePrice(Show show, bool secretMovie)

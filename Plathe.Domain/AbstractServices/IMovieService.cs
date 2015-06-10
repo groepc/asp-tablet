@@ -10,5 +10,6 @@ namespace Plathe.Domain.AbstractServices
     public interface IMovieService
     {
         IEnumerable<Movie> getAllMovies();
+        IEnumerable<Movie> getMoviesByGenreName(string name);
     }
 }

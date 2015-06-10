@@ -16,6 +16,13 @@ namespace Plathe.Domain.Concrete
         {
             get { return context.Genres; }
         }
+
+        public int getGenreIdByName(string genreID)
+        {
+            var genre = context.Genres.FirstOrDefault(a => a.Name == genreID);
+
+            return genre.GenreID;
+        }
     }
 }
 

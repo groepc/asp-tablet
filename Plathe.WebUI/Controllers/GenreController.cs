@@ -5,25 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.WebUI.Controllers
 {
     public class GenreController : Controller
     {
-
-        private IGenreRepository repository;
+        private IMovieService movieService;
         
-        public GenreController(IGenreRepository genreRepository)
+        public GenreController(IMovieService movieService)
         {
-            this.repository = genreRepository;
+            this.movieService= movieService;
         }
 
-       public ActionResult Browse(string Genre)
+       public ActionResult Browse()
         {
             // Retrieve Genre and its assosiated movies from database
-            var genreModel = repository.Genres.Single(g => g.Name == Genre);
-
-            return View(repository.Genres);
+            var genre = Request.QueryString["genreID"];
+            return View(this.movieService.getMoviesByGenreName(genre));
         }
 
     }
