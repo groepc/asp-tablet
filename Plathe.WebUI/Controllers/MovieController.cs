@@ -14,21 +14,16 @@ namespace Plathe.WebUI.Controllers
     public class MovieController : Controller
     {
         private IMovieRepository repository;
-
+        
         // GET: Movie
         public MovieController(IMovieRepository movieRepository)
         {
             this.repository = movieRepository;
         }
 
-        public ViewResult Index(int? GenreID)
+       public ViewResult Index()
         {
-            if (GenreID == null)
-            {
-                return View(repository.Movies);
-            }
-
-            else return View(repository.Movies);
+            return View(repository.Movies);
         }
 
         // GET: Movie/Details/5
@@ -48,5 +43,5 @@ namespace Plathe.WebUI.Controllers
             return View(movie);
         }
 
-     }
+    }
 }

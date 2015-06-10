@@ -23,9 +23,10 @@ namespace Plathe.Domain.Services
             this.repository = genreRepository;
         }
 
-        public int findIdGenreByName(string genreString)
+       public IEnumerable<Genre> getAllGenres()
         {
-            return 1;
+            return this.repository.Genres;
         }
+
     }
 }

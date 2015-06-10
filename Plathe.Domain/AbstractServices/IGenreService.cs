@@ -9,6 +9,7 @@ namespace Plathe.Domain.AbstractServices
 {
     public interface IGenreService
     {
-        int findIdGenreByName(string genreString);
+        IEnumerable<Genre> getAllGenres();
+        
     }
 }

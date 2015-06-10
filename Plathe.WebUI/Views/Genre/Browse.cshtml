@@ -1,0 +1,22 @@
+﻿@* Author: Mieke*@
+
+@using Plathe.Domain.Entities
+@model IEnumerable<Genre>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Films";
+}
+
+<h2>Browsing Genre: @Model.Name</h2>
+<ul>
+    @foreach (var movie in Model.Movies)
+    {
+        <li>
+            @movie.Title
+        </li>
+    }
+</ul>

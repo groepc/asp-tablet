@@ -29,6 +29,6 @@ namespace Plathe.Domain.Entities
         public string linkToTrailer { get; set; }
         public string linkToWebsite { get; set; }
         public DateTime playsUntill { get; set; }
-        public virtual Genre genre { get; set; }
+        public Genre genre { get; set; }
     }
 }
