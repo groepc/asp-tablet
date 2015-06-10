@@ -44,6 +44,7 @@ namespace Plathe.WebUI.Infrastructure
             kernel.Bind<ITicketService>().To<TicketService>();
             kernel.Bind<IShowService>().To<ShowService>();
             kernel.Bind<IMovieService>().To<MovieService>();
+            kernel.Bind<IGenreService>().To<GenreService>();
         }
     }
 }
