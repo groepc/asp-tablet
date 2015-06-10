@@ -40,6 +40,9 @@ namespace Plathe.WebUI.Models
         public int AmountChildren { get; set; }
 
         [Range(0, 5)]
+        public int AmountStudents { get; set; }
+
+        [Range(0, 5)]
         public int AmountPopcorn { get; set; }
 
         [Range(1, 25)]

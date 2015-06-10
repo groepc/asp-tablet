@@ -12,6 +12,7 @@ namespace Plathe.Domain.Entities
         public int ShowID { get; set; }
         public int ReservationID { get; set; }
         public int SeatID { get; set; }
+        public string Type { get; set; }
         public string UniqueCode { get; set; }
         public Decimal Price { get; set; }
         public string Options { get; set; }
