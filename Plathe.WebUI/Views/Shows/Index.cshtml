@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plathe.Domain.Entities.Show>
+﻿@model Plathe.WebUI.Models.ShowViewModel
 
 @{
     ViewBag.Title = "Voorstellingen";
@@ -6,13 +6,11 @@
 
 <h2>Voorstellingen</h2>
 
-
 <table class="table">
-
-@foreach (var item in Model) {
+@foreach (var item in Model.Shows.ToList()) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Movie.Title) (@Html.DisplayFor(modelItem => item.Movie.Language))
+            @Html.DisplayFor(model => item.Movie.Title);
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Room.RoomName)
@@ -31,5 +29,4 @@
         </td>
     </tr>
 }
-
 </table>

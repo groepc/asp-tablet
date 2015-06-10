@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<string>
 
+
 @Html.ActionLink("Alle films", "List", "Genre", null,
     new { @class = "nav nav-pills nav-stacked" })
-
 
 @foreach (var link in Model)
 {
@@ -10,7 +10,7 @@
     {
           controller = "movie",
           action = "index",
-          genre = link            
+          genreID = link            
     }, new
     {
         @class = "btn btn-block btn-default btn-lg"
