@@ -77,6 +77,7 @@
     <Compile Include="AbstractServices\IGenreService.cs" />
     <Compile Include="AbstractServices\IMovieService.cs" />
     <Compile Include="AbstractServices\IReservationService.cs" />
+    <Compile Include="AbstractServices\IShowService.cs" />
     <Compile Include="AbstractServices\ITicketService.cs" />
     <Compile Include="Abstract\IGenreRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\ReservationService.cs" />
+    <Compile Include="Services\ShowService.cs" />
     <Compile Include="Services\TicketService.cs" />
   </ItemGroup>
   <ItemGroup>

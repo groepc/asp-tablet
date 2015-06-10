@@ -19,28 +19,25 @@ namespace Plathe.WebUI.Controllers
     {
         private EFDbContext db = new EFDbContext();
         private IReservationService reservationService;
+        private IShowService showService;
 
-        public ShowsController(IReservationService reservationService)
+        public ShowsController(IReservationService reservationService, IShowService showService)
         {
 
             this.reservationService = reservationService;
+            this.showService = showService;
 
         }
 
         // GET: Shows
         public ActionResult Index()
         {
-            DateTime tomorrow = DateTime.Today.AddDays(1);
+            ShowViewModel viewModel = new ShowViewModel
+            {
+                Shows = showService.getShowsThisWeek()
+            };
 
-            int daysUntilThursday = ((int)DayOfWeek.Thursday - (int)tomorrow.DayOfWeek + 7) % 7;
-            DateTime nextThursday = tomorrow.AddDays(daysUntilThursday);
-
-            var shows = db.Shows
-                .Where(s => s.StartingTime >= DateTime.Today)
-                .Where(s => s.StartingTime <= nextThursday)
-                .Include(s => s.Movie);
-
-            return View(shows.ToList());
+            return View(viewModel);
         }
 
         // GET: Shows/TicketSelection/5
@@ -52,7 +49,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current show
-            Show show = db.Shows.Find(id);
+            Show show = showService.getShowById((int) id);
 
             if (show == null) 
             {
