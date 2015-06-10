@@ -30,5 +30,16 @@ namespace Plathe.TabletUI.Controllers
             MovieViewModel model = new MovieViewModel();
             return View(model);
         }
-   }
+
+        public ViewResult Details(int id)
+        {
+            Movie movie = movieService.getMovieById((int)id);
+
+            MovieViewModel model = new MovieViewModel
+            {
+                MovieId = movie.MovieID
+            };
+            return View(model);
+        }
+    }
 }

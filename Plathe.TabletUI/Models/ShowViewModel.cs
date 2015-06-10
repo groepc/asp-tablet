@@ -7,12 +7,29 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.TabletUI.Models
 {
     public class ShowViewModel
     {
-        private IShowRepository repository;
-        public Show Show { get; set; }
+        public IShowService service;
+
+        public ShowViewModel()
+        {
+            this.service = DependencyResolver.Current.GetService<IShowService>();
+        }
+        public IEnumerable<Show> Shows
+        {
+            get { return service.getAllShows(); }
+        }
+
+        public Show Show
+        {
+            get { return service.getShowById(ShowId); }
+        }
+
+        [HiddenInput(DisplayValue = false)]
+        public int ShowId { get; set; }
     }
 }

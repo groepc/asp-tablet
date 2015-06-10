@@ -16,39 +16,32 @@ namespace Plathe.TabletUI.Controllers
 {
     public class ShowsController : Controller
     {
-        private EFDbContext db = new EFDbContext();
-        private IShowRepository repository;
+        //private EFDbContext db = new EFDbContext();
+        //private IReservationService reservationService;
+        private IShowService showService;
 
-        public ShowsController(IShowRepository showRepository)
+        public ShowsController(IShowService showService)
         {
-            this.repository = showRepository;
+
+        //    this.reservationService = reservationService;
+            this.showService = showService;
+
         }
 
         // GET: Shows
         public ViewResult List()
         {
-            var shows = repository.Shows;
-
-            return View(shows.ToList());
+            ShowViewModel viewModel = new ShowViewModel();
+            return View(viewModel);
         }
         // GET: Shows/TicketSelection/5
-        public ActionResult TicketSelection(int? id)
+        public ViewResult TicketSelection(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             // get current show
-            Show show = db.Shows.Find(id);
-            if (show == null)
-            {
-                return HttpNotFound();
-            };
+            Show show = showService.getShowById((int)id);
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
-                Show = show,
                 ShowId = show.ShowID
             };
 

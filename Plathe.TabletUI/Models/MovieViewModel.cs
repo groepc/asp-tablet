@@ -26,5 +26,11 @@ namespace Plathe.TabletUI.Models
         {
             get { return service.getAllMovies(); }
         }
+        public Movie Movie
+        {
+            get { return service.getMovieById(MovieId); }
+        }
+        [HiddenInput(DisplayValue = false)]
+        public int MovieId { get; set; }
     }
 }

@@ -21,5 +21,9 @@ namespace Plathe.Domain.Services
         {
             return this.repository.Movies;
         }
+        public Movie getMovieById(int id)
+        {
+            return repository.Movies.FirstOrDefault(model => model.MovieID == id);
+        }
     }
 }

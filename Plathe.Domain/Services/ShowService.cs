@@ -22,7 +22,7 @@ namespace Plathe.Domain.Services
 
         public IEnumerable<Show> getAllShows()
         {
-            throw new NotImplementedException();
+            return this.repository.Shows;
         }
 
         public IEnumerable<Show> getShowsThisWeek()
@@ -41,7 +41,7 @@ namespace Plathe.Domain.Services
 
         public Show getShowById(int id)
         {
-            return repository.Shows.Where(model => model.MovieID == id).First();
+            return repository.Shows.FirstOrDefault(model => model.MovieID == id);
         }
     }
 }
