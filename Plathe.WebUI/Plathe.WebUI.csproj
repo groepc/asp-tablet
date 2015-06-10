@@ -203,7 +203,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1235</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1059/</IISUrl>
+          <IISUrl>http://localhost:2059/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

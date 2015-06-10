@@ -13,7 +13,9 @@ namespace Plathe.TabletUI.Models
 {
     public class MovieViewModel
     {
+
         public IMovieService service;
+
 
         public MovieViewModel()
         {
@@ -24,6 +26,5 @@ namespace Plathe.TabletUI.Models
         {
             get { return service.getAllMovies(); }
         }
-
     }
 }
