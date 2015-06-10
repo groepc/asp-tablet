@@ -10,5 +10,7 @@ namespace Plathe.Domain.AbstractServices
     public interface IReservationService
     {
         Reservation createReservation();
+
+        Reservation getReservationById(int id);
     }
 }

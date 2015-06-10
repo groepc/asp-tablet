@@ -1,0 +1,35 @@
+﻿@* Author: Mieke*@
+
+@using Plathe.Domain.Entities
+@model IEnumerable<Movie>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Films";
+}
+
+<div class="row movie-overview">
+    <div class="col-sm-2">
+
+        <div id="Genres" class="nav nav-pills nav-stacked">
+            @Html.Action("Menu", "Nav")
+        </div>
+
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-sm-3 item">
+                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => p.MovieID)">
+                        <img src='@p.Image' />
+                        <h3>@p.Title</h3>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

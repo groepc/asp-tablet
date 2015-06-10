@@ -15,17 +15,16 @@ namespace Plathe.Domain.Services
     {
 
         private IGenreRepository repository;
-        private EFDbContext db = new EFDbContext();
 
         public GenreService(IGenreRepository genreRepository)
         {
-            // todo: make use of repository (but doesn't have Add method..)
             this.repository = genreRepository;
         }
 
-        public int findIdGenreByName(string genreString)
+       public IEnumerable<Genre> getAllGenres()
         {
-            return 1;
+            return this.repository.Genres;
         }
+
     }
 }

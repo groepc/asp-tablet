@@ -12,5 +12,8 @@ namespace Plathe.Domain.Entities
     {
         public int GenreID { get; set; }
         public string Name { get; set; }
+
+        public List<Movie> Movies { get; set; }
+
     }
 }

@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<string>
 
 
-@Html.ActionLink("Alle films", "List", "Genre", null,
+@Html.ActionLink("Alle films", "index", "Movie", null,
     new { @class = "nav nav-pills nav-stacked" })
 
 @foreach (var link in Model)
 {
     @Html.RouteLink(link, new
     {
-          controller = "movie",
-          action = "index",
+          controller = "genre",
+          action = "browse",
           genreID = link            
     }, new
     {

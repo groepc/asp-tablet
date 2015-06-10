@@ -12,14 +12,22 @@ namespace Plathe.Domain.Services
     public class MovieService : IMovieService
     {
         private IMovieRepository repository;
-        public MovieService(IMovieRepository movieRepository)
+        private IGenreRepository repositoryGenre;
+        public MovieService(IMovieRepository movieRepository, IGenreRepository genreRepository)
         {
             this.repository = movieRepository;
+            this.repositoryGenre = genreRepository;
         }
 
         public IEnumerable<Movie> getAllMovies()
         {
             return this.repository.Movies;
+        }
+
+        public IEnumerable<Movie> getMoviesByGenreName(string name)
+        {
+            var genreID = this.repositoryGenre.getGenreIdByName(name);
+            return this.repository.getMovieByGenreId(genreID);
         }
         public Movie getMovieById(int id)
         {

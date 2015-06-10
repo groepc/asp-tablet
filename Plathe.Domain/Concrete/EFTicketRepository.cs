@@ -17,5 +17,12 @@ namespace Plathe.Domain.Concrete
             get { return context.Tickets; }
         }
 
+        public Ticket saveTicket(Ticket ticket)
+        {
+            context.Tickets.Add(ticket);
+            context.SaveChanges();
+            return ticket;
+        }
+
     }
 }

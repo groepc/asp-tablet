@@ -15,6 +15,11 @@ namespace Plathe.Domain.Concrete
             get { return context.Reservations; }
         }
 
+        public Reservation getReservationById(int id)
+        {
+            return context.Reservations.Find(id);
+        }
+
         public Reservation saveReservation(Reservation reservation) {
             context.Reservations.Add(reservation);
             context.SaveChanges();

@@ -14,8 +14,6 @@ namespace Plathe.Domain.Services
 
         public ReservationService(IReservationRepository reservationRepository)
         {
-
-            // todo: make use of repository (but doesn't have Add method..)
             this.repository = reservationRepository;
 
         }
@@ -41,6 +39,11 @@ namespace Plathe.Domain.Services
 
             return this.repository.saveReservation(reservation);
 
+        }
+
+        public Reservation getReservationById(int id)
+        {
+            return this.repository.getReservationById(id);
         }
     }
 }
