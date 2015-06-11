@@ -18,44 +18,46 @@ namespace Plathe.Domain.Services
             this.repository = ticketRepository;
         }
 
-        public void createTickets(List<Int32> ChosenSeat, int reservationID, Show show, bool secretMovie, int adults, int adultsPlus, int children, int Students, int popcorn)
+        public decimal createTickets(List<Int32> ChosenSeat, int reservationID, Show show, bool secretMovie, int adults, int adultsPlus, int children, int Students, int popcorn)
         {
+            decimal totalPrice = 0.00M;
+
             var i = 0;
             while (adults > 0)
             {
-                this.createTicket(reservationID, ChosenSeat[i], "adults", show, secretMovie);
+                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "adults", show, secretMovie).Price;
                 adults--;
                 i++;
             }
 
             while (adultsPlus > 0)
             {
-                this.createTicket(reservationID, ChosenSeat[i], "adultsplus", show, secretMovie);
+                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "adultsplus", show, secretMovie).Price;
                 adultsPlus--;
                 i++;
             }
 
             while (children > 0)
             {
-                this.createTicket(reservationID, ChosenSeat[i], "children", show, secretMovie);
+                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "children", show, secretMovie).Price;
                 children--;
                 i++;
             }
 
             while (Students > 0)
             {
-                this.createTicket(reservationID, ChosenSeat[i], "students", show, secretMovie);
+                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "students", show, secretMovie).Price;
                 Students--;
                 i++;
             }
 
             while (popcorn > 0)
             {
-                this.createTicket(reservationID, ChosenSeat[i], "popcorn", show, secretMovie);
+                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "popcorn", show, secretMovie).Price;
                 popcorn--;
                 i++;
             }
-
+            return totalPrice;
         }
 
 
