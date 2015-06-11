@@ -1,4 +1,5 @@
 ﻿using Plathe.Domain.Abstract;
+using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 using Plathe.WebUI.Models;
@@ -13,17 +14,19 @@ namespace Plathe.WebUI.Controllers
 {
     public class MovieController : Controller
     {
-        private IMovieRepository repository;
+        private IMovieService movieService;
+        private IShowService showService;
         
         // GET: Movie
-        public MovieController(IMovieRepository movieRepository)
+        public MovieController(IMovieService movieService, IShowService showService)
         {
-            this.repository = movieRepository;
+            this.movieService = movieService;
+            this.showService = showService;
         }
 
-       public ViewResult Index()
+        public ViewResult Index()
         {
-            return View(repository.Movies);
+            return View(this.movieService.getAllMovies().ToList());
         }
 
         // GET: Movie/Details/5
@@ -33,14 +36,25 @@ namespace Plathe.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Movie movie = db.Movies.Find(id);
-            Movie movie = repository.Movies.First(s => s.MovieID == id);
+
+            // get current movie
+            Movie movie = this.movieService.getMovieById((int) id);
 
             if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+
+            // get shows for this movie
+            IEnumerable<Show> shows = this.showService.getShowsByMovieId((int) id).ToList();
+
+            MovieDetailViewModel viewModel = new MovieDetailViewModel
+            {
+                movie = movie,
+                showsForMovie = shows
+            };
+            
+            return View(viewModel);
         }
 
     }
