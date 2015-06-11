@@ -110,7 +110,7 @@ footer .container {
 
 #movieList table {
     border-bottom: 1px solid #999;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-collapse: collapse;
 }
 
@@ -120,11 +120,15 @@ footer .container {
 }
 
 #movieList table th {
-    height: 80px;
+    height: 40px;
+}
+
+#movieList table th.title {
+    height: 100px;
 }
 
 #movieList table td {
-    height: 50px;
+    height: 30px;
 }
 
 #movieList table th {
@@ -137,7 +141,7 @@ footer .container {
 }
 
 #movieList table th a {
-    padding: 5px 10px;
+    padding: 7px 15px;
     background: #ffc426;
     color: #333;
     text-decoration: none;
@@ -157,6 +161,10 @@ footer .container {
 #movieList table td.poster a{
     display: block;
     padding: 0 10px 20px 0;
+    height: 260px;
+}
+#movieList table td.poster a img {
+    height: 100%;
 }
 
 .translated-ltr .navbar-fixed-top {
