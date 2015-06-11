@@ -13,5 +13,7 @@ namespace Plathe.Domain.Entities
         public Boolean WheelchairAccess { get; set; }
         public Boolean ThreeDimensional { get; set; }
         public virtual ICollection<Row> Rows { get; set; }
+        public int countRows { get; set; }
+        public int countSeats { get; set; }
     }
 }
