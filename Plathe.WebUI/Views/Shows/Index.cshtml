@@ -14,24 +14,31 @@
             <td>
                 <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img sr><img src='@item.Movie.Image' /></a>
             </td>
-            <td>
+                <th colspan="2">
                 @Html.DisplayFor(model => item.Movie.Title)
-            </td>
+                </th>
+            </tr>
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomName)
             </td>
             <td>
-                Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
+                    @Html.DisplayFor(modelItem => item.StartingTime)
             </td>
+
+            </tr>
+            <tr>
             <td>
                 Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
             </td>
             <td>
-                3D: @(item.ThreeDimensional ? "Ja" : "Nee")
+                    @(item.ThreeDimensional ? "3D" : "")
             </td>
             <td>
                 @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
             </td>
         </tr>
+        </table>
+    </div>
     }
-</table>
+</div>

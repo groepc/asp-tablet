@@ -85,7 +85,7 @@
                                         Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
                                     </td>
                                     <td>
-                                        Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
+                                        @Html.DisplayFor(modelItem => item.getFormatedStartingTime)
                                     </td>
                                     <td>
                                         3D: @(item.ThreeDimensional ? "Ja" : "Nee")

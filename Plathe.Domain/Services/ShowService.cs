@@ -35,7 +35,8 @@ namespace Plathe.Domain.Services
 
             IEnumerable<Show> shows = repository.Shows
                                                     .Where(s => s.StartingTime >= DateTime.Today)
-                                                    .Where(s => s.StartingTime <= nextThursday);
+                                                    .Where(s => s.StartingTime <= nextThursday)
+                                                    .OrderBy(s => s.StartingTime);
             return shows;
         }
 
@@ -46,7 +47,9 @@ namespace Plathe.Domain.Services
 
         public IEnumerable<Show> getShowsByMovieId(int id)
         {
-            return repository.Shows.Where(model => model.MovieID == id);
+            return repository.Shows
+                                .Where(model => model.MovieID == id)
+                                .OrderBy(s => s.StartingTime);
         }
     }
 }
