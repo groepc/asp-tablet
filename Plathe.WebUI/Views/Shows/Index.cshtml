@@ -7,45 +7,38 @@
 
 <h2>Voorstellingen</h2>
 
-<div class="row" id="movieList">
-@foreach (var item in Model.Shows.ToList())
-{
-    <div class="col-sm-4">
-        <table>
-            <tr>
-                <td rowspan="4" class="poster">
-                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)">
-                        <img src='@item.Movie.Image' />
-                    </a>
-                </td>
+<table class="table">
+    @foreach (var item in Model.Shows.ToList())
+    {
+        <tr>
+            <td>
+                <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img sr><img src='@item.Movie.Image' /></a>
+            </td>
                 <th colspan="2">
-                    @Html.DisplayFor(model => item.Movie.Title)
+                @Html.DisplayFor(model => item.Movie.Title)
                 </th>
             </tr>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Room.RoomName)
-                </td>
-                <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomName)
+            </td>
+            <td>
                     @Html.DisplayFor(modelItem => item.StartingTime)
-                </td>
+            </td>
 
             </tr>
             <tr>
-                <td>
-                    Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
-                </td>
-                <td>
+            <td>
+                Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
+            </td>
+            <td>
                     @(item.ThreeDimensional ? "3D" : "")
-                </td>
-            </tr>
-            <tr>
-                <th colspan="2">
-                    @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
-                </th>
-
-            </tr>
+            </td>
+            <td>
+                @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
+            </td>
+        </tr>
         </table>
     </div>
-}
+    }
 </div>

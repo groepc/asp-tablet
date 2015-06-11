@@ -21,6 +21,24 @@ namespace Plathe.Domain.Entities
         [Display(Name = "Start tijd")]
         public DateTime StartingTime { get; set; }
 
+        public string getFormatedStartingTime
+        {
+            get
+            {
+                int currentDay = DateTime.Now.Day;
+                int showDay = this.StartingTime.Day;
+
+                if(currentDay == showDay)
+                {
+                    return "Vandaag om " + this.StartingTime.ToString("HH:mm");
+                }
+                else
+                {
+                    return this.StartingTime.Day.ToString() + "-" + this.StartingTime.Month.ToString() + " om " + this.StartingTime.ToString("HH:mm");
+                }
+            }
+        }
+
         [Display(Name = "3D")]
         public Boolean ThreeDimensional { get; set; }
 
