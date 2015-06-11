@@ -154,20 +154,28 @@
             // if previoius seat is not reserved
             if (!previousSeat.find('span').hasClass('reserved')) {
 
-                console.log('previous seat is not reserved');
-
                 // if seat before previous seat is reserved (meaning, there is one empty seat between selection
                 if (previousSeatBefore.find('span').hasClass('reserved')) {
-
-                    console.log('seat before previous is reserved');
-
                     success = false;
                     message = 'Let op: laat geen legen stoelen tussen reserveringen in.';
                 }
             }
 
-            // check if theree is one free seat after our selection (this is not allowed)
-            // TODO
+            // check if there is one free seat after our selection (this is not allowed)
+            var lastSelectedSeatId = nextSeats.last().data('seat-wrapper');
+            var lastSeatWrapper = $('tr[data-row-id="' + rowId + '"] td[data-seat-wrapper="' + lastSelectedSeatId + '"]');
+            var nextSeat = lastSeatWrapper.next();
+            var nextSeatAfter = lastSeatWrapper.next().next();
+
+            // if next seat is not reserved
+            if (!nextSeat.find('span').hasClass('reserved')) {
+
+                // and the seat after that IS reserved
+                if (nextSeatAfter.find('span').hasClass('reserved')) {
+                    success = false;
+                    message = 'Let op: laat geen legen stoelen tussen reserveringen in.';
+                }
+            }
 
             if(success === true) {
                 $(nextSeats).each(function () {
