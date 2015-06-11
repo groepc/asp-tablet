@@ -166,15 +166,15 @@ footer .container {
 }
 
 #movieList table th {
-    height: 40px;
+    height: 30px;
 }
 
 #movieList table th.title {
-    height: 100px;
+    height: 50px;
 }
 
 #movieList table td {
-    height: 30px;
+    height: 20px;
 }
 
 #movieList table th {
@@ -195,7 +195,6 @@ footer .container {
     -webkit-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
     box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.5);
-    
 }
 
 #movieList table th a:hover {

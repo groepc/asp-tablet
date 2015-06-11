@@ -13,18 +13,20 @@
        <div class="col-sm-4">
         <table>
             <tr>
-                <td rowspan="4" class="poster">
-                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img sr><img src='@item.Movie.Image' /></a>
+                <td rowspan="5" class="poster">
+                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img src='@item.Movie.Image' /></a>
                 </td>
                 <th colspan="2" class="title">
                     @Html.DisplayFor(model => item.Movie.Title)
                 </th>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     @Html.DisplayFor(modelItem => item.Room.RoomName)
                 </td>
-                <td>
+            </tr>
+            <tr>
+                <td colspan="2">
                     @Html.DisplayFor(modelItem => item.getFormatedStartingTime)
                 </td>
 
