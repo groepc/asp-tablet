@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CustomExtensions;
 
 namespace Plathe.Domain.Concrete
 {
@@ -233,37 +234,49 @@ namespace Plathe.Domain.Concrete
                     RoomID = 1,
                     RoomName = "Zaal 1",
                     WheelchairAccess = true,
-                    ThreeDimensional = true
+                    ThreeDimensional = true,
+                    countRows = 8,
+                    countSeats = 15
                 },
                 new Room {
                     RoomID = 2,
                     RoomName = "Zaal 2",
                     WheelchairAccess = true,
-                    ThreeDimensional = true
+                    ThreeDimensional = true,
+                    countRows = 8,
+                    countSeats = 15
                 },
                 new Room {
                     RoomID = 3,
                     RoomName = "Zaal 3",
                     WheelchairAccess = true,
-                    ThreeDimensional = false
+                    ThreeDimensional = false,
+                    countRows = 8,
+                    countSeats = 15
                 },
                 new Room {
                     RoomID = 4,
                     RoomName = "Zaal 4",
                     WheelchairAccess = true,
-                    ThreeDimensional = false
+                    ThreeDimensional = false,
+                    countRows = 6,
+                    countSeats = 10
                 },
                 new Room {
                     RoomID = 5,
                     RoomName = "Zaal 5",
                     WheelchairAccess = false,
-                    ThreeDimensional = false
+                    ThreeDimensional = false,
+                    countRows = 4,
+                    countSeats = 15
                 },
                 new Room {
                     RoomID = 6,
                     RoomName = "Zaal 6",
                     WheelchairAccess = false,
-                    ThreeDimensional = false
+                    ThreeDimensional = false,
+                    countRows = 4,
+                    countSeats = 15
                 }
             };
             rooms.ForEach(s => context.Rooms.Add(s));
@@ -272,6 +285,43 @@ namespace Plathe.Domain.Concrete
             /**
              * Add rows and seats for room 1 t/m 3 
              */
+
+            var rows = new List<Row>();
+            var seats = new List<Seat>();
+            var rowCount = 1;
+            var seatCount = 1;
+
+            foreach(Room room in rooms)
+            {
+                for(int rowId = 1; rowId <= room.countRows; rowId++)
+                {
+                    rows.Add(new Row
+                    {
+                        RowID = rowCount,
+                        RoomID = room.RoomID
+                    });
+
+                    for(int seatId = 1; seatId <= room.countSeats; seatId++)
+                    {
+                        seats.Add(new Seat
+                        {
+                            SeatID = seatCount++,
+                            RowID = rowCount,
+                            WheelChairSeat = false,
+                            PrioritySeat = false
+                        });
+                    }
+
+                    rowCount++;
+                }
+            }
+
+            rows.ForEach(s => context.Rows.Add(s));
+            context.SaveChanges();
+            seats.ForEach(s => context.Seats.Add(s));
+            context.SaveChanges();
+
+            /*
             var rows = new List<Row>();
             var seats = new List<Seat>();
 
@@ -312,11 +362,13 @@ namespace Plathe.Domain.Concrete
             }
             seats.ForEach(s => context.Seats.Add(s));
             context.SaveChanges();
+            */
 
             /**
              * Add rows and seats for room 4
              */
 
+            /*
             rowCount = context.Rows.Count() + 1;
 
             rows.Clear();
@@ -344,7 +396,7 @@ namespace Plathe.Domain.Concrete
             }
             seats.ForEach(s => context.Seats.Add(s));
             context.SaveChanges();
-
+            */
 
             /**
              * Add shows
@@ -482,7 +534,6 @@ namespace Plathe.Domain.Concrete
             reservations.ForEach(s => context.Reservations.Add(s));
             context.SaveChanges();
 
-
             /**
              * Add tickets
              */
@@ -491,54 +542,52 @@ namespace Plathe.Domain.Concrete
                 new Ticket {
                     ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 109,
+                    SeatID = 33,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "AWdfet43$#%#^%",
+                    UniqueCode = "".createRandomString(),
                     Options = "options",
                 },
                 new Ticket {
                     ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 133,
+                    SeatID = 34,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "AW23425@##@$",
+                    UniqueCode = "".createRandomString(),
                     Options = "options",
                 },
                 new Ticket {
                     ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 151,
+                    SeatID = 35,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "AW23425@##@$",
+                    UniqueCode = "".createRandomString(),
                     Options = "options",
                 },
                 new Ticket {
                     ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 175,
+                    SeatID = 83,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "AW23425@##@$",
+                    UniqueCode = "".createRandomString(),
                     Options = "options",
                 },
                 new Ticket {
                     ShowID = 1,
                     ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 199,
+                    SeatID = 84,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "AW23425@##@$",
+                    UniqueCode = "".createRandomString(),
                     Options = "options",
                 }
             };
 
             tickets.ForEach(s => context.Tickets.Add(s));
             context.SaveChanges();
-
-
         }
     }
 }

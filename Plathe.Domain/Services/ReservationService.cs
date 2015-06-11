@@ -18,6 +18,13 @@ namespace Plathe.Domain.Services
 
         }
 
+        public Reservation updateReservation (int reservationID, decimal price) {
+
+            Reservation reservation = getReservationById(reservationID);
+            reservation.PriceTotal = price;
+            return this.repository.updateReservation(reservation);
+        }
+
         public Reservation createReservation()
         {
 

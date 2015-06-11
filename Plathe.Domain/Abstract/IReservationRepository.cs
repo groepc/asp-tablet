@@ -13,5 +13,6 @@ namespace Plathe.Domain.Abstract
 
         Reservation saveReservation(Reservation reservation);
         Reservation getReservationById(int id);
+        Reservation updateReservation(Reservation reservation);
     }
 }

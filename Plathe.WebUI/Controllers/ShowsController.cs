@@ -136,7 +136,8 @@ namespace Plathe.WebUI.Controllers
             string seatsString = data["seat-selected"];
             var ChosenSeat = seatsString.Split(',').Select(x => int.Parse(x)).ToList();
 
-            this.ticketService.createTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn);
+            Decimal totalPrice = this.ticketService.createTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn);
+            this.reservationService.updateReservation(reservationID, totalPrice);
 
             // send variables to view
             ViewBag.ReservationId = reservationID;

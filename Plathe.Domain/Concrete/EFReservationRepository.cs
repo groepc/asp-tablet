@@ -26,5 +26,11 @@ namespace Plathe.Domain.Concrete
             return reservation;
         }
 
+        public Reservation updateReservation(Reservation reservation)
+        {
+            context.SaveChanges();
+            return reservation;
+        }
+
     }
 }
