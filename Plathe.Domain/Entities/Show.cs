@@ -13,12 +13,12 @@ namespace Plathe.Domain.Entities
         public int MovieID { get; set; }
         public int RoomID { get; set; }
 
-        [Display(Name = "Ondertiteling (bv. EN, NL)")]
+        [Display(Name = "Ondertiteling")]
         public string Subtitle { get; set; }
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
-        [Display(Name = "Start datum")]
+        [Display(Name = "Start tijd")]
         public DateTime StartingTime { get; set; }
 
         [Display(Name = "3D")]

@@ -12,7 +12,6 @@
 
 <div class="row">
     <div class="col-sm-3">
-        <h3>Informatie</h3>
         <dl>
             <dt><img src="@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.Movie.Image)" /></dt>
             <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.Movie.Title)</dt>
@@ -22,7 +21,16 @@
             <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.StartingTime)</dt>
             <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.StartingTime)</dd>
             <dt>@Html.DisplayNameFor(model => model.TicketSelectionViewModel.Show.ThreeDimensional)</dt>
-            <dd>@Html.DisplayFor(model => model.TicketSelectionViewModel.Show.ThreeDimensional)</dd>
+            <dd>
+                @if (Model.TicketSelectionViewModel.Show.ThreeDimensional)
+                {
+                    <span>Ja</span>
+                }
+                else
+                {
+                    <span>Nee</span>
+                }
+            </dd>
         </dl>
     </div>
 
@@ -42,7 +50,7 @@
                         <tr data-row-id="@row.RowID">
                             @foreach (var seat in row.Seats)
                             {
-                                <td>
+                                <td data-seat-wrapper="@(seat.SeatID)">
                                     @if (seat.Reserved)
                                     {
                                         <span class="seat reserved">
@@ -109,7 +117,7 @@
     jQuery(document).ready(function ($) {
         var totalSeats = @(Model.TicketSelectionViewModel.TotalAmount)
 
-        $('table').on('click', 'label', function () {
+        $('tbody').on('click', 'label', function () {
 
             // get selected seat + row
             var rowId = $(this).data('row-id');
@@ -122,12 +130,14 @@
             var nextSeats = $(this).parent().nextAll().slice(0, totalSeats - 1);
 
             var success = true;
+            var message = 'Selectie niet mogelijk';
 
+            // check if we can place all seats on one row, if not no success
             if (nextSeats.length != totalSeats - 1) {
                 success = false;
             }
 
-            // check if reserved seat is in the way
+            // check if reserved seat is in the way, if there is, no success
             $(nextSeats).each(function () {
                 if ($(this).find('span').hasClass('reserved')) {
                     success = false;
@@ -135,7 +145,26 @@
             });
 
             // check if there is one free seat before our selection (this is not allowed)
-            // TODO
+            var currentSeatWrapper = $('tr[data-row-id="' + rowId + '"] td[data-seat-wrapper="' + seatId + '"]');
+            var previousSeat = currentSeatWrapper.prev();
+            var previousSeatBefore = currentSeatWrapper.prev().prev();
+
+            //console.log(previousSeat, previousSeatBefore);
+
+            // if previoius seat is not reserved
+            if (!previousSeat.find('span').hasClass('reserved')) {
+
+                console.log('previous seat is not reserved');
+
+                // if seat before previous seat is reserved (meaning, there is one empty seat between selection
+                if (previousSeatBefore.find('span').hasClass('reserved')) {
+
+                    console.log('seat before previous is reserved');
+
+                    success = false;
+                    message = 'Let op: laat geen legen stoelen tussen reserveringen in.';
+                }
+            }
 
             // check if theree is one free seat after our selection (this is not allowed)
             // TODO
@@ -149,7 +178,7 @@
                     $('#payButton').prop('disabled', false);
                 });
             } else {
-                alert('Selectie niet mogelijk.');
+                alert(message);
                 $('table').find('input').prop('checked', false);
             }
         });

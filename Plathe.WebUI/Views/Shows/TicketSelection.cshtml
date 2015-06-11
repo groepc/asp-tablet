@@ -12,7 +12,6 @@
 
 <div class="row">
     <div class="col-sm-3">
-        <h3>Informatie</h3>
         <dl>
             <dt><a href="/Movie/Details/@Html.DisplayFor(model => model.Show.Movie.MovieID)"><img src="@Html.DisplayFor(model => model.Show.Movie.Image)" /></a></dt>
             <dt>@Html.DisplayNameFor(model => model.Show.Movie.Title)</dt>
@@ -22,21 +21,29 @@
             <dt>@Html.DisplayNameFor(model => model.Show.StartingTime)</dt>
             <dd>@Html.DisplayFor(model => model.Show.StartingTime)</dd>
             <dt>@Html.DisplayNameFor(model => model.Show.ThreeDimensional)</dt>
-            <dd>@Html.DisplayFor(model => model.Show.ThreeDimensional)</dd>
+            <dd>
+                @if (Model.Show.ThreeDimensional)
+                {
+                    <span>Ja</span>
+                }
+                else
+                {
+                    <span>Nee</span>
+                }
+            </dd>
         </dl>
     </div>
 
     <div class="col-sm-9">
-        <h3>Stap 1: Kies het aantal tickets</h3>
+        <h3 style="margin-bottom: 25px;">Stap 1: Kies het aantal tickets</h3>
            
 
         @using (Html.BeginForm())
         {
-            <!--<form action="/shows/SeatSelection" name="ticket-selection" method="post">-->
             @Html.AntiForgeryToken()
             
             <div class="form-group row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     Aantal volwassenen
                 </div>
                 <div class="col-sm-2">
@@ -44,7 +51,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     Aantal 65+
                 </div>
                 <div class="col-sm-2">
@@ -52,7 +59,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     Aantal kinderen
                 </div>
                 <div class="col-sm-2">
@@ -60,7 +67,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     Aantal kinderen
                 </div>
                 <div class="col-sm-2">
@@ -68,7 +75,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     Aantal Popcorn tickets
                 </div>
                 <div class="col-sm-2">
@@ -82,12 +89,10 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-12 clearfix">
-                    @Html.HiddenFor(m => m.ShowId);
-
+                    @Html.HiddenFor(m => m.ShowId)
                     <button type="submit" class="btn btn-lg btn-success pull-right">Naar stoelselectie <i class="glyphicon glyphicon-arrow-right"></i></button>
                 </div>
             </div>
-            <!--</form> -->
         }
     </div>   
 </div>
