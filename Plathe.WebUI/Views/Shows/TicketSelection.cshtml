@@ -14,7 +14,7 @@
     <div class="col-sm-3">
         <h3>Informatie</h3>
         <dl>
-            <dt><img src="@Html.DisplayFor(model => model.Show.Movie.Image)" /></dt>
+            <dt><a href="/Movie/Details/@Html.DisplayFor(model => model.Show.Movie.MovieID)"><img src="@Html.DisplayFor(model => model.Show.Movie.Image)" /></a></dt>
             <dt>@Html.DisplayNameFor(model => model.Show.Movie.Title)</dt>
             <dd>@Html.DisplayFor(model => model.Show.Movie.Title)</dd>
             <dt>@Html.DisplayNameFor(model => model.Show.Subtitle)</dt>

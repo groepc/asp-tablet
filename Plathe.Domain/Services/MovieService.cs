@@ -29,8 +29,9 @@ namespace Plathe.Domain.Services
             var genreID = this.repositoryGenre.getGenreIdByName(name);
             return this.repository.getMovieByGenreId(genreID);
         }
+        
         public Movie getMovieById(int id)
-        {
+        {        
             return repository.Movies.FirstOrDefault(model => model.MovieID == id);
         }
     }

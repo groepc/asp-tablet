@@ -1,4 +1,5 @@
-﻿@model Plathe.WebUI.Models.ShowViewModel
+﻿@using Plathe.Domain.Entities
+@model Plathe.WebUI.Models.ShowViewModel
 
 @{
     ViewBag.Title = "Voorstellingen";
@@ -10,7 +11,10 @@
 @foreach (var item in Model.Shows.ToList()) {
     <tr>
         <td>
-            @Html.DisplayFor(model => item.Movie.Title);
+            <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img src='@item.Movie.Image' /></a>
+</td>
+        <td>
+            @Html.DisplayFor(model => item.Movie.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Room.RoomName)
@@ -25,7 +29,7 @@
             3D: @(item.ThreeDimensional ? "Ja" : "Nee")
         </td>
         <td>
-            @Html.ActionLink("Reserveren", "TicketSelection", new { id=item.ShowID })
+            @Html.ActionLink("Reserveren", "TicketSelection", new {id = item.ShowID})
         </td>
     </tr>
 }

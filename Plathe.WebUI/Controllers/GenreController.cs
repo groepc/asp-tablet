@@ -19,10 +19,10 @@ namespace Plathe.WebUI.Controllers
         }
 
        public ActionResult Browse()
-        {
-            // Retrieve Genre and its assosiated movies from database
-            var genre = Request.QueryString["genreID"];
-            return View(this.movieService.getMoviesByGenreName(genre));
+       {       
+           // Retrieve Genre and its assosiated movies from database
+            var genreQuery = Request.QueryString["genreID"];
+            return View(this.movieService.getMoviesByGenreName(genreQuery));
         }
 
     }
