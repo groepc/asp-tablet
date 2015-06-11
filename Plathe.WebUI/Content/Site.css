@@ -30,6 +30,7 @@ header {
     left: 0;
     right: 0;
     background-color: #ffc426;
+    z-index: 999;
 }
 
 header #logo {

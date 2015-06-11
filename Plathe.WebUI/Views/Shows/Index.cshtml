@@ -10,7 +10,7 @@
 @foreach (var item in Model.Shows.ToList()) {
     <tr>
         <td>
-            @Html.DisplayFor(model => item.Movie.Title);
+            @Html.DisplayFor(model => item.Movie.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Room.RoomName)
