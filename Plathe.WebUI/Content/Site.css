@@ -104,6 +104,52 @@ footer .container {
     padding-top: 20px;
 }
 
+/* SLider */
+/*--------*/
+#slider {
+    position: relative;
+    margin: 0 auto;
+    height: 315px;
+    overflow: hidden;
+}
+#slider a {
+    background-position: center center;
+    background-repeat: no-repeat;
+    bottom: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 84px;
+    z-index: 10;
+    cursor: pointer;
+}
+#slider a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#slider a.sliderPrev {
+    background-image: url("../Content/img/prev.png");
+    left: 0;
+}
+#slider a.sliderNext {
+    background-image: url("../Content/img/next.png");
+    right: 0;
+}
+
+#slider .slide {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: #fff;
+}
+
+#slider .slide img {
+    vertical-align: middle;
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+}
 
 /* Movie List */
 /*------------*/
