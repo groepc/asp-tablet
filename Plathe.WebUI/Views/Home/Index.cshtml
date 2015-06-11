@@ -6,7 +6,14 @@
     ViewBag.Title = "Plathe";
 }
 
-<div><img src="~/Content/img/banner.jpg" /></div>
+<div id="slider">
+    <div class="slide"><img src="~/Content/img/banner_avengers.jpg" /></div>
+    <div class="slide"><img src="~/Content/img/banner_sanandreas.png" /></div>
+    <div class="slide"><img src="~/Content/img/banner_shaun.jpg" /></div>
+    
+    <a class="sliderPrev" onclick="slider.sliderPrev()"></a>
+    <a class="sliderNext" onclick="slider.sliderNext()"></a>
+</div>
 
 <div>
     <div class="col-sm-4">
