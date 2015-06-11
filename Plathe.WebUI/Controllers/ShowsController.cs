@@ -43,7 +43,7 @@ namespace Plathe.WebUI.Controllers
         }
 
         // GET: Shows/TicketSelection/5
-        public ActionResult TicketSelection(int? id)
+        public ActionResult TicketSelection(int id)
         {
             if (id == null)
             {
@@ -51,7 +51,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current show
-            Show show = showService.getShowById((int) id);
+            Show show = showService.getShowById(id);
 
             if (show == null) 
             {

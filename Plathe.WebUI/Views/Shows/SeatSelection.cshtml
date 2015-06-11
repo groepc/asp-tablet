@@ -119,6 +119,11 @@
 
         $('tbody').on('click', 'label', function () {
 
+            if(totalSeats == 1) {
+                // show submit button
+                $('#payButton').prop('disabled', false);
+            }
+
             // get selected seat + row
             var rowId = $(this).data('row-id');
             var seatId = $(this).data('seat-id');

@@ -404,6 +404,7 @@ namespace Plathe.Domain.Concrete
 
                 // morgen
                 new Show {
+                    ShowID = 7,
                     MovieID = 1,
                     RoomID = 2,
                     Subtitle = "EN",
@@ -411,6 +412,7 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = true
                 },
                 new Show {
+                    ShowID = 8,
                     MovieID = 2,
                     RoomID = 2,
                     Subtitle = "EN",
@@ -418,6 +420,7 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = false
                 },
                 new Show {
+                    ShowID = 9,
                     MovieID = 3,
                     RoomID = 3,
                     Subtitle = "EN",
@@ -425,6 +428,7 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = true
                 },
                 new Show {
+                    ShowID = 10,
                     MovieID = 4,
                     RoomID = 4,
                     Subtitle = "EN",
@@ -432,6 +436,7 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = false
                 },
                 new Show {
+                    ShowID = 11,
                     MovieID = 5,
                     RoomID = 5,
                     Subtitle = "NL",
@@ -439,6 +444,7 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = false
                 },
                 new Show {
+                    ShowID = 12,
                     MovieID = 6,
                     RoomID = 6,
                     Subtitle = "FR",
