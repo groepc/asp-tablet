@@ -22,11 +22,11 @@ namespace Plathe.Domain.Extensions
             {
                 case "adult":
                     return adult(price);
-                case "adultplus":
+                case "adultsplus":
                     return adultplus(show, price);
                 case "children":
                     return children(show, price);
-                case "student":
+                case "students":
                     return student(show, price);
                 case "popcorn":
                     return popcorn(price);
