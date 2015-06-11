@@ -351,6 +351,8 @@ namespace Plathe.Domain.Concrete
              */
             var shows = new List<Show>
             {
+
+                // vandaag
                 new Show {
                     ShowID = 1,
                     MovieID = 1,
@@ -399,14 +401,51 @@ namespace Plathe.Domain.Concrete
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 },
+
+                // morgen
                 new Show {
-                    ShowID = 7,
                     MovieID = 1,
-                    RoomID = 1,
-                    Subtitle = "FR",
-                    StartingTime = DateTime.Now.AddMonths(2),
+                    RoomID = 2,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(18).AddMinutes(30),
+                    ThreeDimensional = true
+                },
+                new Show {
+                    MovieID = 2,
+                    RoomID = 2,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(19),
                     ThreeDimensional = false
-                }
+                },
+                new Show {
+                    MovieID = 3,
+                    RoomID = 3,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(19).AddMinutes(30),
+                    ThreeDimensional = true
+                },
+                new Show {
+                    MovieID = 4,
+                    RoomID = 4,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(20),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieID = 5,
+                    RoomID = 5,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieID = 6,
+                    RoomID = 6,
+                    Subtitle = "FR",
+                    StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
+                    ThreeDimensional = false
+                },
+                
             };
             shows.ForEach(s => context.Shows.Add(s));
             context.SaveChanges();
