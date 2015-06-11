@@ -20,17 +20,8 @@
             <dd>@Html.DisplayFor(model => model.Show.Subtitle)</dd>
             <dt>@Html.DisplayNameFor(model => model.Show.StartingTime)</dt>
             <dd>@Html.DisplayFor(model => model.Show.getFormatedStartingTime)</dd>
-            <dt>@Html.DisplayNameFor(model => model.Show.ThreeDimensional)</dt>
-            <dd>
-                @if (Model.Show.ThreeDimensional)
-                {
-                    <span>Ja</span>
-                }
-                else
-                {
-                    <span>Nee</span>
-                }
-            </dd>
+            <dt>@(Model.Show.ThreeDimensional ? "3D" : "")</dt>
+            <dd></dd>
         </dl>
     </div>
 
