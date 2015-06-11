@@ -48,7 +48,7 @@ namespace Plathe.WebUI.Models
         [Range(1, 25)]
         public int TotalAmount
         {
-            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren + this.AmountPopcorn; }
+            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren +  this.AmountStudents + this.AmountPopcorn; }
         }
 
     }
