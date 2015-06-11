@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <header>
+        <header class="hidden-print">
             <div class="container">
                 @Html.ActionLink("Plathé", "Index", "Home", new { area = "" }, new { @id = "logo" })
 
@@ -36,7 +36,7 @@
             @RenderBody()
         </div>
 
-        <footer>
+        <footer class="hidden-print">
             <div class="container">
                 <div class="col-sm-6">
                     <p>&copy; @DateTime.Now.Year - Plathé Bioscopen</p>
