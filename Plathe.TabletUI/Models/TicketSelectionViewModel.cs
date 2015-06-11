@@ -5,13 +5,24 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.Abstract;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.TabletUI.Models
 {
     public class TicketSelectionViewModel
     {
+        private IShowService service;
 
-        public Show Show { get; set; }
+        public TicketSelectionViewModel()
+        {
+            this.service = DependencyResolver.Current.GetService<IShowService>();
+        }
+
+        public Show Show
+        {
+           get { return service.getShowById(ShowId); }
+        }
 
         [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }

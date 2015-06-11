@@ -14,7 +14,7 @@ namespace Plathe.TabletUI.Models
     public class MovieViewModel
     {
 
-        public IMovieService service;
+        private IMovieService service;
 
 
         public MovieViewModel()
