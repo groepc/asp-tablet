@@ -21,12 +21,12 @@ namespace Plathe.TabletUI.Models
         }
         public IEnumerable<Show> Shows
         {
-            get { return service.getAllShows(); }
+            get { return service.GetAllShows(); }
         }
 
         public Show Show
         {
-            get { return service.getShowById(ShowId); }
+            get { return service.GetShowById(ShowId); }
         }
 
         [HiddenInput(DisplayValue = false)]

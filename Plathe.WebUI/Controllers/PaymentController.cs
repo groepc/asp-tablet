@@ -11,7 +11,7 @@ namespace Plathe.Controllers
     public class PaymentController : Controller
     {
 
-        private EFDbContext db = new EFDbContext();
+        private EfDbContext db = new EfDbContext();
 
         // GET: Payment
         public ActionResult Index(int? id)

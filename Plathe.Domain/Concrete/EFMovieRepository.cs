@@ -8,18 +8,18 @@ using System.Linq;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFMovieRepository : IMovieRepository
+    public class EfMovieRepository : IMovieRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Movie> Movies
         {
             get { return context.Movies; }
         }
 
-        public IEnumerable<Movie> getMovieByGenreId(int genreID)
+        public IEnumerable<Movie> GetMovieByGenreId(int genreId)
         {
-            return context.Movies.Where(m => m.GenreID == genreID);
+            return context.Movies.Where(m => m.GenreId == genreId);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Plathe.Domain.Abstract
     public interface IMovieRepository
     {
        IEnumerable<Movie> Movies { get; }
-       IEnumerable<Movie> getMovieByGenreId(int genreID);
+       IEnumerable<Movie> GetMovieByGenreId(int genreId);
     }
 }

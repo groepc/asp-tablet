@@ -8,12 +8,12 @@ namespace Plathe.Domain.Entities
 {
     public class Room
     {
-        public int RoomID { get; set; }
+        public int RoomId { get; set; }
         public string RoomName { get; set; }
         public Boolean WheelchairAccess { get; set; }
         public Boolean ThreeDimensional { get; set; }
         public virtual ICollection<Row> Rows { get; set; }
-        public int countRows { get; set; }
-        public int countSeats { get; set; }
+        public int CountRows { get; set; }
+        public int CountSeats { get; set; }
     }
 }

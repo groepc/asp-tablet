@@ -14,7 +14,7 @@
         <table>
             <tr>
                 <td rowspan="5" class="poster">
-                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieID)"><img src='@item.Movie.Image' /></a>
+                    <a href="/Movie/Details/@Html.DisplayFor(modelItem => item.MovieId)"><img src='@item.Movie.Image' /></a>
                 </td>
                 <th colspan="2" class="title">
                     @Html.DisplayFor(model => item.Movie.Title)
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    @Html.DisplayFor(modelItem => item.getFormatedStartingTime)
+                    @Html.DisplayFor(modelItem => item.GetFormatedStartingTime)
                 </td>
 
             </tr>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <th colspan="2">
-                    @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
+                    @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowId })
                 </th>
             </tr>
         </table>

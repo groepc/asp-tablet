@@ -11,8 +11,8 @@ namespace Plathe.Domain.Abstract
     {
         IEnumerable<Reservation> Reservations { get; }
 
-        Reservation saveReservation(Reservation reservation);
-        Reservation getReservationById(int id);
-        Reservation updateReservation(Reservation reservation);
+        Reservation SaveReservation(Reservation reservation);
+        Reservation GetReservationById(int id);
+        Reservation UpdateReservation(Reservation reservation);
     }
 }

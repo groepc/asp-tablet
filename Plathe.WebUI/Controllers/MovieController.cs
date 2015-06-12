@@ -26,7 +26,7 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Index()
         {
-            return View(this.movieService.getAllMovies().ToList());
+            return View(this.movieService.GetAllMovies().ToList());
         }
 
         // GET: Movie/Details/5
@@ -38,7 +38,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current movie
-            Movie movie = this.movieService.getMovieById((int) id);
+            Movie movie = this.movieService.GetMovieById((int) id);
 
             if (movie == null)
             {
@@ -46,7 +46,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get shows for this movie
-            IEnumerable<Show> shows = this.showService.getShowsByMovieId((int) id).ToList();
+            IEnumerable<Show> shows = this.showService.GetShowsByMovieId((int) id).ToList();
 
             MovieDetailViewModel viewModel = new MovieDetailViewModel
             {

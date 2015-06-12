@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFShowRepository : IShowRepository
+    public class EfShowRepository : IShowRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Show> Shows
         {

@@ -38,11 +38,11 @@ namespace Plathe.TabletUI.Controllers
         public ViewResult TicketSelection(int? id)
         {
             // get current show
-            Show show = showService.getShowById((int)id);
+            Show show = showService.GetShowById((int)id);
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
-                ShowId = show.ShowID
+                ShowId = show.ShowId
             };
 
             return View(viewModel);

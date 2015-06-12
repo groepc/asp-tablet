@@ -33,11 +33,11 @@ namespace Plathe.TabletUI.Controllers
 
         public ViewResult Details(int id)
         {
-            Movie movie = movieService.getMovieById((int)id);
+            Movie movie = movieService.GetMovieById((int)id);
 
             MovieViewModel model = new MovieViewModel
             {
-                MovieId = movie.MovieID
+                MovieId = movie.MovieId
             };
             return View(model);
         }

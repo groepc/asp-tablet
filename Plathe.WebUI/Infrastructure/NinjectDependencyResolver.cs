@@ -30,14 +30,14 @@ namespace Plathe.WebUI.Infrastructure
         private void AddBindings()
         {
             // repositories
-            kernel.Bind<IGenreRepository>().To<EFGenreRepository>();
-            kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
-            kernel.Bind<IReservationRepository>().To<EFReservationRepository>();
-            kernel.Bind<IRoomRepository>().To<EFRoomRepository>();
-            kernel.Bind<IRowRepository>().To<EFRowRepository>();
-            kernel.Bind<ISeatRepository>().To<EFSeatRepository>();
-            kernel.Bind<IShowRepository>().To<EFShowRepository>();
-            kernel.Bind<ITicketRepository>().To<EFTicketRepository>();
+            kernel.Bind<IGenreRepository>().To<EfGenreRepository>();
+            kernel.Bind<IMovieRepository>().To<EfMovieRepository>();
+            kernel.Bind<IReservationRepository>().To<EfReservationRepository>();
+            kernel.Bind<IRoomRepository>().To<EfRoomRepository>();
+            kernel.Bind<IRowRepository>().To<EfRowRepository>();
+            kernel.Bind<ISeatRepository>().To<EfSeatRepository>();
+            kernel.Bind<IShowRepository>().To<EfShowRepository>();
+            kernel.Bind<ITicketRepository>().To<EfTicketRepository>();
 
             // services
             kernel.Bind<IReservationService>().To<ReservationService>();

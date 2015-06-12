@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFSeatRepository : ISeatRepository
+    public class EfSeatRepository : ISeatRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Seat> Seats
         {

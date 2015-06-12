@@ -16,12 +16,12 @@ namespace Plathe.UnitTests
             // - create the mock repository
             Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
             mock.Setup(m => m.Movies).Returns(new Movie[]{
-            new Movie {MovieID = 1, Title = "Thor", GenreID = 1},
-            new Movie {MovieID = 2, Title = "Loki", GenreID = 2},
-            new Movie {MovieID = 3, Title = "Sif", GenreID = 3},
-            new Movie {MovieID = 4, Title = "Odin", GenreID = 4},
-            new Movie {MovieID = 5, Title = "Lagertha", GenreID = 5},
-            new Movie {MovieID = 6, Title = "Shaun", GenreID = 6}
+            new Movie {MovieId = 1, Title = "Thor", GenreId = 1},
+            new Movie {MovieId = 2, Title = "Loki", GenreId = 2},
+            new Movie {MovieId = 3, Title = "Sif", GenreId = 3},
+            new Movie {MovieId = 4, Title = "Odin", GenreId = 4},
+            new Movie {MovieId = 5, Title = "Lagertha", GenreId = 5},
+            new Movie {MovieId = 6, Title = "Shaun", GenreId = 6}
             });
 
             //Arrange

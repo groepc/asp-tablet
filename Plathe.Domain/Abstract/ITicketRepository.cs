@@ -11,7 +11,7 @@ namespace Plathe.Domain.Abstract
     {
         IEnumerable<Ticket> Tickets { get; }
 
-        Ticket saveTicket(Ticket reservation);
+        Ticket SaveTicket(Ticket reservation);
     }
 
 

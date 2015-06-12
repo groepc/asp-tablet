@@ -22,7 +22,7 @@ namespace Plathe.WebUI.Controllers
        {       
            // Retrieve Genre and its assosiated movies from database
             var genreQuery = Request.QueryString["genreID"];
-            return View(this.movieService.getMoviesByGenreName(genreQuery));
+            return View(this.movieService.GetMoviesByGenreName(genreQuery));
         }
 
     }
