@@ -57,5 +57,11 @@ namespace Plathe.WebUI.Controllers
             return View(viewModel);
         }
 
+        //Individual assignment Mieke
+        public ViewResult Create()
+        {
+            return View(this.movieService.GetAllMovies().ToList());
+        }
+
     }
 }

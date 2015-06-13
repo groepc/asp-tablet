@@ -11,5 +11,29 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Voeg een film toe</h2>
+<h2>Overzicht films</h2>
 
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.MovieId)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Language)</th>
+        <th>@Html.DisplayNameFor(model => model.Duration)</th>
+        <th>@Html.DisplayNameFor(model => model.MinimumAge)</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => p.MovieId)</td>
+            <td>@Html.DisplayFor(modelItem => p.Title)</td>
+            <td>@Html.DisplayFor(modelItem => p.Language)</td>
+            <td>@Html.DisplayFor(modelItem => p.Duration)</td>
+            <td>@Html.DisplayFor(modelItem => p.MinimumAge)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = p.MovieId })
+            </td>
+        </tr>
+    }
+
+</table>
