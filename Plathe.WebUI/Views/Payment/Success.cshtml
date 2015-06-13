@@ -6,7 +6,30 @@
 <div class="text-center">
     <h1>Bedankt voor uw bestelling.</h1>
     <h2>Uw unieke code: @Model.UniqueCode</h2>
-    
+    <p>Met deze code print u uw tickets in de bioscoop uit.</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Film</td>
+                <td>Ticket prijs</td>
+                <td>Zaal</td>
+                <td>Stoel</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in @Model.Tickets)
+            {
+                <tr>
+                    <td>@(ticket.Show.Movie.Title)</td>
+                    <td>@(ticket.Price)</td>
+                    <td>@(ticket.Show.RoomId)</td>
+                    <td>@(ticket.SeatId)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <p class="hidden-print">Via onderstaande knop kunt u deze pagina uitprinten.</p>
 
     <a href="#" onclick="window.print()" class="hidden-print">Print deze pagina</a>

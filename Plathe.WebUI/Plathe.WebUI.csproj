@@ -173,6 +173,7 @@
     <Content Include="Views\Payment\Success.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Genre\Browse.cshtml" />
+    <Content Include="Views\Movie\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

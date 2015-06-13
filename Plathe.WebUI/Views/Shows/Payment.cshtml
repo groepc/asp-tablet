@@ -13,6 +13,7 @@
                 <td>Film</td>
                 <td>Ticket code</td>
                 <td>Ticket prijs</td>
+                <td>Zaal</td>
                 <td>Stoel</td>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                     <td>@(ticket.Show.Movie.Title)</td>
                     <td>@(ticket.UniqueCode)</td>
                     <td>@(ticket.Price)</td>
+                    <td>@(ticket.Show.RoomId)</td>
                     <td>@(ticket.SeatId)</td>
                 </tr>
             }
