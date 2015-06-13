@@ -47,12 +47,12 @@ namespace Plathe.WebUI.Models
 
         //VIP-kaartje
         [Range(0, 6)]
-        public int AmountVIP { get; set; }
+        public int AmountVip { get; set; }
 
         [Range(1, 36)]
         public int TotalAmount
         {
-            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren +  this.AmountStudents + this.AmountPopcorn + this.AmountVIP; }
+            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren +  this.AmountStudents + this.AmountPopcorn + this.AmountVip; }
         }
 
     }

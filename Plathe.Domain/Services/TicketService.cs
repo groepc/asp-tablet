@@ -68,7 +68,7 @@ namespace Plathe.Domain.Services
         }
 
 
-        public Ticket CreateTicket(int reservationID, int seatID, string type, Show show, bool secretMovie = false)
+        public Ticket CreateTicket(int reservationId, int seatId, string type, Show show, bool secretMovie = false)
         {
 
             // create reservation
@@ -78,8 +78,8 @@ namespace Plathe.Domain.Services
             Ticket ticket = new Ticket
             {
                 ShowId = show.ShowId,
-                ReservationId = reservationID,
-                SeatId = seatID,
+                ReservationId = reservationId,
+                SeatId = seatId,
                 UniqueCode = uniqueCode,
                 Price = new CalculatePrice().GetTicketPricePrice(type, show, secretMovie),
                 Options = "options",
