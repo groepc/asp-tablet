@@ -1,17 +1,16 @@
-﻿using Plathe.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomExtensions;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Concrete
 {
 
-    class EfDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EfDbContext>
+    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    //class EfDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
+    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
         protected override void Seed(EfDbContext context)
         {
