@@ -8,8 +8,8 @@ namespace Plathe.Domain.Entities
 {
     public class Row
     {
-        public int RowID { get; set; }
-        public int RoomID { get; set; }
+        public int RowId { get; set; }
+        public int RoomId { get; set; }
         public virtual ICollection<Seat> Seats { get; set; }
     }
 }

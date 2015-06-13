@@ -21,7 +21,7 @@ namespace Plathe.TabletUI.Models
 
         public Show Show
         {
-           get { return service.getShowById(ShowId); }
+           get { return service.GetShowById(ShowId); }
         }
 
         [HiddenInput(DisplayValue = false)]

@@ -8,7 +8,7 @@ namespace CustomExtensions
 {
     public static class StringExtension
     {
-        public static string createRandomString(this string str)
+        public static string CreateRandomString(this string str)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();

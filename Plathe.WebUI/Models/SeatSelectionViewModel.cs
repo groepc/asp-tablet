@@ -12,7 +12,7 @@ namespace Plathe.WebUI.Models
     public class SeatSelectionViewModel
     {
 
-        private EFDbContext db = new EFDbContext();
+        private EfDbContext db = new EfDbContext();
 
         public Show Show { get; set; }
       
@@ -26,14 +26,14 @@ namespace Plathe.WebUI.Models
             {
                 IEnumerable<Row> getRows = this.Show.Room.Rows;
 
-                var tickets = db.Tickets.Where(s => s.ShowID == this.Show.ShowID);
+                var tickets = db.Tickets.Where(s => s.ShowId == this.Show.ShowId);
 
                 // set reservation status of each seat
                 foreach (var row in getRows)
                 {
                     foreach (var seat in row.Seats)
                     {
-                        bool isReserved = tickets.Any(t => t.SeatID == seat.SeatID);
+                        bool isReserved = tickets.Any(t => t.SeatId == seat.SeatId);
                         if (isReserved)
                         {
                             seat.Reserved = true;

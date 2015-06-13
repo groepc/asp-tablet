@@ -1,53 +1,52 @@
-﻿using Plathe.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomExtensions;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Concrete
 {
 
-    class EFDbInitializer : System.Data.Entity.DropCreateDatabaseAlways<EFDbContext>
+    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    //class EFDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<EFDbContext>
+    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
-        protected override void Seed(EFDbContext context)
+        protected override void Seed(EfDbContext context)
         {
 
             var genres = new List<Genre>
             {
                 new Genre {
-                    GenreID = 1,
+                    GenreId = 1,
                     Name = "Actie"
                 },
                new Genre {
-                    GenreID = 2,
+                    GenreId = 2,
                     Name = "Animatie"
                 },
                 new Genre {
-                    GenreID = 3,
+                    GenreId = 3,
                     Name = "Avontuur"
                 },
                 new Genre {
-                    GenreID = 4,
+                    GenreId = 4,
                     Name = "Comedy"
                 },
                 new Genre {
-                    GenreID = 5,
+                    GenreId = 5,
                     Name = "Fantasy",
                 },
                 new Genre {
-                    GenreID = 6,
+                    GenreId = 6,
                     Name = "Kinderfilm",
                 },
                 new Genre {
-                    GenreID = 7,
+                    GenreId = 7,
                     Name = "Nederlands",
                 },
                 new Genre {
-                    GenreID = 8,
+                    GenreId = 8,
                     Name = "Thriller",
                 }
             };
@@ -60,7 +59,7 @@ namespace Plathe.Domain.Concrete
             var movies = new List<Movie>
             {
                 new Movie {
-                    MovieID = 1,
+                    MovieId = 1,
                     Title = "Avengers: Age of Ultron",
                     Language = "EN",
                     Duration = 141,
@@ -76,14 +75,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = false,
                     Director = "Joss Whedon",
                     MainCharacters = "Robert Downey Jr; Chris Evans; Mark Ruffalo; Scarlett Johansson",
-                    linkToImdb = "http://www.imdb.com/title/tt2395427/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=rD8lWtcgeyg",
-                    linkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
+                    LinkToImdb = "http://www.imdb.com/title/tt2395427/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=rD8lWtcgeyg",
+                    LinkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 1
+                    GenreId = 1
                 },
                 new Movie {
-                    MovieID = 2,
+                    MovieId = 2,
                     Title = "De Masters",
                     Language = "NL",
                     Duration = 96,
@@ -99,14 +98,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = true,
                     Director = "Ruud Schuurman",
                     MainCharacters = "Mimoun Oaissa; Ruben van der Meer, Willie Wartaal",
-                    linkToImdb = "http://www.imdb.com/title/tt4015478/",
-                    linkToTrailer = "https://www.youtube.com/watch?v=sxWH0SYcWrs",
-                    linkToWebsite = "http://www.demastersdefilm.nl/",
+                    LinkToImdb = "http://www.imdb.com/title/tt4015478/",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=sxWH0SYcWrs",
+                    LinkToWebsite = "http://www.demastersdefilm.nl/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 7
+                    GenreId = 7
                 },
                 new Movie {
-                    MovieID = 3,
+                    MovieId = 3,
                     Title = "Fast and Furious 7",
                     Language = "EN",
                     Duration = 137,
@@ -122,14 +121,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = true,
                     Director = "James Wan",
                     MainCharacters = "Vin Diesel; Paul Walker; Dwayne Johnson; Jason Statham; Michelle Rodriguez",
-                    linkToImdb = "http://www.imdb.com/title/tt2820852/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=Skpu5HaVkOc",
-                    linkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
+                    LinkToImdb = "http://www.imdb.com/title/tt2820852/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=Skpu5HaVkOc",
+                    LinkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 1
+                    GenreId = 1
                 },
                 new Movie {
-                    MovieID = 4,
+                    MovieId = 4,
                     Title = "Get Hard",
                     Language = "EN",
                     Duration = 100,
@@ -145,14 +144,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = true,
                     Director = "Etan Cohen",
                     MainCharacters = "Will Ferrell; Kevin Hart",
-                    linkToImdb = "http://www.imdb.com/title/tt2561572/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=lEqrpuU9fYI",
-                    linkToWebsite = "http://gethardmovie.com/",
+                    LinkToImdb = "http://www.imdb.com/title/tt2561572/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=lEqrpuU9fYI",
+                    LinkToWebsite = "http://gethardmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 4
+                    GenreId = 4
                 },
                 new Movie {
-                    MovieID = 5,
+                    MovieId = 5,
                     Title = "Mad Max: Fury Road",
                     Language = "EN",
                     Duration = 120,
@@ -168,14 +167,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = false,
                     Director = "George Miller",
                     MainCharacters = "Tom Hardy; Nicholas Hoult; Charlize Theron",
-                    linkToImdb = "http://www.imdb.com/title/tt1392190/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=hEJnMQG9ev8",
-                    linkToWebsite = "http://www.madmaxmovie.com/",
+                    LinkToImdb = "http://www.imdb.com/title/tt1392190/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=hEJnMQG9ev8",
+                    LinkToWebsite = "http://www.madmaxmovie.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 8
+                    GenreId = 8
                 },
                 new Movie {
-                    MovieID = 6,
+                    MovieId = 6,
                     Title = "Shaun het Schaap: De Film",
                     Language = "NL",
                     Duration = 85,
@@ -191,14 +190,14 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = false,
                     Director = "Richard Starzak; Mark Burton",
                     MainCharacters = " Justin Fletcher; John Sparkes; Omid Djalili",
-                    linkToImdb = "http://www.imdb.com/title/tt2872750/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=tQvwiOWpj7o",
-                    linkToWebsite = "http://shaunthesheep.com/",
+                    LinkToImdb = "http://www.imdb.com/title/tt2872750/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=tQvwiOWpj7o",
+                    LinkToWebsite = "http://shaunthesheep.com/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 6
+                    GenreId = 6
                 },
                 new Movie {
-                    MovieID = 7,
+                    MovieId = 7,
                     Title = "Home",
                     Language = "NL",
                     Duration = 137,
@@ -214,11 +213,11 @@ namespace Plathe.Domain.Concrete
                     RatingLanguage = false,
                     Director = "Tim Johnson",
                     MainCharacters = " Jim Parsons; Rihanna; Steve Martin",
-                    linkToImdb = "http://www.imdb.com/title/tt2224026/?ref_=nv_sr_1",
-                    linkToTrailer = "https://www.youtube.com/watch?v=W6Bd3TWpeig",
-                    linkToWebsite = "http://www.dreamworks.com/home/",
+                    LinkToImdb = "http://www.imdb.com/title/tt2224026/?ref_=nv_sr_1",
+                    LinkToTrailer = "https://www.youtube.com/watch?v=W6Bd3TWpeig",
+                    LinkToWebsite = "http://www.dreamworks.com/home/",
                     playsUntill = new DateTime(2015,10,01, 10,1,59),
-                    GenreID = 6
+                    GenreId = 6
                 }
             };
             movies.ForEach(s => context.Movies.Add(s));
@@ -231,52 +230,52 @@ namespace Plathe.Domain.Concrete
             var rooms = new List<Room>
             {
                 new Room {
-                    RoomID = 1,
+                    RoomId = 1,
                     RoomName = "Zaal 1",
                     WheelchairAccess = true,
                     ThreeDimensional = true,
-                    countRows = 8,
-                    countSeats = 15
+                    CountRows = 8,
+                    CountSeats = 15
                 },
                 new Room {
-                    RoomID = 2,
+                    RoomId = 2,
                     RoomName = "Zaal 2",
                     WheelchairAccess = true,
                     ThreeDimensional = true,
-                    countRows = 8,
-                    countSeats = 15
+                    CountRows = 8,
+                    CountSeats = 15
                 },
                 new Room {
-                    RoomID = 3,
+                    RoomId = 3,
                     RoomName = "Zaal 3",
                     WheelchairAccess = true,
                     ThreeDimensional = false,
-                    countRows = 8,
-                    countSeats = 15
+                    CountRows = 8,
+                    CountSeats = 15
                 },
                 new Room {
-                    RoomID = 4,
+                    RoomId = 4,
                     RoomName = "Zaal 4",
                     WheelchairAccess = true,
                     ThreeDimensional = false,
-                    countRows = 6,
-                    countSeats = 10
+                    CountRows = 6,
+                    CountSeats = 10
                 },
                 new Room {
-                    RoomID = 5,
+                    RoomId = 5,
                     RoomName = "Zaal 5",
                     WheelchairAccess = false,
                     ThreeDimensional = false,
-                    countRows = 4,
-                    countSeats = 15
+                    CountRows = 4,
+                    CountSeats = 15
                 },
                 new Room {
-                    RoomID = 6,
+                    RoomId = 6,
                     RoomName = "Zaal 6",
                     WheelchairAccess = false,
                     ThreeDimensional = false,
-                    countRows = 4,
-                    countSeats = 15
+                    CountRows = 4,
+                    CountSeats = 15
                 }
             };
             rooms.ForEach(s => context.Rooms.Add(s));
@@ -293,20 +292,20 @@ namespace Plathe.Domain.Concrete
 
             foreach(Room room in rooms)
             {
-                for(int rowId = 1; rowId <= room.countRows; rowId++)
+                for(int rowId = 1; rowId <= room.CountRows; rowId++)
                 {
                     rows.Add(new Row
                     {
-                        RowID = rowCount,
-                        RoomID = room.RoomID
+                        RowId = rowCount,
+                        RoomId = room.RoomId
                     });
 
-                    for(int seatId = 1; seatId <= room.countSeats; seatId++)
+                    for(int seatId = 1; seatId <= room.CountSeats; seatId++)
                     {
                         seats.Add(new Seat
                         {
-                            SeatID = seatCount++,
-                            RowID = rowCount,
+                            SeatId = seatCount++,
+                            RowId = rowCount,
                             WheelChairSeat = false,
                             PrioritySeat = false
                         });
@@ -406,49 +405,49 @@ namespace Plathe.Domain.Concrete
 
                 // vandaag
                 new Show {
-                    ShowID = 1,
-                    MovieID = 1,
-                    RoomID = 1,
+                    ShowId = 1,
+                    MovieId = 1,
+                    RoomId = 1,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(18).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
-                    ShowID = 2,
-                    MovieID = 2,
-                    RoomID = 2,
+                    ShowId = 2,
+                    MovieId = 2,
+                    RoomId = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(19),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 3,
-                    MovieID = 3,
-                    RoomID = 3,
+                    ShowId = 3,
+                    MovieId = 3,
+                    RoomId = 3,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(19).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
-                    ShowID = 4,
-                    MovieID = 4,
-                    RoomID = 4,
+                    ShowId = 4,
+                    MovieId = 4,
+                    RoomId = 4,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddHours(20),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 5,
-                    MovieID = 5,
-                    RoomID = 5,
+                    ShowId = 5,
+                    MovieId = 5,
+                    RoomId = 5,
                     Subtitle = "NL",
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 6,
-                    MovieID = 6,
-                    RoomID = 6,
+                    ShowId = 6,
+                    MovieId = 6,
+                    RoomId = 6,
                     Subtitle = "FR",
                     StartingTime = DateTime.Today.AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
@@ -456,49 +455,49 @@ namespace Plathe.Domain.Concrete
 
                 // morgen
                 new Show {
-                    ShowID = 7,
-                    MovieID = 1,
-                    RoomID = 2,
+                    ShowId = 7,
+                    MovieId = 1,
+                    RoomId = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(18).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
-                    ShowID = 8,
-                    MovieID = 2,
-                    RoomID = 2,
+                    ShowId = 8,
+                    MovieId = 2,
+                    RoomId = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(19),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 9,
-                    MovieID = 3,
-                    RoomID = 3,
+                    ShowId = 9,
+                    MovieId = 3,
+                    RoomId = 3,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(19).AddMinutes(30),
                     ThreeDimensional = true
                 },
                 new Show {
-                    ShowID = 10,
-                    MovieID = 4,
-                    RoomID = 4,
+                    ShowId = 10,
+                    MovieId = 4,
+                    RoomId = 4,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 11,
-                    MovieID = 5,
-                    RoomID = 5,
+                    ShowId = 11,
+                    MovieId = 5,
+                    RoomId = 5,
                     Subtitle = "NL",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 },
                 new Show {
-                    ShowID = 12,
-                    MovieID = 6,
-                    RoomID = 6,
+                    ShowId = 12,
+                    MovieId = 6,
+                    RoomId = 6,
                     Subtitle = "FR",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
@@ -515,7 +514,7 @@ namespace Plathe.Domain.Concrete
             var reservations = new List<Reservation>
             {
                 new Reservation {
-                    ReservationID = 1,
+                    ReservationId = 1,
                     UniqueCode = "1234",
                     CreateOn = DateTime.Today.AddHours(20).AddMinutes(00),
                     PriceTotal = (decimal) 15.00,
@@ -523,7 +522,7 @@ namespace Plathe.Domain.Concrete
                     PayedOn = DateTime.Now
                 },
                 new Reservation {
-                    ReservationID = 2,
+                    ReservationId = 2,
                     UniqueCode = "ABC123",
                     CreateOn = DateTime.Today.AddHours(20).AddMinutes(10),
                     PriceTotal = (decimal) 10.00,
@@ -540,48 +539,48 @@ namespace Plathe.Domain.Concrete
             var tickets = new List<Ticket>
             {
                 new Ticket {
-                    ShowID = 1,
-                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 33,
+                    ShowId = 1,
+                    ReservationId = reservations.Single( i => i.ReservationId == 1).ReservationId,
+                    SeatId = 33,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "".createRandomString(),
+                    UniqueCode = "".CreateRandomString(),
                     Options = "options",
                 },
                 new Ticket {
-                    ShowID = 1,
-                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 34,
+                    ShowId = 1,
+                    ReservationId = reservations.Single( i => i.ReservationId == 1).ReservationId,
+                    SeatId = 34,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "".createRandomString(),
+                    UniqueCode = "".CreateRandomString(),
                     Options = "options",
                 },
                 new Ticket {
-                    ShowID = 1,
-                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 35,
+                    ShowId = 1,
+                    ReservationId = reservations.Single( i => i.ReservationId == 1).ReservationId,
+                    SeatId = 35,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "".createRandomString(),
+                    UniqueCode = "".CreateRandomString(),
                     Options = "options",
                 },
                 new Ticket {
-                    ShowID = 1,
-                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 83,
+                    ShowId = 1,
+                    ReservationId = reservations.Single( i => i.ReservationId == 1).ReservationId,
+                    SeatId = 83,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "".createRandomString(),
+                    UniqueCode = "".CreateRandomString(),
                     Options = "options",
                 },
                 new Ticket {
-                    ShowID = 1,
-                    ReservationID = reservations.Single( i => i.ReservationID == 1).ReservationID,
-                    SeatID = 84,
+                    ShowId = 1,
+                    ReservationId = reservations.Single( i => i.ReservationId == 1).ReservationId,
+                    SeatId = 84,
                     Price = (decimal) 8.50,
                     PopcornTime = false,
-                    UniqueCode = "".createRandomString(),
+                    UniqueCode = "".CreateRandomString(),
                     Options = "options",
                 }
             };

@@ -10,7 +10,7 @@ namespace Plathe.Domain.AbstractServices
     public interface ITicketService
     {
         //IEnumerable<Ticket> getTicketsForShow(int ShowId);
-        Ticket createTicket(int reservationID, int seatID, string type, Show show, bool secretMovie = false);
-        decimal createTickets(List<Int32> seats, int reservationID, Show show, bool secretMovie, int adults, int adultsPlus, int children, int Students, int popcorn);
+        Ticket CreateTicket(int reservationId, int seatId, string type, Show show, bool secretMovie = false);
+        decimal CreateTickets(List<Int32> seats, int reservationId, Show show, bool secretMovie, int adults, int adultsPlus, int children, int students, int popcorn, int vip);
     }
 }

@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFGenreRepository : IGenreRepository
+    public class EfGenreRepository : IGenreRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Genre> Genres
         {
             get { return context.Genres; }
         }
 
-        public int getGenreIdByName(string genreID)
+        public int GetGenreIdByName(string genreId)
         {
-            var genre = context.Genres.FirstOrDefault(a => a.Name == genreID);
+            var genre = context.Genres.FirstOrDefault(a => a.Name == genreId);
 
-            return genre.GenreID;
+            return genre.GenreId;
         }
     }
 }

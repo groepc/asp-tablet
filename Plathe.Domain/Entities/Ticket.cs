@@ -8,10 +8,10 @@ namespace Plathe.Domain.Entities
 {
     public class Ticket
     {
-        public int TicketID { get; set; }
-        public int ShowID { get; set; }
-        public int ReservationID { get; set; }
-        public int SeatID { get; set; }
+        public int TicketId { get; set; }
+        public int ShowId { get; set; }
+        public int ReservationId { get; set; }
+        public int SeatId { get; set; }
         public string Type { get; set; }
         public string UniqueCode { get; set; }
         public Decimal Price { get; set; }

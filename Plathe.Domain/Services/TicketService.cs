@@ -18,63 +18,70 @@ namespace Plathe.Domain.Services
             this.repository = ticketRepository;
         }
 
-        public decimal createTickets(List<Int32> ChosenSeat, int reservationID, Show show, bool secretMovie, int adults, int adultsPlus, int children, int Students, int popcorn)
+        public decimal CreateTickets(List<Int32> chosenSeat, int reservationId, Show show, bool secretMovie, int adults, int adultsPlus, int children, int students, int popcorn, int vip)
         {
             decimal totalPrice = 0.00M;
 
             var i = 0;
             while (adults > 0)
             {
-                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "adults", show, secretMovie).Price;
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "adults", show, secretMovie).Price;
                 adults--;
                 i++;
             }
 
             while (adultsPlus > 0)
             {
-                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "adultsplus", show, secretMovie).Price;
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "adultsplus", show, secretMovie).Price;
                 adultsPlus--;
                 i++;
             }
 
             while (children > 0)
             {
-                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "children", show, secretMovie).Price;
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "children", show, secretMovie).Price;
                 children--;
                 i++;
             }
 
-            while (Students > 0)
+            while (students > 0)
             {
-                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "students", show, secretMovie).Price;
-                Students--;
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "students", show, secretMovie).Price;
+                students--;
                 i++;
             }
 
             while (popcorn > 0)
             {
-                totalPrice += this.createTicket(reservationID, ChosenSeat[i], "popcorn", show, secretMovie).Price;
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "popcorn", show, secretMovie).Price;
                 popcorn--;
+                i++;
+            }
+
+            while (vip > 0)
+            {
+                totalPrice += this.CreateTicket(reservationId, chosenSeat[i], "vip", show, secretMovie).Price;
+                vip--;
                 i++;
             }
             return totalPrice;
         }
 
 
-        public Ticket createTicket(int reservationID, int seatID, string type, Show show, bool secretMovie = false)
+        public Ticket CreateTicket(int reservationID, int seatID, string type, Show show, bool secretMovie = false)
         {
 
             // create reservation
             var uniqueCode = "";
-            uniqueCode = uniqueCode.createRandomString();
+            uniqueCode = uniqueCode.CreateRandomString();
 
             Ticket ticket = new Ticket
             {
-                ShowID = show.ShowID,
-                ReservationID = reservationID,
-                SeatID = seatID,
+                ShowId = show.ShowId,
+                ReservationId = reservationID,
+                SeatId = seatID,
                 UniqueCode = uniqueCode,
-                Price = new CalculatePrice().getTicketPricePrice(type, show, secretMovie),
+                Price = new CalculatePrice().GetTicketPricePrice(type, show, secretMovie),
                 Options = "options",
                 Type = type,
                 PopcornTime = (type == "popcorn") ? true : false
@@ -83,7 +90,7 @@ namespace Plathe.Domain.Services
             // save reservation to DB
             // this will automatically add reservationId to the object
 
-            return this.repository.saveTicket(ticket);
+            return this.repository.SaveTicket(ticket);
 
         }
 

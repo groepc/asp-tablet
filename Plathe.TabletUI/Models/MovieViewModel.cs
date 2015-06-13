@@ -24,11 +24,11 @@ namespace Plathe.TabletUI.Models
 
         public IEnumerable<Movie> Movies
         {
-            get { return service.getAllMovies(); }
+            get { return service.GetAllMovies(); }
         }
         public Movie Movie
         {
-            get { return service.getMovieById(MovieId); }
+            get { return service.GetMovieById(MovieId); }
         }
         [HiddenInput(DisplayValue = false)]
         public int MovieId { get; set; }
