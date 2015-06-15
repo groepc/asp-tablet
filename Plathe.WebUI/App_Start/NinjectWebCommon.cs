@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Plathe.UnitTest.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Plathe.UnitTest.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Plathe.WebUI.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Plathe.WebUI.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Plathe.UnitTest.App_Start
+namespace Plathe.WebUI.App_Start
 {
     using System;
     using System.Web;

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Plathe.UnitTest.Models
+namespace Plathe.WebUI.Models
 {
     public class TicketSelectionViewModel
     {

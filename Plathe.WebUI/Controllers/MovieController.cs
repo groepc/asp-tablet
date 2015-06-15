@@ -2,7 +2,7 @@
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
-using Plathe.UnitTest.Models;
+using Plathe.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Plathe.UnitTest.Controllers
+namespace Plathe.WebUI.Controllers
 {
     public class MovieController : Controller
     {

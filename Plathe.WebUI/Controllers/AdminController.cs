@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
 
-namespace Plathe.UnitTest.Controllers
+namespace Plathe.WebUI.Controllers
 {
     public class AdminController : Controller
     {

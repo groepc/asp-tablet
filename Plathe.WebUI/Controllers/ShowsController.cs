@@ -9,11 +9,11 @@ using System.Web.Mvc;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 using System.Collections.Specialized;
-using Plathe.UnitTest.Models;
+using Plathe.WebUI.Models;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
 
-namespace Plathe.UnitTest.Controllers
+namespace Plathe.WebUI.Controllers
 {
     public class ShowsController : Controller
     {

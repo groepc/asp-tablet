@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 using Plathe.Domain.Abstract;
 using Moq;
 using Plathe.Domain.Entities;
-using Plathe.UnitTest.Controllers;
+using Plathe.WebUI.Controllers;
 
 namespace Plathe.UnitTests
 {
     [TestClass]
-
     public class AdminTests
     {
         [TestMethod]

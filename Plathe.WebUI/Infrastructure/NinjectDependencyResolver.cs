@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Services;
 
-namespace Plathe.UnitTest.Infrastructure
+namespace Plathe.WebUI.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {

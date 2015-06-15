@@ -7,7 +7,7 @@ using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
 using Plathe.Domain.AbstractServices;
 
-namespace Plathe.UnitTest.Controllers
+namespace Plathe.WebUI.Controllers
 {
     public class GenreController : Controller
     {

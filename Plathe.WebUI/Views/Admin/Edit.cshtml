@@ -1,0 +1,18 @@
+﻿@model Plathe.Domain.Entities.Movie
+
+@* Author = Mieke *@
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit @Model.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Opslaan"/>
+    @Html.ActionLink("Annuleer en ga terug naar overzicht", "Index")
+}
+

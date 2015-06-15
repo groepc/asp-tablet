@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 //Author: Mieke
 
-namespace Plathe.UnitTest.Controllers
+namespace Plathe.WebUI.Controllers
 {
     public class NavController : Controller
     {
