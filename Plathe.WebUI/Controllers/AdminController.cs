@@ -22,9 +22,9 @@ namespace Plathe.WebUI.Controllers
             return View(repository.Movies);
         }
 
-        public ViewResult Edit(int movieId)
+        public ViewResult Edit(int id)
         {
-            Movie movie = repository.Movies.FirstOrDefault(p => p.MovieId == movieId);
+            Movie movie = repository.Movies.FirstOrDefault(p => p.MovieId == id);
             return View(movie);
         }
     }
