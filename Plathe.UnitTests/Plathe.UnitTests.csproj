@@ -96,6 +96,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="AdminTests.cs" />
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +105,10 @@
     <ProjectReference Include="..\Plathe.Domain\Plathe.Domain.csproj">
       <Project>{ace967e7-4640-4f8f-b722-55854f4b7bb4}</Project>
       <Name>Plathe.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plathe.WebUI\Plathe.WebUI.csproj">
+      <Project>{def41532-5435-4027-b9d8-18702e0f661a}</Project>
+      <Name>Plathe.WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

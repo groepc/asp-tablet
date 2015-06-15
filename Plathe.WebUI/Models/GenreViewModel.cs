@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Plathe.WebUI.Models
+namespace Plathe.UnitTest.Models
 {
     public class GenreViewModel
     {

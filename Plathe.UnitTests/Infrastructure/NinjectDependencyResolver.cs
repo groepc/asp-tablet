@@ -1,7 +1,6 @@
 ﻿using Moq;
 using Ninject;
 using Plathe.Domain.Abstract;
-using Plathe.Domain.Entities;
 using Plathe.Domain.Concrete;
 using System;
 using System.Collections.Generic;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Plathe.WebUI.Controllers
+namespace Plathe.UnitTest.Controllers
 {
     public class HomeController : Controller
     {

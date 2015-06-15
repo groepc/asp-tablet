@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
 using Moq;
+using Plathe.UnitTest.Controllers;
+using Plathe.UnitTest.Models;
 
 namespace Plathe.UnitTests
 {

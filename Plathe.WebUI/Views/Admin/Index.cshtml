@@ -8,7 +8,7 @@
 }
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Index";
 }
 
 <h2>Overzicht films</h2>
@@ -20,6 +20,7 @@
         <th>@Html.DisplayNameFor(model => model.Language)</th>
         <th>@Html.DisplayNameFor(model => model.Duration)</th>
         <th>@Html.DisplayNameFor(model => model.MinimumAge)</th>
+        <th>Edit</th>
     </tr>
 
     @foreach (var p in Model)
@@ -28,7 +29,7 @@
             <td>@Html.DisplayFor(modelItem => p.MovieId)</td>
             <td>@Html.DisplayFor(modelItem => p.Title)</td>
             <td>@Html.DisplayFor(modelItem => p.Language)</td>
-            <td>@Html.DisplayFor(modelItem => p.Duration)</td>
+            <td>@Html.DisplayFor(modelItem => p.Duration) min.</td>
             <td>@Html.DisplayFor(modelItem => p.MinimumAge)</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = p.MovieId })
@@ -37,3 +38,7 @@
     }
 
 </table>
+
+<div>
+    @Html.ActionLink("Voeg film toe", "AddMovie", null, new { @class = "btn btn-default" })
+</div>

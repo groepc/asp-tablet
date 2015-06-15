@@ -2,7 +2,7 @@
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
-using Plathe.WebUI.Models;
+using Plathe.UnitTest.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Plathe.WebUI.Controllers
+namespace Plathe.UnitTest.Controllers
 {
     public class MovieController : Controller
     {
@@ -56,12 +56,5 @@ namespace Plathe.WebUI.Controllers
             
             return View(viewModel);
         }
-
-        //Individual assignment Mieke
-        public ViewResult Create()
-        {
-            return View(this.movieService.GetAllMovies().ToList());
-        }
-
     }
 }

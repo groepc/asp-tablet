@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Plathe.WebUI
+namespace Plathe.UnitTest
 {
     public class MvcApplication : System.Web.HttpApplication
     {

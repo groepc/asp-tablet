@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Plathe.WebUI.Models
+namespace Plathe.UnitTest.Models
 {
     public class MovieDetailViewModel
     {
