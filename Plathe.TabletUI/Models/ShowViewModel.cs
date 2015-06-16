@@ -15,7 +15,7 @@ namespace Plathe.TabletUI.Models
         }
         public IEnumerable<Show> Shows
         {
-            get { return service.GetAllShows(); }
+            get { return service.GetShowsThisWeek(); }
         }
 
         public Show Show
