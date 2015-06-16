@@ -8,8 +8,8 @@ namespace Plathe.Domain.Entities
 {
     public class Movie
     {
-        public int MovieID { get; set; }
-        public int GenreID { get; set; }
+        public int MovieId { get; set; }
+        public int GenreId { get; set; }
         public string Title { get; set; }
         public string Language { get; set; }
         public int Duration { get; set; }
@@ -25,9 +25,9 @@ namespace Plathe.Domain.Entities
         public Boolean RatingLanguage { get; set; }
         public string Director { get; set; }
         public string MainCharacters { get; set; }
-        public string linkToImdb { get; set; }
-        public string linkToTrailer { get; set; }
-        public string linkToWebsite { get; set; }
+        public string LinkToImdb { get; set; }
+        public string LinkToTrailer { get; set; }
+        public string LinkToWebsite { get; set; }
         public DateTime playsUntill { get; set; }
         public Genre genre { get; set; }
     }

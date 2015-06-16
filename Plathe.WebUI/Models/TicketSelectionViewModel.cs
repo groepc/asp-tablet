@@ -23,32 +23,36 @@ namespace Plathe.WebUI.Models
             get 
             {
 
-                return repository.Shows.Where(model => model.ShowID == this.ShowId).First();
+                return repository.Shows.Where(model => model.ShowId == this.ShowId).First();
             }
         }
 
         [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }
         
-        [Range(0, 5)]
+        [Range(0, 6)]
         public int AmountAdults { get; set; }
 
-        [Range(0, 5)]
+        [Range(0, 6)]
         public int AmountAdultsPlus { get; set; }
 
-        [Range(0, 5)]
+        [Range(0, 6)]
         public int AmountChildren { get; set; }
 
-        [Range(0, 5)]
+        [Range(0, 6)]
         public int AmountStudents { get; set; }
 
-        [Range(0, 5)]
+        [Range(0, 6)]
         public int AmountPopcorn { get; set; }
 
-        [Range(1, 25)]
+        //VIP-kaartje
+        [Range(0, 6)]
+        public int AmountVip { get; set; }
+
+        [Range(1, 36)]
         public int TotalAmount
         {
-            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren +  this.AmountStudents + this.AmountPopcorn; }
+            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren +  this.AmountStudents + this.AmountPopcorn + this.AmountVIP; }
         }
 
     }

@@ -20,12 +20,12 @@ namespace Plathe.Domain.Services
 
         }
 
-        public IEnumerable<Show> getAllShows()
+        public IEnumerable<Show> GetAllShows()
         {
             return this.repository.Shows;
         }
 
-        public IEnumerable<Show> getShowsThisWeek()
+        public IEnumerable<Show> GetShowsThisWeek()
         {
 
             DateTime tomorrow = DateTime.Today.AddDays(1);
@@ -40,15 +40,15 @@ namespace Plathe.Domain.Services
             return shows;
         }
 
-        public Show getShowById(int id)
+        public Show GetShowById(int id)
         {
-            return repository.Shows.FirstOrDefault(model => model.MovieID == id);
+            return repository.Shows.FirstOrDefault(model => model.MovieId == id);
         }
 
-        public IEnumerable<Show> getShowsByMovieId(int id)
+        public IEnumerable<Show> GetShowsByMovieId(int id)
         {
             return repository.Shows
-                                .Where(model => model.MovieID == id)
+                                .Where(model => model.MovieId == id)
                                 .OrderBy(s => s.StartingTime);
         }
     }

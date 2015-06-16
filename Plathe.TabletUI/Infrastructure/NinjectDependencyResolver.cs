@@ -32,10 +32,10 @@ namespace Plathe.TabletUI.Infrastructure
         private void AddBindings()
         {
             // repositorys
-            kernel.Bind<IMovieRepository>().To<EFMovieRepository>();
-            kernel.Bind<IGenreRepository>().To<EFGenreRepository>();
-            kernel.Bind<IShowRepository>().To<EFShowRepository>();
-            kernel.Bind<IReservationRepository>().To<EFReservationRepository>();
+            kernel.Bind<IMovieRepository>().To<EfMovieRepository>();
+            kernel.Bind<IGenreRepository>().To<EfGenreRepository>();
+            kernel.Bind<IShowRepository>().To<EfShowRepository>();
+            kernel.Bind<IReservationRepository>().To<EfReservationRepository>();
 
             // services
             kernel.Bind<IMovieService>().To<MovieService>();

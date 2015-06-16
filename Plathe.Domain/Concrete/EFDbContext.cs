@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFDbContext : DbContext
+    public class EfDbContext : DbContext
     {
-        public EFDbContext() : base("EFDbContext")
+        public EfDbContext() : base("EfDbContext")
         {
 
         }

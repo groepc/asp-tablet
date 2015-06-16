@@ -9,20 +9,20 @@ namespace Plathe.Domain.Entities
 
     public class ReservationTickets
     {
-        public int SaveReservationWithTickets(int showID, int? adults, int? adultsplus, int? childs, int? popcorn)
+        public int SaveReservationWithTickets(int showId, int? adults, int? adultsplus, int? childs, int? popcorn)
         {
             Reservation reservation = new Reservation
             {
-                UniqueCode = randomChars(8),
+                UniqueCode = RandomChars(8),
                 CreateOn = DateTime.Now,
             };
 
-            var reservationId = reservation.ReservationID;
+            var reservationId = reservation.ReservationId;
 
-            return reservation.ReservationID;
+            return reservation.ReservationId;
         }
 
-        public string randomChars(int stringLenght)
+        public string RandomChars(int stringLenght)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
@@ -34,7 +34,7 @@ namespace Plathe.Domain.Entities
     }
     public class Reservation
     {
-        public int ReservationID { get; set; }
+        public int ReservationId { get; set; }
         public string UniqueCode { get; set; }
         public Decimal PriceTotal { get; set; }
         public DateTime CreateOn { get; set; }

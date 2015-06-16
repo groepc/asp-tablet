@@ -18,19 +18,19 @@ namespace Plathe.Domain.Services
 
         }
 
-        public Reservation updateReservation (int reservationID, decimal price) {
+        public Reservation UpdateReservation (int reservationId, decimal price) {
 
-            Reservation reservation = getReservationById(reservationID);
+            Reservation reservation = GetReservationById(reservationId);
             reservation.PriceTotal = price;
-            return this.repository.updateReservation(reservation);
+            return this.repository.UpdateReservation(reservation);
         }
 
-        public Reservation createReservation()
+        public Reservation CreateReservation()
         {
 
             // create reservation
             var uniqueCode = "";
-            uniqueCode = uniqueCode.createRandomString();
+            uniqueCode = uniqueCode.CreateRandomString();
 
             Reservation reservation = new Reservation
             {
@@ -44,13 +44,13 @@ namespace Plathe.Domain.Services
             // save reservation to DB
             // this will automatically add reservationId to the object
 
-            return this.repository.saveReservation(reservation);
+            return this.repository.SaveReservation(reservation);
 
         }
 
-        public Reservation getReservationById(int id)
+        public Reservation GetReservationById(int id)
         {
-            return this.repository.getReservationById(id);
+            return this.repository.GetReservationById(id);
         }
     }
 }

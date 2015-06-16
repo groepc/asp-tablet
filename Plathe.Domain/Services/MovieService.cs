@@ -19,20 +19,20 @@ namespace Plathe.Domain.Services
             this.repositoryGenre = genreRepository;
         }
 
-        public IEnumerable<Movie> getAllMovies()
+        public IEnumerable<Movie> GetAllMovies()
         {
             return this.repository.Movies;
         }
 
-        public IEnumerable<Movie> getMoviesByGenreName(string name)
+        public IEnumerable<Movie> GetMoviesByGenreName(string name)
         {
-            var genreID = this.repositoryGenre.getGenreIdByName(name);
-            return this.repository.getMovieByGenreId(genreID);
+            var genreId = this.repositoryGenre.GetGenreIdByName(name);
+            return this.repository.GetMovieByGenreId(genreId);
         }
         
-        public Movie getMovieById(int id)
+        public Movie GetMovieById(int id)
         {        
-            return repository.Movies.FirstOrDefault(model => model.MovieID == id);
+            return repository.Movies.FirstOrDefault(model => model.MovieId == id);
         }
     }
 }

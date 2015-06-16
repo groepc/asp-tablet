@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Plathe.Domain.Abstract;
-using Plathe.Domain.Entities;
+﻿using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
 
 namespace Plathe.WebUI.Controllers
@@ -22,7 +16,7 @@ namespace Plathe.WebUI.Controllers
        {       
            // Retrieve Genre and its assosiated movies from database
             var genreQuery = Request.QueryString["genreID"];
-            return View(this.movieService.getMoviesByGenreName(genreQuery));
+            return View(this.movieService.GetMoviesByGenreName(genreQuery));
         }
 
     }

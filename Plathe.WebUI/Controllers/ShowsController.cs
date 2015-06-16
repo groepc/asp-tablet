@@ -1,33 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
-using System.Collections.Specialized;
 using Plathe.WebUI.Models;
-using Plathe.Domain.Abstract;
-using Plathe.Domain.AbstractServices;
 
 namespace Plathe.WebUI.Controllers
 {
     public class ShowsController : Controller
     {
-        private EFDbContext db = new EFDbContext();
-        private IReservationService reservationService;
-        private IShowService showService;
-        private ITicketService ticketService;
+        private EfDbContext _db = new EfDbContext();
+        private IReservationService _reservationService;
+        private IShowService _showService;
+        private ITicketService _ticketService;
 
         public ShowsController(IReservationService reservationService, IShowService showService, ITicketService ticketService)
         {
 
-            this.ticketService = ticketService;
-            this.reservationService = reservationService;
-            this.showService = showService;
+            _ticketService = ticketService;
+            _reservationService = reservationService;
+            _showService = showService;
 
         }
 
@@ -36,7 +31,7 @@ namespace Plathe.WebUI.Controllers
         {
             ShowViewModel viewModel = new ShowViewModel
             {
-                Shows = showService.getShowsThisWeek()
+                Shows = ShowService.GetShowsThisWeek()
             };
 
             return View(viewModel);
@@ -51,7 +46,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current show
-            Show show = showService.getShowById(id);
+            Show show = showService.GetShowById(id);
 
             if (show == null) 
             {
@@ -60,7 +55,7 @@ namespace Plathe.WebUI.Controllers
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
-                ShowId = show.ShowID
+                ShowId = show.ShowId
             };
 
             return View(viewModel);
@@ -74,7 +69,7 @@ namespace Plathe.WebUI.Controllers
             {
 
                 // create reservation
-                Reservation reservation = reservationService.createReservation();
+                Reservation reservation = reservationService.CreateReservation();
                 
 
                 // create viewModel for seatSelection
@@ -118,7 +113,7 @@ namespace Plathe.WebUI.Controllers
 
             NameValueCollection data = Request.Form;
 
-            Reservation reservation = this.reservationService.getReservationById(Convert.ToInt32(data["ReservationID"]));
+            Reservation reservation = this.reservationService.GetReservationById(Convert.ToInt32(data["ReservationID"]));
 
             var ShowId = Convert.ToInt32(data["ShowId"]);
             Show show = db.Shows.Find(ShowId);
@@ -128,16 +123,17 @@ namespace Plathe.WebUI.Controllers
             int AmountChildren = Convert.ToInt32(data["amountChildren"]);
             int AmountStudents = Convert.ToInt32(data["amountStudents"]);
             int AmountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
+            int AmountVIP = Convert.ToInt32(data["amountVIP"]);
 
-            var reservationID = reservation.ReservationID;
+            var reservationID = reservation.ReservationId;
 
 
             // get seat ID's
             string seatsString = data["seat-selected"];
             var ChosenSeat = seatsString.Split(',').Select(x => int.Parse(x)).ToList();
 
-            Decimal totalPrice = this.ticketService.createTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn);
-            this.reservationService.updateReservation(reservationID, totalPrice);
+            Decimal totalPrice = this.ticketService.CreateTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn, AmountVIP);
+            this.reservationService.UpdateReservation(reservationID, totalPrice);
 
             // send variables to view
             ViewBag.ReservationId = reservationID;

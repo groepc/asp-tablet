@@ -10,12 +10,12 @@ namespace Plathe.Domain.AbstractServices
     public interface IShowService
     {
 
-        IEnumerable<Show> getAllShows();
+        IEnumerable<Show> GetAllShows();
 
-        IEnumerable<Show> getShowsThisWeek();
+        IEnumerable<Show> GetShowsThisWeek();
 
-        IEnumerable<Show> getShowsByMovieId(int id);
+        IEnumerable<Show> GetShowsByMovieId(int id);
         
-        Show getShowById(int id);
+        Show GetShowById(int id);
     }
 }

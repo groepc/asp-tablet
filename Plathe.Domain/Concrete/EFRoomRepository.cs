@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFRoomRepository : IRoomRepository
+    public class EfRoomRepository : IRoomRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Room> Rooms
         {

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFRowRepository : IRowRepository
+    public class EfRowRepository : IRowRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Row> Rows
         {

@@ -15,28 +15,30 @@ namespace Plathe.Domain.Extensions
             new DateTime(2015, 12, 26),
         };
 
-        public decimal getTicketPricePrice(string type, Show show, bool secretMovie)
+        public decimal GetTicketPricePrice(string type, Show show, bool secretMovie)
         {
-            decimal price = getDefaultMoviePrice(show, secretMovie);
+            decimal price = GetDefaultMoviePrice(show, secretMovie);
             switch (type)
             {
                 case "adult":
-                    return adult(price);
+                    return Adult(price);
                 case "adultsplus":
-                    return adultplus(show, price);
+                    return Adultplus(show, price);
                 case "children":
-                    return children(show, price);
+                    return Children(show, price);
                 case "students":
-                    return student(show, price);
+                    return Student(show, price);
                 case "popcorn":
-                    return popcorn(price);
+                    return Popcorn(price);
+                case "vip":
+                    return Vip(price);
 
                 default:
                     return price;
             }
         }
 
-        private decimal getDefaultMoviePrice(Show show, bool secretMovie)
+        private decimal GetDefaultMoviePrice(Show show, bool secretMovie)
         {
             decimal price = (decimal)0.00;
 
@@ -61,12 +63,12 @@ namespace Plathe.Domain.Extensions
             return price;
         }
 
-        private decimal adult(decimal price)
+        private decimal Adult(decimal price)
         {
             return price;
         }
 
-        private decimal adultplus(Show show, decimal price)
+        private decimal Adultplus(Show show, decimal price)
         {
             var dayOfWeek = (int)(show.StartingTime.DayOfWeek + 6) % 7;
 
@@ -78,7 +80,7 @@ namespace Plathe.Domain.Extensions
             return price;
         }
 
-        private decimal children(Show show, decimal price)
+        private decimal Children(Show show, decimal price)
         {
             if (show.StartingTime.Hour <= 18 && show.Movie.Language == "NL")
             {
@@ -88,12 +90,12 @@ namespace Plathe.Domain.Extensions
             return price;
         }
 
-        private decimal popcorn(decimal price)
+        private decimal Popcorn(decimal price)
         {
             return price + (decimal)5.00;
         }
 
-        private decimal student(Show show, decimal price)
+        private decimal Student(Show show, decimal price)
         {
             var dayOfWeek = (int)(show.StartingTime.DayOfWeek + 6) % 7;
 
@@ -103,6 +105,12 @@ namespace Plathe.Domain.Extensions
                 return price - (decimal)1.50M;
             }
             return price;
+        }
+
+        //VIP-kaartje
+        private decimal Vip(decimal price)
+        {
+            return price + (decimal)10.00;
         }
 
     }

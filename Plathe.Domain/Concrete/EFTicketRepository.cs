@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EFTicketRepository : ITicketRepository
+    public class EfTicketRepository : ITicketRepository
     {
-        private EFDbContext context = new EFDbContext();
+        private EfDbContext context = new EfDbContext();
 
         public IEnumerable<Ticket> Tickets
         {
             get { return context.Tickets; }
         }
 
-        public Ticket saveTicket(Ticket ticket)
+        public Ticket SaveTicket(Ticket ticket)
         {
             context.Tickets.Add(ticket);
             context.SaveChanges();

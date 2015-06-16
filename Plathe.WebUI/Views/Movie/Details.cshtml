@@ -23,9 +23,9 @@
                     <p>@Html.DisplayFor(model => model.movie.Description)</p>
 
                     <div class="btn-group" role="group">
-                        <a href="@Html.DisplayFor(model => Model.movie.linkToWebsite)" target="blank" class="btn btn-default" role="button">Officiële website</a>
-                        <a href="@Html.DisplayFor(model => Model.movie.linkToTrailer)" target="blank" class="btn btn-default" role="button">Trailer</a>
-                        <a href="@Html.DisplayFor(model => Model.movie.linkToImdb)" target="blank" class="btn btn-default" role="button">IMDB</a>
+                        <a href="@Html.DisplayFor(model => Model.movie.LinkToWebsite)" target="blank" class="btn btn-default" role="button">Officiële website</a>
+                        <a href="@Html.DisplayFor(model => Model.movie.LinkToTrailer)" target="blank" class="btn btn-default" role="button">Trailer</a>
+                        <a href="@Html.DisplayFor(model => Model.movie.LinkToImdb)" target="blank" class="btn btn-default" role="button">IMDB</a>
                     </div>
                 </div>
 
@@ -85,13 +85,13 @@
                                         Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.getFormatedStartingTime)
+                                        @Html.DisplayFor(modelItem => item.GetFormatedStartingTime)
                                     </td>
                                     <td>
                                         3D: @(item.ThreeDimensional ? "Ja" : "Nee")
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Reserveren", "TicketSelection", "Shows", new { id = item.ShowID }, null)
+                                        @Html.ActionLink("Reserveren", "TicketSelection", "Shows", new { id = item.ShowId }, null)
                                     </td>
                                 </tr>
                             }

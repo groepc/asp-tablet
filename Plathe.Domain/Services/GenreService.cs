@@ -18,12 +18,12 @@ namespace Plathe.Domain.Services
 
         public GenreService(IGenreRepository genreRepository)
         {
-            this.repository = genreRepository;
+            repository = genreRepository;
         }
 
-       public IEnumerable<Genre> getAllGenres()
+       public IEnumerable<Genre> GetAllGenres()
         {
-            return this.repository.Genres;
+            return repository.Genres;
         }
 
     }
