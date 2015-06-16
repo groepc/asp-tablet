@@ -11,31 +11,31 @@
                 <div class="show-thumbnail">
                     <img src="@Html.DisplayFor(model => model.Show.Movie.Image)" alt="@Html.DisplayFor(model => model.Show.Movie.Title)" style="margin: 10px auto;">
                     <div class="extra">
-                        @if (@Model.Show.Movie.RatingDiscrimination == true)
+                        @if (@Model.Show.Movie.RatingDiscrimination)
                         {
                             <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
                         }
-                        @if (@Model.Show.Movie.RatingDrugs == true)
+                        @if (@Model.Show.Movie.RatingDrugs)
                         {
                             <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
                         }
-                        @if (@Model.Show.Movie.RatingFear == true)
+                        @if (@Model.Show.Movie.RatingFear)
                         {
                             <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
                         }
-                        @if (@Model.Show.Movie.RatingLanguage == true)
+                        @if (@Model.Show.Movie.RatingLanguage)
                         {
                             <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
                         }
-                        @if (@Model.Show.Movie.RatingSex == true)
+                        @if (@Model.Show.Movie.RatingSex)
                         {
                             <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
                         }
-                        @if (@Model.Show.Movie.RatingViolence == true)
+                        @if (@Model.Show.Movie.RatingViolence)
                         {
                             <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
                         }
-                        @if (@Model.Show.Movie.ThreeDimensional == true)
+                        @if (@Model.Show.Movie.ThreeDimensional)
                         {
                             <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
                         }

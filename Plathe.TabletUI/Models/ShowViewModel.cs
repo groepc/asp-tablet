@@ -1,13 +1,7 @@
-﻿using Plathe.Domain.Entities;
-using Plathe.Domain.Abstract;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
 
 namespace Plathe.TabletUI.Models
 {
@@ -17,7 +11,7 @@ namespace Plathe.TabletUI.Models
 
         public ShowViewModel()
         {
-            this.service = DependencyResolver.Current.GetService<IShowService>();
+            service = DependencyResolver.Current.GetService<IShowService>();
         }
         public IEnumerable<Show> Shows
         {

@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Plathe.TabletUI.Models;
-using Plathe.Domain.Concrete;
-using Plathe.Domain.Abstract;
-using Plathe.Domain.Entities;
+﻿using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
+using Plathe.TabletUI.Models;
 
 namespace Plathe.TabletUI.Controllers
 {
