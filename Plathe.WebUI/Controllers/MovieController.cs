@@ -47,8 +47,8 @@ namespace Plathe.WebUI.Controllers
 
             MovieDetailViewModel viewModel = new MovieDetailViewModel
             {
-                movie = movie,
-                showsForMovie = shows
+                Movie = movie,
+                ShowsForMovie = shows
             };
             
             return View(viewModel);

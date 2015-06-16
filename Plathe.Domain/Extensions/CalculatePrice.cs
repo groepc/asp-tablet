@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Extensions
 {
     class CalculatePrice
     {
-        private Array dateTimes = new DateTime[]
+        private Array _dateTime = new DateTime[]
         {
             new DateTime(2015, 12, 25),
             new DateTime(2015, 12, 26),
@@ -73,7 +69,7 @@ namespace Plathe.Domain.Extensions
             var dayOfWeek = (int)(show.StartingTime.DayOfWeek + 6) % 7;
 
             // only change ticket price between monday and thursday
-            if (dayOfWeek >= 0 && dayOfWeek <= 3 && !dateTimes.Equals(show.StartingTime.Date))
+            if (dayOfWeek >= 0 && dayOfWeek <= 3 && !_dateTime.Equals(show.StartingTime.Date))
             {
                 return price - (decimal)1.50;
             }

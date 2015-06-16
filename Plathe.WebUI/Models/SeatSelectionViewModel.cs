@@ -1,18 +1,14 @@
-﻿using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Plathe.Domain.Concrete;
+using Plathe.Domain.Entities;
 
 namespace Plathe.WebUI.Models
 {
     public class SeatSelectionViewModel
     {
 
-        private EfDbContext db = new EfDbContext();
+        private EfDbContext _db = new EfDbContext();
 
         public Show Show { get; set; }
       
@@ -24,9 +20,9 @@ namespace Plathe.WebUI.Models
         {
             get
             {
-                IEnumerable<Row> getRows = this.Show.Room.Rows;
+                IEnumerable<Row> getRows = Show.Room.Rows;
 
-                var tickets = db.Tickets.Where(s => s.ShowId == this.Show.ShowId);
+                var tickets = _db.Tickets.Where(s => s.ShowId == Show.ShowId);
 
                 // set reservation status of each seat
                 foreach (var row in getRows)

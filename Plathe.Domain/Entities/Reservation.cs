@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Plathe.Domain.Entities
 {
 
     public class ReservationTickets
     {
-        public int SaveReservationWithTickets(int showId, int? adults, int? adultsplus, int? childs, int? popcorn)
+        public int SaveReservationWithTickets(int showId, int? adults, int? adultsplus, int? childs, int? popcorn, int? vip)
         {
             Reservation reservation = new Reservation
             {
