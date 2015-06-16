@@ -7,5 +7,7 @@ namespace Plathe.Domain.Abstract
     {
        IEnumerable<Movie> Movies { get; }
        IEnumerable<Movie> GetMovieByGenreId(int genreId);
+
+        void SaveMovie(Movie movie);
     }
 }

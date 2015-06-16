@@ -7,12 +7,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit @Model.Title</h2>
+<div class="panel">
+    <div class="panel-heading">
+        <h2>Edit @Model.Title</h2>
+    </div>
 
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-    <input type="submit" value="Opslaan"/>
-    @Html.ActionLink("Annuleer en ga terug naar overzicht", "Index")
-}
+    @using (Html.BeginForm("Edit", "Admin"))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.MovieId)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "MovieId")
+                {
+                    <div class="form-group">
+                        <label>@(property.DisplayName ?? property.PropertyName)</label>
+                        @if (property.PropertyName == "Description")
+                        {
+                            @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 10 })
+                        }
+                        else
+                        {
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessage(property.PropertyName)
+                    </div>
+                }
+            }
 
+            <div>
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
+                @Html.ActionLink("Annuleer en ga terug naar overzicht", "Index", null, new
+                {
+                    @class = "btn btn-default"
+                })
+                </div>
+        </div>
+    }
+
+</div>
