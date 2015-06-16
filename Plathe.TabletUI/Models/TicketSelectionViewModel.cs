@@ -1,12 +1,7 @@
-﻿using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
 
 namespace Plathe.TabletUI.Models
 {
@@ -16,7 +11,7 @@ namespace Plathe.TabletUI.Models
 
         public TicketSelectionViewModel()
         {
-            this.service = DependencyResolver.Current.GetService<IShowService>();
+            service = DependencyResolver.Current.GetService<IShowService>();
         }
 
         public Show Show
@@ -42,7 +37,7 @@ namespace Plathe.TabletUI.Models
         [Range(1, 25)]
         public int TotalAmount
         {
-            get { return this.AmountAdults + this.AmountAdultsPlus + this.AmountChildren + this.AmountPopcorn; }
+            get { return AmountAdults + AmountAdultsPlus + AmountChildren + AmountPopcorn; }
         }
 
     }

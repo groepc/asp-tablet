@@ -1,19 +1,16 @@
-﻿using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Plathe.Domain.Abstract;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Concrete
 {
     public class EfRowRepository : IRowRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Row> Rows
         {
-            get { return context.Rows; }
+            get { return _context.Rows; }
         }
     }
 }

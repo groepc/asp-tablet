@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Plathe.Domain.Entities
 {
@@ -28,7 +24,7 @@ namespace Plathe.Domain.Entities
         public string LinkToImdb { get; set; }
         public string LinkToTrailer { get; set; }
         public string LinkToWebsite { get; set; }
-        public DateTime playsUntill { get; set; }
-        public Genre genre { get; set; }
+        public DateTime PlaysUntill { get; set; }
+        public Genre Genre { get; set; }
     }
 }

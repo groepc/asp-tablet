@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
@@ -16,22 +17,19 @@ namespace Plathe.UnitTests
         {
             //Arrange
             // - create the mock repository
-            Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
-            mock.Setup(m => m.Movies).Returns(new Movie[]{
-            new Movie {MovieId = 1, Title = "Thor", GenreId = 1},
-            new Movie {MovieId = 2, Title = "Loki", GenreId = 2},
-            new Movie {MovieId = 3, Title = "Sif", GenreId = 3},
-            new Movie {MovieId = 4, Title = "Odin", GenreId = 4},
-            new Movie {MovieId = 5, Title = "Lagertha", GenreId = 5},
-            new Movie {MovieId = 6, Title = "Shaun", GenreId = 6}
+            Mock<IGenreRepository> mock = new Mock<IGenreRepository>();
+            mock.Setup(m => m.Genres).Returns(new Genre[]{
+            new Genre {GenreId = 1, Name = "Thor"},
+            new Genre {GenreId = 1, Name = "Odin"},
+            new Genre {GenreId = 1, Name = "Loki"},
             });
 
             //Arrange
             // - create a new controller
-            MovieController controller = new MovieController(mock.Object);
+            NavController controller = new NavController(mock.Object);
 
             //Action
-            Movie[] result = ((GenreViewModel)controller.List(3).Model).Movies.ToArray();
+            Movie[] result = ((GenreViewModel)controller.List(3).Model).Genres.ToArray();
 
             //Assert
             Assert.IsTrue(result[0].Title == "Thor");
