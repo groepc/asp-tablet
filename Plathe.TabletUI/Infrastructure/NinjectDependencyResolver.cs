@@ -33,12 +33,18 @@ namespace Plathe.TabletUI.Infrastructure
             kernel.Bind<IGenreRepository>().To<EfGenreRepository>();
             kernel.Bind<IShowRepository>().To<EfShowRepository>();
             kernel.Bind<IReservationRepository>().To<EfReservationRepository>();
+            kernel.Bind<ITicketRepository>().To<EfTicketRepository>();
+            kernel.Bind<IRowRepository>().To<EfRowRepository>();
+            kernel.Bind<ISeatRepository>().To<EfSeatRepository>();
 
             // services
             kernel.Bind<IMovieService>().To<MovieService>();
             kernel.Bind<IGenreService>().To<GenreService>();
             kernel.Bind<IShowService>().To<ShowService>();
             kernel.Bind<IReservationService>().To<ReservationService>();
+            kernel.Bind<ITicketService>().To<TicketService>();
+            kernel.Bind<ISeatService>().To<SeatService>();
+
         }
     }
 }
