@@ -1,13 +1,7 @@
-﻿using Plathe.Domain.Abstract;
-using Plathe.Domain.Entities;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
 
 namespace Plathe.TabletUI.Models
 {
@@ -19,7 +13,7 @@ namespace Plathe.TabletUI.Models
 
         public MovieViewModel()
         {
-            this.service = DependencyResolver.Current.GetService<IMovieService>();
+            service = DependencyResolver.Current.GetService<IMovieService>();
         }
 
         public IEnumerable<Movie> Movies

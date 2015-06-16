@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using Moq;
 using Ninject;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
 using Plathe.Domain.Services;
 
 namespace Plathe.TabletUI.Infrastructure

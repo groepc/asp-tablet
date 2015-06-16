@@ -1,16 +1,18 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Plathe.TabletUI.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Plathe.TabletUI.App_Start.NinjectWebCommon), "Stop")]
+using System;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using Plathe.TabletUI.App_Start;
+using Plathe.TabletUI.Infrastructure;
+using WebActivatorEx;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
 namespace Plathe.TabletUI.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,7 +63,7 @@ namespace Plathe.TabletUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            System.Web.Mvc.DependencyResolver.SetResolver(new Plathe.TabletUI.Infrastructure.NinjectDependencyResolver(kernel));
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }
 }

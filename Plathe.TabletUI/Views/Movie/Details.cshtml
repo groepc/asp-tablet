@@ -9,31 +9,31 @@
         <div class="block detail">
             <img src="@Html.DisplayFor(model => model.Movie.Image)" alt="@Html.DisplayFor(model => model.Movie.Title)" height="250" />
             <div class="extra">
-                @if (@Model.Movie.RatingDiscrimination == true)
+                @if (@Model.Movie.RatingDiscrimination)
                 {
                     <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
                 }
-                @if (@Model.Movie.RatingDrugs == true)
+                @if (@Model.Movie.RatingDrugs)
                 {
                     <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
                 }
-                @if (@Model.Movie.RatingFear == true)
+                @if (@Model.Movie.RatingFear)
                 {
                     <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
                 }
-                @if (@Model.Movie.RatingLanguage == true)
+                @if (@Model.Movie.RatingLanguage)
                 {
                     <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
                 }
-                @if (@Model.Movie.RatingSex == true)
+                @if (@Model.Movie.RatingSex)
                 {
                     <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
                 }
-                @if (@Model.Movie.RatingViolence == true)
+                @if (@Model.Movie.RatingViolence)
                 {
                     <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
                 }
-                @if (@Model.Movie.ThreeDimensional == true)
+                @if (@Model.Movie.ThreeDimensional)
                 {
                     <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
                 }
