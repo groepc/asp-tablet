@@ -31,7 +31,7 @@ namespace Plathe.WebUI.Controllers
         {
             ShowViewModel viewModel = new ShowViewModel
             {
-                Shows = showService.GetShowsThisWeek()
+                Shows = ShowService.GetShowsThisWeek()
             };
 
             return View(viewModel);

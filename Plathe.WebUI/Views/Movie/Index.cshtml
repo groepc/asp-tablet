@@ -1,7 +1,6 @@
 ﻿@* Author: Mieke*@
 
-@using Plathe.Domain.Entities
-@model IEnumerable<Movie>
+@model Plathe.WebUI.Models.MovieDetailViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,7 +20,7 @@
     </div>
     <div class="col-sm-9 col-sm-offset-1">
         <div class="row">
-            @foreach (var p in Model)
+            @foreach (var p in Model.Movies)
             {
                 <div class="col-sm-3 item">
                     <a href="/Movie/Details/@Html.DisplayFor(modelItem => p.MovieId)">

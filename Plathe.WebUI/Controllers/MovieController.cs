@@ -22,7 +22,8 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Index()
         {
-            return View(this.movieService.GetAllMovies().ToList());
+            MovieDetailViewModel model = new MovieDetailViewModel();
+            return View(model);
         }
 
         // GET: Movie/Details/5
