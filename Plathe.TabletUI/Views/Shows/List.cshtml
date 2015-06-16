@@ -82,12 +82,19 @@
                                     </tr>
                                     <tr>
                                         <td>Rolstoel</td>
-                                        <td>Onbekend</td>
+                                        @if (item.Room.WheelchairAccess)
+                                        {
+                                            <td>Ja</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nee</td>
+                                        }
                                     </tr>
-                                    <tr>
-                                        <td>Tijd</td>
-                                        <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
-                                    </tr>
+                                <tr>
+                                    <td>Tijd</td>
+                                    <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

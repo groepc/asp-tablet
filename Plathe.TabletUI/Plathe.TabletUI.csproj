@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
@@ -209,7 +208,6 @@
     <Content Include="Views\Shows\List.cshtml" />
     <Content Include="Views\Shows\TicketSelection.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
-    <Content Include="Views\Code\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
