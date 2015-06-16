@@ -26,10 +26,10 @@ namespace Plathe.TabletUI.Controllers
             return View(viewModel);
         }
         // GET: Shows/TicketSelection/5
-        public ViewResult TicketSelection(int? id)
+        public ViewResult TicketSelection(int id)
         {
             // get current show
-            Show show = showService.GetShowById((int)id);
+            Show show = showService.GetShowById(id);
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
