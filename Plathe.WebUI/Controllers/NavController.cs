@@ -9,16 +9,16 @@ namespace Plathe.WebUI.Controllers
 {
     public class NavController : Controller
     {
-        private IGenreRepository repository;
+        private IGenreRepository _repository;
 
         public NavController(IGenreRepository repo)
         {
-            repository = repo;
+            _repository = repo;
         }
 
         public PartialViewResult Menu()
         {
-            IEnumerable<string> genres = repository.Genres
+            IEnumerable<string> genres = _repository.Genres
                                 .Select(x => x.Name)
                                 .Distinct()
                                 .OrderBy(x => x);

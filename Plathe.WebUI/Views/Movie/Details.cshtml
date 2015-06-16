@@ -16,52 +16,52 @@
         <div class="col-sm-10">
             <div class="row">
                 <div class="col-sm-8">
-                    <h2>@Html.DisplayFor(model => model.movie.Title)</h2>
-                    <p>Duur: @Html.DisplayFor(model => model.movie.Duration) minuten</p>
-                    <p>Regisseur: @Html.DisplayFor(model => model.movie.Director)</p>
-                    <p>Acteurs: @Html.DisplayFor(model => model.movie.MainCharacters)</p>
-                    <p>@Html.DisplayFor(model => model.movie.Description)</p>
+                    <h2>@Html.DisplayFor(model => model.Movie.Title)</h2>
+                    <p>Duur: @Html.DisplayFor(model => model.Movie.Duration) minuten</p>
+                    <p>Regisseur: @Html.DisplayFor(model => model.Movie.Director)</p>
+                    <p>Acteurs: @Html.DisplayFor(model => model.Movie.MainCharacters)</p>
+                    <p>@Html.DisplayFor(model => model.Movie.Description)</p>
 
                     <div class="btn-group" role="group">
-                        <a href="@Html.DisplayFor(model => Model.movie.LinkToWebsite)" target="blank" class="btn btn-default" role="button">Officiële website</a>
-                        <a href="@Html.DisplayFor(model => Model.movie.LinkToTrailer)" target="blank" class="btn btn-default" role="button">Trailer</a>
-                        <a href="@Html.DisplayFor(model => Model.movie.LinkToImdb)" target="blank" class="btn btn-default" role="button">IMDB</a>
+                        <a href="@Html.DisplayFor(model => Model.Movie.LinkToWebsite)" target="blank" class="btn btn-default" role="button">Officiële website</a>
+                        <a href="@Html.DisplayFor(model => Model.Movie.LinkToTrailer)" target="blank" class="btn btn-default" role="button">Trailer</a>
+                        <a href="@Html.DisplayFor(model => Model.Movie.LinkToImdb)" target="blank" class="btn btn-default" role="button">IMDB</a>
                     </div>
                 </div>
 
                 <div class="col-sm-2">
-                    <img src="@Html.DisplayFor(model => model.movie.Image)" alt="@Html.DisplayFor(model => model.movie.Title)">
+                    <img src="@Html.DisplayFor(model => model.Movie.Image)" alt="@Html.DisplayFor(model => model.Movie.Title)">
                     <p> </p>
                     <div style="margin-bottom: 10px">
-                        @if (Model.movie.RatingDiscrimination == true)
+                        @if (Model.Movie.RatingDiscrimination)
                         {
                             <img src="~/Content/img/discriminatie.svg" width="35" />
                         }
-                        @if (Model.movie.RatingDrugs == true)
+                        @if (Model.Movie.RatingDrugs)
                         {
                             <img src="~/Content/img/drugs.svg" width="35" />
                         }
-                        @if (Model.movie.RatingFear == true)
+                        @if (Model.Movie.RatingFear)
                         {
                             <img src="~/Content/img/angst.svg" width="35" />
                         }
-                        @if (Model.movie.RatingLanguage == true)
+                        @if (Model.Movie.RatingLanguage)
                         {
                             <img src="~/Content/img/groftaalgebruik.svg" width="35" />
                         }
-                        @if (Model.movie.RatingSex == true)
+                        @if (Model.Movie.RatingSex)
                         {
                             <img src="~/Content/img/seks.svg" width="35" />
                         }
-                        @if (Model.movie.RatingViolence == true)
+                        @if (Model.Movie.RatingViolence)
                         {
                             <img src="~/Content/img/geweld.svg" width="35" />
                         }
                     </div>
                     <p> </p>
-                    <p>3D: @Html.DisplayFor(model => model.movie.ThreeDimensional)</p>
-                    <p>Taal: @Html.DisplayFor(model => model.movie.Language)</p>
-                    <p>Genre: @Html.DisplayFor(model => model.movie.genre.Name)</p>
+                    <p>3D: @Html.DisplayFor(model => model.Movie.ThreeDimensional)</p>
+                    <p>Taal: @Html.DisplayFor(model => model.Movie.Language)</p>
+                    <p>Genre: @Html.DisplayFor(model => model.Movie.genre.Name)</p>
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
 
                     <table class="table">
                         <tbody>
-                            @foreach (var item in Model.showsForMovie.ToList())
+                            @foreach (var item in Model.ShowsForMovie.ToList())
                             {
 
                                 <tr>
