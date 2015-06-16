@@ -1,33 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
-using System.Collections.Specialized;
 using Plathe.WebUI.Models;
-using Plathe.Domain.Abstract;
-using Plathe.Domain.AbstractServices;
 
 namespace Plathe.WebUI.Controllers
 {
     public class ShowsController : Controller
     {
-        private EfDbContext db = new EfDbContext();
-        private IReservationService reservationService;
-        private IShowService showService;
-        private ITicketService ticketService;
+        private EfDbContext _db = new EfDbContext();
+        private IReservationService _reservationService;
+        private IShowService _showService;
+        private ITicketService _ticketService;
 
         public ShowsController(IReservationService reservationService, IShowService showService, ITicketService ticketService)
         {
 
-            this.ticketService = ticketService;
-            this.reservationService = reservationService;
-            this.showService = showService;
+            _ticketService = ticketService;
+            _reservationService = reservationService;
+            _showService = showService;
 
         }
 

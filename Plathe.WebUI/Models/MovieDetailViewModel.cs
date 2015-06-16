@@ -8,7 +8,7 @@ namespace Plathe.WebUI.Models
 {
     public class MovieDetailViewModel
     {
-        public Movie movie { get; set; }
-        public IEnumerable<Show> showsForMovie { get; set; }
+        public Movie Movie { get; set; }
+        public IEnumerable<Show> ShowsForMovie { get; set; }
     }
 }

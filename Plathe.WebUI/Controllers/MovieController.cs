@@ -1,14 +1,10 @@
-﻿using Plathe.Domain.Abstract;
-using Plathe.Domain.AbstractServices;
-using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
-using Plathe.WebUI.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
+using Plathe.WebUI.Models;
 
 namespace Plathe.WebUI.Controllers
 {

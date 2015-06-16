@@ -47,7 +47,7 @@ namespace Plathe.WebUI.Models
 
         //VIP-kaartje
         [Range(0, 6)]
-        public int AmountVIP { get; set; }
+        public int AmountVip { get; set; }
 
         [Range(1, 36)]
         public int TotalAmount

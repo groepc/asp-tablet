@@ -13,7 +13,7 @@ namespace Plathe.WebUI.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {
-        private IKernel kernel;
+        private IKernel _kernel;
         public NinjectDependencyResolver(IKernel kernelParam)
         {
             kernel = kernelParam;

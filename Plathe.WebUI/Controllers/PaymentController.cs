@@ -1,10 +1,8 @@
-﻿using Plathe.Domain.Concrete;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
+using Plathe.Domain.Concrete;
 
 namespace Plathe.Controllers
 {
@@ -40,7 +38,7 @@ namespace Plathe.Controllers
             reservation.Payed = true;
             reservation.PayedOn = DateTime.Now;
 
-            db.Entry(reservation).State = System.Data.Entity.EntityState.Modified;
+            db.Entry(reservation).State = EntityState.Modified;
             db.SaveChanges();
 
             return View(reservation);
