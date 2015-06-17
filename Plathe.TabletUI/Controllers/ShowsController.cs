@@ -16,7 +16,6 @@ namespace Plathe.TabletUI.Controllers
 
         public ShowsController(IShowService showService, IReservationService reservationService, ITicketService ticketService, ISeatService seatService)
         {
-
             _reservationService = reservationService;
             _showService = showService;
             _ticketService = ticketService;
@@ -54,11 +53,11 @@ namespace Plathe.TabletUI.Controllers
                 List<int> chosenSeats = _seatService.FindFreeSeats(viewModel.Show, viewModel.TotalAmount);
 
                 Decimal totalPrice = _ticketService.CreateTickets(
-                    chosenSeats, 
-                    reservation.ReservationId, 
-                    viewModel.Show, 
-                    false, 
-                    viewModel.AmountAdults, 
+                    chosenSeats,
+                    reservation.ReservationId,
+                    viewModel.Show,
+                    false,
+                    viewModel.AmountAdults,
                     viewModel.AmountAdultsPlus,
                     viewModel.AmountChildren,
                     0,
