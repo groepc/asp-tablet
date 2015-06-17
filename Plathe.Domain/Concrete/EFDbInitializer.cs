@@ -8,9 +8,9 @@ using Plathe.Domain.Extensions;
 namespace Plathe.Domain.Concrete
 {
 
-    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
+    class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
+    //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
         protected override void Seed(EfDbContext context)
         {

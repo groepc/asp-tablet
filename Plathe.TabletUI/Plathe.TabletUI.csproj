@@ -214,7 +214,6 @@
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Shows\Reservate.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\Printing.cshtml" />
     <Content Include="Views\Code\Index.cshtml" />
     <Content Include="Views\Tickets\Printing.cshtml" />
   </ItemGroup>

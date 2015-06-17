@@ -1,18 +1,20 @@
-﻿@model dynamic
-
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<div class="text-center">
+    <span class="glyphicon glyphicon-credit-card" style="font-size: 150px;"></span>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+    <p>Volg de aanwijzigen op de pinautomaat</p>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            window.setInterval(function () {
+                window.location.replace("/Tickets/Printing/@ViewBag.idReservation");
+            }, 5000);
+        });
+    </script>
+}

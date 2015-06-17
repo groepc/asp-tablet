@@ -43,7 +43,7 @@ namespace Plathe.TabletUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult TicketSelection(TicketSelectionViewModel viewModel)
+        public ActionResult TicketSelection(TicketSelectionViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -67,10 +67,8 @@ namespace Plathe.TabletUI.Controllers
                 _reservationService.UpdateReservation(reservation.ReservationId, totalPrice);
 
 
-                // TODO: redirect to payment controller
-                //return Redirect("/Payment/Index/" + reservation.ReservationId);
-                // return RedirectToAction("Index", "Payment", reservation.ReservationId);
-                return View();
+
+                return RedirectToAction("Index", "Payment", new { reservationId = reservation.ReservationId });
             }
             else
             {

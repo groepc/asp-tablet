@@ -11,12 +11,7 @@ namespace Plathe.TabletUI.Controllers
         
         public ActionResult Index(int reservationId)
         {
-            // TODO: redirect to printing method
-            return View();
-        }
-
-        public ActionResult Printing(int reservationId)
-        {
+            ViewBag.idReservation = reservationId;
             return View();
         }
 
