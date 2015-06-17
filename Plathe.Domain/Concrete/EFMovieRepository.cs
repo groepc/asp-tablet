@@ -7,16 +7,16 @@ namespace Plathe.Domain.Concrete
 {
     public class EfMovieRepository : IMovieRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private readonly EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Movie> Movies
         {
-            get { return context.Movies; }
+            get { return _context.Movies; }
         }
 
         public IEnumerable<Movie> GetMovieByGenreId(int genreId)
         {
-            return context.Movies.Where(m => m.GenreId == genreId);
+            return _context.Movies.Where(m => m.GenreId == genreId);
         }
     }
 }

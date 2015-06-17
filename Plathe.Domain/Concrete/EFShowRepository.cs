@@ -6,11 +6,11 @@ namespace Plathe.Domain.Concrete
 {
     public class EfShowRepository : IShowRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private readonly EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Show> Shows
         {
-            get { return context.Shows; }
+            get { return _context.Shows; }
         }
     }
 }
