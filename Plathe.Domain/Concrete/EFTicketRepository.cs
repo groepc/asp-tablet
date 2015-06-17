@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
 
@@ -12,6 +13,11 @@ namespace Plathe.Domain.Concrete
         {
             get { return context.Tickets; }
         }
+
+        public IEnumerable<Ticket> GetTicketsByReservationId(int id)
+        {
+            return context.Tickets.Where(t => t.ReservationId.Equals(id));
+        } 
 
         public Ticket SaveTicket(Ticket ticket)
         {

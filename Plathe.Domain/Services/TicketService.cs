@@ -83,7 +83,7 @@ namespace Plathe.Domain.Services
                 Price = new CalculatePrice().GetTicketPricePrice(type, show, secretMovie),
                 Options = "options",
                 Type = type,
-                PopcornTime = (type == "popcorn") ? true : false
+                PopcornTime = type == "popcorn"
             };
 
             // save reservation to DB
@@ -91,6 +91,11 @@ namespace Plathe.Domain.Services
 
             return _repository.SaveTicket(ticket);
 
+        }
+
+        public IEnumerable<Ticket> GetTicketsByReservationId(int id)
+        {
+            return _repository.GetTicketsByReservationId(id);
         }
 
     }
