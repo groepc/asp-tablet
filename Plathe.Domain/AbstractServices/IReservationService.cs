@@ -14,5 +14,7 @@ namespace Plathe.Domain.AbstractServices
         Reservation GetReservationById(int id);
 
         Reservation UpdateReservation(int reservationId, decimal price);
+
+        int GetReservationIdByReservationCode(string code);
     }
 }

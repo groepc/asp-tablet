@@ -7,13 +7,6 @@ namespace Plathe.TabletUI.Controllers
 {
     public class MovieController : Controller
     {
-        private IMovieService movieService;
-
-        public MovieController(IMovieService movieService)
-        {
-            this.movieService = movieService;
-        }
-
         // GET: Movies
         public ViewResult List()
         {
@@ -23,11 +16,9 @@ namespace Plathe.TabletUI.Controllers
 
         public ViewResult Details(int id)
         {
-            Movie movie = movieService.GetMovieById(id);
-
             MovieViewModel model = new MovieViewModel
             {
-                MovieId = movie.MovieId
+                MovieId = id
             };
             return View(model);
         }

@@ -17,6 +17,11 @@ namespace Plathe.Domain.Concrete
             get { return context.Tickets; }
         }
 
+        public IEnumerable<Ticket> GetTicketsByReservationId(int id)
+        {
+            return context.Tickets.Where(t => t.ReservationId.Equals(id));
+        } 
+
         public Ticket SaveTicket(Ticket ticket)
         {
             context.Tickets.Add(ticket);

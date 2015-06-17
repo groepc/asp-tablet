@@ -94,5 +94,9 @@ namespace Plathe.Domain.Services
 
         }
 
+        public IEnumerable<Ticket> GetTicketsByReservationId(int id)
+        {
+            return repository.GetTicketsByReservationId(id);
+        }
     }
 }
