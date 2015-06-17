@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using CustomExtensions;
 using Plathe.Domain.Entities;
+using Plathe.Domain.Extensions;
 
 namespace Plathe.Domain.Concrete
 {
 
-    class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
+    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
+    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
         protected override void Seed(EfDbContext context)
         {
@@ -78,7 +78,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt2395427/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=rD8lWtcgeyg",
                     LinkToWebsite = "http://marvel.com/movies/movie/193/avengers_age_of_ultron",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 1
                 },
                 new Movie {
@@ -101,7 +101,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt4015478/",
                     LinkToTrailer = "https://www.youtube.com/watch?v=sxWH0SYcWrs",
                     LinkToWebsite = "http://www.demastersdefilm.nl/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 7
                 },
                 new Movie {
@@ -124,7 +124,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt2820852/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=Skpu5HaVkOc",
                     LinkToWebsite = "http://universalshowtimes.com/nl/fast-and-furious-7/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 1
                 },
                 new Movie {
@@ -147,7 +147,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt2561572/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=lEqrpuU9fYI",
                     LinkToWebsite = "http://gethardmovie.com/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 4
                 },
                 new Movie {
@@ -170,7 +170,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt1392190/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=hEJnMQG9ev8",
                     LinkToWebsite = "http://www.madmaxmovie.com/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 8
                 },
                 new Movie {
@@ -193,7 +193,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt2872750/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=tQvwiOWpj7o",
                     LinkToWebsite = "http://shaunthesheep.com/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 6
                 },
                 new Movie {
@@ -216,7 +216,7 @@ namespace Plathe.Domain.Concrete
                     LinkToImdb = "http://www.imdb.com/title/tt2224026/?ref_=nv_sr_1",
                     LinkToTrailer = "https://www.youtube.com/watch?v=W6Bd3TWpeig",
                     LinkToWebsite = "http://www.dreamworks.com/home/",
-                    playsUntill = new DateTime(2015,10,01, 10,1,59),
+                    PlaysUntill = new DateTime(2015,10,01, 10,1,59),
                     GenreId = 6
                 }
             };

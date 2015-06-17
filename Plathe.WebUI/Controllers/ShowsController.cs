@@ -31,7 +31,7 @@ namespace Plathe.WebUI.Controllers
         {
             ShowViewModel viewModel = new ShowViewModel
             {
-                Shows = ShowService.GetShowsThisWeek()
+                Shows = _showService.GetShowsThisWeek()
             };
 
             return View(viewModel);
@@ -40,18 +40,13 @@ namespace Plathe.WebUI.Controllers
         // GET: Shows/TicketSelection/5
         public ActionResult TicketSelection(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
             // get current show
-            Show show = showService.GetShowById(id);
+            Show show = _showService.GetShowById(id);
 
             if (show == null) 
             {
                 return HttpNotFound();
-            };
+            }
 
             TicketSelectionViewModel viewModel = new TicketSelectionViewModel
             {
@@ -69,7 +64,7 @@ namespace Plathe.WebUI.Controllers
             {
 
                 // create reservation
-                Reservation reservation = reservationService.CreateReservation();
+                Reservation reservation = _reservationService.CreateReservation();
                 
 
                 // create viewModel for seatSelection
@@ -113,30 +108,30 @@ namespace Plathe.WebUI.Controllers
 
             NameValueCollection data = Request.Form;
 
-            Reservation reservation = this.reservationService.GetReservationById(Convert.ToInt32(data["ReservationID"]));
+            Reservation reservation = _reservationService.GetReservationById(Convert.ToInt32(data["ReservationID"]));
 
-            var ShowId = Convert.ToInt32(data["ShowId"]);
-            Show show = db.Shows.Find(ShowId);
+            var showId = Convert.ToInt32(data["ShowId"]);
+            Show show = _db.Shows.Find(showId);
 
-            int AmountAdults = Convert.ToInt32(data["amountAdults"]);
-            int AmountAdultsPlus = Convert.ToInt32(data["amountAdultsPlus"]);
-            int AmountChildren = Convert.ToInt32(data["amountChildren"]);
-            int AmountStudents = Convert.ToInt32(data["amountStudents"]);
-            int AmountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
-            int AmountVIP = Convert.ToInt32(data["amountVIP"]);
+            int amountAdults = Convert.ToInt32(data["amountAdults"]);
+            int amountAdultsPlus = Convert.ToInt32(data["amountAdultsPlus"]);
+            int amountChildren = Convert.ToInt32(data["amountChildren"]);
+            int amountStudents = Convert.ToInt32(data["amountStudents"]);
+            int amountPopcorn = Convert.ToInt32(data["amountPopcorn"]);
+            int amountVip = Convert.ToInt32(data["amountVip"]);
 
-            var reservationID = reservation.ReservationId;
+            var reservationId = reservation.ReservationId;
 
 
             // get seat ID's
             string seatsString = data["seat-selected"];
-            var ChosenSeat = seatsString.Split(',').Select(x => int.Parse(x)).ToList();
+            var chosenSeat = seatsString.Split(',').Select(x => int.Parse(x)).ToList();
 
-            Decimal totalPrice = this.ticketService.CreateTickets(ChosenSeat, reservationID, show, false, AmountAdults, AmountAdultsPlus, AmountChildren, AmountStudents, AmountPopcorn, AmountVIP);
-            this.reservationService.UpdateReservation(reservationID, totalPrice);
+            Decimal totalPrice = _ticketService.CreateTickets(chosenSeat, reservationId, show, false, amountAdults, amountAdultsPlus, amountChildren, amountStudents, amountPopcorn, amountVip);
+            _reservationService.UpdateReservation(reservationId, totalPrice);
 
             // send variables to view
-            ViewBag.ReservationId = reservationID;
+            ViewBag.ReservationId = reservationId;
             return View(reservation);
         }
     }
