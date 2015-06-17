@@ -49,7 +49,7 @@ namespace Plathe.Domain.Services
 
         public int GetReservationIdByReservationCode(string code)
         {
-            return repository.GetReservationIdByReservationCode(code);
+            return _repository.GetReservationIdByReservationCode(code);
         }
 
         public Reservation GetReservationById(int id)

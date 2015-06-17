@@ -70,7 +70,8 @@ namespace Plathe.TabletUI.Controllers
 
                 // TODO: redirect to payment controller
                 //return Redirect("/Payment/Index/" + reservation.ReservationId);
-                // return RedirectToAction("Index", "Payment", reservation.ReservationId);
+                 //return RedirectToAction("Index", "Payment", reservation.ReservationId);
+                return View();
             }
             else
             {
