@@ -18,6 +18,7 @@ namespace Plathe.Domain.Services
             this.repository = ticketRepository;
         }
 
+
         public decimal CreateTickets(List<Int32> chosenSeat, int reservationId, Show show, bool secretMovie, int adults, int adultsPlus, int children, int students, int popcorn, int vip)
         {
             decimal totalPrice = 0.00M;
