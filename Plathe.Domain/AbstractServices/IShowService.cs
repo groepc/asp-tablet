@@ -13,5 +13,7 @@ namespace Plathe.Domain.AbstractServices
         IEnumerable<Show> GetShowsByMovieId(int id);
         
         Show GetShowById(int id);
+
+        Show GetShowByMovieId(int id);
     }
 }

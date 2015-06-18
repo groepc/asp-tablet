@@ -43,6 +43,11 @@ namespace Plathe.Domain.Services
             return _repository.Shows.FirstOrDefault(model => model.ShowId == id);
         }
 
+        public Show GetShowByMovieId(int id)
+        {
+            return _repository.Shows.FirstOrDefault(model => model.MovieId == id);
+        }
+
         public IEnumerable<Show> GetShowsByMovieId(int id)
         {
             return _repository.Shows
