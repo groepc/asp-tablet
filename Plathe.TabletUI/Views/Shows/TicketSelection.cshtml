@@ -84,10 +84,9 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <p style="margin-left: 10px;">
-                        @Html.ActionLink("Terug naar overzicht", "List")
-                    </p>
+                    <a href="@Url.Action("List", "Shows" )">
+                        <button class="btn btn-primary pull-right">Terug naar overzicht</button>
+                    </a>
                 </div>
             </div>
         </div>
