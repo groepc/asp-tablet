@@ -10,6 +10,4 @@ namespace Plathe.Domain.Abstract
         IEnumerable<Ticket> GetTicketsByReservationId(int id);
         Ticket SaveTicket(Ticket reservation);
     }
-
-
 }

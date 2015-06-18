@@ -8,7 +8,7 @@ using Plathe.Domain.Abstract;
 namespace Plathe.AdminUI.Controllers
 {
     [Authorize]
-    public class ReportsController : Controller
+    public class ReportsController : AppController
     {
         private IShowRepository _showRepository;
 

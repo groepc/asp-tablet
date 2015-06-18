@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Plathe.Domain.Entities;
 using Plathe.Domain.Extensions;
 
@@ -12,8 +14,41 @@ namespace Plathe.Domain.Concrete
 
     //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
+
+        private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager; 
+
+        public EfDbInitializer()
+        {
+            var usermanager = new UserManager<User>(new UserStore<User>(new EfDbContext()));
+            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new EfDbContext()));
+
+            // allow alphanumeric characters in username
+            usermanager.UserValidator = new UserValidator<User>(usermanager)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
+
+            this.userManager = usermanager;
+            this.roleManager = rolemanager;
+        }
+
+
         protected override void Seed(EfDbContext context)
         {
+
+            userManager.CreateAsync(new User { Id = "1", UserName = "manager@plathe.nl" }, "wachtwoord");
+            userManager.CreateAsync(new User { Id = "2", UserName = "sales@plathe.nl" }, "wachtwoord");
+            userManager.CreateAsync(new User { Id = "3", UserName = "backoffice@plathe.nl" }, "wachtwoord");
+
+            roleManager.CreateAsync(new IdentityRole("manager"));
+            roleManager.CreateAsync(new IdentityRole("sales"));
+            roleManager.CreateAsync(new IdentityRole("backoffice"));
+
+            // await stuff before this
+            // userManager.AddToRole("1", "manager");
+            // userManager.AddToRole("2", "sales");
+            // userManager.AddToRole("3", "backoffice");
 
             var genres = new List<Genre>
             {

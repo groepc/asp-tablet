@@ -36,6 +36,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -87,6 +95,7 @@
     <Compile Include="Abstract\ISeatRepository.cs" />
     <Compile Include="Abstract\IShowRepository.cs" />
     <Compile Include="Abstract\ITicketRepository.cs" />
+    <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Concrete\EfDbContext.cs" />
     <Compile Include="Concrete\EfDbInitializer.cs" />
     <Compile Include="Concrete\EfGenreRepository.cs" />
@@ -98,6 +107,7 @@
     <Compile Include="Concrete\EfTicketRepository.cs" />
     <Compile Include="Concrete\EfRoomRepository.cs" />
     <Compile Include="Abstract\IRowRepository.cs" />
+    <Compile Include="Concrete\EfUserRepository.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />
@@ -106,6 +116,7 @@
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Show.cs" />
     <Compile Include="Entities\Ticket.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Extensions\CalculatePrice.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
