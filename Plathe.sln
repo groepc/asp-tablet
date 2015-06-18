@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.WebUI", "Plathe.WebU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.TabletUI", "Plathe.TabletUI\Plathe.TabletUI.csproj", "{01817F0D-F8E4-465B-885C-8300F5050C83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.AdminUI", "Plathe.AdminUI\Plathe.AdminUI.csproj", "{B7015066-23CB-40CC-B25F-2083C6044C8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7015066-23CB-40CC-B25F-2083C6044C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7015066-23CB-40CC-B25F-2083C6044C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7015066-23CB-40CC-B25F-2083C6044C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7015066-23CB-40CC-B25F-2083C6044C8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
