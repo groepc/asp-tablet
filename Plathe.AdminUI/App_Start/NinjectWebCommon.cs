@@ -1,16 +1,18 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Plathe.AdminUI.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Plathe.AdminUI.App_Start.NinjectWebCommon), "Stop")]
+using System;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using Plathe.AdminUI.App_Start;
+using Plathe.AdminUI.Infrastructure;
+using WebActivatorEx;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectWebCommon), "Start")]
+[assembly: ApplicationShutdownMethod(typeof(NinjectWebCommon), "Stop")]
 
 namespace Plathe.AdminUI.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,6 +63,7 @@ namespace Plathe.AdminUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }
 }
