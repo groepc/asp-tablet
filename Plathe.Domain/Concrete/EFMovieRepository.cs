@@ -1,10 +1,7 @@
-﻿using Plathe.Domain.Abstract;
-using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Plathe.Domain.Abstract;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Concrete
 {

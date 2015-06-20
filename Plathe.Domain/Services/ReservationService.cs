@@ -1,28 +1,20 @@
-﻿using Plathe.Domain.Abstract;
+﻿using System;
+using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Entities;
-using System;
-using CustomExtensions;
-using System.Reflection;
+using Plathe.Domain.Extensions;
 
 namespace Plathe.Domain.Services
 {
     public class ReservationService : IReservationService
     {
 
-        private IReservationRepository repository;
+        private IReservationRepository _repository;
 
         public ReservationService(IReservationRepository reservationRepository)
         {
-            this.repository = reservationRepository;
+            _repository = reservationRepository;
 
-        }
-
-        public Reservation UpdateReservation (int reservationId, decimal price) {
-
-            Reservation reservation = GetReservationById(reservationId);
-            reservation.PriceTotal = price;
-            return this.repository.UpdateReservation(reservation);
         }
 
         public Reservation CreateReservation()
@@ -44,13 +36,26 @@ namespace Plathe.Domain.Services
             // save reservation to DB
             // this will automatically add reservationId to the object
 
-            return this.repository.SaveReservation(reservation);
+            return _repository.SaveReservation(reservation);
 
         }
 
         public Reservation GetReservationById(int id)
         {
-            return this.repository.GetReservationById(id);
+            return _repository.GetReservationById(id);
+        }
+
+        public int GetReservationIdByReservationCode(string code)
+        {
+            return _repository.GetReservationIdByReservationCode(code);
+        }
+
+        public Reservation UpdateReservation(int reservationId, decimal price)
+        {
+
+            Reservation reservation = GetReservationById(reservationId);
+            reservation.PriceTotal = price;
+            return _repository.UpdateReservation(reservation);
         }
     }
 }

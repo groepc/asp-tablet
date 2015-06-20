@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using Moq;
 using Ninject;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
 using Plathe.Domain.Services;
 
 namespace Plathe.TabletUI.Infrastructure
@@ -35,13 +32,19 @@ namespace Plathe.TabletUI.Infrastructure
             kernel.Bind<IMovieRepository>().To<EfMovieRepository>();
             kernel.Bind<IGenreRepository>().To<EfGenreRepository>();
             kernel.Bind<IShowRepository>().To<EfShowRepository>();
-            kernel.Bind<IReservationRepository>().To<EFReservationRepository>();
+            kernel.Bind<IReservationRepository>().To<EfReservationRepository>();
+            kernel.Bind<ITicketRepository>().To<EfTicketRepository>();
+            kernel.Bind<IRowRepository>().To<EfRowRepository>();
+            kernel.Bind<ISeatRepository>().To<EfSeatRepository>();
 
             // services
             kernel.Bind<IMovieService>().To<MovieService>();
             kernel.Bind<IGenreService>().To<GenreService>();
             kernel.Bind<IShowService>().To<ShowService>();
             kernel.Bind<IReservationService>().To<ReservationService>();
+            kernel.Bind<ITicketService>().To<TicketService>();
+            kernel.Bind<ISeatService>().To<SeatService>();
+
         }
     }
 }

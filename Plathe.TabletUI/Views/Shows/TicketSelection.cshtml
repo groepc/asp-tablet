@@ -11,31 +11,31 @@
                 <div class="show-thumbnail">
                     <img src="@Html.DisplayFor(model => model.Show.Movie.Image)" alt="@Html.DisplayFor(model => model.Show.Movie.Title)" style="margin: 10px auto;">
                     <div class="extra">
-                        @if (@Model.Show.Movie.RatingDiscrimination == true)
+                        @if (@Model.Show.Movie.RatingDiscrimination)
                         {
                             <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
                         }
-                        @if (@Model.Show.Movie.RatingDrugs == true)
+                        @if (@Model.Show.Movie.RatingDrugs)
                         {
                             <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
                         }
-                        @if (@Model.Show.Movie.RatingFear == true)
+                        @if (@Model.Show.Movie.RatingFear)
                         {
                             <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
                         }
-                        @if (@Model.Show.Movie.RatingLanguage == true)
+                        @if (@Model.Show.Movie.RatingLanguage)
                         {
                             <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
                         }
-                        @if (@Model.Show.Movie.RatingSex == true)
+                        @if (@Model.Show.Movie.RatingSex)
                         {
                             <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
                         }
-                        @if (@Model.Show.Movie.RatingViolence == true)
+                        @if (@Model.Show.Movie.RatingViolence)
                         {
                             <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
                         }
-                        @if (@Model.Show.Movie.ThreeDimensional == true)
+                        @if (@Model.Show.Movie.ThreeDimensional)
                         {
                             <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
                         }
@@ -76,7 +76,7 @@
                             </tr>
                             <tr>
                                 <th>Begintijd</th>
-                                <td>@Html.DisplayFor(model => model.Show.StartingTime)</td>
+                                <td>@Html.DisplayFor(model => model.Show.GetFormatedStartingTime)</td>
                             </tr>
                             <tr>
                                 <th>Duur</th>
@@ -84,10 +84,9 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <p style="margin-left: 10px;">
-                        @Html.ActionLink("Terug naar overzicht", "List")
-                    </p>
+                    <a href="@Url.Action("List", "Shows" )">
+                        <button class="btn btn-primary pull-right">Terug naar overzicht</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -97,47 +96,48 @@
     <div class="col-sm-6">
         <div class="block detail info">
             <h2>Reserveren</h2>
-            <form method="post" action="/Shows/Reservate/">
+            @using (Html.BeginForm())
+            {
                 @Html.AntiForgeryToken()
                 <table class="table text-right">
                     <tbody>
-                        <tr>
-                            <td>
-                                Volwassen
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountAdults, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                65 plus
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountAdultsPlus, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Kinderen
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountChildren, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Popcorn arragement (inclusief ticket)
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountPopcorn, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            Volwassen
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountAdults, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            65 plus
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountAdultsPlus, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Kinderen
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountChildren, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Popcorn arragement (inclusief ticket)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountPopcorn, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-                @Html.HiddenFor(m => m.ShowId);
+                @Html.HiddenFor(m => m.ShowId)
                 <button type="submit" name="submit" class="btn btn-primary pull-right" style="margin-top: 15px;">Ga naar betalen</button>
-            </form>
+            }
         </div>
     </div>
 </div>

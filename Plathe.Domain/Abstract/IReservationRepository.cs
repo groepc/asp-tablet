@@ -1,9 +1,5 @@
-﻿using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Abstract
 {
@@ -13,6 +9,7 @@ namespace Plathe.Domain.Abstract
 
         Reservation SaveReservation(Reservation reservation);
         Reservation GetReservationById(int id);
+        int GetReservationIdByReservationCode(string code);
         Reservation UpdateReservation(Reservation reservation);
     }
 }

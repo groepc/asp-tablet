@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
-using System.Collections.Specialized;
-using Plathe.TabletUI.Models;
-using Plathe.Domain.Abstract;
+﻿using System.Web.Mvc;
 using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
+using Plathe.TabletUI.Models;
 
 namespace Plathe.TabletUI.Controllers
 {
@@ -33,7 +23,7 @@ namespace Plathe.TabletUI.Controllers
 
         public ViewResult Details(int id)
         {
-            Movie movie = movieService.GetMovieById((int)id);
+            Movie movie = movieService.GetMovieById(id);
 
             MovieViewModel model = new MovieViewModel
             {

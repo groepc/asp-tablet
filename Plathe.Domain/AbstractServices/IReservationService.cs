@@ -1,9 +1,4 @@
 ﻿using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Plathe.Domain.AbstractServices
 {
@@ -12,6 +7,7 @@ namespace Plathe.Domain.AbstractServices
         Reservation CreateReservation();
 
         Reservation GetReservationById(int id);
+        int GetReservationIdByReservationCode(string code);
 
         Reservation UpdateReservation(int reservationId, decimal price);
     }

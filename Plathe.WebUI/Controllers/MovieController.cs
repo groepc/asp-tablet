@@ -1,14 +1,10 @@
-﻿using Plathe.Domain.Abstract;
-using Plathe.Domain.AbstractServices;
-using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
-using Plathe.WebUI.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.AbstractServices;
+using Plathe.Domain.Entities;
+using Plathe.WebUI.Models;
 
 namespace Plathe.WebUI.Controllers
 {
@@ -26,7 +22,8 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Index()
         {
-            return View(this.movieService.GetAllMovies().ToList());
+            MovieDetailViewModel model = new MovieDetailViewModel();
+            return View(model);
         }
 
         // GET: Movie/Details/5
@@ -50,8 +47,8 @@ namespace Plathe.WebUI.Controllers
 
             MovieDetailViewModel viewModel = new MovieDetailViewModel
             {
-                movie = movie,
-                showsForMovie = shows
+                Movie = movie,
+                ShowsForMovie = shows
             };
             
             return View(viewModel);

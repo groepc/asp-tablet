@@ -1,9 +1,5 @@
-﻿using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.AbstractServices
 {
@@ -17,5 +13,7 @@ namespace Plathe.Domain.AbstractServices
         IEnumerable<Show> GetShowsByMovieId(int id);
         
         Show GetShowById(int id);
+
+        Show GetShowByMovieId(int id);
     }
 }

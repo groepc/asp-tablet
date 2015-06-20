@@ -22,31 +22,31 @@
                                 @item.Movie.Title
                             </h3>
                             <div class="kijkwijzer">
-                                @if (@item.Movie.RatingDiscrimination == true)
+                                @if (@item.Movie.RatingDiscrimination)
                                 {
                                     <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
                                 }
-                                @if (@item.Movie.RatingDrugs == true)
+                                @if (@item.Movie.RatingDrugs)
                                 {
                                     <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
                                 }
-                                @if (@item.Movie.RatingFear == true)
+                                @if (@item.Movie.RatingFear)
                                 {
                                     <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
                                 }
-                                @if (@item.Movie.RatingLanguage == true)
+                                @if (@item.Movie.RatingLanguage)
                                 {
                                     <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
                                 }
-                                @if (@item.Movie.RatingSex == true)
+                                @if (@item.Movie.RatingSex)
                                 {
                                     <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
                                 }
-                                @if (@item.Movie.RatingViolence == true)
+                                @if (@item.Movie.RatingViolence)
                                 {
                                     <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
                                 }
-                                @if (@item.Movie.ThreeDimensional == true)
+                                @if (@item.Movie.ThreeDimensional)
                                 {
                                     <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
                                 }
@@ -82,12 +82,19 @@
                                     </tr>
                                     <tr>
                                         <td>Rolstoel</td>
-                                        <td>Onbekend</td>
+                                        @if (item.Room.WheelchairAccess)
+                                        {
+                                            <td>Ja</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nee</td>
+                                        }
                                     </tr>
-                                    <tr>
-                                        <td>Tijd</td>
-                                        <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
-                                    </tr>
+                                <tr>
+                                    <td>Tijd</td>
+                                    <td>@Html.DisplayFor(modelItem => item.GetFormatedStartingTime)</td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -96,25 +103,5 @@
                 </a>
             </div>
         </div>
-        @*<tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Movie.Title) (@Html.DisplayFor(modelItem => item.Movie.Language))
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Room.RoomName)
-                </td>
-                <td>
-                    Ondertiteling: @Html.DisplayFor(modelItem => item.Subtitle)
-                </td>
-                <td>
-                    Begint om: @Html.DisplayFor(modelItem => item.StartingTime)
-                </td>
-                <td>
-                    3D: @(item.ThreeDimensional ? "Ja" : "Nee")
-                </td>
-                <td>
-                     @Html.ActionLink("Reserveren", "TicketSelection", new { id = item.ShowID })
-                </td>
-            </tr>*@
     }
 </div>

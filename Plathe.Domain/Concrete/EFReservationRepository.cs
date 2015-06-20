@@ -1,33 +1,41 @@
-﻿using Plathe.Domain.Abstract;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
-using System;
-using System.Collections.Generic;
 
 namespace Plathe.Domain.Concrete
 {
     public class EfReservationRepository : IReservationRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Reservation> Reservations
         {
-            get { return context.Reservations; }
+            get { return _context.Reservations; }
         }
 
         public Reservation GetReservationById(int id)
         {
-            return context.Reservations.Find(id);
+            return _context.Reservations.Find(id);
+        }
+
+        public int GetReservationIdByReservationCode(string code)
+        {
+            return _context.Reservations
+                .Where(r => r.UniqueCode == code)
+                .Select(r => r.ReservationId)
+                .FirstOrDefault();
         }
 
         public Reservation SaveReservation(Reservation reservation) {
-            context.Reservations.Add(reservation);
-            context.SaveChanges();
+            _context.Reservations.Add(reservation);
+            _context.SaveChanges();
             return reservation;
         }
 
         public Reservation UpdateReservation(Reservation reservation)
         {
-            context.SaveChanges();
+            _context.SaveChanges();
             return reservation;
         }
 
