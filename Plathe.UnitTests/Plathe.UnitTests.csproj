@@ -40,8 +40,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+    <Reference Include="Moq, Version=4.2.1506.2016, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Moq.4.2.1506.2016\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -78,8 +79,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx">
-      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -100,9 +102,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Plathe.AdminUI\Plathe.AdminUI.csproj">
+      <Project>{18db9f0f-3ac4-4adf-9b24-3f96dfe2296d}</Project>
+      <Name>Plathe.AdminUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Plathe.Domain\Plathe.Domain.csproj">
       <Project>{ace967e7-4640-4f8f-b722-55854f4b7bb4}</Project>
       <Name>Plathe.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plathe.TabletUI\Plathe.TabletUI.csproj">
+      <Project>{01817f0d-f8e4-465b-885c-8300f5050c83}</Project>
+      <Name>Plathe.TabletUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\Plathe.WebUI\Plathe.WebUI.csproj">
       <Project>{def41532-5435-4027-b9d8-18702e0f661a}</Project>
