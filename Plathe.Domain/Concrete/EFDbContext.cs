@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EfDbContext : IdentityDbContext<User>
+    public class EfDbContext : IdentityDbContext<ApplicationUser>
     {
         public EfDbContext() : base("EfDbContext")
         {

@@ -12,7 +12,7 @@ namespace Plathe.AdminUI
 
     public class Startup
     {
-        public static Func<UserManager<User>> UserManagerFactory { get; private set; }
+        public static Func<UserManager<ApplicationUser>> UserManagerFactory { get; private set; }
 
         public void Configuration(IAppBuilder app)
         {
@@ -25,12 +25,12 @@ namespace Plathe.AdminUI
             // configure the user manager
             UserManagerFactory = () =>
             {
-                var usermanager = new UserManager<User>(
-                    new UserStore<User>(new EfDbContext())
+                var usermanager = new UserManager<ApplicationUser>(
+                    new UserStore<ApplicationUser>(new EfDbContext())
                 );
 
                 // allow alphanumeric characters in username
-                usermanager.UserValidator = new UserValidator<User>(usermanager)
+                usermanager.UserValidator = new UserValidator<ApplicationUser>(usermanager)
                 {
                     AllowOnlyAlphanumericUserNames = false
                 };

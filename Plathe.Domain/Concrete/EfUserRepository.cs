@@ -11,7 +11,7 @@ namespace Plathe.Domain.Concrete
     {
         private EfDbContext _context = new EfDbContext();
 
-        public IEnumerable<User> Users
+        public IEnumerable<ApplicationUser> Users
         {
             get { return _context.Users; }
         }

@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Plathe.Domain.Entities
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
     }
 }

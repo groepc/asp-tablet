@@ -15,40 +15,53 @@ namespace Plathe.Domain.Concrete
     //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
 
-        private readonly UserManager<User> userManager;
-        private readonly RoleManager<IdentityRole> roleManager; 
-
-        public EfDbInitializer()
+        protected override void Seed(EfDbContext context)
         {
-            var usermanager = new UserManager<User>(new UserStore<User>(new EfDbContext()));
-            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new EfDbContext()));
+
+            var usermanager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             // allow alphanumeric characters in username
-            usermanager.UserValidator = new UserValidator<User>(usermanager)
+            usermanager.UserValidator = new UserValidator<ApplicationUser>(usermanager)
             {
                 AllowOnlyAlphanumericUserNames = false
             };
 
-            this.userManager = usermanager;
-            this.roleManager = rolemanager;
-        }
+            
+            usermanager.Create(new ApplicationUser() {
+                Id = "1",
+                Email = "manager@plathe.nl", 
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "manager@plathe.nl"
+            }, "wachtwoord");
 
+            usermanager.Create(new ApplicationUser()
+            {
+                Id = "2",
+                Email = "sales@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "sales@plathe.nl"
+            }, "wachtwoord");
 
-        protected override void Seed(EfDbContext context)
-        {
+            usermanager.Create(new ApplicationUser()
+            {
+                Id = "3",
+                Email = "backoffice@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "backoffice@plathe.nl"
+            }, "wachtwoord");
 
-            userManager.CreateAsync(new User { Id = "1", UserName = "manager@plathe.nl" }, "wachtwoord");
-            userManager.CreateAsync(new User { Id = "2", UserName = "sales@plathe.nl" }, "wachtwoord");
-            userManager.CreateAsync(new User { Id = "3", UserName = "backoffice@plathe.nl" }, "wachtwoord");
+            rolemanager.Create(new IdentityRole("manager"));
+            rolemanager.Create(new IdentityRole("sales"));
+            rolemanager.Create(new IdentityRole("backoffice"));
 
-            roleManager.CreateAsync(new IdentityRole("manager"));
-            roleManager.CreateAsync(new IdentityRole("sales"));
-            roleManager.CreateAsync(new IdentityRole("backoffice"));
-
-            // await stuff before this
-            // userManager.AddToRole("1", "manager");
-            // userManager.AddToRole("2", "sales");
-            // userManager.AddToRole("3", "backoffice");
+            // assign roles to users
+            usermanager.AddToRole("1", "manager");
+            usermanager.AddToRole("2", "sales");
+            usermanager.AddToRole("3", "backoffice");
 
             var genres = new List<Genre>
             {

@@ -15,14 +15,14 @@ namespace Plathe.AdminUI.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
-        private readonly UserManager<User> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public AuthController() : this(Startup.UserManagerFactory.Invoke())
         {
 
         }
 
-        public AuthController(UserManager<User> userManager)
+        public AuthController(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
         }
@@ -53,7 +53,7 @@ namespace Plathe.AdminUI.Controllers
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
             }
 
-            // user authN failed
+            // ApplicationUser authN failed
             ModelState.AddModelError("", "Invalid email or password");
             return View();
         }
@@ -81,7 +81,7 @@ namespace Plathe.AdminUI.Controllers
                 return View();
             }
 
-            var user = new User
+            var user = new ApplicationUser
             {
                 UserName = model.Email
             };
@@ -121,10 +121,10 @@ namespace Plathe.AdminUI.Controllers
             base.Dispose(disposing);
         }
 
-        private async Task SignIn(User user)
+        private async Task SignIn(ApplicationUser applicationUser)
         {
             var identity = await userManager.CreateIdentityAsync(
-                user, DefaultAuthenticationTypes.ApplicationCookie);
+                applicationUser, DefaultAuthenticationTypes.ApplicationCookie);
 
             GetAuthenticationManager().SignIn(identity);
         }

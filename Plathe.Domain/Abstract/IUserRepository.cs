@@ -9,6 +9,6 @@ namespace Plathe.Domain.Abstract
 {
     public interface IUserRepository
     {
-        IEnumerable<User> Users { get; }
+        IEnumerable<ApplicationUser> Users { get; }
     }
 }
