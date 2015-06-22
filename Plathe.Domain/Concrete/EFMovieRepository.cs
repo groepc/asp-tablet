@@ -18,6 +18,8 @@ namespace Plathe.Domain.Concrete
         {
             return context.Movies.Where(m => m.GenreId == genreId);
         }
+        
+        //Author = Mieke
 
         public void SaveMovie(Movie movie)
         {
