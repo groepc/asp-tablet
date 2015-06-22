@@ -17,13 +17,6 @@ namespace Plathe.Domain.Services
 
         }
 
-        public Reservation UpdateReservation (int reservationId, decimal price) {
-
-            Reservation reservation = GetReservationById(reservationId);
-            reservation.PriceTotal = price;
-            return _repository.UpdateReservation(reservation);
-        }
-
         public Reservation CreateReservation()
         {
 
@@ -50,6 +43,19 @@ namespace Plathe.Domain.Services
         public Reservation GetReservationById(int id)
         {
             return _repository.GetReservationById(id);
+        }
+
+        public int GetReservationIdByReservationCode(string code)
+        {
+            return _repository.GetReservationIdByReservationCode(code);
+        }
+
+        public Reservation UpdateReservation(int reservationId, decimal price)
+        {
+
+            Reservation reservation = GetReservationById(reservationId);
+            reservation.PriceTotal = price;
+            return _repository.UpdateReservation(reservation);
         }
     }
 }

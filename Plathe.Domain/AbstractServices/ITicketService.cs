@@ -9,5 +9,6 @@ namespace Plathe.Domain.AbstractServices
         //IEnumerable<Ticket> getTicketsForShow(int ShowId);
         Ticket CreateTicket(int reservationId, int seatId, string type, Show show, bool secretMovie = false);
         decimal CreateTickets(List<Int32> seats, int reservationId, Show show, bool secretMovie, int adults, int adultsPlus, int children, int students, int popcorn, int vip);
+        IEnumerable<Ticket> GetTicketsByReservationId(int id);
     }
 }

@@ -154,6 +154,10 @@ footer .container {
 /* Movie List */
 /*------------*/
 
+#movieList > div {
+    min-height: 310px;
+}
+
 #movieList table {
     border-bottom: 1px solid #999;
     margin-bottom: 30px;

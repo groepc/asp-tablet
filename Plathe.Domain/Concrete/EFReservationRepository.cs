@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Plathe.Domain.Abstract;
 using Plathe.Domain.Entities;
 
@@ -16,6 +17,14 @@ namespace Plathe.Domain.Concrete
         public Reservation GetReservationById(int id)
         {
             return _context.Reservations.Find(id);
+        }
+
+        public int GetReservationIdByReservationCode(string code)
+        {
+            return _context.Reservations
+                .Where(r => r.UniqueCode == code)
+                .Select(r => r.ReservationId)
+                .FirstOrDefault();
         }
 
         public Reservation SaveReservation(Reservation reservation) {

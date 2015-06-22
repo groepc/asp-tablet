@@ -41,7 +41,7 @@ namespace Plathe.WebUI.Controllers
         public ActionResult TicketSelection(int id)
         {
             // get current show
-            Show show = _showService.GetShowById(id);
+            Show show = _showService.GetShowByMovieId(id);
 
             if (show == null) 
             {

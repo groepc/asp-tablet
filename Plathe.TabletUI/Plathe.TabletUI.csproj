@@ -138,9 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +151,7 @@
     <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Models\ShowViewModel.cs" />
     <Compile Include="Models\TicketSelectionViewModel.cs" />
+    <Compile Include="Models\TicketViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +212,10 @@
     <Content Include="Views\Shows\List.cshtml" />
     <Content Include="Views\Shows\TicketSelection.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
+    <Content Include="Views\Shows\Reservate.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Code\Index.cshtml" />
+    <Content Include="Views\Tickets\Printing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

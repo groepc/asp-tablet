@@ -7,6 +7,7 @@ namespace Plathe.Domain.Abstract
     {
         IEnumerable<Ticket> Tickets { get; }
 
+        IEnumerable<Ticket> GetTicketsByReservationId(int id);
         Ticket SaveTicket(Ticket reservation);
     }
 

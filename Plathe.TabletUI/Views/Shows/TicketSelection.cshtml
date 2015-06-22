@@ -84,10 +84,9 @@
                             </tr>
                         </tbody>
                     </table>
-
-                    <p style="margin-left: 10px;">
-                        @Html.ActionLink("Terug naar overzicht", "List")
-                    </p>
+                    <a href="@Url.Action("List", "Shows" )">
+                        <button class="btn btn-primary pull-right">Terug naar overzicht</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -97,47 +96,48 @@
     <div class="col-sm-6">
         <div class="block detail info">
             <h2>Reserveren</h2>
-            <form method="post" action="/Shows/Reservate/">
+            @using (Html.BeginForm())
+            {
                 @Html.AntiForgeryToken()
                 <table class="table text-right">
                     <tbody>
-                        <tr>
-                            <td>
-                                Volwassen
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountAdults, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                65 plus
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountAdultsPlus, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Kinderen
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountChildren, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Popcorn arragement (inclusief ticket)
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.AmountPopcorn, new SelectList(Enumerable.Range(0, 5)), new { @class = "form-control" })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            Volwassen
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountAdults, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            65 plus
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountAdultsPlus, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Kinderen
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountChildren, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Popcorn arragement (inclusief ticket)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.AmountPopcorn, new SelectList(Enumerable.Range(0, 5)), new {@class = "form-control"})
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-                @Html.HiddenFor(m => m.ShowId);
+                @Html.HiddenFor(m => m.ShowId)
                 <button type="submit" name="submit" class="btn btn-primary pull-right" style="margin-top: 15px;">Ga naar betalen</button>
-            </form>
+            }
         </div>
     </div>
 </div>
