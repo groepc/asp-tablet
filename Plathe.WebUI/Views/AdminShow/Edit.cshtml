@@ -1,0 +1,48 @@
+﻿@model Plathe.Domain.Entities.Show
+
+@* Author = Mieke *@
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.ShowId;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h2>Edit @Model.ShowId</h2>
+    </div>
+
+    @using (Html.BeginForm("Edit", "AdminShow"))
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(m => m.ShowId)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.PropertyName != "ShowId")
+                {
+                    <div class="form-group">
+                        <label>@(property.DisplayName ?? property.PropertyName)</label>
+                        @if (property.PropertyName == "Description")
+                        {
+                            @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 10 })
+                        }
+                        else
+                        {
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessage(property.PropertyName)
+                    </div>
+                }
+            }
+
+            <div>
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
+                @Html.ActionLink("Annuleer en ga terug naar overzicht", "Index", null, new
+                {
+                    @class = "btn btn-default"
+                })
+            </div>
+        </div>
+    }
+
+</div>

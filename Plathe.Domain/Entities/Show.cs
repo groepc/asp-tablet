@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Plathe.Domain.Entities
 {
@@ -25,7 +26,7 @@ namespace Plathe.Domain.Entities
                 int currentDay = DateTime.Now.Day;
                 int showDay = StartingTime.Day;
 
-                if(currentDay == showDay)
+                if (currentDay == showDay)
                 {
                     return "Vandaag om " + StartingTime.ToString("HH:mm");
                 }
@@ -42,12 +43,15 @@ namespace Plathe.Domain.Entities
         //public Boolean TestProperty { get; set; }
 
         // holds the ID of the movie that will be played
+        [HiddenInput(DisplayValue = false)]
         public virtual Movie Movie { get; set; }
 
         // holds the ID of the room the movie will be played
+        [HiddenInput(DisplayValue = false)]
         public virtual Room Room { get; set; }
 
         // holds all the tickets for this show
+        [HiddenInput(DisplayValue = false)]
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

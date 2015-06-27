@@ -6,5 +6,7 @@ namespace Plathe.Domain.Abstract
     public interface IShowRepository
     {
         IEnumerable<Show> Shows { get; }
+
+        void SaveShow(Show show);
     }
 }

@@ -1,0 +1,39 @@
+﻿@* Author: Mieke*@
+
+@using Plathe.Domain.Entities
+@model IEnumerable<Show>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<h2>Overzicht voorstellingen</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ShowId)</th>
+        <th>@Html.DisplayNameFor(model => model.Movie.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.StartingTime)</th>
+        <th>@Html.DisplayNameFor(model => model.Room)</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => p.ShowId)</td>
+            <td>@Html.DisplayFor(model => p.MovieId)</td>
+            <td>@Html.DisplayFor(modelItem => p.GetFormatedStartingTime)</td>
+            <td>@Html.DisplayFor(modelItem => p.RoomId)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = p.ShowId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Voeg voorstelling toe", "Create", null, new { @class = "btn btn-default" })
+</div>

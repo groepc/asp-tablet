@@ -5,11 +5,12 @@ using Plathe.Domain.Entities;
 
 namespace Plathe.WebUI.Controllers
 {
-    public class AdminController : Controller
+    [Authorize]
+    public class AdminMovieController : Controller
     {
         private IMovieRepository _repository;
 
-        public AdminController(IMovieRepository repo)
+        public AdminMovieController(IMovieRepository repo)
         {
             _repository = repo;
         }

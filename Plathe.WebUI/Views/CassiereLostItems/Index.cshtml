@@ -1,0 +1,39 @@
+﻿@* Author: Mieke*@
+
+@using Plathe.Domain.Entities
+@model IEnumerable<LostItem>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Gevonden voorwerpen";
+}
+
+<h2>Gevonden voorwerpen</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.LostItemId)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Location)</th>
+        <th>@Html.DisplayNameFor(model => model.TimeFound)</th>
+        <th>Edit</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => p.LostItemId)</td>
+            <td>@Html.DisplayFor(model => p.Name)</td>
+            <td>@Html.DisplayFor(modelItem => p.Location)</td>
+            <td>@Html.DisplayFor(modelItem => p.TimeFound)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = p.LostItemId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Voeg gevonden voorwerp toe", "Create", null, new { @class = "btn btn-default" })
+</div>

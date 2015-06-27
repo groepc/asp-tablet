@@ -81,6 +81,7 @@
     <Compile Include="AbstractServices\IShowService.cs" />
     <Compile Include="AbstractServices\ITicketService.cs" />
     <Compile Include="Abstract\IGenreRepository.cs" />
+    <Compile Include="Abstract\ILostItemRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
     <Compile Include="Abstract\IReservationRepository.cs" />
     <Compile Include="Abstract\IRoomRepository.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Concrete\EfDbContext.cs" />
     <Compile Include="Concrete\EfDbInitializer.cs" />
     <Compile Include="Concrete\EfGenreRepository.cs" />
+    <Compile Include="Concrete\EfLostItemRepository.cs" />
     <Compile Include="Concrete\EfMovieRepository.cs" />
     <Compile Include="Concrete\EfReservationRepository.cs" />
     <Compile Include="Concrete\EfRowRepository.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Concrete\EfTicketRepository.cs" />
     <Compile Include="Concrete\EfRoomRepository.cs" />
     <Compile Include="Abstract\IRowRepository.cs" />
+    <Compile Include="Entities\LostItem.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />

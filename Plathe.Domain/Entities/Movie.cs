@@ -7,7 +7,7 @@ namespace Plathe.Domain.Entities
     public class Movie
     {
         
-        [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = true)]
         public int MovieId { get; set; }
 
         public int GenreId { get; set; }

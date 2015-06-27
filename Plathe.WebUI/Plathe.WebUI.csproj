@@ -133,7 +133,10 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminMovieController.cs" />
+    <Compile Include="Controllers\AdminShowController.cs" />
+    <Compile Include="Controllers\CassiereLostItemsController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -144,7 +147,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
     <Compile Include="Models\SeatSelectionViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
@@ -174,8 +180,13 @@
     <Content Include="Views\Payment\Success.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Genre\Browse.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\AdminMovie\Index.cshtml" />
+    <Content Include="Views\AdminMovie\Edit.cshtml" />
+    <Content Include="Views\AdminShow\Index.cshtml" />
+    <Content Include="Views\AdminShow\Edit.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\CassiereLostItems\Index.cshtml" />
+    <Content Include="Views\CassiereLostItems\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

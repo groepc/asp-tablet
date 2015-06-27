@@ -28,7 +28,7 @@ namespace Plathe.UnitTests
             });
 
             //Arrange - create a controller
-            AdminController target = new AdminController(mock.Object);
+            AdminMovieController target = new AdminMovieController(mock.Object);
 
             //Action
             Movie[] result = ((IEnumerable<Movie>) target.Index().ViewData.Model).ToArray();
@@ -54,7 +54,7 @@ namespace Plathe.UnitTests
             });
 
             //Arrange - create a controller
-            AdminController target = new AdminController(mock.Object);
+            AdminMovieController target = new AdminMovieController(mock.Object);
 
             //Act
             Movie m1 = target.Edit(1).ViewData.Model as Movie;
@@ -80,7 +80,7 @@ namespace Plathe.UnitTests
             });
 
             //Arrange - create a controller
-            AdminController target = new AdminController(mock.Object);
+            AdminMovieController target = new AdminMovieController(mock.Object);
 
             //Act
             Movie result = (Movie) target.Edit(4).ViewData.Model;
@@ -96,7 +96,7 @@ namespace Plathe.UnitTests
             Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
 
             //Arrange - create a controller
-            AdminController target = new AdminController(mock.Object);
+            AdminMovieController target = new AdminMovieController(mock.Object);
 
             //Arrange - create a movie
             Movie movie = new Movie {Title = "Test"};
@@ -117,7 +117,7 @@ namespace Plathe.UnitTests
             Mock<IMovieRepository> mock = new Mock<IMovieRepository>();
 
             //Arrange - create a controller
-            AdminController target = new AdminController(mock.Object);
+            AdminMovieController target = new AdminMovieController(mock.Object);
 
             //Arrange - create a movie
             Movie movie = new Movie {Title = "Test"};
