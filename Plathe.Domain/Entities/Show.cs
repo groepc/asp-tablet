@@ -16,7 +16,7 @@ namespace Plathe.Domain.Entities
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]
-        [Display(Name = "Start tijd")]
+        [Display(Name = "Starttijd")]
         public DateTime StartingTime { get; set; }
 
         public string GetFormatedStartingTime

@@ -16,6 +16,7 @@
         <th>@Html.DisplayNameFor(model => model.Name)</th>
         <th>@Html.DisplayNameFor(model => model.Location)</th>
         <th>@Html.DisplayNameFor(model => model.TimeFound)</th>
+        <th>@Html.DisplayNameFor(model => model.Collected)</th>
         <th>Edit</th>
     </tr>
 
@@ -26,6 +27,7 @@
             <td>@Html.DisplayFor(model => p.Name)</td>
             <td>@Html.DisplayFor(modelItem => p.Location)</td>
             <td>@Html.DisplayFor(modelItem => p.TimeFound)</td>
+            <td>@Html.DisplayFor(modelItem => p.Collected)</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = p.LostItemId })
             </td>
