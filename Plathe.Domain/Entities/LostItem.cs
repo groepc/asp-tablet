@@ -12,16 +12,21 @@ namespace Plathe.Domain.Entities
         [Display(Name = "Nummer")]
         public int LostItemId { get; set; }
 
+        [Required(ErrorMessage = "Vul een naam in.")]
         [Display(Name = "Naam")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Vul een locatie in.")]
         [Display(Name = "Locatie")]
         public string Location { get; set; }
 
+        [Required(ErrorMessage = "Vul een omschrijving in.")]
         [Display(Name = "Omschrijving")]
         public string Description { get; set; }
 
+        [Required(ErrorMessage = "Vul een datum en tijd in.")]
         [Display(Name = "Datum/tijd")]
+        [DataType(DataType.DateTime)] 
         public DateTime TimeFound { get; set; }
 
         [Display(Name = "Opgehaald")]

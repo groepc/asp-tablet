@@ -50,5 +50,17 @@ namespace Plathe.WebUI.Controllers
         {
             return View("Edit", new LostItem());
         }
+
+        [HttpPost]
+        public ActionResult Delete(int lostItemId)
+        {
+            LostItem deletedLostItem = _repository.DeleteLostItem(lostItemId);
+            if (deletedLostItem != null)
+            {
+                TempData["meesage"] = string.Format("{0} is verwijderd", deletedLostItem.Name);
+            }
+            return RedirectToAction("Index");
+        }
+
     }
 }

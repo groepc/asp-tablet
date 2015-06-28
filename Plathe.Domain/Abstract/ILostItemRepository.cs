@@ -9,6 +9,8 @@ namespace Plathe.Domain.Abstract
     {
         IEnumerable<LostItem> LostItems { get; }
 
-        void SaveLostItem(LostItem lostitem);
+        void SaveLostItem(LostItem lostItem);
+
+        LostItem DeleteLostItem(int lostItemId);
     }
 }

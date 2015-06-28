@@ -3,7 +3,6 @@
 @* Author = Mieke *@
 
 @{
-    ViewBag.Title = "Admin: Edit " + @Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,6 +15,7 @@
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.MovieId)
+            @Html.HiddenFor(m => m.GenreId)
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 if (property.PropertyName != "MovieId")
