@@ -4,36 +4,67 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Plathé Backend</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Plathé Backend", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div id="page-container" class="header-navbar-fixed">
+        <nav id="sidebar">
+            <div class="sidebar-content">
+                <div class="side-header side-content">
+                    <a href="index.php" class="h5 text-white">
+                         <span class="h4 font-w600">Plathe</span>
+                    </a>
+                </div>
+                <div class="side-content">
+                    <ul class="nav-main">
+                        <li>
+                            <a href="index.php" class="active"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                        </li>
+                        <li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>
+        </nav>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <header class="content-mini" id="header-navbar">
+            <ul class="nav-header pull-right">
+                <li>
+                    <div class="btn-group">
+                        <button type="button" data-toggle="dropdown" class="btn btn-default btn-image dropdown-toggle">
+                            <img alt="Avatar" src="assets/img/avatars/avatar10.jpg">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-header">Profile</li>
+                            <li>
+                                <a href="base_pages_login.php" tabindex="-1">
+                                    <i class="si si-logout pull-right"></i>Log out
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </header>
+        <main id="main-container" style="min-height: 471px;">
+            <div class="content">
+                @RenderBody()
+            </div>
+        </main>
+        <footer class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix" id="page-footer">
+            <div class="pull-right">
+                Gemaakt door <span class="font-w600">Perry Faro </span>
+            </div>
+            <div class="pull-left">
+                <span class="font-w600">Plathe Backend 1.0</span> &copy; @DateTime.Now.Year
+            </div>
         </footer>
     </div>
 
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

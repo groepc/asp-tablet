@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Plathe.Domain.Entities
 {
     public class User : IdentityUser
     {
-        /**
-         * @todo voeg later meer opties toe
-         */
     }
 }

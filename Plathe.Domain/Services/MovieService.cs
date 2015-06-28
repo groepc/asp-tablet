@@ -8,28 +8,28 @@ namespace Plathe.Domain.Services
 {
     public class MovieService : IMovieService
     {
-        private IMovieRepository repository;
-        private IGenreRepository repositoryGenre;
+        private readonly IMovieRepository _repository;
+        private readonly IGenreRepository _repositoryGenre;
         public MovieService(IMovieRepository movieRepository, IGenreRepository genreRepository)
         {
-            this.repository = movieRepository;
-            this.repositoryGenre = genreRepository;
+            _repository = movieRepository;
+            _repositoryGenre = genreRepository;
         }
 
         public IEnumerable<Movie> GetAllMovies()
         {
-            return this.repository.Movies;
+            return _repository.Movies;
         }
 
         public IEnumerable<Movie> GetMoviesByGenreName(string name)
         {
-            var genreId = this.repositoryGenre.GetGenreIdByName(name);
-            return this.repository.GetMovieByGenreId(genreId);
+            var genreId = _repositoryGenre.GetGenreIdByName(name);
+            return _repository.GetMovieByGenreId(genreId);
         }
         
         public Movie GetMovieById(int id)
         {        
-            return repository.Movies.FirstOrDefault(model => model.MovieId == id);
+            return _repository.Movies.FirstOrDefault(model => model.MovieId == id);
         }
     }
 }

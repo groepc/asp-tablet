@@ -1,18 +1,116 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html, body {
+    height: 100%;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.text-white {
+    color: #fff;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+#page-container {
+    background-color: #2c343f;
+    margin: 0 auto;
+    min-width: 320px;
+    width: 100%;
+    padding-left: 230px;
 }
 
+/* sidebar */
+#sidebar {
+    background-color: #2c343f;
+    width: 230px;
+}
+
+.side-header > span, .side-header > a {
+    display: inline-block;
+    line-height: 34px;
+}
+
+.side-content {
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 13px 20px 1px;
+}
+
+#sidebar, #side-overlay {
+    backface-visibility: hidden;
+    bottom: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.28s ease-out 0s;
+    z-index: 1031;
+}
+
+/* Menu */
+
+.nav-main {
+    list-style: outside none none;
+    margin: 0 -20px;
+    padding: 0;
+}
+
+    .nav-main a {
+        color: rgba(255, 255, 255, 0.5);
+        display: block;
+        padding: 10px 35px 10px 20px;
+    }
+
+    .nav-main .nav-main-heading {
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 22px 35px 6px 20px;
+        text-transform: uppercase;
+    }
+
+/* header navbar */
+
+#header-navbar {
+    background-color: #fff;
+    min-height: 60px;
+    left: 230px;
+}
+
+.header-navbar-fixed #header-navbar {
+    backface-visibility: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    min-width: 320px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.content-mini {
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: visible;
+    padding: 13px 30px 1px;
+}
+
+/* main container */
+#main-container {
+    background-color: #f5f5f5;
+}
+
+#main-container, #page-footer {
+    overflow-x: hidden;
+}
+
+/* Content */
+
+.content {
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: visible;
+    padding: 30px 30px 1px;
+}
+
+/* Footer */
+
+.bg-gray-lighter {
+    background-color: #f9f9f9;
+}

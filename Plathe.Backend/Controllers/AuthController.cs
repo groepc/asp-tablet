@@ -11,7 +11,7 @@ namespace Plathe.Backend.Controllers
     [AllowAnonymous]
     public class AuthController : Controller
     {
-        private readonly UserManager<User> userManager;
+        private readonly UserManager<User> _userManager;
 
         public AuthController()
             : this(Startup.UserManagerFactory.Invoke())
@@ -20,7 +20,7 @@ namespace Plathe.Backend.Controllers
 
         public AuthController(UserManager<User> userManager)
         {
-            this.userManager = userManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -42,7 +42,7 @@ namespace Plathe.Backend.Controllers
                 return View();
             }
 
-            var user = await userManager.FindAsync(model.Email, model.Password);
+            var user = await _userManager.FindAsync(model.Email, model.Password);
 
             if (user != null)
             {
@@ -74,16 +74,16 @@ namespace Plathe.Backend.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && userManager != null)
+            if (disposing && _userManager != null)
             {
-                userManager.Dispose();
+                _userManager.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private async Task SignIn(User user)
         {
-            var identity = await userManager.CreateIdentityAsync(
+            var identity = await _userManager.CreateIdentityAsync(
                 user, DefaultAuthenticationTypes.ApplicationCookie);
 
             GetAuthenticationManager().SignIn(identity);

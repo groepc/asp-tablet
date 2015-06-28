@@ -104,6 +104,7 @@
     <Compile Include="Concrete\EfTicketRepository.cs" />
     <Compile Include="Concrete\EfRoomRepository.cs" />
     <Compile Include="Abstract\IRowRepository.cs" />
+    <Compile Include="Concrete\EfUserRepository.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />
@@ -125,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

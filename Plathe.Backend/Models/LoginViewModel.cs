@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Plathe.Backend.Models
 {
@@ -13,7 +14,7 @@ namespace Plathe.Backend.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [HiddenInput]
+        [HiddenInput(DisplayValue = false)]
         public string ReturnUrl { get; set; }
     }
 }

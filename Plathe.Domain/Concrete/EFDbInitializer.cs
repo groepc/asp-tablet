@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Plathe.Domain.Entities;
 using Plathe.Domain.Extensions;
 
@@ -14,6 +16,53 @@ namespace Plathe.Domain.Concrete
     {
         protected override void Seed(EfDbContext context)
         {
+
+            var usermanager = new UserManager<User>(new UserStore<User>(context));
+            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            // allow alphanumeric characters in username
+            usermanager.UserValidator = new UserValidator<User>(usermanager)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
+
+
+            usermanager.Create(new User()
+            {
+                Id = "1",
+                Email = "manager@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "manager@plathe.nl"
+            }, "wachtwoord");
+
+            usermanager.Create(new User()
+            {
+                Id = "2",
+                Email = "sales@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "sales@plathe.nl"
+            }, "wachtwoord");
+
+            usermanager.Create(new User()
+            {
+                Id = "3",
+                Email = "backoffice@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = "backoffice@plathe.nl"
+            }, "wachtwoord");
+
+            rolemanager.Create(new IdentityRole("manager"));
+            rolemanager.Create(new IdentityRole("sales"));
+            rolemanager.Create(new IdentityRole("backoffice"));
+
+            // assign roles to users
+            usermanager.AddToRole("1", "manager");
+            usermanager.AddToRole("2", "sales");
+            usermanager.AddToRole("3", "backoffice");
+
 
             var genres = new List<Genre>
             {
@@ -511,6 +560,7 @@ namespace Plathe.Domain.Concrete
 
             tickets.ForEach(s => context.Tickets.Add(s));
             context.SaveChanges();
+
         }
     }
 }

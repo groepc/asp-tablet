@@ -1,16 +1,18 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Concrete
 {
-    public class EfDbContext : DbContext
+    public class EfDbContext : IdentityDbContext<User>
     {
-        public EfDbContext() : base("EfDbContext")
+        public EfDbContext()
+            : base("EfDbContext")
         {
 
         }
-        
+
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
@@ -22,10 +24,14 @@ namespace Plathe.Domain.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            
         }
     }
 }
