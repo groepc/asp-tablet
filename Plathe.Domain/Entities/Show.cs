@@ -14,7 +14,7 @@ namespace Plathe.Domain.Entities
         public string Subtitle { get; set; }
 
         [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}")]
         [Display(Name = "Start tijd")]
         public DateTime StartingTime { get; set; }
 
@@ -31,7 +31,25 @@ namespace Plathe.Domain.Entities
                 }
                 else
                 {
-                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + " om " + StartingTime.ToString("HH:mm");
+                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + "-" + StartingTime.Year.ToString() + " om " + StartingTime.ToString("HH:mm");
+                }
+            }
+        }
+
+        public string GetIsoStartingTime
+        {
+            get
+            {
+                int currentDay = DateTime.Now.Day;
+                int showDay = StartingTime.Day;
+
+                if (currentDay == showDay)
+                {
+                    return "Vandaag om " + StartingTime.ToString("HH:mm");
+                }
+                else
+                {
+                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + "-" + StartingTime.Year.ToString() + " " + StartingTime.ToString("HH:mm");
                 }
             }
         }

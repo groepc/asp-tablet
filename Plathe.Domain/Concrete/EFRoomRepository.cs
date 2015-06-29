@@ -6,7 +6,7 @@ namespace Plathe.Domain.Concrete
 {
     public class EfRoomRepository : IRoomRepository
     {
-        private EfDbContext _context = new EfDbContext();
+        private readonly EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Room> Rooms
         {

@@ -20,8 +20,8 @@ namespace Plathe.Backend.Controllers
         // GET: Shows
         public ActionResult Index()
         {
-            var shows = db.Shows.Include(s => s.Movie).Include(s => s.Room);
-            return View(shows.ToList());
+            ShowListViewModel viewModel = new ShowListViewModel();
+            return View(viewModel);
         }
 
         // GET: Shows/Details/5
@@ -71,9 +71,10 @@ namespace Plathe.Backend.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-             ShowViewModel viewModel = new ShowViewModel(
-                 ShowId
-            );
+             ShowViewModel viewModel = new ShowViewModel
+             {
+                 ShowId = Convert.ToInt32(id) 
+             };
             return View(viewModel);
         
         }

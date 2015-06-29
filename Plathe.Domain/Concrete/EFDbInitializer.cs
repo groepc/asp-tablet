@@ -339,9 +339,9 @@ namespace Plathe.Domain.Concrete
             var rowCount = 1;
             var seatCount = 1;
 
-            foreach(Room room in rooms)
+            foreach (Room room in rooms)
             {
-                for(int rowId = 1; rowId <= room.CountRows; rowId++)
+                for (int rowId = 1; rowId <= room.CountRows; rowId++)
                 {
                     rows.Add(new Row
                     {
@@ -349,7 +349,7 @@ namespace Plathe.Domain.Concrete
                         RoomId = room.RoomId
                     });
 
-                    for(int seatId = 1; seatId <= room.CountSeats; seatId++)
+                    for (int seatId = 1; seatId <= room.CountSeats; seatId++)
                     {
                         seats.Add(new Seat
                         {
@@ -369,7 +369,7 @@ namespace Plathe.Domain.Concrete
             seats.ForEach(s => context.Seats.Add(s));
             context.SaveChanges();
 
-          
+
             /**
              * Add shows
              */
