@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Voorstellingen</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.ThreeDimensional)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShowId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShowId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ShowId })
+            @Html.ActionLink("Bewerk", "Edit", new { id=item.ShowId }) |
+            @Html.ActionLink("Inzien", "Details", new { id=item.ShowId }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.ShowId })
         </td>
     </tr>
 }

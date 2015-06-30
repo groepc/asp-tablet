@@ -31,12 +31,11 @@ namespace Plathe.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Show show = db.Shows.Find(id);
-            if (show == null)
+            ShowViewModel viewModel = new ShowViewModel
             {
-                return HttpNotFound();
-            }
-            return View(show);
+                ShowId = Convert.ToInt32(id)
+            };
+            return View(viewModel);
         }
 
         // GET: Shows/Create
@@ -71,12 +70,12 @@ namespace Plathe.Backend.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-             ShowViewModel viewModel = new ShowViewModel
-             {
-                 ShowId = Convert.ToInt32(id) 
-             };
+            ShowViewModel viewModel = new ShowViewModel
+            {
+                ShowId = Convert.ToInt32(id)
+            };
             return View(viewModel);
-        
+
         }
 
         // POST: Shows/Edit/5
@@ -104,12 +103,12 @@ namespace Plathe.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Show show = db.Shows.Find(id);
-            if (show == null)
+
+            ShowViewModel viewModel = new ShowViewModel
             {
-                return HttpNotFound();
-            }
-            return View(show);
+                ShowId = Convert.ToInt32(id)
+            };
+            return View(viewModel);
         }
 
         // POST: Shows/Delete/5

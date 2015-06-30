@@ -1,58 +1,54 @@
-﻿@model Plathe.Domain.Entities.Show
+﻿@model Plathe.Backend.Models.ShowViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Voorstelling gegevens";
 }
 
-<h2>Details</h2>
+<h2>Voorstelling gegevens</h2>
 
 <div>
     <h4>Show</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Movie.Title)
+            @Html.DisplayNameFor(model => model.Show.Movie.Title)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Movie.Title)
+            @Html.DisplayFor(model => model.Show.Movie.Title)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Room.RoomName)
+            @Html.DisplayNameFor(model => model.Show.Room.RoomName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Room.RoomName)
+            @Html.DisplayFor(model => model.Show.Room.RoomName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Subtitle)
+            @Html.DisplayNameFor(model => model.Show.Subtitle)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Subtitle)
+            @Html.DisplayFor(model => model.Show.Subtitle)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartingTime)
+            @Html.DisplayNameFor(model => model.Show.StartingTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartingTime)
+            @Html.DisplayFor(model => model.Show.StartingTime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ThreeDimensional)
+            @Html.DisplayNameFor(model => model.Show.ThreeDimensional)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThreeDimensional)
-        </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ShowId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Opslaan", "Edit", new { id = Model.Show.ShowId }) |
+    @Html.ActionLink("Terug naar lijst", "Index")
 </p>
