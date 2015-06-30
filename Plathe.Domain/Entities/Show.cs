@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Plathe.Domain.Entities
 {
     public class Show
     {
+        [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }
         public int MovieId { get; set; }
         public int RoomId { get; set; }
