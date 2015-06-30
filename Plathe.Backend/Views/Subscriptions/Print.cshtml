@@ -1,0 +1,16 @@
+﻿@model Plathe.Backend.Models.SubscriptionPrintViewModel
+@{
+    ViewBag.Title = "Abonnement printen";
+}
+
+<div class="text-center visible-print">
+
+    <div class="">
+        Abonnement Plathé
+
+        Abonnementnummer: @Model.Subscription.SubscriptionNumber
+        Naam: @Model.Subscription.Name
+        Geldig van @Model.Subscription.StartDate t/m @Model.Subscription.EndDate
+    </div>
+
+</div>

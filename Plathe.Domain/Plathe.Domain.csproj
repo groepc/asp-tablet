@@ -86,6 +86,7 @@
     <Compile Include="AbstractServices\IReservationService.cs" />
     <Compile Include="AbstractServices\ISeatService.cs" />
     <Compile Include="AbstractServices\IShowService.cs" />
+    <Compile Include="AbstractServices\ISubscriptionService.cs" />
     <Compile Include="AbstractServices\ITicketService.cs" />
     <Compile Include="Abstract\IGenreRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Abstract\IRoomRepository.cs" />
     <Compile Include="Abstract\ISeatRepository.cs" />
     <Compile Include="Abstract\IShowRepository.cs" />
+    <Compile Include="Abstract\ISubscriptionRepository.cs" />
     <Compile Include="Abstract\ITicketRepository.cs" />
     <Compile Include="Concrete\EfDbContext.cs" />
     <Compile Include="Concrete\EfDbInitializer.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Concrete\EfRowRepository.cs" />
     <Compile Include="Concrete\EfSeatRepository.cs" />
     <Compile Include="Concrete\EfShowRepository.cs" />
+    <Compile Include="Concrete\EfSubscriptionRepository.cs" />
     <Compile Include="Concrete\EfTicketRepository.cs" />
     <Compile Include="Concrete\EfRoomRepository.cs" />
     <Compile Include="Abstract\IRowRepository.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Entities\Row.cs" />
     <Compile Include="Entities\Seat.cs" />
     <Compile Include="Entities\Show.cs" />
+    <Compile Include="Entities\Subscription.cs" />
     <Compile Include="Entities\Ticket.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Extensions\CalculatePrice.cs" />
@@ -124,6 +128,7 @@
     <Compile Include="Services\RoomService.cs" />
     <Compile Include="Services\SeatService.cs" />
     <Compile Include="Services\ShowService.cs" />
+    <Compile Include="Services\SubscriptionService.cs" />
     <Compile Include="Services\TicketService.cs" />
   </ItemGroup>
   <ItemGroup>

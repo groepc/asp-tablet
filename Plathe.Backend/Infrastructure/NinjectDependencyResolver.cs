@@ -36,6 +36,7 @@ namespace Plathe.Backend.Infrastructure
             _kernel.Bind<ISeatRepository>().To<EfSeatRepository>();
             _kernel.Bind<IShowRepository>().To<EfShowRepository>();
             _kernel.Bind<ITicketRepository>().To<EfTicketRepository>();
+            _kernel.Bind<ISubscriptionRepository>().To<EfSubscriptionRepository>();
 
             // services
             _kernel.Bind<IReservationService>().To<ReservationService>();
@@ -44,6 +45,7 @@ namespace Plathe.Backend.Infrastructure
             _kernel.Bind<IMovieService>().To<MovieService>();
             _kernel.Bind<IGenreService>().To<GenreService>();
             _kernel.Bind<IRoomService>().To<RoomService>();
+            _kernel.Bind<ISubscriptionService>().To<SubscriptionService>();
         }
     }
 }

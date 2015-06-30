@@ -10,7 +10,6 @@ namespace Plathe.Domain.Concrete
         public EfDbContext()
             : base("EfDbContext")
         {
-
         }
 
         public DbSet<Movie> Movies { get; set; }
@@ -21,6 +20,7 @@ namespace Plathe.Domain.Concrete
         public DbSet<Row> Rows { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

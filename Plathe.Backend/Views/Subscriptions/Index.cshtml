@@ -1,0 +1,48 @@
+﻿@model Plathe.Backend.Models.SubscriptionListViewModel
+@{
+    ViewBag.Title = "Abonnementen";
+}
+
+<h2>Abonnementen</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Abonnementnummer
+        </th>
+        <th>
+            Naam
+        </th>
+        <th>
+            Geldig vanaf
+        </th>
+        <th>
+            Geldig tot
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Subscriptions.ToList())
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubscriptionNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("Print", "Print", new {id = item.SubscriptionId})
+            </td>
+        </tr>
+    }
+</table>

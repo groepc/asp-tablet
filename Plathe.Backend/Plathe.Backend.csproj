@@ -160,6 +160,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
+    <Compile Include="Controllers\SubscriptionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +168,9 @@
     <Compile Include="Models\LogInViewModel.cs" />
     <Compile Include="Models\ShowListViewModel.cs" />
     <Compile Include="Models\ShowViewModel.cs" />
+    <Compile Include="Models\SubscriptionCreateViewModel.cs" />
+    <Compile Include="Models\SubscriptionPrintViewModel.cs" />
+    <Compile Include="Models\SubscriptionListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserPrincipal.cs" />
@@ -186,6 +190,9 @@
     <Content Include="Views\Shows\Details.cshtml" />
     <Content Include="Views\Shows\Edit.cshtml" />
     <Content Include="Views\Shows\Index.cshtml" />
+    <Content Include="Views\Subscriptions\Index.cshtml" />
+    <Content Include="Views\Subscriptions\Print.cshtml" />
+    <Content Include="Views\Subscriptions\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
