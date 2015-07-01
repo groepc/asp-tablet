@@ -1,16 +1,25 @@
 ﻿@model Plathe.Backend.Models.LogInViewModel
 @{
+    Layout = "~/Views/Shared/_Login.cshtml";
     ViewBag.Title = "Log In";
 }
 
-<h2>Log In</h2>
+<div class="login">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Inloggen Plathé
+        </div>
+        <div class="panel-body">
+            @Html.ValidationSummary(true)
 
-@Html.ValidationSummary(true)
-
-@using (Html.BeginForm())
-{
-    @Html.EditorForModel()
-    <p>
-        <button class="btn btn-primary" type="submit">Log In</button>
-    </p>
-}
+            @using (Html.BeginForm())
+            {
+                @Html.EditorForModel(new { htmlAttributes = new { @class = "form-control" } })
+                <br/>
+                <p>
+                    <button class="btn btn-primary" type="submit">Log In</button>
+                </p>
+            }
+        </div>
+    </div>
+</div>
