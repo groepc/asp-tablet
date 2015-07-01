@@ -3,14 +3,14 @@
     ViewBag.Title = "Abonnement printen";
 }
 
-<div class="text-center visible-xs visible-print">
+<div class="text-center">
 
     <div class="">
         Abonnement Plathé
-
-        Abonnementnummer: @Model.Subscription.SubscriptionNumber
-        Naam: @Model.Subscription.Name
-        Geldig van @Model.Subscription.StartDate t/m @Model.Subscription.EndDate
+        <hr/>
+        Abonnementnummer: @Model.Subscription.SubscriptionNumber<br/>
+        Naam: @Model.Subscription.Name<br/>
+        Geldig van @Model.Subscription.StartDate t/m @Model.Subscription.EndDate<br/>
     </div>
 
 </div>
