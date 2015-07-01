@@ -161,16 +161,20 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Controllers\SubscriptionsController.cs" />
+    <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\LogInViewModel.cs" />
+    <Compile Include="Models\MovieDetailViewModel.cs" />
+    <Compile Include="Models\ShowFindViewModel.cs" />
     <Compile Include="Models\ShowListViewModel.cs" />
     <Compile Include="Models\ShowViewModel.cs" />
     <Compile Include="Models\SubscriptionCreateViewModel.cs" />
     <Compile Include="Models\SubscriptionPrintViewModel.cs" />
     <Compile Include="Models\SubscriptionListViewModel.cs" />
+    <Compile Include="Models\TicketSelectionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserPrincipal.cs" />
@@ -193,6 +197,8 @@
     <Content Include="Views\Subscriptions\Index.cshtml" />
     <Content Include="Views\Subscriptions\Print.cshtml" />
     <Content Include="Views\Subscriptions\Create.cshtml" />
+    <Content Include="Views\Tickets\TicketSelection.cshtml" />
+    <Content Include="Views\Tickets\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

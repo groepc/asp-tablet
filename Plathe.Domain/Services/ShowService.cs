@@ -10,7 +10,7 @@ namespace Plathe.Domain.Services
     public class ShowService : IShowService
     {
 
-        private IShowRepository _repository;
+        private readonly IShowRepository _repository;
 
         public ShowService(IShowRepository showRepository)
         {
@@ -22,6 +22,11 @@ namespace Plathe.Domain.Services
         {
             return _repository.Shows;
         }
+
+        public IEnumerable<Show> GetShowsByDate(DateTime date)
+        {
+            return _repository.Shows.Where(s => s.StartingTime.Date == date);
+        } 
 
         public IEnumerable<Show> GetShowsThisWeek()
         {

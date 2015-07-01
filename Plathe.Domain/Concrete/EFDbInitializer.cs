@@ -10,9 +10,9 @@ using Plathe.Domain.Extensions;
 namespace Plathe.Domain.Concrete
 {
 
-    class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
+    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
+    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
         protected override void Seed(EfDbContext context)
         {
@@ -559,6 +559,22 @@ namespace Plathe.Domain.Concrete
             };
 
             tickets.ForEach(s => context.Tickets.Add(s));
+            context.SaveChanges();
+
+            var subscriptions = new List<Subscription>
+            {
+                new Subscription
+                {
+                    SubscriptionId = 1,
+                    SubscriptionNumber = "".CreateRandomString(),
+                   Name = "Perry Faro",
+                   StartDate = new DateTime(2015, 01,01),
+                   EndDate = new DateTime(2015, 12, 31)
+
+                },
+                
+            };
+            subscriptions.ForEach(s=> context.Subscriptions.Add(s));
             context.SaveChanges();
 
         }

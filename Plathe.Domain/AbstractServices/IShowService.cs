@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.AbstractServices
@@ -7,6 +8,8 @@ namespace Plathe.Domain.AbstractServices
     {
 
         IEnumerable<Show> GetAllShows();
+
+        IEnumerable<Show> GetShowsByDate(DateTime date);
 
         IEnumerable<Show> GetShowsThisWeek();
 

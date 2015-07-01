@@ -1,7 +1,50 @@
-﻿
+﻿@model Plathe.Backend.Models.ShowFindViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Dashboard";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Aankomende films Vandaag</div>
+            <table class="table">
+                <tr>
+                    <td>Film</td>
+                    <td>Zaal</td>
+                    <td>Ondertiteling</td>
+                    <td>Tijd</td>
+                    <td>3D</td>
+                    <td></td>
+                </tr>
+
+                @foreach (var item in Model.Shows.ToList())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Movie.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Room.RoomName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subtitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GetFormatedStartingTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThreeDimensional)
+                        </td>
+                        <td>
+                            <a href="/Tickets/ticketselection/@item.ShowId">Bestellen</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="col-md-6">
+        
+    </div>
+</div>
 
