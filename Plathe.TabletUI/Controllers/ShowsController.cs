@@ -70,11 +70,8 @@ namespace Plathe.TabletUI.Controllers
 
                 return RedirectToAction("Index", "Payment", new { reservationId = reservation.ReservationId });
             }
-            else
-            {
-                // modelstate invalid, return ticket selection view
-                return View(viewModel);
-            }
+            // modelstate invalid, return ticket selection view
+            return View(viewModel);
         }
     }
 }

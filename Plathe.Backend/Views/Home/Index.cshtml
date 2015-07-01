@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
-            <div class="panel-heading">Aankomende films Vandaag</div>
+            <div class="panel-heading">Films Vandaag</div>
             <table class="table">
                 <tr>
                     <td>Film</td>
@@ -33,10 +33,18 @@
                             @Html.DisplayFor(modelItem => item.GetFormatedStartingTime)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ThreeDimensional)
+                            @(item.ThreeDimensional ? "Ja" : "Nee")
                         </td>
                         <td>
-                            <a href="/Tickets/ticketselection/@item.ShowId">Bestellen</a>
+                            @if (User.IsInRole("sales"))
+                            {
+                                <a href="/Tickets/ticketselection/@item.ShowId">Bestellen</a>
+                            }
+
+                            @if (User.IsInRole("backoffice"))
+                            {
+                                <a href="/Shows/Edit/@item.ShowId">Bewerk</a>
+                            }
                         </td>
                     </tr>
                 }

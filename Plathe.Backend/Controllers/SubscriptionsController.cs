@@ -6,7 +6,7 @@ using Plathe.Domain.Services;
 
 namespace Plathe.Backend.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "sales")]
     public class SubscriptionsController : Controller
     {
 

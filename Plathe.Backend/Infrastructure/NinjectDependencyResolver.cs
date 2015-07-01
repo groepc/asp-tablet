@@ -46,6 +46,7 @@ namespace Plathe.Backend.Infrastructure
             _kernel.Bind<IGenreService>().To<GenreService>();
             _kernel.Bind<IRoomService>().To<RoomService>();
             _kernel.Bind<ISubscriptionService>().To<SubscriptionService>();
+            _kernel.Bind<ISeatService>().To<SeatService>();
         }
     }
 }

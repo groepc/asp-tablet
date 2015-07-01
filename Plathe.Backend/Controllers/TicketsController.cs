@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Plathe.Backend.Models;
 using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Entities;
+using Plathe.TabletUI.Models;
 
 namespace Plathe.Backend.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "sales")]
     public class TicketsController : Controller
     {
 
         private readonly IReservationService _reservationService;
         private readonly IShowService _showService;
+        private readonly ITicketService _ticketService;
+        private readonly ISeatService _seatService;
 
-        public TicketsController(IReservationService reservationService, IShowService showService, ITicketService ticketService)
+        public TicketsController(IReservationService reservationService, IShowService showService, ITicketService ticketService, ISeatService seatService)
         {
 
             _reservationService = reservationService;
             _showService = showService;
+            _ticketService = ticketService;
+            _seatService = seatService;
 
         }
         // GET: Tickets
         public ActionResult Index(DateTime? date)
         {
 
-                ShowFindViewModel viewModel = new ShowFindViewModel
-                {
-                    StartTime = date ?? DateTime.Now.Date 
-                };
+            ShowFindViewModel viewModel = new ShowFindViewModel
+            {
+                StartTime = date ?? DateTime.Now.Date
+            };
             return View(viewModel);
         }
 
@@ -55,25 +58,44 @@ namespace Plathe.Backend.Controllers
         [HttpPost]
         public ActionResult TicketSelection(TicketSelectionViewModel viewModel)
         {
-
             if (ModelState.IsValid)
             {
 
                 // create reservation
                 Reservation reservation = _reservationService.CreateReservation();
+                List<int> chosenSeats = _seatService.FindFreeSeats(viewModel.Show, viewModel.TotalAmount);
+
+                Decimal totalPrice = _ticketService.CreateTickets(
+                    chosenSeats,
+                    reservation.ReservationId,
+                    viewModel.Show,
+                    false,
+                    viewModel.AmountAdults,
+                    viewModel.AmountAdultsPlus,
+                    viewModel.AmountChildren,
+                    0,
+                    viewModel.AmountPopcorn,
+                    0);
+
+                _reservationService.UpdateReservation(reservation.ReservationId, totalPrice);
 
 
-                // create viewModel for seatSelection
-                TempData["reservation"] = reservation;
-                TempData["ticketSelectionViewModel"] = viewModel;
 
-                return RedirectToAction("SeatSelection");
+                return RedirectToAction("Printing", new { id = reservation.ReservationId });
             }
-            else
+            // modelstate invalid, return ticket selection view
+            return View(viewModel);
+        }
+
+        public ActionResult Printing(int id)
+        {
+
+            var model = new TicketViewModel
             {
-                // modelstate invalid, return ticket selection view
-                return View(viewModel);
-            }
+                ReservationId = id
+            };
+
+            return View(model);
         }
     }
 }

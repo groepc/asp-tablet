@@ -24,35 +24,14 @@ namespace Plathe.Domain.Entities
         {
             get
             {
-                int currentDay = DateTime.Now.Day;
-                int showDay = StartingTime.Day;
+                string currentDay = DateTime.Now.ToString("yyyy-MM-dd");
+                string showDay = StartingTime.ToString("yyyy-MM-dd");
 
                 if(currentDay == showDay)
                 {
                     return "Vandaag om " + StartingTime.ToString("HH:mm");
                 }
-                else
-                {
-                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + "-" + StartingTime.Year.ToString() + " om " + StartingTime.ToString("HH:mm");
-                }
-            }
-        }
-
-        public string GetIsoStartingTime
-        {
-            get
-            {
-                int currentDay = DateTime.Now.Day;
-                int showDay = StartingTime.Day;
-
-                if (currentDay == showDay)
-                {
-                    return "Vandaag om " + StartingTime.ToString("HH:mm");
-                }
-                else
-                {
-                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + "-" + StartingTime.Year.ToString() + " " + StartingTime.ToString("HH:mm");
-                }
+                return StartingTime.ToString("dd") + "-" + StartingTime.ToString("MM") + "-" + StartingTime.ToString("yyyy") + " om " + StartingTime.ToString("HH:mm");
             }
         }
 

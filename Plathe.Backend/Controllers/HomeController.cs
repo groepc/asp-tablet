@@ -4,7 +4,6 @@ using Plathe.Backend.Models;
 
 namespace Plathe.Backend.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : AppController
     {
         public ActionResult Index()

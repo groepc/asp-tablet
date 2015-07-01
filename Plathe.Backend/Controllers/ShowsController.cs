@@ -12,7 +12,7 @@ using Plathe.Domain.Entities;
 
 namespace Plathe.Backend.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "backoffice")]
     public class ShowsController : Controller
     {
         private EfDbContext db = new EfDbContext();
