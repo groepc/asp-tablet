@@ -1,0 +1,75 @@
+﻿@model Plathe.AdminUI.Models.OccupationViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Bezetting per show</h2>
+    </div>
+</div>
+
+<div class="row date-switch">
+    <div class="col-sm-10">
+        <a class="btn btn-default" title="Dag eerder" href="@Request.Url.GetLeftPart(UriPartial.Path)?date=@(Model.DayBefore.Day)-@(Model.DayBefore.Month)-@(Model.DayBefore.Year)">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Dag eerder
+        </a>
+
+        @if (DateTime.Today.AddDays(1) != Model.DayAfter)
+        {
+            <a class="btn btn-default pull-right" title="Dag later" href="@Request.Url.GetLeftPart(UriPartial.Path)?date=@(Model.DayAfter.Day)-@(Model.DayAfter.Month)-@(Model.DayAfter.Year)">
+                Dag later <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </a>
+        }
+    </div>
+
+    <div class="col-sm-2">
+        <div class="input-group datepicker-wrapper">
+            <input type="text" class="datepicker form-control" value="@(Model.ChosenDate.Day)-@(Model.ChosenDate.Month)-@(Model.ChosenDate.Year)">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Film naam</th>
+                <th>Datum</th>
+                <th>Zaal</th>
+                <th>Stoelen bezet / Stoelen leeg</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var show in Model.Shows)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => show.ShowId)</td>
+                    <td>@Html.DisplayFor(modelItem => show.Movie.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => show.GetFormatedStartingTime)</td>
+                    <td>@Html.DisplayFor(modelItem => show.Room.RoomName)</td>
+                    <td>@Html.DisplayFor(modelItem => show.Tickets.Count) / @Html.DisplayFor(modelItem => show.Room.TotalSeats)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2">
+        <canvas id="occupationChart" width="150" height="150" data-totalseats="@(Model.TotalSeats)" data-totaloccupiedseats="@(Model.TotalOccupiedSeats)"></canvas>
+    </div>
+    <div class="col-sm-10">
+        <ul class="legend">
+            <li><i class="glyphicon glyphicon-stop" style="color: #46BFBD;"></i> Bezette stoelen: @(Model.TotalOccupiedSeats)</li>
+            <li><i class="glyphicon glyphicon-stop" style="color: #F7464A;"></i> Lege stoelen: @(Model.TotalSeats)</li>
+        </ul>
+    </div>
+</div>

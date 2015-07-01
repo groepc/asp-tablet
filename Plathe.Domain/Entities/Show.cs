@@ -31,7 +31,7 @@ namespace Plathe.Domain.Entities
                 }
                 else
                 {
-                    return StartingTime.Day.ToString() + "-" + StartingTime.Month.ToString() + " om " + StartingTime.ToString("HH:mm");
+                    return StartingTime.Day + "-" + StartingTime.Month + " om " + StartingTime.ToString("HH:mm");
                 }
             }
         }

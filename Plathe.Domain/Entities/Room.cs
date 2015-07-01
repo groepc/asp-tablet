@@ -12,5 +12,10 @@ namespace Plathe.Domain.Entities
         public virtual ICollection<Row> Rows { get; set; }
         public int CountRows { get; set; }
         public int CountSeats { get; set; }
+
+        public int TotalSeats
+        {
+            get { return CountRows * CountSeats; }
+        }
     }
 }

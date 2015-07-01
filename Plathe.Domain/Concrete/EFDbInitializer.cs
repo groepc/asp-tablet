@@ -272,6 +272,69 @@ namespace Plathe.Domain.Concrete
             context.SaveChanges();
 
             /**
+             * Add reviews
+             */
+
+            var reviews = new List<Review>
+            {
+                new Review
+                {
+                    ReviewStatus = 1,
+                    Content = "Super film, echt een aanrader!",
+                    Rating = 5,
+                    UserEmail = "toos@planet.nl",
+                    UserName = "Toos van Gils",
+                    MovieID = 1,
+                    CreatedOn = DateTime.Now
+                },
+                new Review
+                {
+                    ReviewStatus = 1,
+                    Content = "Leuke film",
+                    Rating = 4,
+                    UserEmail = "bryan@kpn.nl",
+                    UserName = "Bryan de Vos",
+                    MovieID = 1,
+                    CreatedOn = DateTime.Now
+                },
+                new Review
+                {
+                    ReviewStatus = 1,
+                    Content = "Fantastische film!!",
+                    Rating = 5,
+                    UserEmail = "jules@kpn.nl",
+                    UserName = "Jules van Bekhoven",
+                    MovieID = 1,
+                    CreatedOn = DateTime.Now
+                },
+                new Review
+                {
+                    ReviewStatus = 0,
+                    Content = "Dit is een leuke review!",
+                    Rating = 5,
+                    UserEmail = "Vadiem@gmail.com",
+                    UserName = "Vadiem Janssens",
+                    MovieID = 1,
+                    CreatedOn = DateTime.Now
+                },
+                new Review
+                {
+                    ReviewStatus = 0,
+                    Content = "Dit is geen leuke review, deze moet dus worden afgekeurd!",
+                    Rating = 1,
+                    UserEmail = "tim@kpn.nl",
+                    UserName = "Tim Steneker",
+                    MovieID = 1,
+                    CreatedOn = DateTime.Now
+                }
+
+
+            };
+
+            reviews.ForEach(s => context.Reviews.Add(s));
+            context.SaveChanges();
+
+            /**
              * Add rooms
              */
 
@@ -425,10 +488,36 @@ namespace Plathe.Domain.Concrete
                     ThreeDimensional = false
                 },
 
+                // gisteren
+                new Show {
+                    ShowId = 13,
+                    MovieId = 5,
+                    RoomId = 2,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(-1).AddHours(18).AddMinutes(30),
+                    ThreeDimensional = true
+                },
+                new Show {
+                    ShowId = 14,
+                    MovieId = 4,
+                    RoomId = 2,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(-1).AddHours(19),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    ShowId = 15,
+                    MovieId = 3,
+                    RoomId = 3,
+                    Subtitle = "EN",
+                    StartingTime = DateTime.Today.AddDays(-1).AddHours(19).AddMinutes(30),
+                    ThreeDimensional = true
+                },
+
                 // morgen
                 new Show {
                     ShowId = 7,
-                    MovieId = 1,
+                    MovieId = 5,
                     RoomId = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(18).AddMinutes(30),
@@ -436,7 +525,7 @@ namespace Plathe.Domain.Concrete
                 },
                 new Show {
                     ShowId = 8,
-                    MovieId = 2,
+                    MovieId = 4,
                     RoomId = 2,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(19),
@@ -452,7 +541,7 @@ namespace Plathe.Domain.Concrete
                 },
                 new Show {
                     ShowId = 10,
-                    MovieId = 4,
+                    MovieId = 2,
                     RoomId = 4,
                     Subtitle = "EN",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20),
@@ -460,7 +549,7 @@ namespace Plathe.Domain.Concrete
                 },
                 new Show {
                     ShowId = 11,
-                    MovieId = 5,
+                    MovieId = 3,
                     RoomId = 5,
                     Subtitle = "NL",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
@@ -468,14 +557,102 @@ namespace Plathe.Domain.Concrete
                 },
                 new Show {
                     ShowId = 12,
-                    MovieId = 6,
+                    MovieId = 1,
                     RoomId = 6,
                     Subtitle = "FR",
                     StartingTime = DateTime.Today.AddDays(1).AddHours(20).AddMinutes(30),
                     ThreeDimensional = false
                 },
-                
+
+                // dagen daarna
+                new Show {
+                    MovieId = 1,
+                    RoomId = 1,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(2).AddHours(20).AddMinutes(0),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 2,
+                    RoomId = 2,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(2).AddHours(20).AddMinutes(30),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 1,
+                    RoomId = 1,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(3).AddHours(20).AddMinutes(0),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 2,
+                    RoomId = 2,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(3).AddHours(20).AddMinutes(0),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 1,
+                    RoomId = 1,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(4).AddHours(20).AddMinutes(0),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 2,
+                    RoomId = 2,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(4).AddHours(20).AddMinutes(0),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 1,
+                    RoomId = 1,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(5).AddHours(20).AddMinutes(30),
+                    ThreeDimensional = false
+                },
+                new Show {
+                    MovieId = 3,
+                    RoomId = 3,
+                    Subtitle = "NL",
+                    StartingTime = DateTime.Today.AddDays(5).AddHours(20).AddMinutes(30),
+                    ThreeDimensional = false
+                }
             };
+
+            var currentMonth = DateTime.Today.Month;
+            var currentDay = DateTime.Today.Day;
+            var randomInt = new Random();
+
+            for (var i = 20; i < 250; i++)
+            {
+
+                var randomPercentage = randomInt.Next(0, 101);
+                var subtitle = "NL";
+                if (randomPercentage >= 33 && randomPercentage <= 66)
+                {
+                    subtitle = "EN";
+                }
+
+                if (randomPercentage >= 67 && randomPercentage <= 100)
+                {
+                    subtitle = "FR";
+                }
+
+
+                shows.Add(new Show
+                {
+                    MovieId = randomInt.Next(1, movies.Count()),
+                    RoomId = randomInt.Next(1, rooms.Count()),
+                    Subtitle = subtitle,
+                    StartingTime = new DateTime(2015, randomInt.Next(1, currentMonth + 1), randomInt.Next(1, 29), 20, 0, 0),
+                    ThreeDimensional = false
+                });
+            }
+
             shows.ForEach(s => context.Shows.Add(s));
             context.SaveChanges();
 
@@ -557,6 +734,41 @@ namespace Plathe.Domain.Concrete
                 }
             };
 
+            tickets.ForEach(s => context.Tickets.Add(s));
+            context.SaveChanges();
+
+            tickets.Clear();
+
+
+            for (var i = 1; i < 400; i++)
+            {
+
+                var showCount = shows.Count();
+                var randomShowId = randomInt.Next(1, showCount);
+                
+                Show show = shows.First(m => m.ShowId == randomShowId);
+                
+                //Row randomRow = show.Room.Rows.First(m => m.RowId == randomInt.Next(1, show.Room.Rows.Count()));
+
+                Row randomRow = show.Room.Rows.OrderBy(m => randomInt.Next(0, 100)).First();
+
+
+                Seat randomSeat = randomRow.Seats.OrderBy(m => randomInt.Next(0, 100)).First();
+
+
+                tickets.Add(new Ticket
+                {
+                    ShowId = show.ShowId,
+                    ReservationId = 1,
+                    SeatId = randomSeat.SeatId,
+                    Price = (decimal)8.50,
+                    PopcornTime = false,
+                    UniqueCode = "".CreateRandomString(),
+                    Options = "options",
+                }); 
+            }
+
+            
             tickets.ForEach(s => context.Tickets.Add(s));
             context.SaveChanges();
         }

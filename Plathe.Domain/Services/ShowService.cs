@@ -50,9 +50,16 @@ namespace Plathe.Domain.Services
 
         public IEnumerable<Show> GetShowsByMovieId(int id)
         {
-            return _repository.Shows
-                                .Where(model => model.MovieId == id)
-                                .OrderBy(s => s.StartingTime);
+
+            var today = DateTime.Today;
+
+            var shows = _repository.Shows
+                .Where(model => model.MovieId == id)
+                .Where(model => model.StartingTime >= today)
+                .OrderBy(model => model.StartingTime)
+                .ToList();
+
+            return shows;
         }
     }
 }

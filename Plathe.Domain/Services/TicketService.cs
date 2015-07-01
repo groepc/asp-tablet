@@ -100,5 +100,10 @@ namespace Plathe.Domain.Services
             return _repository.GetTicketsByReservationId(id);
         }
 
+        public Ticket GetTicketByUniqueCode(string code)
+        {
+            return _repository.Tickets.First(m => m.UniqueCode == code);
+        }
+
     }
 }

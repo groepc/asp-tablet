@@ -10,6 +10,7 @@ namespace Plathe.Domain.Services
     {
         private IMovieRepository repository;
         private IGenreRepository repositoryGenre;
+
         public MovieService(IMovieRepository movieRepository, IGenreRepository genreRepository)
         {
             this.repository = movieRepository;

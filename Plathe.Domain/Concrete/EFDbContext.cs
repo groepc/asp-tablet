@@ -20,6 +20,7 @@ namespace Plathe.Domain.Concrete
         public DbSet<Row> Rows { get; set; }
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

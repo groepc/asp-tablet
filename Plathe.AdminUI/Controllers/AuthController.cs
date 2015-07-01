@@ -29,6 +29,12 @@ namespace Plathe.AdminUI.Controllers
 
         public ActionResult Login(string returnUrl)
         {
+
+            if (User.Identity.IsAuthenticated)
+            {
+                
+            }
+
             var viewModel = new LoginViewModel
             {
                 ReturnUrl = returnUrl
@@ -67,46 +73,11 @@ namespace Plathe.AdminUI.Controllers
             return RedirectToAction("Login", "Auth");
         }
 
-        [HttpGet]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-
-            var user = new ApplicationUser
-            {
-                UserName = model.Email
-            };
-
-            var result = await userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
-            {
-                await SignIn(user);
-                return RedirectToAction("Index", "Reports");
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-
-            return View();
-        }
-
         private string GetRedirectUrl(string returnUrl)
         {
             if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
             {
-                return Url.Action("Index", "Reports");
+                return Url.Action("Index", "Dashboard");
             }
 
             return returnUrl;

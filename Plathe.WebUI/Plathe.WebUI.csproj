@@ -144,6 +144,7 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -151,6 +152,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
+    <Compile Include="Models\ReviewViewModel.cs" />
     <Compile Include="Models\SeatSelectionViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\ShowViewModel.cs" />
@@ -179,6 +181,7 @@
     <Content Include="Views\Payment\Success.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Genre\Browse.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

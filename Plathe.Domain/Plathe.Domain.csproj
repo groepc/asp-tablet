@@ -85,12 +85,14 @@
     <Compile Include="AbstractServices\IGenreService.cs" />
     <Compile Include="AbstractServices\IMovieService.cs" />
     <Compile Include="AbstractServices\IReservationService.cs" />
+    <Compile Include="AbstractServices\IReviewService.cs" />
     <Compile Include="AbstractServices\ISeatService.cs" />
     <Compile Include="AbstractServices\IShowService.cs" />
     <Compile Include="AbstractServices\ITicketService.cs" />
     <Compile Include="Abstract\IGenreRepository.cs" />
     <Compile Include="Abstract\IMovieRepository.cs" />
     <Compile Include="Abstract\IReservationRepository.cs" />
+    <Compile Include="Abstract\IReviewRepository.cs" />
     <Compile Include="Abstract\IRoomRepository.cs" />
     <Compile Include="Abstract\ISeatRepository.cs" />
     <Compile Include="Abstract\IShowRepository.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Concrete\EfGenreRepository.cs" />
     <Compile Include="Concrete\EfMovieRepository.cs" />
     <Compile Include="Concrete\EfReservationRepository.cs" />
+    <Compile Include="Concrete\EfReviewRepository.cs" />
     <Compile Include="Concrete\EfRowRepository.cs" />
     <Compile Include="Concrete\EfSeatRepository.cs" />
     <Compile Include="Concrete\EfShowRepository.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Movie.cs" />
     <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\Room.cs" />
     <Compile Include="Entities\Row.cs" />
     <Compile Include="Entities\Seat.cs" />
@@ -123,6 +127,7 @@
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\ReservationService.cs" />
+    <Compile Include="Services\ReviewService.cs" />
     <Compile Include="Services\SeatService.cs" />
     <Compile Include="Services\ShowService.cs" />
     <Compile Include="Services\TicketService.cs" />

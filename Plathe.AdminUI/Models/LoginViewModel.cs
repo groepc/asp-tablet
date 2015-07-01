@@ -10,12 +10,13 @@ namespace Plathe.AdminUI.Models
     public class LoginViewModel
     {
 
-        [Required]
+        [Required(ErrorMessage = "Vul een geldige waarde in.")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vul een geldige waarde in.")]
         [DataType(DataType.Password)]
+        [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
 
         [HiddenInput]

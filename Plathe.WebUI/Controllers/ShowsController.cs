@@ -41,7 +41,7 @@ namespace Plathe.WebUI.Controllers
         public ActionResult TicketSelection(int id)
         {
             // get current show
-            Show show = _showService.GetShowByMovieId(id);
+            Show show = _showService.GetShowById(id);
 
             if (show == null) 
             {
@@ -73,11 +73,8 @@ namespace Plathe.WebUI.Controllers
 
                 return RedirectToAction("SeatSelection");
             }
-            else
-            {
-                // modelstate invalid, return ticket selection view
-                return View(viewModel);
-            }
+            // modelstate invalid, return ticket selection view
+            return View(viewModel);
         }
 
         public ActionResult SeatSelection()
