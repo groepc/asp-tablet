@@ -1,14 +1,16 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    <a href="@Url.Action("logout", "auth")">Log Out</a>
-</p>
-
-<p>
-    Hello @CurrentUser.Name. How's the weather in @CurrentUser.Country?
-</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">User Details</div>
+    <table class="table table-striped">
+        @foreach (string key in Model.Keys) {
+            <tr>
+                <th>@key</th>
+                <td>@Model[key]</td>
+            </tr>
+        }
+    </table>
+</div>
+@Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-primary" })

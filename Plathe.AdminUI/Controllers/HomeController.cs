@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Plathe.AdminUI.Controllers
-{
-    public class HomeController : AppController
-    {
-        // GET: Home
-        /*   public ActionResult Index()
-           {
-               return View();
-           }
-           */
-        /*
-        public ActionResult Index()
-        {
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            ViewBag.Country = claimsIdentity.FindFirst(ClaimTypes.Country).Value;
+namespace Plathe.AdminUI.Controllers {
 
-            return View();
-        }
-         */
+    public class HomeController : Controller {
 
-        public ActionResult Index()
-        {
-            
-            return View();
+        [Authorize]
+        public ActionResult Index() {
+            return View(GetData("Index"));
         }
 
+        [Authorize(Roles = "Users")]
+        public ActionResult OtherAction() {
+            return View("Index", GetData("OtherAction"));
+        }
+
+        private Dictionary<string, object> GetData(string actionName) {
+            Dictionary<string, object> dict
+                = new Dictionary<string, object>();
+            dict.Add("Action", actionName);
+            dict.Add("User", HttpContext.User.Identity.Name);
+            dict.Add("Authenticated", HttpContext.User.Identity.IsAuthenticated);
+            dict.Add("Auth Type", HttpContext.User.Identity.AuthenticationType);
+            dict.Add("In Users Role", HttpContext.User.IsInRole("Users"));
+            return dict;
+        }
     }
 }
