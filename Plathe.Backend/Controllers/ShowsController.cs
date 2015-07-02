@@ -57,6 +57,7 @@ namespace Plathe.Backend.Controllers
             {
                 db.Shows.Add(show);
                 db.SaveChanges();
+                TempData["message"] = "Voorstelling toegevoegd";
                 return RedirectToAction("Index");
             }
             return View(show);
@@ -89,6 +90,7 @@ namespace Plathe.Backend.Controllers
             {
                 db.Entry(show).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["message"] = "Wijzigen zijn opgeslagen";
                 return RedirectToAction("Index");
             }
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", show.MovieId);
@@ -119,6 +121,7 @@ namespace Plathe.Backend.Controllers
             Show show = db.Shows.Find(id);
             db.Shows.Remove(show);
             db.SaveChanges();
+            TempData["message"] = "Voorstelling verwijderd";
             return RedirectToAction("Index");
         }
 

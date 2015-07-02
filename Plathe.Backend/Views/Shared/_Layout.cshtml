@@ -70,6 +70,10 @@
         </header>
         <main id="main-container" style="min-height: 471px;">
             <div class="content">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Message"]</div>
+                }
                 @RenderBody()
             </div>
         </main>

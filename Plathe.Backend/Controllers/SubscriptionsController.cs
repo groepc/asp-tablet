@@ -38,6 +38,7 @@ namespace Plathe.Backend.Controllers
             var succesful = _subscriptionService.SaveSubscription(name, startDate, endDate);
             if (succesful)
             {
+                TempData["message"] = "Abonnement toegevoegd";
                 return RedirectToAction("Index");
             }
 
