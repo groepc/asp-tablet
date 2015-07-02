@@ -10,9 +10,9 @@ using Plathe.Domain.Extensions;
 namespace Plathe.Domain.Concrete
 {
 
-    class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
+    //class EfDbInitializer : DropCreateDatabaseAlways<EfDbContext>
 
-    //class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
+    class EfDbInitializer : DropCreateDatabaseIfModelChanges<EfDbContext>
     {
 
         protected override void Seed(EfDbContext context)
@@ -310,22 +310,22 @@ namespace Plathe.Domain.Concrete
                 new Review
                 {
                     ReviewStatus = 0,
-                    Content = "Dit is een leuke review!",
+                    Content = "Dit is een super film!",
                     Rating = 5,
-                    UserEmail = "Vadiem@gmail.com",
+                    UserEmail = "vadiem.janssens@gmail.com",
                     UserName = "Vadiem Janssens",
                     MovieID = 1,
-                    CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Today.AddHours(13)
                 },
                 new Review
                 {
                     ReviewStatus = 0,
                     Content = "Dit is geen leuke review, deze moet dus worden afgekeurd!",
                     Rating = 1,
-                    UserEmail = "tim@kpn.nl",
+                    UserEmail = "tim_steneker@kpn.nl",
                     UserName = "Tim Steneker",
                     MovieID = 1,
-                    CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Today.AddHours(13).AddMinutes(30)
                 }
 
 
@@ -627,7 +627,7 @@ namespace Plathe.Domain.Concrete
             var currentDay = DateTime.Today.Day;
             var randomInt = new Random();
 
-            for (var i = 20; i < 250; i++)
+            for (var i = 20; i < 500; i++)
             {
 
                 var randomPercentage = randomInt.Next(0, 101);

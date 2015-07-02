@@ -45,3 +45,22 @@ textarea {
     margin: 0;
     padding: 0;
 }
+
+.input-daterange {
+    display: inline;
+}
+
+input.single-line {
+    display: inline;
+    width: 150px;
+}
+
+.input-daterange span.add-on {
+    height: 34px;
+    padding: 6px 10px;
+}
+
+.datepicker table tr td span {
+    height: 42px;
+    line-height: 42px;
+}

@@ -32,7 +32,7 @@ namespace Plathe.AdminUI.Controllers
 
             if (User.Identity.IsAuthenticated)
             {
-                
+                return RedirectToAction("Index", "Dashboard");
             }
 
             var viewModel = new LoginViewModel

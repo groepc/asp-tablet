@@ -39,43 +39,26 @@ namespace Plathe.AdminUI.Controllers
 
         public ActionResult Revenue()
         {
-            var begin = new DateTime(2015, 01, 01);
-            var end = DateTime.Today;
-
-            var showsByMonth = _context.Shows
-                .Where(m => m.StartingTime > begin)
-                .Where(m => m.StartingTime < end)
-                .GroupBy(m => m.StartingTime.Month)
-                .ToList();
-
-            Dictionary<string, double> monthlyRevenue = new Dictionary<string, double>();
-
-            foreach (var showsForMonth in showsByMonth)
+            var viewModel = new RevenueViewModel
             {
-                var groupKey = showsForMonth.Key;
+                StartDate = new DateTime(2015, 1, 1),
+                EndDate = DateTime.Today
+            };
 
-                foreach (var show in showsForMonth)
-                {
-                    var month = show.StartingTime.ToString("MMMM");
-                    var tickets = show.Tickets;
-                    
-                    // if a show has any tickets
-                    if (tickets.Any())
-                    {
-                        foreach (var ticket in tickets)
-                        {
-                            if (!monthlyRevenue.ContainsKey(month))
-                            {
-                                monthlyRevenue[month] = (double) 0;
-                            }
+            return View(viewModel);
+        }
 
-                            monthlyRevenue[month] += (double) ticket.Price;
-                        }
-                    }
-                }
-            }
+        [HttpPost]
+        public ActionResult Revenue(RevenueViewModel model)
+        {
 
-            return View(monthlyRevenue);
+            var viewModel = new RevenueViewModel
+            {
+                StartDate = model.StartDate,
+                EndDate = model.EndDate
+            };
+
+            return View(viewModel);
         }
     }
 }

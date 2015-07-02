@@ -1,11 +1,44 @@
-﻿@model System.Collections.Generic.Dictionary<string, double>
+﻿@model Plathe.AdminUI.Models.RevenueViewModel
 
-<canvas id="revenueChart" width="1170" height="250"></canvas>
+@{
+    ViewBag.Title = "Omzet";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>Omzet</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="input-daterange">
+                @Html.EditorFor(model => model.StartDate, new {htmlAttributes = new {@class = "form-control"}})
+                <span class="add-on">tot</span>
+                @Html.EditorFor(model => model.EndDate, new {htmlAttributes = new {@class = "form-control"}})
+
+
+            </div>
+            
+            <input type="submit" value="Opvragen" class="btn btn-default" />
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <canvas id="revenueChart" width="1170" height="250"></canvas>        
+    </div>
+</div>
 
 <script>
     var revenueData = {
         labels: [
-            @foreach (var month in Model) {
+            @foreach (var month in Model.RevenuePerMonth) {
                 <text>'@month.Key',</text>
             }
         ],
@@ -19,7 +52,7 @@
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
                 data: [
-                    @foreach (var month in Model) {
+                    @foreach (var month in Model.RevenuePerMonth) {
                         <text>@Convert.ToInt32(month.Value),</text>
                     }
                 ]

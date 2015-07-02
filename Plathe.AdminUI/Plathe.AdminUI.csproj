@@ -222,10 +222,10 @@
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
-    <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Filters\FilterConfig.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\OccupationViewModel.cs" />
+    <Compile Include="Models\RevenueViewModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -244,11 +244,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Views\Shows\Create.cshtml" />
-    <Content Include="Views\Shows\Delete.cshtml" />
-    <Content Include="Views\Shows\Details.cshtml" />
-    <Content Include="Views\Shows\Edit.cshtml" />
-    <Content Include="Views\Shows\Index.cshtml" />
     <Content Include="Views\Reports\OccupationPerShow.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />

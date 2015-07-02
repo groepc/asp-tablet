@@ -5,16 +5,25 @@ $('.datepicker').datepicker({
     format: 'dd-mm-yyyy',
     endDate: '0',
     todayBtn: true,
-    orientation: 'auto top'
+    orientation: 'auto top',
+    todayHighligh: true
 
 }).on('changeDate', function (e) {
-
     var url = [location.protocol, '//', location.host, location.pathname].join('');
-
     var date = $('.datepicker').val();
-    
     window.location.href = url + '?date=' + date;
+});
 
+// range datepicker
+$(".input-daterange input").each(function () {
+    $(this).datepicker({
+        language: 'nl',
+        format: 'd-m-yyyy 0:00:00',
+        orientation: 'auto top',
+        minViewMode: 'months',
+        endDate: '0',
+        todayHighligh: true
+    });
 });
 
 // chart
