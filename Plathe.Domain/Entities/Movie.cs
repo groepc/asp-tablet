@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace Plathe.Domain.Entities
 {
     public class Movie
     {
-        [HiddenInput(DisplayValue = true)]
         [Display(Name = "Nummer")]
         public int MovieId { get; set; }
-
-        public int GenreId { get; set; }
 
         [Display(Name = "Titel")]
         [Required(ErrorMessage = "Vul een titel in.")]
         public string Title { get; set; }
+
+        [Display(Name = "Genre")]
+        public int GenreId { get; set; }
 
         [Display(Name = "Taal")]
         [Required(ErrorMessage = "Vul een taal in.")]
@@ -25,7 +24,7 @@ namespace Plathe.Domain.Entities
         public int Duration { get; set; }
 
         [Required(ErrorMessage = "Vul een minimale leeftijd in.")]
-        [Display(Name = "Leeftijd vanaf")]
+        [Display(Name = "Leeftijd vanaf (0, 12 of 16)")]
         public int MinimumAge { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -79,7 +78,6 @@ namespace Plathe.Domain.Entities
         [Required(ErrorMessage = "Vul de uiterste vertoondatum in.")]
         public DateTime PlaysUntill { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
         public Genre Genre { get; set; }
     }
 }

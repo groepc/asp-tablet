@@ -1,0 +1,29 @@
+﻿@* Author = Mieke *@
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Beheer Plathé</h2>
+
+@if (User.IsInRole("manager"))
+{
+
+    <p>Cassiere:</p>
+    <p><a href="/cassierelostitems/" class="active">Verloren items beheren</a></p>
+
+    <p>Administratie:</p>
+    <p><a href="/adminmovie/index" class="active">Films beheren</a></p>
+    <p><a href="/adminshow/index" class="active">Voorstellingen beheren</a></p>
+}
+
+@if (User.IsInRole("cassiere"))
+{
+    <a href="/cassierelostitems/" class="active">Verloren items beheren</a>
+}
+
+@if (User.IsInRole("admin"))
+{
+    <p><a href="/adminmovie/index" class="active">Films beheren</a></p>
+    <p><a href="/adminshow/index" class="active">Voorstellingen beheren</a></p>
+}

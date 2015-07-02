@@ -7,22 +7,22 @@ namespace Plathe.Domain.Concrete
 {
     public class EfShowRepository : IShowRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Show> Shows
         {
-            get { return context.Shows; }
+            get { return _context.Shows; }
         }
 
         public void SaveShow(Show show)
         {
             if (show.ShowId == 0)
             {
-                context.Shows.Add(show);
+                _context.Shows.Add(show);
             }
             else
             {
-                Show dbEntry = context.Shows.Find(show.ShowId);
+                Show dbEntry = _context.Shows.Find(show.ShowId);
                 if (dbEntry != null)
                 {
                     dbEntry.MovieId = show.MovieId;
@@ -32,7 +32,7 @@ namespace Plathe.Domain.Concrete
                     dbEntry.ThreeDimensional = show.ThreeDimensional;
                 }
             }
-            context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

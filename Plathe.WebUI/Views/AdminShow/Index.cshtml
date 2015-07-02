@@ -1,7 +1,6 @@
 ﻿@* Author: Mieke*@
 
-@using Plathe.Domain.Entities
-@model IEnumerable<Show>
+@model IEnumerable<Plathe.Domain.Entities.Show>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,19 +14,19 @@
         <th>@Html.DisplayNameFor(model => model.ShowId)</th>
         <th>@Html.DisplayNameFor(model => model.Movie.Title)</th>
         <th>@Html.DisplayNameFor(model => model.StartingTime)</th>
-        <th>@Html.DisplayNameFor(model => model.Room)</th>
+        <th>@Html.DisplayNameFor(model => model.RoomId)</th>
         <th>Edit</th>
     </tr>
 
-    @foreach (var p in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.DisplayFor(modelItem => p.ShowId)</td>
-            <td>@Html.DisplayFor(model => p.MovieId)</td>
-            <td>@Html.DisplayFor(modelItem => p.GetFormatedStartingTime)</td>
-            <td>@Html.DisplayFor(modelItem => p.RoomId)</td>
+            <td>@Html.DisplayFor(modelItem => item.ShowId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Movie.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.StartingTime)</td>
+            <td>@Html.DisplayFor(modelItem => item.RoomId)</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = p.ShowId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ShowId })
             </td>
         </tr>
     }

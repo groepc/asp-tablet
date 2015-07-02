@@ -1,9 +1,11 @@
 ﻿using Plathe.Domain.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Plathe.Domain.Concrete;
 using Plathe.Domain.Entities;
 
 namespace Plathe.WebUI.Controllers
@@ -12,6 +14,7 @@ namespace Plathe.WebUI.Controllers
     public class AdminShowController : Controller
     {
         private IShowRepository _repository;
+        private EfDbContext _db = new EfDbContext();
 
         public AdminShowController(IShowRepository repo)
         {
@@ -20,7 +23,8 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Index()
         {
-            return View(_repository.Shows);
+            var shows = _db.Shows.Include(s => s.Movie).Include(s => s.Room);
+            return View(shows.ToList());
         }
 
         public ViewResult Edit(int id)
@@ -47,7 +51,23 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new Show());
+            return View("Create", new Show());
         }
+
+        //[HttpPost]
+        //public ActionResult Create(Show show)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _repository.SaveShow(show);
+        //        TempData["message"] = string.Format("{0} is opgeslagen", show.ShowId);
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        // there is something wrong with the data values
+        //        return View(show);
+        //    }
+        //}
     }
 }

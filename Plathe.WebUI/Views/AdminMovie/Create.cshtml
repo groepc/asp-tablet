@@ -8,13 +8,13 @@
 
 <div class="panel">
     <div class="panel-heading">
-        <h2>Edit @Model.Title</h2>
+        <h2>Voeg nieuwe film toe</h2>
     </div>
 
-    @using (Html.BeginForm("Edit", "AdminMovie"))
+    @using (Html.BeginForm("Create", "AdminMovie"))
     {
         <div class="panel-body">
-       
+
             @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 if (property.PropertyName != "MovieId")
@@ -25,11 +25,11 @@
                             <label>@(property.DisplayName ?? property.PropertyName)</label>
                             @if (property.PropertyName == "Description")
                             {
-                                @Html.TextArea(property.PropertyName, null, new {@class = "form-control", rows = 10})
+                                @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 10 })
                             }
                             else
                             {
-                                @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
+                                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                             }
                             @Html.ValidationMessage(property.PropertyName)
                         </div>
@@ -38,7 +38,7 @@
             }
 
             <div>
-                <input type="submit" value="Opslaan" class="btn btn-primary"/>
+                <input type="submit" value="Opslaan" class="btn btn-primary" />
                 @Html.ActionLink("Annuleer en ga terug naar overzicht", "Index", null, new
                 {
                     @class = "btn btn-default"
@@ -48,3 +48,4 @@
     }
 
 </div>
+

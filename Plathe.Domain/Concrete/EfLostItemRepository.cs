@@ -6,11 +6,11 @@ namespace Plathe.Domain.Concrete
 {
     public class EfLostItemRepository : ILostItemRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private EfDbContext _context = new EfDbContext();
 
         public IEnumerable<LostItem> LostItems
         {
-            get { return context.LostItems; }
+            get { return _context.LostItems; }
         }
 
         //Author = Mieke
@@ -19,11 +19,11 @@ namespace Plathe.Domain.Concrete
         {
             if (lostitem.LostItemId == 0)
             {
-                context.LostItems.Add(lostitem);
+                _context.LostItems.Add(lostitem);
             }
             else
             {
-                LostItem dbEntry = context.LostItems.Find(lostitem.LostItemId);
+                LostItem dbEntry = _context.LostItems.Find(lostitem.LostItemId);
                 if (dbEntry != null)
                 {
                     dbEntry.Name = lostitem.Name;
@@ -33,16 +33,16 @@ namespace Plathe.Domain.Concrete
                     dbEntry.Collected = lostitem.Collected;
                 }
             }
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public LostItem DeleteLostItem(int lostItemId)
         {
-            LostItem dbEntry = context.LostItems.Find(lostItemId);
+            LostItem dbEntry = _context.LostItems.Find(lostItemId);
             if (dbEntry != null)
             {
-                context.LostItems.Remove(dbEntry);
-                context.SaveChanges();
+                _context.LostItems.Remove(dbEntry);
+                _context.SaveChanges();
             }
             return dbEntry;
         }

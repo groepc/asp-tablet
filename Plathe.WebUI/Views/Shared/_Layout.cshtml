@@ -32,14 +32,26 @@
             </div><!-- /.container-fluid -->
         </header>
 
+        @*<div class="container body-content">
+                @RenderBody()
+            </div>*@
+
         <div class="container body-content">
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success">@TempData["Message"]</div>
+            }
             @RenderBody()
         </div>
 
         <footer class="hidden-print">
             <div class="container">
                 <div class="col-sm-6">
-                    <p>&copy; @DateTime.Now.Year - Plathé Bioscopen</p>
+                    <p>
+                        &copy; @DateTime.Now.Year - Plathé Bioscopen - <a href="/admin/">Beheer -</a> <a href="/Account/LogOut/" tabindex="-1">
+                            Uitloggen
+                        </a>
+                    </p>
                 </div>
 
                 <div class="col-sm-6">

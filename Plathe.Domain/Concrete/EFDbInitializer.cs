@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Plathe.Domain.Entities;
 using Plathe.Domain.Extensions;
 
@@ -14,6 +16,49 @@ namespace Plathe.Domain.Concrete
     {
         protected override void Seed(EfDbContext context)
         {
+
+            var usermanager = new UserManager<User>(new UserStore<User>(context));
+            var rolemanager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            // allow alphanumeric characters in username
+            usermanager.UserValidator = new UserValidator<User>(usermanager)
+            {
+                AllowOnlyAlphanumericUserNames = false
+            };
+
+
+            usermanager.Create(new User()
+            {
+                Id = "1",
+                UserName = "manager@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+            }, "wachtwoord");
+
+            usermanager.Create(new User()
+            {
+                Id = "2",
+                UserName = "cassiere@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+            }, "wachtwoord");
+
+            usermanager.Create(new User()
+            {
+                Id = "3",
+                UserName = "admin@plathe.nl",
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString(),
+            }, "wachtwoord");
+
+            rolemanager.Create(new IdentityRole("manager"));
+            rolemanager.Create(new IdentityRole("cassiere"));
+            rolemanager.Create(new IdentityRole("admin"));
+
+            // assign roles to users
+            usermanager.AddToRole("1", "manager");
+            usermanager.AddToRole("2", "cassiere");
+            usermanager.AddToRole("3", "admin");
 
             var genres = new List<Genre>
             {

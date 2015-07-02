@@ -7,16 +7,16 @@ namespace Plathe.Domain.Concrete
 {
     public class EfMovieRepository : IMovieRepository
     {
-        private EfDbContext context = new EfDbContext();
+        private EfDbContext _context = new EfDbContext();
 
         public IEnumerable<Movie> Movies
         {
-            get { return context.Movies; }
+            get { return _context.Movies; }
         }
 
         public IEnumerable<Movie> GetMovieByGenreId(int genreId)
         {
-            return context.Movies.Where(m => m.GenreId == genreId);
+            return _context.Movies.Where(m => m.GenreId == genreId);
         }
         
         //Author = Mieke
@@ -25,11 +25,11 @@ namespace Plathe.Domain.Concrete
         {
             if (movie.MovieId == 0)
             {
-                context.Movies.Add(movie);
+                _context.Movies.Add(movie);
             }
             else
             {
-                Movie dbEntry = context.Movies.Find(movie.MovieId);
+                Movie dbEntry = _context.Movies.Find(movie.MovieId);
                 if (dbEntry != null)
                 {
                     dbEntry.Title = movie.Title;
@@ -54,7 +54,7 @@ namespace Plathe.Domain.Concrete
 
                 }
             }
-            context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

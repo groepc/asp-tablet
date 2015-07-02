@@ -10,14 +10,14 @@ namespace Plathe.WebUI.Controllers
 {
     public class MovieController : Controller
     {
-        private IMovieService movieService;
-        private IShowService showService;
+        private IMovieService _movieService;
+        private IShowService _showService;
         
         // GET: Movie
         public MovieController(IMovieService movieService, IShowService showService)
         {
-            this.movieService = movieService;
-            this.showService = showService;
+            this._movieService = movieService;
+            this._showService = showService;
         }
 
         public ViewResult Index()
@@ -35,7 +35,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get current movie
-            Movie movie = this.movieService.GetMovieById((int) id);
+            Movie movie = this._movieService.GetMovieById((int) id);
 
             if (movie == null)
             {
@@ -43,7 +43,7 @@ namespace Plathe.WebUI.Controllers
             }
 
             // get shows for this movie
-            IEnumerable<Show> shows = this.showService.GetShowsByMovieId((int) id).ToList();
+            IEnumerable<Show> shows = this._showService.GetShowsByMovieId((int) id).ToList();
 
             MovieDetailViewModel viewModel = new MovieDetailViewModel
             {

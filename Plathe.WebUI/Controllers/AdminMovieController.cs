@@ -44,7 +44,23 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new Movie());
+            return View("Create", new Movie());
         }
+
+        //[HttpPost]
+        //public ActionResult Create(Movie movie)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _repository.SaveMovie(movie);
+        //        TempData["message"] = string.Format("{0} is opgeslagen", movie.Title);
+        //        return RedirectToAction("Index");
+        //    }
+        //    else
+        //    {
+        //        // there is something wrong with the data values
+        //        return View(movie);
+        //    }
+        //}
     }
 }

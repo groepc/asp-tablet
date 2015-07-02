@@ -7,16 +7,15 @@ namespace Plathe.WebUI.Models
 {
     public class MovieDetailViewModel
     {
-        private IMovieService service;
-
+        private IMovieService _service;
 
         public MovieDetailViewModel()
         {
-            service = DependencyResolver.Current.GetService<IMovieService>();
+            _service = DependencyResolver.Current.GetService<IMovieService>();
         }
 
         public Movie Movie { get; set; }
-        public IEnumerable<Movie> Movies { get { return service.GetAllMovies(); } }
+        public IEnumerable<Movie> Movies { get { return _service.GetAllMovies(); } }
         public IEnumerable<Show> ShowsForMovie { get; set; }
     }
 }

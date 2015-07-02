@@ -46,6 +46,7 @@ namespace Plathe.WebUI.Infrastructure
             _kernel.Bind<IShowService>().To<ShowService>();
             _kernel.Bind<IMovieService>().To<MovieService>();
             _kernel.Bind<IGenreService>().To<GenreService>();
+            _kernel.Bind<IRoomService>().To<RoomService>();
 
             //authentication
             _kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();

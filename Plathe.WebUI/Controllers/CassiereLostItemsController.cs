@@ -36,7 +36,7 @@ namespace Plathe.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 _repository.SaveLostItem(lostitem);
-                TempData["message"] = string.Format("{0} is opgeslagen", lostitem.LostItemId);
+                TempData["message"] = string.Format("{0} is opgeslagen", lostitem.Name);
                 return RedirectToAction("Index");
             }
             else
@@ -48,7 +48,7 @@ namespace Plathe.WebUI.Controllers
 
         public ViewResult Create()
         {
-            return View("Edit", new LostItem());
+            return View("Create", new LostItem());
         }
 
         [HttpPost]
@@ -57,7 +57,7 @@ namespace Plathe.WebUI.Controllers
             LostItem deletedLostItem = _repository.DeleteLostItem(lostItemId);
             if (deletedLostItem != null)
             {
-                TempData["meesage"] = string.Format("{0} is verwijderd", deletedLostItem.Name);
+                TempData["message"] = string.Format("{0} is verwijderd", deletedLostItem.Name);
             }
             return RedirectToAction("Index");
         }

@@ -8,13 +8,13 @@
 
 <div class="panel">
     <div class="panel-heading">
-        <h2>Edit @Model.ShowId</h2>
+        <h2>Voeg nieuwe voorstelling toe</h2>
     </div>
 
-    @using (Html.BeginForm("Edit", "AdminShow"))
+    @using (Html.BeginForm("Create", "AdminShow"))
     {
         <div class="panel-body">
-        @foreach (var property in ViewData.ModelMetadata.Properties)
+            @foreach (var property in ViewData.ModelMetadata.Properties)
             {
                 if (property.PropertyName != "ShowId")
                 {
@@ -30,15 +30,15 @@
                                         <label>@(property.DisplayName ?? property.PropertyName)</label>
                                         @if (property.PropertyName == "Description")
                                         {
-                                            @Html.TextArea(property.PropertyName, null, new {@class = "form-control", rows = 10})
+                                            @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 10 })
                                         }
                                         @*@if (property.PropertyName == "ThreeDimensional")
-                                        {
-                                            @Html.CheckBox(property.PropertyName, new { @checked = "checked" })
-                                        }*@
+                                            {
+                                                @Html.CheckBox(property.PropertyName, new { @checked = "checked" })
+                                            }*@
                                         else
                                         {
-                                            @Html.TextBox(property.PropertyName, null, new {@class = "form-control"})
+                                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                                         }
                                         @Html.ValidationMessage(property.PropertyName)
                                     </div>
