@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Plathe.AdminUI.Models;
-using Plathe.Domain.Entities;
-using Plathe.Domain.Extensions;
 
 namespace Plathe.AdminUI.Infrastructure
 {
@@ -28,6 +23,7 @@ namespace Plathe.AdminUI.Infrastructure
 
     public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
     {/*
+        
         protected override void Seed(AppIdentityDbContext context)
         {
             PerformInitialSetup(context);
