@@ -14,9 +14,9 @@ namespace Plathe.AdminUI.Infrastructure {
         public override async Task<IdentityResult> ValidateAsync(AppUser user) {
             IdentityResult result = await base.ValidateAsync(user);
 
-            if (!user.Email.ToLower().EndsWith("@example.com")) {
+            if (!user.Email.ToLower().EndsWith("@plathe.nl")) {
                 var errors = result.Errors.ToList();
-                errors.Add("Only example.com email addresses are allowed");
+                errors.Add("Alleen plathe.nl e-mailadressen zijn toegestaan");
                 result = new IdentityResult(errors);
             }
             return result;

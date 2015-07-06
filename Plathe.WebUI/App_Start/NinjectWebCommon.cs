@@ -1,3 +1,6 @@
+using System.Web.Mvc;
+using Plathe.WebUI.Infrastructure;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Plathe.WebUI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Plathe.WebUI.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +64,7 @@ namespace Plathe.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }
 }

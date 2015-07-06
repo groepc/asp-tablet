@@ -1,34 +1,48 @@
 ﻿@using Plathe.AdminUI.Models
 @model IEnumerable<AppUser>
 @{ ViewBag.Title = "Index"; }
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        User Accounts
-    </div>
-    <table class="table table-striped">
-        <tr><th>ID</th><th>Name</th><th>Email</th><th></th></tr>
-        @if (Model.Count() == 0) {
-            <tr><td colspan="4" class="text-center">No User Accounts</td></tr>
-        } else {
-            foreach (AppUser user in Model) {
+<div class="row">
+    <div class="col-md-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Alle gebruikers</h3>
+            </div>
+            <table class="table table-striped">
                 <tr>
-                    <td>@user.Id</td>
-                    <td>@user.UserName</td>
-                    <td>@user.Email</td>
-                    <td>
-                        @using (Html.BeginForm("Delete", "Admin",
-                            new { id = user.Id })) {
-                            @Html.ActionLink("Edit", "Edit", new { id = user.Id },
-                                    new { @class = "btn btn-primary btn-xs" })
-                            <button class="btn btn-danger btn-xs"
-                                    type="submit">
-                                Delete
-                            </button>
-                        }
-                    </td>
+                    <th>Voornaam</th>
+                    <th>Achternaam</th>
+                    <th>Gebruikersnaam</th>
+                    <th>E-mailadres</th>
+                    <th></th>
                 </tr>
-            }
-        }
-    </table>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">Er zijn geen gebruikers aanwezig.</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (AppUser user in Model)
+                    {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.UserName</td>
+                            <td>@user.Email</td>
+                            <td class="text-right">
+                                @using (Html.BeginForm("Delete", "Admin",
+                                    new {id = user.Id}))
+                                {
+                                    @Html.ActionLink("Bewerken", "Edit", new {id = user.Id}, new {@class = "btn btn-warning btn-xs"})
+                                    <button class="btn btn-danger btn-xs" type="submit">Verwijderen</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        @Html.ActionLink("Nieuwe gebruiker", "Create", null, new { @class = "btn btn-primary" })
+    </div>
 </div>
-@Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })

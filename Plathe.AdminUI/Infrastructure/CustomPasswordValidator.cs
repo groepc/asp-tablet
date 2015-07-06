@@ -9,7 +9,7 @@ namespace Plathe.AdminUI.Infrastructure {
             IdentityResult result = await base.ValidateAsync(pass);
             if (pass.Contains("12345")) {
                 var errors = result.Errors.ToList();
-                errors.Add("Passwords cannot contain numeric sequences");
+                errors.Add("Wachtwoorden kunnen niet numerieke zijn");
                 result = new IdentityResult(errors);
             }
             return result;

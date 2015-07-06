@@ -20,10 +20,10 @@ namespace Plathe.AdminUI.Infrastructure
             return new AppIdentityDbContext();
         }
     }
-
+    //public class IdentityDbInit : DropCreateDatabaseAlways<AppIdentityDbContext>
     public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
-    {/*
-        
+    {
+        /*
         protected override void Seed(AppIdentityDbContext context)
         {
             PerformInitialSetup(context);
@@ -35,6 +35,8 @@ namespace Plathe.AdminUI.Infrastructure
             AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
             AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));
 
+            string firstname = "admin";
+            string lastname = "admin";
             string roleName = "Administrators";
             string userName = "Admin";
             string password = "MySecret";
@@ -48,8 +50,7 @@ namespace Plathe.AdminUI.Infrastructure
             AppUser user = userMgr.FindByName(userName);
             if (user == null)
             {
-                userMgr.Create(new AppUser { UserName = userName, Email = email },
-                    password);
+                userMgr.Create(new AppUser { UserName = userName, Email = email, FirstName = firstname, LastName = lastname}, password);
                 user = userMgr.FindByName(userName);
             }
 

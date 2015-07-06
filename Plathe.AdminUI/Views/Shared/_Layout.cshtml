@@ -3,32 +3,49 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="/"><img src="~/Content/img/plathe-logo.png" height="35" /></a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                    }
+                    @if (User.IsInRole("Administrators") || User.IsInRole("Administratie"))
+                    {
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Admin" ? "active" : "")">
+                            @Html.ActionLink("Gebruikers", "Index", "Admin")
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "RoleAdmin" ? "active" : "")">
+                            @Html.ActionLink("Rollen", "Index", "RoleAdmin")
+                        </li>
+                    }
+                    @if (User.IsInRole("Administrators") || User.IsInRole("Medewerker"))
+                    {
+                        <li class="active">Films</li>
+                        <li class="active">Abonnementen</li>
+                    }
+                    @if (User.IsInRole("Administrators") || User.IsInRole("Beheer"))
+                    {
+                        <li class="active">@Html.ActionLink("Films beheren", "List", "Movie")</li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Uitloggen", "Logout", "Account")</li>
+                    }
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
         </div>
     </nav>
-
     <div class="container">
         @RenderBody()
     </div>

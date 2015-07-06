@@ -5,11 +5,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Plathe.AdminUI.Models;
 using Plathe.AdminUI.Infrastructure;
-using Plathe.Domain.Entities;
 
 namespace Plathe.AdminUI.Controllers {
 
-    [Authorize(Roles = "Administrators")]
+    [Authorize(Roles = "Administratie")]
     public class AdminController : Controller {
 
         public ActionResult Index() {
@@ -23,13 +22,36 @@ namespace Plathe.AdminUI.Controllers {
         [HttpPost]
         public async Task<ActionResult> Create(CreateModel model) {
             if (ModelState.IsValid) {
-                AppUser user = new AppUser { UserName = model.Name, Email = model.Email };
+                AppUser user = new AppUser { UserName = model.Name, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName};
                 IdentityResult result = await UserManager.CreateAsync(user,
                     model.Password);
                 if (result.Succeeded) {
                     return RedirectToAction("Index");
                 } else {
                     AddErrorsFromResult(result);
+                }
+            }
+            else
+            {
+                if (model.FirstName == null)
+                {
+                    ModelState.AddModelError("", "Voornaam is een verplicht veld");
+                }
+                if (model.LastName == null)
+                {
+                    ModelState.AddModelError("", "Achternaam is een verplicht veld");
+                }
+                if (model.Name == null)
+                {
+                    ModelState.AddModelError("", "Gebruikersnaam is een verplicht veld");
+                }
+                if (model.Email == null)
+                {
+                    ModelState.AddModelError("", "E-mailadres is een verplicht veld");
+                }
+                if (model.Password == null)
+                {
+                    ModelState.AddModelError("", "Wachtwoord is een verplicht veld");
                 }
             }
             return View(model);
@@ -46,7 +68,7 @@ namespace Plathe.AdminUI.Controllers {
                     return View("Error", result.Errors);
                 }
             } else {
-                return View("Error", new string[] { "User Not Found" });
+                return View("Error", new string[] { "Gebruiker niet gevonden" });
             }
         }
 
@@ -60,28 +82,35 @@ namespace Plathe.AdminUI.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, string email, string password) {
+        public async Task<ActionResult> Edit(string id, string email, string password, string firstname, string lastname) {
             AppUser user = await UserManager.FindByIdAsync(id);
             if (user != null) {
                 user.Email = email;
-                IdentityResult validEmail
-                    = await UserManager.UserValidator.ValidateAsync(user);
+                user.LastName = lastname;
+                user.FirstName = firstname;
+                IdentityResult validEmail = await UserManager.UserValidator.ValidateAsync(user);
                 if (!validEmail.Succeeded) {
                     AddErrorsFromResult(validEmail);
                 }
                 IdentityResult validPass = null;
                 if (password != string.Empty) {
-                    validPass
-                        = await UserManager.PasswordValidator.ValidateAsync(password);
+                    validPass = await UserManager.PasswordValidator.ValidateAsync(password);
                     if (validPass.Succeeded) {
-                        user.PasswordHash =
-                            UserManager.PasswordHasher.HashPassword(password);
+                        user.PasswordHash = UserManager.PasswordHasher.HashPassword(password);
                     } else {
                         AddErrorsFromResult(validPass);
                     }
                 }
-                if ((validEmail.Succeeded && validPass == null) || (validEmail.Succeeded
-                        && password != string.Empty && validPass.Succeeded)) {
+                if (firstname == null)
+                {
+                    ModelState.AddModelError("", "Voornaam is een verplicht veld");
+                }
+                if (lastname == null)
+                {
+                    ModelState.AddModelError("", "Achternaam is een verplicht veld");
+                }
+                if ((validEmail.Succeeded && validPass == null && firstname != null && lastname != null) || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded && firstname != null && lastname != null))
+                {
                     IdentityResult result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded) {
                         return RedirectToAction("Index");
@@ -90,7 +119,7 @@ namespace Plathe.AdminUI.Controllers {
                     }
                 }
             } else {
-                ModelState.AddModelError("", "User Not Found");
+                ModelState.AddModelError("", "Gebruiker niet gevonden");
             }
             return View(user);
         }

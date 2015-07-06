@@ -8,11 +8,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Plathe.AdminUI.Infrastructure;
 using Plathe.AdminUI.Models;
-using Plathe.Domain.Entities;
 
 namespace Plathe.AdminUI.Controllers {
 
-    [Authorize(Roles = "Administrators")]
+    [Authorize(Roles = "Administratie")]
     public class RoleAdminController : Controller {
 
         public ActionResult Index() {

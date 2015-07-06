@@ -1,20 +1,56 @@
 ﻿@model Plathe.AdminUI.Models.CreateModel
 @{ ViewBag.Title = "Create User";}
-<h2>Create User</h2>
-@Html.ValidationSummary(false)
-@using (Html.BeginForm()) {
-    <div class="form-group">
-        <label>Name</label>
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Email</label>
-        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <label>Password</label>
-        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
-}
+<div class="row">
+    <div class="col-md-6 col-lg-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Gebruiker aanmaken
+                </h3>
+            </div>
+            <div class="panel-body">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+            </div>
+                @using (Html.BeginForm(new { @class = "form-horizontal" }))
+                {
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Voornaam</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(x => x.FirstName, new {@class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Achternaam</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Gebruikersnaam</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">E-mailadres</label>
+                        <div class="col-sm-7">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-5 control-label">Wachtwoord</label>
+                        <div class="col-sm-7">
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-primary">Toevoegen</button>
+                            @Html.ActionLink("Annuleren", "Index", null, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    
+</div>

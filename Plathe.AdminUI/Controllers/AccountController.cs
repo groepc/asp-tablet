@@ -7,16 +7,19 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Plathe.AdminUI.Infrastructure;
 using Plathe.AdminUI.Models;
-using Plathe.Domain.Entities;
 
-namespace Plathe.AdminUI.Controllers {
+namespace Plathe.AdminUI.Controllers
+{
 
     [Authorize]
-    public class AccountController : Controller {
+    public class AccountController : Controller
+    {
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl) {
-            if (HttpContext.User.Identity.IsAuthenticated) {
+        public ActionResult Login(string returnUrl)
+        {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
                 return View("Error", new string[] { "Access Denied" });
             }
             ViewBag.returnUrl = returnUrl;
@@ -26,18 +29,38 @@ namespace Plathe.AdminUI.Controllers {
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel details, string returnUrl) {
-            if (ModelState.IsValid) {
+        public async Task<ActionResult> Login(LoginModel details, string returnUrl)
+        {
+
+            if (ModelState.IsValid)
+            {
                 AppUser user = await UserManager.FindAsync(details.Name, details.Password);
-                if (user == null) {
-                    ModelState.AddModelError("", "Invalid name or password.");
-                } else {
-                    ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Ongeldige gebruikersnaam of wachtwoord");
+                }
+                else
+                {
+                    ClaimsIdentity ident =
+                        await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties {
+                    AuthManager.SignIn(new AuthenticationProperties
+                    {
                         IsPersistent = false
                     }, ident);
                     return Redirect(returnUrl);
+                }
+            }
+            else
+            {
+                if (details.Name == null)
+                {
+                    ModelState.AddModelError("", "Gebruikersnaam is een verplicht veld");
+                }
+                if (details.Password == null)
+                {
+                    ModelState.AddModelError("", "Wachtwoord is een verplicht veld");
                 }
             }
             ViewBag.returnUrl = returnUrl;
@@ -45,19 +68,24 @@ namespace Plathe.AdminUI.Controllers {
         }
 
         [Authorize]
-        public ActionResult Logout() {
+        public ActionResult Logout()
+        {
             AuthManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
-        private IAuthenticationManager AuthManager {
-            get {
+        private IAuthenticationManager AuthManager
+        {
+            get
+            {
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
 
-        private AppUserManager UserManager {
-            get {
+        private AppUserManager UserManager
+        {
+            get
+            {
                 return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
         }
