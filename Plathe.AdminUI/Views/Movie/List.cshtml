@@ -1,0 +1,80 @@
+﻿@model Plathe.AdminUI.Models.MovieViewModel
+
+@{
+    ViewBag.Title = "Alle films";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Alle films</h3>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Film</th>
+                    <th>Taal</th>
+                    <th>Duur</th>
+                    <th>Kijkwijzer</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Movies)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Language</td>
+                        <td>@item.Duration min.</td>
+                        <td>
+                            @if (@item.RatingDiscrimination)
+                            {
+                                <img src="~/Content/img/discriminatie.svg" width="35" title="Discriminatie" alt="Discriminatie" />
+                            }
+                            @if (@item.RatingDrugs)
+                            {
+                                <img src="~/Content/img/drugs.svg" width="35" title="Drugs" alt="Drugs" />
+                            }
+                            @if (@item.RatingFear)
+                            {
+                                <img src="~/Content/img/angst.svg" width="35" title="Angst" alt="Angst" />
+                            }
+                            @if (@item.RatingLanguage)
+                            {
+                                <img src="~/Content/img/groftaalgebruik.svg" width="35" title="Grof taal gebruik" alt="Grof taal gebruik" />
+                            }
+                            @if (@item.RatingSex)
+                            {
+                                <img src="~/Content/img/seks.svg" width="35" title="Seks" alt="Seks" />
+                            }
+                            @if (@item.RatingViolence)
+                            {
+                                <img src="~/Content/img/geweld.svg" width="35" title="Geweld" alt="Geweld" />
+                            }
+                            @if (@item.ThreeDimensional)
+                            {
+                                <img src="~/Content/img/3d.svg" width="35" title="3d" alt="3d" />
+                            }
+                            @if (@item.MinimumAge == 0)
+                            {
+                                <img src="~/Content/img/leeftijd-al.svg" width="35" title="alle leedtijden" alt="Alle leedtijden" />
+                            }
+                            @if (@item.MinimumAge == 6)
+                            {
+                                <img src="~/Content/img/leeftijd-6.svg" width="35" title="6 jaar" alt="6 jaar" />
+                            }
+                            @if (@item.MinimumAge == 12)
+                            {
+                                <img src="~/Content/img/leeftijd-12.svg" width="35" title="12 jaar" alt="12 jaar" />
+                            }
+                            @if (@item.MinimumAge == 16)
+                            {
+                                <img src="~/Content/img/leeftijd-16.svg" width="35" title="16 jaar" alt="16 jaar" />
+                            }
+                        </td>
+                        <td class="text-right">
+                            @Html.ActionLink("Bewerken", "Edit", new { id = item.MovieId }, new { @class = "btn btn-warning btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

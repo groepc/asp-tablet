@@ -1,0 +1,186 @@
+﻿@model Plathe.Domain.Entities.Movie
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Movie</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Genre.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Language)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Language)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MinimumAge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MinimumAge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ThreeDimensional)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ThreeDimensional)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingViolence)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingViolence)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingFear)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingFear)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingSex)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingSex)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingDiscrimination)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingDiscrimination)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingDrugs)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingDrugs)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RatingLanguage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RatingLanguage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Director)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Director)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MainCharacters)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MainCharacters)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LinkToImdb)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LinkToImdb)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LinkToTrailer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LinkToTrailer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LinkToWebsite)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LinkToWebsite)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PlaysUntill)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PlaysUntill)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
