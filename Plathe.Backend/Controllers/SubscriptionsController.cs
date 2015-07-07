@@ -2,7 +2,7 @@
 using System.Net;
 using System.Web.Mvc;
 using Plathe.Backend.Models;
-using Plathe.Domain.Services;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.Backend.Controllers
 {
@@ -10,9 +10,9 @@ namespace Plathe.Backend.Controllers
     public class SubscriptionsController : Controller
     {
 
-        private readonly SubscriptionService _subscriptionService;
+        private readonly ISubscriptionService _subscriptionService;
 
-        public SubscriptionsController(SubscriptionService subscriptionService)
+        public SubscriptionsController(ISubscriptionService subscriptionService)
         {
             _subscriptionService = subscriptionService;
         }
@@ -53,7 +53,6 @@ namespace Plathe.Backend.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);   
             }
 
-            
             SubscriptionPrintViewModel viewModel = new SubscriptionPrintViewModel
             {
                 SubscriptionId = Convert.ToInt32(id)

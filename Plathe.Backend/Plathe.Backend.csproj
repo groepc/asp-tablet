@@ -170,7 +170,6 @@
     <Compile Include="Models\LogInViewModel.cs" />
     <Compile Include="Models\MovieDetailViewModel.cs" />
     <Compile Include="Models\ShowFindViewModel.cs" />
-    <Compile Include="Models\ShowListViewModel.cs" />
     <Compile Include="Models\ShowViewModel.cs" />
     <Compile Include="Models\SubscriptionCreateViewModel.cs" />
     <Compile Include="Models\SubscriptionPrintViewModel.cs" />

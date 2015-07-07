@@ -9,21 +9,7 @@ namespace Plathe.Backend.Models
 {
     public class ShowViewModel
     {
-        private readonly IShowService _service;
-        private readonly IMovieService _movieService;
-        private readonly IRoomService _roomService;
-
-        public ShowViewModel()
-        {
-            _service = DependencyResolver.Current.GetService<IShowService>();
-            _movieService = DependencyResolver.Current.GetService<IMovieService>();
-            _roomService = DependencyResolver.Current.GetService<IRoomService>();
-        }
-
-        public Show Show
-        {
-            get { return _service.GetShowById(ShowId); }
-        }
+        public Show Show;
 
         [Display(Name = "Ondertiteling")]
         public string Subtitle { get; set; }
@@ -39,16 +25,9 @@ namespace Plathe.Backend.Models
 
         public int RoomId { get; set; }
 
-        public IEnumerable<Movie> Movies
-        {
-            get { return _movieService.GetAllMovies(); }
-        }
+        public IEnumerable<Movie> Movies;
 
-        public IEnumerable<Room> Rooms
-        {
-            get { return _roomService.GetAllRooms(); }
-        }
-
+        public IEnumerable<Room> Rooms;
 
         [HiddenInput(DisplayValue = false)]
         public int ShowId { get; set; }

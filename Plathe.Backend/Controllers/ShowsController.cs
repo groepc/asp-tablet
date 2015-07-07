@@ -1,27 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Plathe.Backend.Models;
-using Plathe.Domain.Concrete;
-using Plathe.Domain.Entities;
+using Plathe.Domain.AbstractServices;
 
 namespace Plathe.Backend.Controllers
 {
     [Authorize(Roles = "backoffice")]
     public class ShowsController : Controller
     {
-        private EfDbContext db = new EfDbContext();
+        private readonly IShowService _showService;
+        private readonly IMovieService _movieService;
+        private readonly IRoomService _roomService;
+
+        public ShowsController(IShowService showService, IMovieService movieService, IRoomService roomService)
+        {
+            _showService = showService;
+            _movieService = movieService;
+            _roomService = roomService;
+        }
+
+        public ShowsController()
+        {
+            throw new NotImplementedException();
+        }
 
         // GET: Shows
         public ActionResult Index()
         {
-            ShowListViewModel viewModel = new ShowListViewModel();
-            return View(viewModel);
+            var shows = _showService.GetAllShows();
+            return View(shows.ToList());
         }
 
         // GET: Shows/Details/5
@@ -33,7 +42,7 @@ namespace Plathe.Backend.Controllers
             }
             ShowViewModel viewModel = new ShowViewModel
             {
-                ShowId = Convert.ToInt32(id)
+                Show = _showService.GetShowById(Convert.ToInt32(id))
             };
             return View(viewModel);
         }
@@ -41,8 +50,11 @@ namespace Plathe.Backend.Controllers
         // GET: Shows/Create
         public ActionResult Create()
         {
-            ShowViewModel viewModel = new ShowViewModel(
-            );
+            ShowViewModel viewModel = new ShowViewModel
+            {
+                Movies = _movieService.GetAllMovies(),
+                Rooms = _roomService.GetAllRooms()
+            };
             return View(viewModel);
         }
 
@@ -51,16 +63,22 @@ namespace Plathe.Backend.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ShowId,MovieId,RoomId,Subtitle,StartingTime,ThreeDimensional")] Show show)
+        public ActionResult Create(ShowViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Shows.Add(show);
-                db.SaveChanges();
-                TempData["message"] = "Voorstelling toegevoegd";
-                return RedirectToAction("Index");
+                int success = _showService.SaveShow(null, viewModel.MovieId, viewModel.RoomId, viewModel.Subtitle, viewModel.StartingTime, viewModel.ThreeDimensional);
+                if (success == 0)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                TempData["message"] = "De show kon niet worden opgeslagen, controller de gegevens";
+                TempData["alert-class"] = "danger";
             }
-            return View(show);
+            viewModel.Movies = _movieService.GetAllMovies();
+            viewModel.Rooms = _roomService.GetAllRooms();
+            return View(viewModel);
         }
 
         // GET: Shows/Edit/5
@@ -73,7 +91,9 @@ namespace Plathe.Backend.Controllers
 
             ShowViewModel viewModel = new ShowViewModel
             {
-                ShowId = Convert.ToInt32(id)
+                Show = _showService.GetShowById(Convert.ToInt32(id)),
+                Movies = _movieService.GetAllMovies(),
+                Rooms = _roomService.GetAllRooms()
             };
             return View(viewModel);
 
@@ -84,18 +104,18 @@ namespace Plathe.Backend.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ShowId,MovieId,RoomId,Subtitle,StartingTime,ThreeDimensional")] Show show)
+        public ActionResult Edit(ShowViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(show).State = EntityState.Modified;
-                db.SaveChanges();
-                TempData["message"] = "Wijzigen zijn opgeslagen";
-                return RedirectToAction("Index");
+                _showService.SaveShow(viewModel.ShowId, viewModel.MovieId, viewModel.RoomId, viewModel.Subtitle, viewModel.StartingTime, viewModel.ThreeDimensional);
+                return RedirectToAction("Edit", new { });
             }
-            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", show.MovieId);
-            ViewBag.RoomId = new SelectList(db.Rooms, "RoomId", "RoomName", show.RoomId);
-            return View(show);
+
+            viewModel.Movies = _movieService.GetAllMovies();
+            viewModel.Rooms = _roomService.GetAllRooms();
+
+            return View(viewModel);
         }
 
         // GET: Shows/Delete/5
@@ -116,22 +136,16 @@ namespace Plathe.Backend.Controllers
         // POST: Shows/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            Show show = db.Shows.Find(id);
-            db.Shows.Remove(show);
-            db.SaveChanges();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            _showService.RemoveShowById(Convert.ToInt32(id));
             TempData["message"] = "Voorstelling verwijderd";
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -18,6 +18,42 @@ namespace Plathe.Domain.Services
 
         }
 
+        public int SaveShow(int? showId, int movieId, int roomId, string subtitle, DateTime startingTime, bool threeDimensional)
+        {
+
+            if (startingTime.Date < DateTime.Now.Date)
+            {
+                return 1;
+            }
+
+            Show show = new Show
+            {
+                MovieId = movieId,
+                RoomId = roomId,
+                Subtitle = subtitle,
+                StartingTime = startingTime,
+                ThreeDimensional = threeDimensional
+            };
+
+            if (showId != null)
+            {
+                show.ShowId = Convert.ToInt32(showId);
+                _repository.UpdateShow(show);
+            }
+            else
+            {
+                _repository.AddShow(show);
+            }
+            return 0;
+        }
+
+        public void RemoveShowById(int id)
+        {
+            _repository.RemoveShowById(id);
+        }
+
+
+
         public IEnumerable<Show> GetAllShows()
         {
             return _repository.Shows;
@@ -26,7 +62,7 @@ namespace Plathe.Domain.Services
         public IEnumerable<Show> GetShowsByDate(DateTime date)
         {
             return _repository.Shows.Where(s => s.StartingTime.Date == date);
-        } 
+        }
 
         public IEnumerable<Show> GetShowsThisWeek()
         {

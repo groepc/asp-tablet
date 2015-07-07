@@ -14,9 +14,14 @@ namespace Plathe.Domain.AbstractServices
         IEnumerable<Show> GetShowsThisWeek();
 
         IEnumerable<Show> GetShowsByMovieId(int id);
-        
+
         Show GetShowById(int id);
 
         Show GetShowByMovieId(int id);
+
+        int SaveShow(int? showId, int movieId, int roomId, string subtitle, DateTime startingTime,
+            Boolean threeDimensional);
+
+        void RemoveShowById(int id);
     }
 }
