@@ -26,6 +26,14 @@ namespace Plathe.Domain.Services
                 return 1;
             }
 
+            var totalShows = _repository.Shows
+                .Where(s => s.StartingTime >= DateTime.Today).ToArray();
+
+            if (totalShows.Length > 1)
+            {
+                return 2;
+            }
+
             Show show = new Show
             {
                 MovieId = movieId,
