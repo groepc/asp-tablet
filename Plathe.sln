@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.UnitTests", "Plathe.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.Domain", "Plathe.Domain\Plathe.Domain.csproj", "{ACE967E7-4640-4F8F-B722-55854F4B7BB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.WebUI", "Plathe.WebUI\Plathe.WebUI.csproj", "{DEF41532-5435-4027-B9D8-18702E0F661A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.TabletUI", "Plathe.TabletUI\Plathe.TabletUI.csproj", "{01817F0D-F8E4-465B-885C-8300F5050C83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plathe.Backend", "Plathe.Backend\Plathe.Backend.csproj", "{D60AF1D5-AE46-491F-9213-44585E8CBE3B}"
@@ -27,10 +25,6 @@ Global
 		{ACE967E7-4640-4F8F-B722-55854F4B7BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACE967E7-4640-4F8F-B722-55854F4B7BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACE967E7-4640-4F8F-B722-55854F4B7BB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEF41532-5435-4027-B9D8-18702E0F661A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEF41532-5435-4027-B9D8-18702E0F661A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEF41532-5435-4027-B9D8-18702E0F661A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEF41532-5435-4027-B9D8-18702E0F661A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01817F0D-F8E4-465B-885C-8300F5050C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
