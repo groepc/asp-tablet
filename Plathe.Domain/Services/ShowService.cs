@@ -11,25 +11,41 @@ namespace Plathe.Domain.Services
     {
 
         private readonly IShowRepository _repository;
+        private readonly IMovieRepository _movieRepository;
 
-        public ShowService(IShowRepository showRepository)
+        public ShowService(IShowRepository showRepository, IMovieRepository movieRepository)
         {
             _repository = showRepository;
+            _movieRepository = movieRepository;
 
         }
 
         public int SaveShow(int? showId, int movieId, int roomId, string subtitle, DateTime startingTime, bool threeDimensional)
         {
 
+            const int cleanTime = 15;
+
             if (startingTime.Date < DateTime.Now.Date)
             {
                 return 1;
             }
 
-            var totalShows = _repository.Shows
-                .Where(s => s.StartingTime >= DateTime.Today).ToArray();
+            var durationMovie = _movieRepository.FindMovieById(movieId).Duration;
+            //add 15 minutes clean time to the duration
+            var endtime = startingTime.AddMinutes(durationMovie + cleanTime);
 
-            if (totalShows.Length > 1)
+            //endtime is duration + 15 minutes clean time
+            var totalShows = (from s in _repository.Shows
+                              join m in _movieRepository.Movies on s.MovieId equals m.MovieId
+                              where s.RoomId == roomId && 
+                             startingTime <= s.StartingTime.AddMinutes(m.Duration + cleanTime) &&
+                              s.StartingTime <= endtime
+                              
+                              //((startingTime >= s.StartingTime && s.StartingTime.AddMinutes(m.Duration + cleanTime) < startingTime) ||
+                             //startingTime <= s.StartingTime.AddMinutes(m.Duration + cleanTime)) || (endtime > s.StartingTime && s.StartingTime < endtime)
+                              select s.ShowId).Count();
+
+            if (totalShows > 0)
             {
                 return 2;
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Plathe.Domain.Entities;
 
 namespace Plathe.Domain.Abstract
@@ -9,7 +10,6 @@ namespace Plathe.Domain.Abstract
         void AddShow(Show show);
         void UpdateShow(Show show);
         void RemoveShowById(int id);
-
 
     }
 }

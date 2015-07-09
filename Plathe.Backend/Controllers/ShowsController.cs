@@ -128,7 +128,7 @@ namespace Plathe.Backend.Controllers
 
             ShowViewModel viewModel = new ShowViewModel
             {
-                ShowId = Convert.ToInt32(id)
+                Show = _showService.GetShowById(Convert.ToInt32(id)),
             };
             return View(viewModel);
         }

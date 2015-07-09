@@ -15,6 +15,11 @@ namespace Plathe.Domain.Concrete
             get { return _context.Movies; }
         }
 
+        public Movie FindMovieById(int id)
+        {
+            return _context.Movies.Find(id);
+        }
+
         public IEnumerable<Movie> GetMovieByGenreId(int genreId)
         {
             return _context.Movies.Where(m => m.GenreId == genreId);

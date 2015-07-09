@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using Plathe.Domain.AbstractServices;
 using Plathe.Domain.Entities;
 
 namespace Plathe.Backend.Models
