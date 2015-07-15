@@ -740,7 +740,7 @@ namespace Plathe.Domain.Concrete
             tickets.Clear();
 
 
-            for (var i = 1; i < 400; i++)
+            for (var i = 1; i < 500; i++)
             {
 
                 var showCount = shows.Count();

@@ -9,7 +9,13 @@ namespace Plathe.AdminUI.Models
 {
     public class RevenueViewModel
     {
-        private IShowService _showService = DependencyResolver.Current.GetService<IShowService>();
+        //private IShowService _showService = DependencyResolver.Current.GetService<IShowService>();
+        private IShowService _showService;
+
+        public RevenueViewModel(IShowService showService)
+        {
+            _showService = showService;
+        }
 
         public Dictionary<string, double> RevenuePerMonth
         {

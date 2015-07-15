@@ -20,7 +20,7 @@ namespace Plathe.Domain.Services
 
         public IEnumerable<Review> GetReviewsByMovieId(int id)
         {
-            return repository.Reviews.Where(m => m.Movie.MovieId == id);
+            return repository.Reviews.Where(m => m.MovieID == id);
         }
 
         public IEnumerable<Review> GetNewReviews()

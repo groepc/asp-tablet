@@ -96,11 +96,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReviewsServiceTests.cs" />
     <Compile Include="ReportsControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Plathe.AdminUI\Plathe.AdminUI.csproj">
+      <Project>{B7015066-23CB-40CC-B25F-2083C6044C8C}</Project>
+      <Name>Plathe.AdminUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Plathe.Domain\Plathe.Domain.csproj">
       <Project>{ace967e7-4640-4f8f-b722-55854f4b7bb4}</Project>
       <Name>Plathe.Domain</Name>
